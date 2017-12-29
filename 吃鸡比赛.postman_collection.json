@@ -1,0 +1,1028 @@
+{
+	"info": {
+		"name": "吃鸡比赛",
+		"_postman_id": "ca1ee38e-5002-06b2-f5f3-4f49ccc2eacb",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "后台",
+			"item": [
+				{
+					"name": "比赛列表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "state",
+									"value": "2",
+									"description": "1:未结算  2:未开始  3:已结算",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}pb/match/list",
+							"host": [
+								"{{apiurl}}pb"
+							],
+							"path": [
+								"match",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加/修改比赛",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "act",
+									"value": "update",
+									"description": "add:添加 update:修改",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "1",
+									"description": "要修改的比赛id",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "魔杰网吧赛",
+									"description": "房间名",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "1",
+									"description": "比赛类型 1:单排  2:双排  4:四排",
+									"type": "text"
+								},
+								{
+									"key": "feebeans",
+									"value": "10",
+									"description": "报名费用",
+									"type": "text"
+								},
+								{
+									"key": "servernum",
+									"value": "1",
+									"description": "服务器数量",
+									"type": "text"
+								},
+								{
+									"key": "sessionnum",
+									"value": "1",
+									"description": "比赛场次",
+									"type": "text"
+								},
+								{
+									"key": "sessioninterval",
+									"value": "91",
+									"description": "场次间隔",
+									"type": "text"
+								},
+								{
+									"key": "roompwd",
+									"value": "12341",
+									"description": "房间密码",
+									"type": "text"
+								},
+								{
+									"key": "memo",
+									"value": "没有进入房间视为弃权",
+									"description": "说明",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "1",
+									"description": "状态 1:开启 0:关闭",
+									"type": "text"
+								},
+								{
+									"key": "starttime",
+									"value": "2017-12-08 12:00:02",
+									"description": "比赛时间 ",
+									"type": "text"
+								},
+								{
+									"key": "winrmb",
+									"value": "20",
+									"description": "获胜奖励奖金数",
+									"type": "text"
+								},
+								{
+									"key": "winbeans",
+									"value": "100",
+									"description": "获胜奖励魔豆数",
+									"type": "text"
+								},
+								{
+									"key": "personlimit",
+									"value": "59",
+									"description": "人数上限",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}pb/match/handler",
+							"host": [
+								"{{apiurl}}pb"
+							],
+							"path": [
+								"match",
+								"handler"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "添加/修改竞猜",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "act",
+									"value": "update",
+									"description": "add: 添加 update:修改",
+									"type": "text"
+								},
+								{
+									"key": "matchid",
+									"value": "2",
+									"description": "比赛id",
+									"type": "text"
+								},
+								{
+									"key": "guessid",
+									"value": "2",
+									"description": "竞猜id",
+									"type": "text"
+								},
+								{
+									"key": "memo",
+									"value": "竞猜说明",
+									"description": "竞猜说明",
+									"type": "text"
+								},
+								{
+									"key": "betbeanslimit",
+									"value": "100",
+									"description": "投注上限",
+									"type": "text"
+								},
+								{
+									"key": "awardbeans",
+									"value": "200",
+									"description": "全对奖池",
+									"type": "text"
+								},
+								{
+									"key": "questionnum",
+									"value": "2",
+									"description": "问题数",
+									"type": "text"
+								},
+								{
+									"key": "items0[]",
+									"value": "队1",
+									"description": "竞猜选项",
+									"type": "text"
+								},
+								{
+									"key": "items0[]",
+									"value": "队2",
+									"type": "text"
+								},
+								{
+									"key": "odds0[]",
+									"value": "1.31",
+									"description": "竞猜赔率",
+									"type": "text"
+								},
+								{
+									"key": "odds0[]",
+									"value": "45.21",
+									"type": "text"
+								},
+								{
+									"key": "items1[]",
+									"value": "队31",
+									"type": "text"
+								},
+								{
+									"key": "items1[]",
+									"value": "队4",
+									"type": "text"
+								},
+								{
+									"key": "odds1[]",
+									"value": "5.61",
+									"type": "text"
+								},
+								{
+									"key": "odds1[]",
+									"value": "9,21",
+									"type": "text"
+								},
+								{
+									"key": "title0",
+									"value": "哪队获胜？",
+									"description": "竞猜题目",
+									"type": "text"
+								},
+								{
+									"key": "title1",
+									"value": "哪队失败？",
+									"type": "text"
+								},
+								{
+									"key": "optionid0[]",
+									"value": "1",
+									"description": "要修改的选项id",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "optionid1[]",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}pb/guess/handler",
+							"host": [
+								"{{apiurl}}pb"
+							],
+							"path": [
+								"guess",
+								"handler"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "竞猜详情 state 1投注中 2已开奖 3关闭",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchid",
+									"value": "3",
+									"description": "比赛id",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}pb/guess/info",
+							"host": [
+								"{{apiurl}}pb"
+							],
+							"path": [
+								"guess",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "比赛详情 state 1:开启 2:关闭 3:未开始",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}pb/match/info",
+							"host": [
+								"{{apiurl}}pb"
+							],
+							"path": [
+								"match",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "结束比赛",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchid",
+									"value": "3",
+									"description": "比赛id",
+									"type": "text"
+								},
+								{
+									"key": "enrollid",
+									"value": "1",
+									"description": "获胜玩家id",
+									"type": "text"
+								},
+								{
+									"key": "answer[]",
+									"value": "A",
+									"description": "答案",
+									"type": "text"
+								},
+								{
+									"key": "answer[]",
+									"value": "A",
+									"type": "text"
+								},
+								{
+									"key": "answer[]",
+									"value": "A",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}pb/match/finish",
+							"host": [
+								"{{apiurl}}pb"
+							],
+							"path": [
+								"match",
+								"finish"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "关闭比赛",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchid",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}pb/match/close",
+							"host": [
+								"{{apiurl}}pb"
+							],
+							"path": [
+								"match",
+								"close"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改竞猜状态",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "竞猜id",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "1",
+									"description": "1开启 3关闭",
+									"type": "text"
+								},
+								{
+									"key": "matchid",
+									"value": "1",
+									"description": "比赛id",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}pb/guess/update/state",
+							"host": [
+								"{{apiurl}}pb"
+							],
+							"path": [
+								"guess",
+								"update",
+								"state"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "登录",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "111111",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}member/login",
+							"host": [
+								"{{apiurl}}member"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "报名游戏ID列表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchid",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}pb/enroll/list",
+							"host": [
+								"{{apiurl}}pb"
+							],
+							"path": [
+								"enroll",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "投注详情",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "guessid",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "categoryindex",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}pb/bet/list",
+							"host": [
+								"{{apiurl}}pb"
+							],
+							"path": [
+								"bet",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "报名列表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchid",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}pb/enroll/nickname/list",
+							"host": [
+								"{{apiurl}}pb"
+							],
+							"path": [
+								"enroll",
+								"nickname",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改报名状态",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchid",
+									"value": "1",
+									"description": "比赛id",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "0",
+									"description": "1开启 0关闭",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiurl}}pb/enroll/update/state",
+							"host": [
+								"{{apiurl}}pb"
+							],
+							"path": [
+								"enroll",
+								"update",
+								"state"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "前台",
+			"item": [
+				{
+					"name": "报名",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchid",
+									"value": "2",
+									"description": "比赛id",
+									"type": "text"
+								},
+								{
+									"key": "nickname[]",
+									"value": "电影",
+									"description": "游戏昵称",
+									"type": "text"
+								},
+								{
+									"key": "mobile",
+									"value": "13333333333",
+									"description": "手机号",
+									"type": "text"
+								},
+								{
+									"key": "nickname[]",
+									"value": "电影2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}pb/enroll",
+							"host": [
+								"{{url}}pb"
+							],
+							"path": [
+								"enroll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "查看比赛密码",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchid",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}pb/match/viewpwd",
+							"host": [
+								"{{url}}pb"
+							],
+							"path": [
+								"match",
+								"viewpwd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "比赛详情",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchid",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}pb/match/info",
+							"host": [
+								"{{url}}pb"
+							],
+							"path": [
+								"match",
+								"info"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "比赛列表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}pb/match/list",
+							"host": [
+								"{{url}}pb"
+							],
+							"path": [
+								"match",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "竞猜详情",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchid",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}pb/guess/list",
+							"host": [
+								"{{url}}pb"
+							],
+							"path": [
+								"guess",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "竞猜投注列表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchid",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}pb/bet/list",
+							"host": [
+								"{{url}}pb"
+							],
+							"path": [
+								"bet",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "设置提现账号",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "account",
+									"value": "xxx@alipay.com",
+									"description": "账号",
+									"type": "text"
+								},
+								{
+									"key": "realname",
+									"value": "张三",
+									"description": "姓名",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "123456",
+									"description": "验证码",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}member/withdraw/account/add",
+							"host": [
+								"{{url}}member"
+							],
+							"path": [
+								"withdraw",
+								"account",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "我的比赛",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}pb/match/mylist",
+							"host": [
+								"{{url}}pb"
+							],
+							"path": [
+								"match",
+								"mylist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "竞猜投注",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "matchid",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "guessid",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "optionid",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "betitem",
+									"value": "A",
+									"type": "text"
+								},
+								{
+									"key": "beans",
+									"value": "100",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}pb/guess/bet",
+							"host": [
+								"{{url}}pb"
+							],
+							"path": [
+								"guess",
+								"bet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户红包查询",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}member/finance",
+							"host": [
+								"{{url}}member"
+							],
+							"path": [
+								"finance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "提现账号列表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}member/withdraw/account/list",
+							"host": [
+								"{{url}}member"
+							],
+							"path": [
+								"withdraw",
+								"account",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "发起提现",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id",
+									"value": "1",
+									"description": "提现账号id",
+									"type": "text"
+								},
+								{
+									"key": "money",
+									"value": "100",
+									"description": "提现金额",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}member/withdraw/add",
+							"host": [
+								"{{url}}member"
+							],
+							"path": [
+								"withdraw",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "提现列表",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "pn",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}member/withdraw/list",
+							"host": [
+								"{{url}}member"
+							],
+							"path": [
+								"withdraw",
+								"list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
