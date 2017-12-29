@@ -1,0 +1,29 @@
+.enteringModal .modal-body .teaminfo {
+  align-items: center;
+  padding: 20px 0; }
+.enteringModal .col-sm-10 .upload-file1 {
+  z-index: 9999;
+  opacity: 0;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  margin-left: -100px;
+  top: 0;
+  background: #fff url(../images/upload.png) no-repeat;
+  background-size: 100% 100%; }
+.enteringModal .col-sm-10 .file-modal1 {
+  z-index: 999;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  margin-left: -100px;
+  top: 0;
+  background: #fff url(../images/upload.png) no-repeat;
+  background-size: 100% 100%; }
+  .enteringModal .col-sm-10 .file-modal1 img {
+    width: 100%;
+    height: 100%; }
+
+/*# sourceMappingURL=addstyle.css.map */

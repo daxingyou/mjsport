@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<head>
+  <title>轮播图</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="" />
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/font.css" type="text/css"/> 
+  <link href="http://static.jesport.com/backend2/css/style-responsive.css" rel="stylesheet"/>
+  <link href="http://static.jesport.com/backend2/css/font-awesome.css" rel="stylesheet"> 
+  <script src="http://static.jesport.com/backend2/js/jquery2.0.3.min.js"></script>
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/guessList.css">
+  <link href="http://static.jesport.com/backend2/css/style.css" rel='stylesheet' type='text/css' />
+  <link href="http://static.jesport.com/backend2/css/wlui.css" rel='stylesheet' type='text/css' />
+  <style>
+    .file-modal img {
+      width: 100%;height: 100%;display: block;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <section id="container">
+      <header class="header fixed-top clearfix">
+        <div class="brand">
+          <a href="javascript:;" class="logo">
+            后台管理系统
+          </a>
+          <div class="sidebar-toggle-box">
+            <div class="fa fa-bars"></div>
+          </div>
+        </div>
+        <div class="nav notify-row" id="top_menu">
+          <ul class="nav top-menu"></ul>
+        </div>
+        <div class="top-nav clearfix">
+          <ul class="nav pull-right top-menu">
+            <li>
+              <input type="text" class="form-control search" placeholder=" Search">
+            </li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                <img alt="" src="http://static.jesport.com/backend2/images/2.png">
+                <span class="username">管理员</span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu extended logout">
+                <li><a href="javascript:;"><i class=" fa fa-suitcase"></i>个人资料</a></li>
+                <li><a href="javascript:;"><i class="fa fa-cog"></i> 网吧资料</a></li>
+                <li id="logout"  class="logout"><a href="javascript:;"><i class="fa fa-key"></i> 退出</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </header>
+
+        <!--sidebar start-->
+        <aside id="menu"></aside>
+        <!--sidebar end-->
+
+     <section id="main-content">
+       <section class="wrapper" id="app">
+        <!-- 竞猜列表面包屑导航 -->
+        <div class="breadcrumb-box">
+          <ol class="breadcrumb breadcrumb2 ">
+            <li><a href="#">首页运营位</a></li>
+            <li class="active"><a href="#">轮播图</a></li>
+          </ol>
+          <button type="button" class="createGuess btn btn-primary"   @click="addSlider" >增加轮播图</button>
+        </div>
+        <div class="strip-tips" >
+          <span>已上架（将在首页轮播显示）</span>
+        </div>
+        <div class="card">
+         <div class="card-box-item row" v-for="item in sliderList1" v-cloak>
+           <div class="card-item  col-md-1 " style="margin-top: 60px;">{{item.id}}</div>
+           <div style="height: 120px; margin-top: 15px;" class="card-item  col-md-3 " >
+             <img  class="slider-img"  :src="item.img"  alt="">
+           </div>
+           <ul class="card-item  col-md-4 " style="margin-top: 35px;padding-left: 10%;">
+            <li class="card-list-item">标题：<span>{{item.title}}</span></li>
+            <li  class="card-list-item" >跳转：<a :href="item.url">{{item.url}}</a></li>
+          </ul>
+          <div class="card-item  col-md-1" style="margin-top: 60px;" >
+            {{  item.state == 1 ? '已上架' : '未上架' }}
+          </div>
+          <div class="card-item  col-md-3 " style="margin-top: 8px;"  >
+            <button class="btn  btn-default db btn-middle" @click="setTop(item.id)">置顶</button>
+            <button  @click="editSliderModal(item.id)"       class="btn action  btn-default db btn-middle">编辑</button>
+            <button @click="updateState(item.id,item.state)" class="btn  btn-default db btn-middle">下架</button>
+          </div>   
+        </div>
+      </div>
+      <div class="strip-tips" style="margin-top: 50px;" >
+        <span>未上架（不在首页轮播显示）</span>
+      </div>
+      <div class="card">
+       <div class="card-box-item row" v-for="item in sliderList0" v-cloak>
+         <div class="card-item  col-md-1 " style="margin-top: 60px;">{{item.id}}</div>
+         <div style=" margin-top: 15px; height: 120px;" class="card-item  col-md-3 " >
+           <img class="slider-img"   :src="item.img"  alt="">
+         </div>
+         <ul class="card-item  col-md-4 " style="padding-left: 10%;margin-top: 35px;">
+          <li class="card-list-item">标题：<span>{{item.title}}</span></li>
+          <li class="card-list-item" >跳转：<a :href="item.url">{{item.url}}</a></li>
+        </ul>
+        <div class="card-item  col-md-1" style="margin-top: 60px;" >
+          {{  item.state == 1 ? '已上架' : '未上架' }}
+        </div>
+        <div class="card-item  col-md-3 "   style="margin-top: 8px;"  >
+          <button class="btn  btn-default db btn-middle" @click="setTop(item.id)">置顶</button>
+          <button      @click="editSliderModal(item.id)"    class="btn action  btn-default  db btn-middle">编辑</button>
+          <button   @click="updateState(item.id,item.state)" class="  btn  btn-default db btn-middle">上架</button>
+        </div>   
+      </div>
+    </div>
+
+    <!-- 编辑轮播图模态框开始 -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document"   >
+        <div class="modal-content" style="height: 635px;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">填写轮播图信息</h4>
+          </div>                          
+          <div class="modal-body">
+            <form id="ajaxForm2" class="form-horizontal" enctype="multipart/form-data" >
+              <input type="hidden" id="type2"  value="edit" name="type" />
+              <input id="id2" type="hidden" value="0" name="id" />
+              <div class="form-group" >
+               <label for="inputPassword3" class=" control-label" style="visibility:hidden; height: 0!important; ">轮播图片</label>
+               <div class="col-sm-12" style="position: relative;height: 300px;">
+                 <input type="file" name="img" id="img2"  class=" upload-file form-control"   name="upload" >
+                 <div id="preview2" class="file-modal"></div>
+                 <p style=" margin-top: 260px; text-align: center;color: #666;">支持png/jpg/jpeg；尺寸750*320；1M以内</p>
+                 <p style="  text-align: center;color: #666;">点击图片上传</p>
+               </div>
+             </div>
+             <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">标题</label>
+              <div class="col-sm-10">
+                <input name="title" type="text" class="form-control" id="title2" placeholder="输入运营位标题，不超过12字">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">跳转链接</label>
+              <div class="col-sm-10">
+                <input name="url" type="text" class="form-control" id="url2" placeholder="输入图片跳转地址，必须以http://开头">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">状态</label>
+              <div class="col-sm-10">
+               <select id="state2" name="state" class="form-control">
+                 <option value="1">已上架</option>
+                 <option value="0">未上架</option>
+               </select>
+             </div>
+           </div>
+         </form>
+         <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button @click="submitEditSlider" type="button" class="btn btn-primary" id="submit2" >保存</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- 模态框结束 -->
+
+
+<!-- 添加模态框开始 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document"   >
+    <div class="modal-content" style="height: 635px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">填写轮播图信息</h4>
+      </div>
+      <div class="modal-body">
+        <form id="ajaxForm" class="form-horizontal" enctype="multipart/form-data" >
+          <input type="hidden" value="add" name="type" />
+          <input id="id"  type="hidden" value="0" name="id" />
+          <div class="form-group">
+           <label for="inputPassword3" class=" control-label" style="visibility:hidden; height: 0!important; ">轮播图片</label>
+           <div class="col-sm-12" style="position: relative;height: 300px;">
+            <input type="file" name="img" id="img"  class=" upload-file form-control"   name="upload" >
+            <div id="preimg" class="file-modal"></div>
+            <p style=" margin-top: 260px; text-align: center;color: #666;">支持png/jpg/jpeg；尺寸750*320；1M以内</p>
+            <p style="  text-align: center;color: #666;">点击图片上传</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword3" class="col-sm-2 control-label">标题</label>
+          <div class="col-sm-10">
+            <input name="title" type="text" class="form-control" id="title" placeholder="输入运营位标题，不超过12字">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword3" class="col-sm-2 control-label">跳转链接</label>
+          <div class="col-sm-10">
+            <input name="url" type="text" class="form-control" id="url" placeholder="输入图片跳转地址，必须以http://开头">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword3" class="col-sm-2 control-label">状态</label>
+          <div class="col-sm-10">
+           <select name="state" class="form-control">
+             <option value="1">已上架</option>
+             <option value="0">未上架</option>
+           </select>
+         </div>
+       </div>
+     </form>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      <button @click="submitAddSlider"  type="button" class=" btn btn-primary"  id="submit" >保存</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+</section>
+</section>
+</section>
+</div>
+<script src="http://static.jesport.com/backend2/js/bootstrap.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="http://static.jesport.com/backend2/js/scripts.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.slimscroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.nicescroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.scrollTo.js"></script>
+<script src="http://static.jesport.com/backend2/js/vue.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script> 
+<script src="http://static.jesport.com/backend2/js/laydate.js"></script>
+<script src="http://static.jesport.com/backend2/js/common.js?v=201712141645"></script>
+<script src="http://static.jesport.com/backend2/js/slider.js"></script> 
+
+</body>
+</html>

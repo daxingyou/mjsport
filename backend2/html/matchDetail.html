@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<head>
+  <title>比赛列表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/font.css" type="text/css"/> 
+  <link href="http://static.jesport.com/backend2/css/style-responsive.css" rel="stylesheet"/>
+  <link href="http://static.jesport.com/backend2/css/font-awesome.css" rel="stylesheet"> 
+  <script src="http://static.jesport.com/backend2/js/jquery2.0.3.min.js"></script>
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/guessList.css">
+  <link href="http://static.jesport.com/backend2/css/style.css?v=x" rel='stylesheet' type='text/css' />
+  <link href="http://static.jesport.com/backend2/css/wlui.css" rel='stylesheet' type='text/css' />
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/component.css?v=xxo">
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/addstyle.css?v=xxo">
+</head>
+<body>
+  <div>
+    <section id="container">
+      <!--header start-->
+      <header class="header fixed-top clearfix">
+        <div class="brand">
+          <a href="javascript:;" class="logo">
+            后台管理系统
+          </a>
+          <div class="sidebar-toggle-box">
+            <div class="fa fa-bars"></div>
+          </div>
+        </div>
+        <div class="top-nav clearfix">
+          <ul class="nav pull-right top-menu">
+            <li>
+              <input type="text" class="form-control search" placeholder=" Search">
+            </li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                <img alt="" src="http://static.jesport.com/backend2/images/2.png">
+                <span class="username">管理员</span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu extended logout">
+                <li><a href="javascript:;"><i class=" fa fa-suitcase"></i>个人资料</a></li>
+                <li><a href="javascript:;"><i class="fa fa-cog"></i> 网吧资料</a></li>
+                <li id="logout"  class="logout"><a href="javascript:;"><i class="fa fa-key"></i> 退出</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <!--header end-->
+
+        <!--sidebar start-->
+        <aside id="menu"></aside>
+        <!--sidebar end-->
+    <!--main content start-->
+    <section id="main-content">
+     <section class="wrapper" id="app">
+      <!-- 竞猜列表面包屑导航 -->
+      <div class="breadcrumb-box cf" >
+        <ol class="breadcrumb breadcrumb2 ">
+          <li><a href="javascript:;">比赛管理</a></li>
+          <li class="active"><a href="javascript:;" v-cloak>{{matchDetail.name}}</a></li>
+        </ol>
+        <button @click="publishMatch(matchid)"  type="button" class="createGuess btn btn-primary" v-if="matchDetail.state == 0 " >发布比赛</button>
+        <button style="margin:0 10px;" class="createGuess btn btn-default" disabled="true">{{matchDetail.state == '2' ? 
+          '已结束' : matchDetail.state ==5 ?'已发布':matchDetail.state == '3' ? '比赛中' : matchDetail.state =='4' ? '报名中': matchDetail.state == '1' ? '已发布' : '未发布'}}</button>
+
+        </div>
+
+        <div class="navbar-form  clearfix" role="search" style="width: 100%;line-height: 34px; background: #D3DCE6; border-radius: 4px;padding:4px;margin-bottom: 20px;">
+         <div class="form-group" style="float: left;">
+          <span style="margin-left: 8px;font-size: 16px;color: #000;">比赛信息</span>
+        </div>
+
+        <button  @click="toggleModal"  style="float: right;margin-right: 8px;" class="btn btn-default" >编辑</button>
+      </div>
+
+      <!-- 比赛详细数据 -->
+      <div class="matchDetailData">
+        <div class="match-img">
+          <img :src="matchDetail.poster" alt="">
+        </div>
+        <table class="table-main" v-cloak>
+          <tr>
+            <th>比赛名称</th>
+            <td>{{matchDetail.name}}</td>
+            <th>比赛ID</th>
+            <td>{{matchDetail.id}}</td>
+            <th>创建时间</th>
+            <td>{{matchDetail.startDate}}</td>
+          </tr>
+          <tr>
+            <th>比赛游戏</th>
+            <td>{{matchDetail.gameName}}</td>
+            <th>参赛模式</th>
+            <td>{{matchDetail.enrollType == 'TEAM' ? '战队' : (matchDetail.enrollType == 'PERSON' ? '单人':'队长')}}</td>
+            <th>战队成员数</th>
+            <td>{{matchDetail.teamNum}}</td>
+          </tr>
+          <tr>
+            <th>报名权限</th>
+            <td>{{matchDetail.enrollLimit == 'MEMBER' ? '会员可报名':'所有人'}}</td>
+            <th>报名费用</th>
+            <td>{{matchDetail.enrollFee}}</td>
+            <th>报名截止时间</th>
+            <td>{{matchDetail.enrollEndDate}}</td>
+          </tr>
+          <tr>
+            <th>比赛时间</th>
+            <td>{{matchDetail.startDate}}~{{matchDetail.endDate}}</td>
+            <th>比赛地点</th>
+            <td colspan="3">{{matchDetail.addr}}</td>
+          </tr>
+          <tr>
+            <th>比赛奖励</th>
+            <td colspan="5">{{matchDetail.awardDesc}}</td>
+          </tr>
+          <tr>
+            <th>比赛说明</th>
+            <td colspan="5">{{matchDetail.caption}}</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- tabs页卡切换 -->
+      <nav style="margin-top: 60px;">
+        <ul class="nav nav-tabs nav-justified guess-nav">
+            <li @click="tabsToggle(item.id)" v-for="item in navTabs" :class="{'active':item.isActive}" class="guess-nav-item "><a href="javascript:;">{{item.name}}</a></li>
+        </ul>
+      </nav>
+      <ul class="tab-main">
+        <li class="tab-main-panel" v-if="navTabs[0].isActive">
+         <div class="navbar-form  clearfix" role="search" style="width: 100%;line-height: 34px; background: #D3DCE6; border-radius: 4px;padding:4px;margin-bottom: 20px;margin-top: 60px;">
+           <div class="form-group" style="float: left;">
+            <span style="margin-left: 8px;font-size: 16px;color: #000;">参赛信息</span>
+          </div>
+          <button  @click="showSignCode"  style="float: right;margin-right: 8px;" class="btn btn-default" >生成签到二维码</button>
+          <button  @click="showEntering"  style="float: right;margin-right: 8px;" class="btn btn-default" >录入参赛信息</button>
+        </div>
+        <nav style="position: relative;">
+          <ul style="width: 90%;" class="nav nav-tabs nav-justified guess-nav">
+            <li class="guess-nav-item" @click="getNowState( item.state )"   v-for="item in stateList" role="presentation" :class="{active: item.state == nowState}"   v-cloak><a href="javascript:;"  v-cloak>{{item.name}} ({{item.memberNum}})</a></li>
+            <!--<li class="guess-nav-item" @click="getNowState( item.state )"   v-for="item in stateList" role="presentation" :class="{active: item.state == nowState}"   v-cloak><a href="javascript:;"  v-cloak>{{item.name}} ({{item.memberNum}})</a></li>-->
+          </ul>
+          <div style="position: absolute; right: 0px;top:11px;">签到数：<span>{{signCnt}}</span></div>
+        </nav>
+        <table style="margin-top: 20px;" class="table-main">
+          <thead>
+            <tr>
+              <th v-if="matchDetail.enrollType !='PERSON'">战队名称</th>
+              <th v-if="matchDetail.enrollType !='PERSON'">战队logo</th>
+              <th>微信头像</th>
+              <!--<th>微信昵称</th>-->
+              <th>昵称</th>
+              <th>手机号</th>
+              <th>段位</th>
+              <th>签到状态</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody v-for="item in teamList" style="margin-top: 20px;">
+            <tr>
+              <td v-if="matchDetail.enrollType !='PERSON' " rowspan="5">{{item.name}}</td>
+              <td v-if="matchDetail.enrollType !='PERSON' " rowspan="5"><img width="100" height="100" :src="item.logo" alt=""></td>
+              <td><img width="100" height="100"  :src="item.teamMemberList ? item.teamMemberList[0].memberAvatar : '' " alt=""></td>
+              <!--<td>{{item.teamMemberList ? item.teamMemberList[0].memberName : ''}}</td>-->
+              <td>{{item.teamMemberList ? item.teamMemberList[0].memberName : ''}}  </td>
+              <td>{{item.teamMemberList ? item.teamMemberList[0].mobile : ''}}  </td>
+              <td>{{item.teamMemberList ? item.teamMemberList[0].levelName : ''}}  </td>
+              <td rowspan="5">{{item.signState ? '已签到' : '未签到'}}</td>
+              <td rowspan="5">
+                <button @click="pass(item.id)" class="btn btn-default">通过</button>
+                <button  @click="reject(item.id)" class="btn btn-default">拒绝</button>
+              </td>
+            </tr>
+          <!--   <tr v-for="item in teamMemberList">
+            <td><img width="100" height="100"  :src="item.memberAvatar" alt=""></td>
+            <td>{{item.levelName}}</td>
+            <td>{{item.memberName}}</td>
+            <td>{{item.mobile}}</td>
+            <td>{{item.realName}}</td>
+          </tr> -->
+        </tbody>
+      </table>
+    </li> 
+    <li class="tab-main-panel" v-if="navTabs[1].isActive">
+     <div class="navbar-form  clearfix" role="search" style="width: 100%;line-height: 34px; background: #D3DCE6; border-radius: 4px;padding:4px;margin-bottom: 20px;margin-top: 60px;">
+       <div class="form-group" style="float: left;">
+         <span style="margin-left: 8px;font-size: 16px;color: #000;">赛事竞猜</span>
+       </div>
+       <button  @click="addGuessModal"  style="float: right;margin-right: 8px;" class="btn btn-default" >增加竞猜</button>
+     </div>
+     <table class="table-main">
+       <tr>
+         <th>竞猜标题</th>
+         <th>竞猜题目</th>
+         <th>备选项</th>
+           <th>赔率</th>
+         <th>截投时间</th>
+         <th>竞猜状态</th>
+         <th>操作</th>
+       </tr>
+       <tr v-for = "item in matchGuessList" v-cloak>
+         <td>{{item.title}}</td>
+         <td>{{item.questionTitle}}</td>
+         <td>
+           <button style="display: block; margin-bottom: 10px;" v-for="(item2,index) in item.questionItemsMap" class="btn btn-default" :class="{'btn-success':item.answer == item2.questionLetter}"   >{{item2}}</button>
+         </td>
+         <td>
+            <button style="display: block; margin-bottom: 10px;" v-for="(item2,index) in item.questionOddsMap" class="btn btn-default" :class="{'btn-success':item.answer == item2.questionLetter}"   >{{item2}}</button>
+         </td>
+         <td>
+           <div>{{item.endDate}}</div>
+         </td>
+         <td>{{ item.state == 3 ? '已开奖' : item.state == 2 ? '已停投' : item.state == 1 ? '投注中' : '未开始'}}</td>
+         <td>
+           <button @click="editGuess(item.id)" style="display: block;margin-bottom: 8px;" v-if="item.state == 1||item.state == 2" class="btn btn-default">编辑竞猜</button>
+           <button style="display: block;margin-bottom: 8px;" class="btn btn-default" v-if="item.state == 1||item.state==2" @click="showEditAnswer(item.id)">填写答案</button>
+           <button style="display: block;margin-bottom: 8px;" class="btn btn-default"  @click="stopBet(item.id,2)"  v-if="item.state==1">停止投注</button>
+           <button style="display: block;margin-bottom: 8px;" class="btn btn-default"  @click="startBet(item.id,1)"  v-if="item.state==2">重新开启</button>
+           <button style="display: block;margin-bottom: 8px;" class="btn btn-default" @click="betDataModal(item.id)" v-if="item.state==1 || item.state == 2|| item.state == 3">投注数据</button>
+         </td>
+       </tr>
+     </table>
+   </li> 
+   <li class="tab-main-panel" v-if="navTabs[2].isActive">
+    <!-- 投票战队列表 -->
+    <div class="navbar-form  clearfix" role="search" style="width: 100%;line-height: 34px; background: #D3DCE6; border-radius: 4px;padding:4px;margin-bottom: 20px;margin-top: 60px;">
+     <div class="form-group" style="float: left;">
+       <span style="margin-left: 8px;font-size: 16px;color: #000;">投票</span>
+     </div>
+     <button  @click="getvoteSetModal"  style="float: right;margin-right: 8px;" class="btn btn-default" >投票设置</button>
+     <button @click="showPutVoteAward"   style="float: right;margin-right: 8px;" class="btn btn-default" >发放投票奖励</button>
+   </div>
+   <ul class="voteCount-box cf" style="margin-bottom: 30px;">
+    <li>
+      <span>{{voteCount.feeMemberCnt}}</span>
+      <span>付费投票用户数</span>
+    </li>
+    <li>
+      <span>{{voteCount.awardPond}}</span>
+      <span>投票总奖池</span>
+    </li>
+    <li>
+      <span>{{voteCount.award}}</span>
+      <span>魔豆发放数</span>
+    </li>
+  </ul>
+
+  <table class="table-main" >
+   <tr>
+     <th>排名</th>
+     <th>战队名称</th>
+     <th>战队logo</th>
+     <th>人气</th>
+     <th>奖金池</th>
+     <th>操作</th>
+   </tr>
+   <tr v-for="(item,index) in voteList">
+     <td>{{++index}}</td>
+     <td>{{item.teamName}}</td>
+     <td><img width="100" height="100" :src="item.logo"></td>
+     <td>{{item.hotNum}}</td>
+     <td>{{item.awardNum}}</td>
+     <td><a @click="getVoteDetail(item)" href="javascript:;" class=" btn-xs btn-detail btn btn-primary">详情</a></td>
+   </tr>
+ </table>
+</li> 
+<li class="tab-main-panel" v-if="navTabs[3].isActive">
+ <div class="navbar-form  clearfix" role="search" style="width: 100%;line-height: 34px; background: #D3DCE6; border-radius: 4px;padding:4px;margin-bottom: 20px;margin-top: 60px;">
+   <div class="form-group" style="float: left;">
+     <span style="margin-left: 8px;font-size: 16px;color: #000;">赛程列表</span>
+   </div>
+   <button  @click="showScheduleModal"  style="float: right;margin-right: 8px;" class="btn btn-default" >排赛</button>
+ </div>
+ <div class="group-box"  >
+  <div v-if="item.groupRuleType == 'POINT'" v-for="(item,index) in grounpList ? grounpList : [] ">
+   <div class="line-box cf">
+     <div class="line"></div>
+     <div class="line-text">{{item.groupName}}</div>
+     <div class="line"></div>
+   </div>
+   <table class="table-main" v-if="!grounpList ? false : true">
+     <tr>
+       <td>{{item.groupName}}</td>
+       <td>{{item.groupRuleType == 'POINT' ? '积分单循环赛' : item.groupRuleType == 'OUTLET' ? '单淘汰赛' : '单场赛'}}</td>
+       <td>{{item.groupMemberCnt}}进{{item.groupOutletMemberCnt}}</td>
+       <td>{{item.groupBo}}1</td>
+       <td>{{item.matchDate}}</td>
+     </tr>
+   </table>
+   <div class="schedule-box cf">
+     <div class="schedule-box-left">
+      <table class="table-main">  
+        <caption>小组赛程表</caption>
+        <tr>
+          <th>对阵</th>
+          <th>回合</th>
+        </tr>
+        <tr  v-for="item2 in grounpList ?  grounpList[index].scheduleList : []">
+          <td>
+           <div >
+             <div >
+               <span>{{item2.t1Name || item2.inputTeamName}}</span>
+               <span>{{item2.t1Score}}</span>
+               <span style="margin:0 10px;">:</span>
+               <span>{{item2.t2Score}}</span>
+               <span>{{item2.t2Name || item2.inputAgainstTeamName }}</span>
+             </div>
+           </div>
+         </td>
+         <td>
+          <a @click="openDetail(item2.battleId,item.groupId)" href="javascript:;">详情</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="schedule-box-right">
+   <table class="table-main">  
+     <caption>小组积分榜</caption>
+     <tr>
+      <th>排名</th>
+      <th>战队</th>
+      <th>胜/平/负</th>
+      <th>积分</th>
+    </tr>
+    <tr v-for="(item2,index2) in grounpList ? grounpList[index].rankList : []">
+      <td>{{index2+1}}</td>
+      <td>
+        <span>{{item2.teamName || item2.inputTeamName }}</span>
+      </td>
+      <td>{{item2.winNum}}/{{item2.drawNum}}/{{item2.loseNum}}</td>
+      <td>{{item2.point}}</td>
+    </tr>
+  </table>
+</div>
+</div>
+</div>
+<div v-if="item.groupRuleType == 'OUTLET'" v-for="(item,index) in grounpList ? grounpList : [] ">
+  <div class="line-box cf">
+   <div class="line"></div>
+   <div class="line-text">{{item.groupName}}</div>
+   <div class="line"></div>
+ </div>
+ <table class="table-main"  v-if="grounpList">
+   <tr>
+     <td>{{item.groupName}}</td>
+     <td>{{item.groupRuleType == 'POINT' ? '积分单循环赛' : item.groupRuleType == 'OUTLET' ? '单淘汰赛' : '单场赛'}}</td>
+     <td>{{item.groupMemberCnt}}进{{item.groupOutletMemberCnt}}</td>
+     <td>{{item.groupBo}}1</td>
+     <td>{{item.matchDate}}</td>
+   </tr>
+ </table>
+ <div class="bet-map cf ">
+  <div class="team-box1 " >
+    <div class="team-bat-box" v-for="item in batIdList1"  >
+      <div class="team cf" >
+        <img :src="item.t1Logo" width="50" height="50" alt="">
+        <span>{{item.t1Name}}</span>
+        <span class="score">{{item.t1Score}}</span>
+      </div>
+      <a @click="openDetail(item.battleId,item.matchGroupId)" href="javascript:;">详情</a>
+      <div class="team cf" >
+        <img :src="item.t2Logo" width="50" height="50" alt="">
+        <span>{{item.t2Name}}</span>
+        <span class="score">{{item.t2Score}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="team-box1 team-box2">
+    <div class="team-bat-box" v-for="item in batIdList2" >
+      <div class="team cf" >
+        <img :src="item.t1Logo" width="50" height="50" alt="">
+        <span>{{item.t1Name}}</span>
+        <span class="score">{{item.t1Score}}</span>
+      </div>
+      <a @click="openDetail(item.battleId,item.matchGroupId)" href="javascript:;">详情</a>
+      <div class="team cf" >
+        <img :src="item.t2Logo" width="50" height="50" alt="">
+        <span>{{item.t2Name}}</span>
+        <span class="score">{{item.t2Score}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="team-box1 team-box3" >
+    <div class="team-bat-box"  v-for="item in batIdList3"  >
+      <div class="team cf" >
+        <img :src="item.t1Logo" width="50" height="50" alt="">
+        <span>{{item.t1Name}}</span>
+        <span class="score">{{item.t1Score}}</span>
+      </div>
+      <a @click="openDetail(item.battleId,item.matchGroupId)" href="javascript:;">详情</a>
+      <div class="team cf" >
+        <img :src="item.t2Logo" width="50" height="50" alt="">
+        <span>{{item.t2Name}}</span>
+        <span class="score">{{item.t2Score}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="team-box1 team-box4" >
+   <div class="team-bat-box" v-for="item in batIdList4"   >
+     <div class="team cf" >
+      <img :src="item.t2Logo" width="50" height="50" alt="">
+      <span>{{item.t2Name}}</span>
+      <span class="score">{{item.t2Score}}</span>
+    </div>
+  </div>
+  <a v-if="batIdList4.length" @click="openDetail(item.battleId,item.matchGroupId)" href="javascript:;">详情</a>
+</div>
+</div>
+</div>
+
+<div v-if="item.groupRuleType == 'SINGLE'" v-for="(item,index) in grounpList ? grounpList : [] " >
+  <div class="line-box cf">
+   <div class="line"></div>
+   <div class="line-text">{{item.groupName}}</div>
+   <div class="line"></div>
+ </div>
+ <table class="table-main" v-if="grounpList">
+   <tr>
+     <td>{{item.groupName}}</td>
+     <td>{{item.groupRuleType == 'POINT' ? '积分单循环赛' : item.groupRuleType == 'OUTLET' ? '单淘汰赛' : '单场赛'}}</td>
+     <td>{{item.groupMemberCnt}}进{{item.groupOutletMemberCnt}}</td>
+     <td>{{item.groupBo}}1</td>
+     <td>{{item.matchDate}}</td>
+   </tr>
+ </tr>
+</table>
+<div class="schedule-box cf">
+  <div class="schedule-box-left" style="width: 100%;">
+    <table class="table-main">  
+      <caption>小组赛程表</caption>
+      <tr>
+        <th>对阵</th>
+        <th>回合</th>
+      </tr>
+      <tr v-for="item2 in grounpList ? grounpList[index].scheduleList : []">
+        <td>
+         <div >
+           <span>{{item2.t1Name || item2.inputTeamName}}</span>
+           <span>{{item2.t1Score}}</span>
+           <span style="margin:0 10px;">:</span>
+           <span>{{item2.t2Score}}</span>
+           <span>{{item2.t2Name || item2.inputAgainstTeamName }}</span>
+         </div>
+       </td>
+       <td>
+        <a @click="openDetail(item2.battleId,item2.groupId)" href="javascript:;">详情</a>
+      </td>
+    </tr>
+  </table>
+</div>
+</div>
+</div>
+</div>
+
+</li> 
+</ul>
+
+ <!-- 录入模态框-->
+ <div class="modal fade enteringModal" id="enteringModal1"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+     <div class="modal-dialog" style="width: 800px;" role="document"   >
+         <div class="modal-content" style="min-height: 250px;">
+             <div class="modal-header">
+                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <h4 class="modal-title" >录入参赛信息</h4>
+             </div>
+             <div class="modal-body">
+                 <form id="enteringForm1" class="form-horizontal" enctype="multipart/form-data" >
+                     <input id="matchid" type="hidden" value="" name="matchid" />
+                     <input type="hidden" value="team" name="type" />
+                    <div class="teaminfo" style="display: flex; ">
+                        <div class="name">战队信息</div>
+                        <div class="info" style="flex: 1;">
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">战队名称</label>
+                                <div class="col-sm-10">
+                                    <input name="teamname" type="text" class="form-control input-sm m-bot15" placeholder="请输入战队名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">战队logo</label>
+                                <div class="col-sm-10" style="height: 100px;">
+                                    <input type="file" name="teamlogo" id="logo" style="width: 100px;height: 100px;"  class=" upload-file1 form-control" name="upload">
+                                    <div id="logoimg" class="file-modal1" style="width: 100px;height: 100px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="teaminfo" style="display: flex; border-top:1px solid #868686;">
+                         <div class="name">队长信息</div>
+                         <div class="info" style="flex: 1;">
+                             <div class="form-group">
+                                 <label for="inputPassword3" class="col-sm-2 control-label">昵称</label>
+                                 <div class="col-sm-10">
+                                     <input name="nickname" type="text" class="form-control input-sm m-bot15" placeholder="请输入昵称">
+                                 </div>
+                             </div>
+                             <div class="form-group">
+                                 <label for="inputPassword3" class="col-sm-2 control-label">头像</label>
+                                 <div class="col-sm-10" style="height: 100px;">
+                                     <input type="file" name="avatar" id="avatar" style="width: 100px;height: 100px;"  class=" upload-file1 form-control"   name="upload" >
+                                     <div id="avatarShow" class="file-modal1" style="width: 80px;height: 80px;"></div>
+                                 </div>
+                             </div>
+                             <div class="form-group">
+                                 <label for="inputPassword3" class="col-sm-2 control-label">姓名</label>
+                                 <div class="col-sm-10">
+                                     <input name="realname" type="text" class="form-control input-sm m-bot15" placeholder="请输入姓名">
+                                 </div>
+                             </div>
+                             <div class="form-group">
+                                 <label for="inputPassword3" class="col-sm-2 control-label">手机号</label>
+                                 <div class="col-sm-10">
+                                     <input name="mobile" type="text" class="form-control input-sm m-bot15" placeholder="请输入手机号">
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-default" data-dismiss="modal">清空</button>
+                         <button  @click="submitEntering()"  type="button" class=" btn btn-primary" >确定</button>
+                     </div>
+                 </form>
+             </div>
+             <!--<div class="modal-footer">-->
+                 <!--<button type="button" class="btn btn-default" data-dismiss="modal">清空</button>-->
+                 <!--<button  @submit="submitEntering(this)"  type="button" class=" btn btn-primary" >确定</button>-->
+             <!--</div>-->
+         </div>
+     </div>
+ </div>
+<div class="modal fade enteringModal" id="enteringModal2"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+             <div class="modal-dialog" style="width: 800px;" role="document"   >
+                 <div class="modal-content" style="min-height: 250px;">
+                     <div class="modal-header">
+                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                         <h4 class="modal-title" >录入参赛信息</h4>
+                     </div>
+                     <div class="modal-body">
+                         <form id="enteringForm2" class="form-horizontal " enctype="multipart/form-data" >
+                             <input id="matchid2" type="hidden" value="" name="matchid" />
+                             <input type="hidden" value="person" name="type" />
+                             <div class="teaminfo" style="display: flex;">
+                                 <div class="name">个人信息</div>
+                                 <div class="info" style="flex: 1;">
+                                     <div class="form-group">
+                                         <label for="inputPassword3" class="col-sm-2 control-label">昵称</label>
+                                         <div class="col-sm-10">
+                                             <input name="nickname" type="text" class="form-control input-sm m-bot15" placeholder="请输入昵称">
+                                         </div>
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="inputPassword3" class="col-sm-2 control-label">头像</label>
+                                         <div class="col-sm-10" style="height: 100px;">
+                                             <input type="file" name="avatar" id="avatar2" style="width: 100px;height: 100px;"  class=" upload-file1 form-control"   name="upload" >
+                                             <div id="avatarShow2" class="file-modal1" style="width: 80px;height: 80px;"></div>
+                                         </div>
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="inputPassword3" class="col-sm-2 control-label">姓名</label>
+                                         <div class="col-sm-10">
+                                             <input name="realname" type="text" class="form-control input-sm m-bot15" placeholder="请输入姓名">
+                                         </div>
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="inputPassword3" class="col-sm-2 control-label">手机号</label>
+                                         <div class="col-sm-10">
+                                             <input name="mobile" type="text" class="form-control input-sm m-bot15" placeholder="请输入手机号">
+                                         </div>
+                                     </div>
+                                     <div class="form-group">
+                                         <label for="inputPassword3" class="col-sm-2 control-label">段位</label>
+                                         <div class="col-sm-10">
+                                             <input name="levelname" type="text" class="form-control input-sm m-bot15" placeholder="请输入段位">
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </form>
+                     </div>
+                     <div class="modal-footer">
+                         <button type="button" class="btn btn-default" data-dismiss="modal">清空</button>
+                         <button @click="submitEntering"  type="button" class=" btn btn-primary" >确定</button>
+                     </div>
+                 </div>
+             </div>
+         </div>
+ <!-- 模态框结束 -->
+
+<!-- 回合详情模态框-->
+<div class="modal fade" id="scheduleDetailModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" style="width: 800px;" role="document"   >
+    <div class="modal-content" style="min-height: 250px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >回合详情</h4>
+      </div>
+      <div class="modal-body">
+       <table class="table-main">  
+        <tr>
+          <th>回合</th>
+          <th>战绩（人头数）</th>
+          <th>胜出</th>
+        </tr>
+        <tr v-for="item in battleDataList">
+          <td>{{item.bo}}</td>
+          <td>
+            <div class="schedule-item cf">
+              <span>{{item.t1Name}}</span>
+              <span>{{item.t1HeadNum}}</span>
+              <span style="margin:0 10px;">:</span>
+              <span>{{item.t2HeadNum}}</span>
+              <span>{{item.t2Name}}</span>
+            </div>
+          </td>
+          <td>
+            <button @click=" item.winTeamId = item.t1Id " :class="{'active': item.winTeamId == item.t1Id}" class="btn btn-default">{{item.t1Name}}</button>
+            <button @click=" item.winTeamId = item.t2Id "   :class="{'active': item.winTeamId == item.t2Id}" class="btn btn-default">{{item.t2Name}}</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">清空</button>
+      <button @click="ajaxSure()"  type="button" class=" btn btn-primary" >确定</button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+
+<!-- 排赛模态框-->
+<div class="modal fade" id="showScheduleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" style="width: 800px;" role="document"   >
+    <div class="modal-content" style="min-height: 250px;">
+      <div class="modal-header">
+        <button  id="close" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >排赛</h4>
+      </div>
+      <div  v-if="ScheduleList" class="modal-body">
+        <div class="matches-box">
+          <div  style="position: relative;"  class="matches-item" v-for="(item,index) in ScheduleList ? ScheduleList : []">
+            <form  class="form-horizontal " enctype="multipart/form-data">
+             <div style="position: absolute; left: 50px;top: 40px;" class="matches-name">
+               <!--{{item.name}}-->
+             </div>
+             <div class="form-group">
+               <label for="inputPassword3" class="col-sm-2 control-label">小组名称</label>
+               <div class="col-sm-10">
+                <input  v-model="item.name"  type="text" class="form-control input-sm m-bot15"  placeholder="请输入小组名称">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="exampleInputEmail1">小组赛制</label>
+              <div class="col-sm-10">
+                <select v-model="item.ruleType"  class="form-control input-sm m-bot15" >
+                 <option value="POINT">积分单循环赛</option>
+                 <option value="OUTLET">单淘汰赛</option>
+                 <option value="SINGLE">单场赛</option>
+               </select>
+             </div>
+           </div>
+           <div class="form-group">
+             <label class="col-sm-2 control-label" for="exampleInputEmail1">晋级模式</label>
+             <div class="col-sm-4">
+              <input    type="number" min="1"  v-model="item.memberCnt" class="form-control input-sm m-bot15"  >
+            </div>
+            <div class="col-sm-2" style="margin-top: 7px;text-align: center;">进</div>
+            <div class="col-sm-4">
+             <input type="number" min="1" v-model="item.outletMemberCnt"  value="0" class="form-control input-sm m-bot15"  >
+           </div>
+         </div>
+
+         <div class="form-group">
+           <label class="col-sm-2 control-label" for="exampleInputEmail1">BO数</label>
+           <div class="col-sm-10">
+            <select v-model="item.bo"  class="form-control input-sm m-bot15" >
+             <option value="1">BO1</option>
+             <option v-if="item.ruleType == 'POINT'" value="2">BO2</option>
+             <option value="3">BO3</option>
+             <option value="5">BO5</option>
+             <option value="7">BO7</option>
+           </select>
+         </div>
+       </div>
+
+       <div class="form-group">
+         <label class="col-sm-2 control-label" for="exampleInputEmail1">开赛时间</label>
+         <div class="col-sm-10">
+           <input   v-model="item.matchDate"   type="date" class="form-control startTime input-sm m-bot15"  placeholder="请输入开赛时间">
+         </div>
+       </div>
+
+       <div class="form-group add-member" >
+         <label class="col-sm-2 control-label" for="exampleInputEmail1">小组成员</label>
+         <div class="col-sm-10 cf">
+           <div v-if="ScheduleList" class="crops"  class="col-sm-2" style="float: left;min-height: 95px;padding-top: 10px;width: 100px;position: relative;margin:0px 10px;" v-for="(item2,index2) in ScheduleList[index].teamList">
+             <dl>
+               <dt  @mouseover="showScheduleDialog(index,index2)" style="position: relative;margin-bottom: 10px;"   @mouseout="hiddenScheduleDialog(index,index2)"    >
+                <img  width="100" height="100" :src="item2.teamLogo ? item2.teamLogo : 'http://static.jesport.com/backend2/images/icon-default.png'  " alt="">
+                <div class="schedule-dialog" style="display: none;">
+                  <div class="mask"></div>
+                  <div class="btn-box" style="position: absolute;z-index: 9999;width: 100%;height: 100%;">
+                    <div  class="btn-resets" @click="showCorpsList(index,index2)"  ></div>
+                    <div  class="btn-dels" @click="delTeam(index,index2)"></div>
+                  </div>
+                  <div class="team-select-modal">
+                    <select  @change="resetCorps(index,index2,$event)">
+                     <option >请选择战队</option>
+                     <option v-for="(item,index) in corpsList" :value="index">{{item.teamName}}</option>
+                   </select>
+                 </div>
+               </div>
+             </dt>
+             <dd>
+               <input v-if="!item2.teamName" :disabled="!item2.inputTeamName" style="text-align: center; border:1px solid #ddd;width: 100%;" type="text"  v-model="ScheduleList[index].teamList[index2].inputTeamName"  >
+               <input v-if="item2.teamName" :disabled="!item2.inputTeamName" style="text-align: center; border:1px solid #ddd;width: 100%;" type="text"  :value="item2.teamName"  >
+             </dd> 
+           </dl>
+         </div>
+       </div>
+     </div>
+     <div class="form-group add-member" >
+      <label class="col-sm-2 control-label" for="exampleInputEmail1">添加战队</label>
+      <div class="col-sm-10 cf">
+        <span  @click="addTeam(index)"  class="btn btn-default">添加战队</span>
+      </div>
+    </div>
+  </form>
+  <div class="sure-match-box cf" style="padding-bottom: 20px;" >
+
+    <button style="float: right;margin-left: 10px;" type="button" class=" btn btn-primary submitSchedule" @click="submitSchedule(index)" >确定排赛</button>
+
+    <button  @click="clearSchedule(index)" style="float: right;" type="button" class="btn btn-default clearSchedule" >清空排赛</button>
+
+    <button  @click="editSchedule(index)" style="float: right; display: none;" type="button" class="btn btn-default editSchedule" >编辑排赛</button>
+
+  </div>
+</div>
+</div>
+<div class="matches-btn">
+  <button @click="addGroup" class="btn btn-default">新增小组</button>
+</div>
+
+</div>
+<div class="modal-footer">
+</div>
+</div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+<!-- 发放投票奖励-->
+<div class="modal fade" id="signCodeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" style="width: 800px;" role="document"   >
+    <div class="modal-content" style="min-height: 250px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >发放投票奖励</h4>
+      </div>
+      <div class="modal-body">
+        <div id="qrcode-box" style="text-align: center;"></div>
+        <div class="button-box" style="text-align: center;margin-top: 30px;">
+         <a href="javascript:;"  download="name.png" id="downImg" target="_blank" class="btn btn-primary">下载</a>
+       </div>
+     </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+
+    </div>
+  </div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+<!-- 发放投票奖励-->
+<div class="modal fade" id="showPutVoteAward" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" style="width: 800px;" role="document"   >
+    <div class="modal-content" style="min-height: 250px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >发放投票奖励</h4>
+      </div>
+      <div class="modal-body">
+        <form  class="form-horizontal" enctype="multipart/form-data" >
+          <div class="form-group">
+            <ul class="cf voteCount-box">
+              <li style="display: inline-block;float: none;">
+                <span>{{voteCount.awardPond}}</span>
+                <span>投票奖励</span>
+              </li>
+            </ul>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="exampleInputEmail1">选择冠军</label>
+            <div class="col-sm-10">
+              <select id="teamid"  class="form-control input-sm m-bot15" >
+               <option v-for="item in voteTeamList" :value="item.teamId">{{item.teamName}}</option>
+             </select>
+           </div>
+         </div>
+       </form>
+       <div class="award-des" style="margin-top: 50px; margin-left: 54px;">
+         <p>说明：</p>
+         <p>1.确认选择冠军并发放后，在本次投票活动中付费支持过该战队/个人的用户将会共同分享投票奖池</p>
+         <p>2.最终奖池将按照用户对该战队/个人的付费支持次数决定，支持次数越多，最终奖励越丰厚</p>
+       </div>
+     </div>
+     <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      <button @click="ajaxVoteAward" type="button" class=" btn btn-primary" >保存</button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+<!-- 投票设置 -->
+<div class="modal fade" id="voteSetModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" style="width: 800px;" role="document"   >
+    <div class="modal-content" style="min-height: 250px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >投票设置</h4>
+      </div>
+      <div class="modal-body">
+        <form  class="form-horizontal" enctype="multipart/form-data" >
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="exampleInputEmail1">投票标题</label>
+                <div class="col-sm-10">
+                    <input v-model="voteSetData.votetitle"  class="form-control input-sm m-bot15" >
+                </div>
+            </div>
+             <div class="form-group" v-if="voteSetData.feevote == 1">
+               <label for="inputPassword3" class="col-sm-2 control-label">投票底池</label>
+               <div class="col-sm-10">
+                <input v-model="voteSetData.voteantes"   type="number" class="form-control input-sm m-bot15"  placeholder="请输入付费投票底池">
+              </div>
+            </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label" for="exampleInputEmail1">投票中</label>
+        <div class="col-sm-10">
+          <select  v-model="voteSetData.feevote" class="form-control input-sm m-bot15" >
+           <option value="1">投票中</option>
+           <option value="0">已停止</option>
+         </select>
+       </div>
+     </div>
+    </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      <button @click="ajaxVoteSet" type="button" class=" btn btn-primary" >保存</button>
+    </div>
+</div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+<!-- 投票详情模态框-->
+<div class="modal fade" id="voteDetailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" style="width: 800px;" role="document"   >
+    <div class="modal-content" style="min-height: 250px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >投票详情</h4>
+      </div>
+      <div class="modal-body">
+        <ul class="center-info">
+          <li><img width="100" height="100" :src="nowVoteDetail.logo"></li>
+          <li>{{nowVoteDetail.teamName}}</li>
+          <li>共{{nowVoteDetail.hotNum}}支持了{{nowVoteDetail.awardNum}}魔豆</li>
+        </ul>
+        <table class="table-main">
+         <tbody>
+           <tr v-for="item in nowVoteDetailList">
+             <td><img width="100" height="100" :src="item.memberAvatar"></td>
+             <td>{{item.memberName}}</td>
+             <td>{{item.beans}}</td>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+   </form>
+ </form>
+ <div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+  <button  type="button" class=" btn btn-primary" >保存</button>
+</div>
+</div>
+
+</div>
+</div>
+<!-- 模态框结束 -->
+
+<!-- 填写答案模态框 -->
+<div class="modal fade" id="editAswerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+ <div class="modal-dialog" style="width: 800px;" role="document"   >
+     <div class="modal-content" style="min-height: 250px;">
+         <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <h4 class="modal-title" >填写答案</h4>
+         </div>
+         <div class="modal-body">
+             <table class="table-main">
+                 <thead>
+                 <tr>
+                     <th>项目</th>
+                     <th>选项</th>
+                 </tr>
+                 </thead>
+                 <tbody>
+                 <tr>
+                     <td>{{nowAnswer.questionTitle}}</td>
+                     <td>
+                         <button :class="{'btn-success': nowItem == key }" @click="selectAnswer(key)" v-for="(item,key) in nowAnswer.questionItemsMap" style="display: block;margin:0 auto 8px;" class="btn btn-default">{{key}} : {{item}}</button>
+                     </td>
+                 </tr>
+                 </tbody>
+             </table>
+         </div>
+         </form>
+         </form>
+         <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+             <button @click="submitAnswer" type="button" class=" btn btn-primary" >提交</button>
+         </div>
+     </div>
+ </div>
+
+</div>
+<!-- 模态框结束 -->
+
+<!-- 投注数据模态框 -->
+<div class="modal fade" id="betDataList" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" style="width: 800px;" role="document"   >
+    <div class="modal-content" style="min-height: 250px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >投注数据</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table-main">
+          <tr>
+            <th>微信昵称</th>
+            <th>姓名</th>
+            <th>手机号</th>
+            <th>选项</th>
+            <th>投注金额</th>
+            <th>奖励</th>
+          </tr>
+          <tr v-for="item in betDataList">
+            <td>{{item.memberName}}</td>
+            <td>{{item.nickname}}</td>
+            <td>{{item.mobile}}</td>
+            <td >
+              <div v-for="(val,key) in item.betData">{{key}}</div>  
+            </td>
+            <td >
+              <div v-for="(val,key) in item.betData">{{val}}</div>  
+            </td>
+            <td>{{item.award}}</td>
+          </tr>
+        </table>
+      </div>
+    </form>
+  </form>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+  </div>
+</div>
+
+</div>
+</div>
+<!-- 模态框结束 -->
+
+
+<!-- 编辑竞猜模态框开始 -->
+<div class="modal fade" id="editAnswerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" style="width: 800px;" role="document" >
+    <div class="modal-content" style="min-height: 250px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" >填写竞猜信息</h4>
+      </div>
+      <div class="modal-body">
+        <form  class="form-horizontal" enctype="multipart/form-data" >
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">竞猜题目</label>
+            <div class="col-sm-10">
+              <input  v-model="nowGuessItem.questionTitle"   type="text" class="form-control input-sm m-bot15"  placeholder="请输入竞猜题目">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">竞猜答案</label>
+            <div class="col-sm-10">
+              <div :class="{ 'btn-active' : nowGuessItem.questionItemsObj[index].isActive }"   @click="Selected(item.questionLetter)" style="margin-right: 50px;margin-bottom: 10px;" v-for="(item,index) in nowGuessItem" class="btn btn-default">{{nowGuessItem.questionItemsObj[index].questionLetter}}.{{nowGuessItem.questionItemsObj[index].questionVal}}</div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </form>
+  </form>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+    <button @click="submitAnswer"  type="button" class=" btn btn-primary" >保存</button>
+  </div>
+</div>
+
+</div>
+</div>
+<!-- 模态框结束 -->
+
+<!-- 重新开启投注模态框开始 -->
+<div class="modal fade" id="startBet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+ <div class="modal-dialog" style="width: 800px;" role="document" >
+     <div class="modal-content" style="min-height: 250px;">
+         <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <h4 class="modal-title" >填写竞猜结束时间</h4>
+         </div>
+         <div class="modal-body">
+             <form  class="form-horizontal" enctype="multipart/form-data" >
+                 <div class="form-group">
+                     <label class="col-sm-2 control-label" for="exampleInputPassword1">结束时间</label>
+                     <div class="col-sm-10">
+                         <input id="enddate3" name="enddate" type="text" class="form-control"  placeholder="请输入竞猜结束时间" >
+                     </div>
+                 </div>
+             </form>
+         </div>
+         <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+             <button @click="submitStartBet()"  type="button" class=" btn btn-primary" >保存</button>
+         </div>
+     </div>
+ </div>
+</div>
+<!-- 模态框结束 -->
+
+<!-- 编辑竞猜题目模态框开始 -->
+<div class="modal fade" id="editGuessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+ <div class="modal-dialog" style="width: 800px;" role="document"   >
+     <div class="modal-content" style="min-height: 250px;">
+         <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+             <h4 class="modal-title" id="myModalLabel">编辑竞猜题目</h4>
+         </div>
+         <div class="modal-body">
+             <form  class="form-horizontal" enctype="multipart/form-data" >
+                 <div class="form-group">
+                     <label for="inputPassword3" class="col-sm-2 control-label">竞猜题目</label>
+                     <div class="col-sm-10">
+                         <input :disabled="guessInfo.state !=0 || guessList[0].id == nowGuess.id " name="questiontitle" :value="nowGuess.questionTitle" type="text" class="form-control input-sm m-bot15" id="title2" placeholder="请输入竞猜题目">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="inputPassword3" class="col-sm-2 control-label">结束时间</label>
+                     <div class="col-sm-10">
+                         <input id="enddate2" name="enddate" type="text" class="form-control" :value="nowGuess.endDate"  >
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="inputPassword3" class="col-sm-2 control-label">添加答案</label>
+                     <div class="col-sm-10">
+                         <div style="position: relative;"  class="cf" v-for="(item,index) in nowTmArr">
+                             <div style="float: left;width: 65%;">
+                                 <span @click="editDelTm(index)" class="icon-del"></span>
+                                 <input  :disabled="guessInfo.state !=0 || guessList[0].id == nowGuess.id " style="display: inline-block;margin-bottom: 10px; width: 80%; margin-left: 35px;"  type="text" class="form-control input-sm m-bot15" v-model="item.answer"  placeholder="请填写答案">
+                             </div>
+                             <div style="float: right;width: 30%;">
+                                 <span>赔率</span>
+                                 <input style="width: 80%;display: inline-block;margin-bottom: 10px; margin-left: 5%;"  type="number" class="form-control input-sm m-bot15" v-model="item.odd"  placeholder="请填写赔率">
+                             </div>
+                         </div>
+                         <span @click="editAddTm"  class="btn btn-default">添加答案</span>
+                     </div>
+                 </div>
+             </form>
+         </div>
+         </form>
+         </form>
+         <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+             <button @click="submitEditGuess2" id="1234" type="button" class=" btn btn-primary" >保存</button>
+         </div>
+     </div>
+ </div>
+</div>
+<!-- 模态框结束 -->
+
+
+<!-- 添加竞猜模态框开始 -->
+<div class="modal fade" id="addGuessModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" style="width: 800px;" role="document"   >
+    <div class="modal-content" style="min-height: 350px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">填写竞猜信息</h4>
+      </div>
+      <div class="modal-body">
+        <form  class="form-horizontal" enctype="multipart/form-data" >
+          <input type="hidden" name="type" id="type" value="add" >
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">竞猜标题</label>
+            <div class="col-sm-10">
+              <input name="title" type="text" class="form-control input-sm m-bot15" id="title" placeholder="请输入竞猜标题">
+            </div>
+          </div>
+          <div class="form-group">
+           <label for="inputPassword3" class="col-sm-2 control-label">竞猜题目</label>
+           <div class="col-sm-10">
+            <input name="questiontitle" type="text" class="form-control input-sm m-bot15" id="questiontitle" placeholder="请输入竞猜题目">
+          </div>
+        </div>
+        <div class="form-group">
+         <label for="inputPassword3" class="col-sm-2 control-label">添加答案</label>
+         <div class="col-sm-10">
+          <div style="position: relative;" v-for="(item,index) in tmArr">
+            <!--<span @click="delTm(index)" class="icon-del"></span>-->
+            <!--<input style="margin-bottom: 10px; width: 95%; margin-left: 5%;"  type="text" class="form-control input-sm m-bot15" v-model="tmArr[index]"  placeholder="请填写答案">-->
+              <div style="float: left;width: 65%;">
+                  <span @click="delTm(index)" class="icon-del"></span>
+                  <input style="display: inline-block;margin-bottom: 10px; width: 50%; margin-left: 35px;"  type="text" class="form-control input-sm m-bot15" v-model="tmArr[index].answer"  placeholder="请填写答案">
+              </div>
+              <div style="float: right;width: 30%;">
+                  <span>赔率</span>
+                  <input style="width: 50%;display: inline-block;margin-bottom: 10px; margin-left: 5%;"  type="number" class="form-control input-sm m-bot15" v-model="tmArr[index].odd"  placeholder="请填写赔率">
+              </div>
+          </div>
+          <span @click="addTm"  class="btn btn-default">添加答案</span>
+        </div>
+      </div>
+        <div class="form-group">
+      <label class="col-sm-2 control-label" for="exampleInputPassword1">竞猜结束时间</label>
+      <div class="col-sm-10">
+       <input id="enddate" name="enddate" type="text" class="form-control"  placeholder="请输入竞猜结束时间" >
+     </div>
+   </div>
+        </form>
+      </div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+  <button @click="submitGuess" type="button" class=" btn btn-primary" >保存</button>
+</div>
+</div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+<!-- 填写比赛信息模态框开始 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" style="width: 800px;" role="document"   >
+    <div class="modal-content" style="height: 970px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">填写比赛信息</h4>
+      </div>
+      <div class="modal-body">
+        <form id="ajaxForm" class="form-horizontal" enctype="multipart/form-data" >
+          <input type="hidden" value="update" name="type" />
+          <input id="id" type="hidden" value="" name="id" />
+          <div class="form-group">
+           <label for="inputPassword3" class=" control-label" style="visibility:hidden; height: 0!important; ">轮播图片</label>
+           <div class="col-sm-12" style="position: relative;height: 220px;">
+            <input type="file" name="img" id="img" style="width: 200px;height: 140px;"  class=" upload-file form-control"   name="upload" >
+            <div id="preimg" class="file-modal" style="width: 280px;margin-left:-160px;"></div>
+            <p style=" margin-top: 152px; text-align: center;color: #666;">比赛海报，支持png/jpg/jpeg；尺寸750*320；大小1M以内</p>
+            <p style="  text-align: center;color: #666;">点击图片上传</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword3" class="col-sm-2 control-label">比赛名称</label>
+          <div class="col-sm-10">
+            <input name="name" type="text" class="form-control input-sm m-bot15" id="name" placeholder="请输入比赛名称">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="exampleInputEmail1">请选择游戏类型</label>
+          <div class="col-sm-10">
+            <select id="gamename" name="gamename"  class="form-control input-sm m-bot15" >
+             <option value="英雄联盟">英雄联盟</option>
+             <option value="王者荣耀">王者荣耀</option>
+             <option value="DOTA2">DOTA2</option>
+           </select>
+         </div>
+       </div>
+       <div class="form-group">
+        <label class="col-sm-2 control-label" for="exampleInputEmail1">请选择参赛模式</label>
+        <div class="col-sm-10">
+          <select id="enrolltype" name="enrolltype" class="form-control input-sm m-bot15" >
+           <option value="TEAM">组队</option>
+           <option value="PERSON">单人</option>
+           <option value="CAPTAIN">队长</option>
+         </select>
+       </div>
+     </div>
+     <div class="form-group">
+       <label for="inputPassword3" class="col-sm-2 control-label">战队成员数</label>
+       <div class="col-sm-10">
+        <input name="teamnum" type="text" class="form-control input-sm m-bot15" id="teamnum" placeholder="请输入每个战队成员人数">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">比赛地点</label>
+      <div class="col-sm-10">
+       <input name="addr" type="text" class="form-control input-sm m-bot15" id="addr" placeholder="请输入比赛地点">
+     </div>
+   </div>
+   <div class="form-group">
+     <label class="col-sm-2 control-label" for="exampleInputPassword1">比赛开始时间</label>
+     <div class="col-sm-10">
+      <input id="startdate0" name="startdate" type="text" class="form-control"  placeholder="请输入比赛开始时间" >
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="exampleInputPassword1">比赛结束时间</label>
+    <div class="col-sm-10">
+      <input id="enddate0" name="enddate" type="text" class="form-control"  placeholder="请输入比赛结束时间" >
+    </div>
+  </div>
+  <div class="form-group">
+   <label class="col-sm-2 control-label" for="exampleInputPassword1">报名截止时间</label>
+   <div class="col-sm-10">
+     <input id="enrollenddate" name="enrollenddate" type="text" class="form-control"  placeholder="请输入报名截止时间" >
+   </div>
+ </div>
+ <div class="form-group">
+   <label class="col-sm-2 control-label" for="exampleInputEmail1">请选择报名权限</label>
+   <div class="col-sm-10">
+    <select id="enrolllimit" name="enrolllimit" class="form-control input-sm m-bot15" >
+     <option value="MEMBER">会员报名</option>
+     <option value="ALL">所有人</option>
+   </select>
+ </div>
+</div>
+<div class="form-group">
+ <label for="inputPassword3" class="col-sm-2 control-label">奖励说明</label>
+ <div class="col-sm-10">
+   <input name="awarddesc" type="text" class="form-control input-sm m-bot15" id="awarddesc" placeholder="请输入与奖励说明">
+ </div>
+</div>
+<div class="form-group">
+ <label for="inputPassword3" class="col-sm-2 control-label">报名费用</label>
+ <div class="col-sm-10">
+   <input name="enrollfee" type="text" class="form-control input-sm m-bot15" id="enrollfee" placeholder="请输入报名费用">
+ </div>
+</div>
+<div class="form-group">
+ <label for="inputPassword3" class="col-sm-2 control-label">比赛说明</label>
+ <div class="col-sm-10">
+   <input name="caption" type="text" class="form-control input-sm m-bot15" id="caption" placeholder="请输入比赛说明">
+ </div>
+</div>
+</form>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+  <button @click="ajaxSubmit" type="button" class=" btn btn-primary" id="submit" >保存</button>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- 模态框结束 -->
+</section>
+</section>
+</section>
+</div>
+<script src="http://static.jesport.com/backend2/js/bootstrap.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="http://static.jesport.com/backend2/js/scripts.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.slimscroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.nicescroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.scrollTo.js"></script>
+<script src="http://static.jesport.com/backend2/js/vue.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script> 
+<script src="http://static.jesport.com/backend2/js/qrcode.js"></script>
+<script src="http://static.jesport.com/backend2/js/laydate.js"></script>
+<script src="http://static.jesport.com/backend2/js/common.js?v=201712141645"></script>
+<script src="http://static.jesport.com/backend2/js/matchDetail.js?v=008"></script>
+</body>
+</html>

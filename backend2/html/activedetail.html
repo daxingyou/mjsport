@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<head>
+    <title>绝地求生活动详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/font.css" type="text/css"/>
+    <link href="http://static.jesport.com/backend2/css/style-responsive.css" rel="stylesheet"/>
+    <link href="http://static.jesport.com/backend2/css/font-awesome.css" rel="stylesheet">
+    <script src="http://static.jesport.com/backend2/js/jquery2.0.3.min.js"></script>
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/guessList.css">
+    <link href="http://static.jesport.com/backend2/css/style.css?v=x" rel='stylesheet' type='text/css' />
+    <link href="http://static.jesport.com/backend2/css/wlui.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/component.css?v=xxo">
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/addstyle.css?v=xxo">
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/component.css?v=201712211801">
+</head>
+<body>
+<div>
+    <section id="container">
+        <!--header start-->
+        <header class="header fixed-top clearfix">
+            <div class="brand">
+                <a href="javascript:;" class="logo">
+                    后台管理系统
+                </a>
+                <div class="sidebar-toggle-box">
+                    <div class="fa fa-bars"></div>
+                </div>
+            </div>
+            <div class="top-nav clearfix">
+                <ul class="nav pull-right top-menu">
+                    <li>
+                        <input type="text" class="form-control search" placeholder=" Search">
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                            <img alt="" src="http://static.jesport.com/backend2/images/2.png">
+                            <span class="username">管理员</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <li><a href="javascript:;"><i class=" fa fa-suitcase"></i>个人资料</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-cog"></i> 网吧资料</a></li>
+                            <li id="logout"  class="logout"><a href="javascript:;"><i class="fa fa-key"></i> 退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+
+        <!--sidebar start-->
+        <aside id="menu"></aside>
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper" id="app">
+                <!-- 竞猜列表面包屑导航 -->
+                <div class="breadcrumb-box cf" >
+                    <ol class="breadcrumb breadcrumb2 ">
+                        <li><a href="javascript:;">绝地求生活动管理</a></li>
+                        <li class="active"><a href="javascript:;" v-cloak>比赛详情</a></li>
+                    </ol>
+                </div>
+
+                <!--比赛详情-->
+                <div class="navbar-form titleBox"  >
+                    <div class="titletype">
+                        <div>{{matchDetail.name}}</div>
+                        <div class="state">{{matchDetail.state == '1' ? '已开启' : matchDetail.state ==2 ?'已关闭':'未开始'}}</div>
+                    </div>
+                    <div class="createGuess btn btn-default" @click="closeModal">关闭比赛</div>
+                </div>
+                <!-- 比赛详细数据 -->
+                <div class="matchDetailData" >
+                    <div style="display: flex;align-items: center;justify-content: space-around;margin: 20px 0;">
+                        <button  @click="toggleModal" class="btn btn-default" style="width: 15%">编辑</button>
+                        <button  @click="overMatch"  class="btn btn-default" style="width: 15%">结束比赛</button>
+                    </div>
+                    <table class="table-main" v-cloak>
+                        <tr>
+                            <th>比赛ID</th>
+                            <td>{{matchDetail.id}}</td>
+                            <th>房间名称</th>
+                            <td>{{matchDetail.name}}</td>
+                            <th>房间密码</th>
+                            <td>{{matchDetail.roomPwd}}</td>
+                        </tr>
+                        <tr>
+                            <th>比赛类型</th>
+                            <td>{{matchDetail.type==1?"单排": matchDetail.type == 2?"双排":"四排"}}</td>
+                            <th>比赛时间</th>
+                            <td>{{matchDetail.startTime}}</td>
+                            <th>人数上限（人/组）</th>
+                            <td>{{matchDetail.personLimit}}</td>
+                        </tr>
+                        <tr>
+                            <th>获胜现金（元）</th>
+                            <td>{{matchDetail.winRmb}}</td>
+                            <th>获胜魔豆</th>
+                            <td>{{matchDetail.winBeans}}</td>
+                            <th>比赛竞猜</th>
+                            <td>{{guessInfo?guessInfo.state==1?"开启":"关闭":"关闭"}}</td>
+                        </tr>
+                        <tr>
+                            <th>比赛说明</th>
+                            <td colspan="5">{{matchDetail.memo}}</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!--报名详情-->
+                <div class="navbar-form   titleBox" >
+                    <div class="titletype">
+                        <div>报名详情</div>
+                        <div class="state">{{matchDetail.state == '1' ? '已开始' : matchDetail.state ==2 ?'已结束':'未开始'}}</div>
+                    </div>
+                    <div class="createGuess btn btn-default" @click="changeEnrollstate">切换报名状态</div>
+                </div>
+                <div class="matchDetailData" >
+                    <div style="display: flex;align-items: center;justify-content: center;margin: 20px 0;">
+                        {{matchDetail.enrollNum}}/{{matchDetail.personLimit}}
+                    </div>
+                    <div style="display: flex;align-items: center;justify-content: space-around;margin: 20px 0;">
+                        <button  @click="getSignList" class="btn btn-default" style="width: 25%">查看报名列表</button>
+                        <button  @click="getsignid"  class="btn btn-default" style="width: 25%">查看报名游戏ID</button>
+                    </div>
+                </div>
+                <!--竞猜详情-->
+                <div class="navbar-form   titleBox">
+                    <div class="titletype">
+                        <div>竞猜详情</div>
+                        <div class="state" v-if="matchDetail">{{matchDetail.state == '1' ? '已开始' : matchDetail.state ==2 ?'已结束':'未开始'}}</div>
+                    </div>
+                    <div class="createGuess btn btn-default" @click="changeGuessstate">切换竞猜状态</div>
+                </div>
+                <div class="matchDetailData" >
+                    <div style="display: flex;align-items: center;justify-content: center;margin: 20px 0;">
+                        <button  @click="addguess" class="btn btn-default" style="width: 25%" v-if="!guessInfo" >添加竞猜信息</button>
+                        <button  @click="updateguess"  class="btn btn-default" style="width: 25%" v-if="guessInfo">编辑竞猜信息</button>
+                    </div>
+                </div>
+                <nav v-if="guessInfo">
+                    <ul class="nav nav-tabs nav-justified guess-nav">
+                        <li  :class="{'active':optionIndex == index}" @click="toggleGuess(index)" v-for="(item,index) in categoryList " class="guess-nav-item"    role="presentation"   v-cloak>
+                            <a href="javascript:;"  v-cloak>{{'第'+ (index/1+1) +'题'}}</a>
+                        </li>
+                        <!--<li style="padding-left: 10px;" v-if="guessInfo.gameId != 4"  class="guess-nav-item"   role="presentation"   v-cloak>-->
+                            <!--<button @click="addCategory" class="btn btn-default">+</button>-->
+                        <!--</li>-->
+                    </ul>
+                </nav>
+                <div class="nowOption"  v-if="guessInfo">
+                    <div class="question">
+                        <div class="title">第{{optionIndex+1}}题</div>
+                        <div class="content">{{nowoption.questionTitle}}</div>
+                    </div>
+                    <div class="answerList">
+                        <div v-for="item in nowoption.answer" class="answeritem">
+                            <div class="option">{{item.option}}</div>
+                            <div class="answers">{{item.answer}}</div>
+                            <div class="odds">赔率{{item.odds}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="matchDetailData" v-if="guessInfo">
+                    <div style="display: flex;align-items: center;justify-content: center;margin: 20px 0;">
+                        <button  @click="GuessdetailModal"  class="btn btn-default" style="width: 25%" >查看投注数据</button>
+                    </div>
+                </div>
+
+                <!-- 修改比赛详情模态框开始 -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-dialog2" role="document" style="width: 75%!important;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">填写比赛信息</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-body">
+                                    <div class="position-center position-center2">
+                                        <form role="form" class="form-horizontal" id="infoForm" enctype="multipart/form-data"  >
+                                            <input type="hidden" name="act" value="update">
+                                            <input type="hidden" name="id" :value="matchid">
+                                            <div class="form-group" >
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">比赛类型</label>
+                                                <div class="col-sm-10">
+                                                    <select   name="type" class="form-control input-sm m-bot15" required>
+                                                        <option value="1" :selected = "matchDetail.type==1?'selected':''">单排</option>
+                                                        <option value="2" :selected = "matchDetail.type==2?'selected':''">双排</option>
+                                                        <option value="4" :selected = "matchDetail.type==4?'selected':''">四排</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">报名费用</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" name="feebeans" id="feebeans" class="form-control"  :value='matchDetail.feeBeans' placeholder="请输入报名费用" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="exampleInputPassword1">比赛时间</label>
+                                                <div class="col-sm-10">
+                                                    <input id="starttime" name="starttime" type="text" class="form-control" :value="matchDetail.startTime+':00'"  placeholder="请输入比赛时间" >
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="display: none">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">场次</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" name="sessionnum" id="sessionnum" class="form-control" :value="matchDetail.sessionNum" placeholder="请输入场次" required>场
+                                                </div>
+                                            </div>
+                                            <div class="form-group"  style="display: none">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">比赛间隔</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" name="sessioninterval" class="form-control" :value="matchDetail.sessionInterval" placeholder="请输入场次" required>分钟
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">人数上限</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" name="personlimit" min="10" max="100" class="form-control" :value="matchDetail.personLimit" placeholder="请输入人数上限" required>个/组
+                                                </div>
+                                            </div>
+                                            <div class="form-group"  style="display: none">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">服务器数</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" name="servernum" min="1" max="20" class="form-control" :value="matchDetail.serverNum" placeholder="请输入服务器数" required>个/组
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">房间名称</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="name" class="form-control" :value="matchDetail.name"  placeholder="请输入房间名称" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">房间密码</label>
+                                                <div class="col-sm-10">
+                                                    <input name="roompwd" type="number" class="form-control input-sm m-bot15" :value="matchDetail.roomPwd">
+                                                </div>
+                                            </div>
+                                            <div class="form-group" >
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">比赛竞猜</label>
+                                                <div class="col-sm-10">
+                                                    <select   name="state" class="form-control input-sm m-bot15"  >
+                                                        <option value="1" :selected = "matchDetail.state==1? 'selected':''">开启</option>
+                                                        <option value="0" :selected = "matchDetail.state==0? 'selected':''">关闭</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">比赛说明</label>
+                                                <div class="col-sm-10">
+                                                    <input name="memo" type="text" class="form-control input-sm m-bot15" :value="matchDetail.memo"  placeholder="请输入比赛说明">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">获胜奖励</label>
+                                                <div class="col-sm-10">
+                                                    <input name="winrmb" type="number" class="form-control input-sm m-bot15" :value="matchDetail.winRmb"  placeholder="请输入比赛说明" style="width: 30%;">现金
+                                                    <input name="winbeans" type="number" class="form-control input-sm m-bot15" :value="matchDetail.winBeans"  placeholder="请输入比赛说明"style="width: 30%;margin-left: 10%">魔豆
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button @click="ajaxSubmit" type="button" class="btn btn-primary">完成</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 模态框结束 -->
+
+                <!--报名列表模态框 -->
+                <div class="modal fade" id="betDataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" style="width: 800px;" role="document"   >
+                        <div class="modal-content" style="min-height: 250px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" >报名列表</h4>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table-main">
+                                    <tr>
+                                        <th>序号</th>
+                                        <th>手机号</th>
+                                        <th>昵称</th>
+                                    </tr>
+                                    <tr v-for="(item,index) in signList">
+                                        <td>{{index+1}}</td>
+                                        <td>{{item.tel}}</td>
+                                        <td><span v-for="item2 in item.nameList">{{item2}};</span></td>
+
+                                    </tr>
+                                </table>
+                            </div>
+                            </form>
+                            </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 模态框结束 -->
+
+                <!--报名ID模态框 -->
+                <div class="modal fade" id="signDataModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" style="width: 800px;" role="document"   >
+                        <div class="modal-content" style="min-height: 250px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" >报名ID列表</h4>
+                            </div>
+                            <div class="modal-body">
+                                <table class="table-main">
+                                    <tr v-for="item in signidList">
+                                        <td style="width: 20%;"><button class="btn btn-default" :class="{'btn-success':item.active}" style="padding: 0;" @click="markname(item)">点击标记</button></td>
+                                        <td>{{item.nickname}}</td>
+                                        <td>{{item.id}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            </form>
+                            </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- 模态框结束 -->
+
+                <!-- 查看投注数据模态框开始 -->
+                <div class="modal fade" id="guessdetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-dialog2" role="document" style="width: 75%!important;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">查看投注数据</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-body">
+                                    <div class="position-center position-center2">
+                                        <div class="nowOption"  v-if="guessInfo">
+                                            <div class="question">
+                                                <div class="title">第{{optionIndex+1}}题</div>
+                                                <div class="content">{{nowoption.questionTitle}}</div>
+                                            </div>
+                                            <div class="answerList">
+                                                <div v-for="item in nowoption.answer" class="answeritem">
+                                                    <div class="option">{{item.option}}</div>
+                                                    <div class="answers">{{item.answer}}</div>
+                                                    <div class="odds">赔率{{item.odds}}</div>
+                                                    <div class="sum">{{item.betsum}}投注</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 模态框结束 -->
+
+                <!-- 关闭比赛模态框开始 -->
+                <div class="modal fade" id="closematch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-dialog2" role="document" style="width: 75%!important;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title">关闭比赛</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-body">
+                                    <div class="position-center position-center2">
+                                        关闭比赛后，所有报名费将原路退还给用户
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" @click="colseMatch">确认</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 模态框结束 -->
+
+                <!-- 结束比赛模态框开始 -->
+                <div class="modal fade" id="overmatch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-dialog2" role="document" style="width: 75%!important;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" >结束比赛</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-body">
+                                    <div class="position-center position-center2">
+                                        <form role="form" class="form-horizontal" id="overmatchForm" enctype="multipart/form-data"  >
+                                            <input type="hidden" name="matchid" :value="matchid">
+                                            <div class="form-group" >
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">获胜玩家</label>
+                                                <div class="col-sm-10">
+                                                    <select   name="enrollid" class="form-control input-sm m-bot15" required>
+                                                        <option v-for="item in signidList" :value="item.id" >{{item.nickname}}</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" >
+                                                <div  >填写答案</div>
+                                                <div class="overmatch-question" v-for="(item,index) in optionsList">
+                                                    <div style="display: flex"><div style="margin-right: 10px;color: #ffc107;">题目{{index+1}}</div><div>{{item.questionTitle}}</div></div>
+                                                    <div style="display: flex">
+                                                        <div style="margin-right: 10px;">选择答案</div>
+                                                        <select  style="flex:1;" name="answer[]" class="form-control input-sm m-bot15" required>
+                                                        <option v-for="(key,index) in item.questionItemsMap" :value="index" >{{key}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button @click="overSubmit" type="button" class="btn btn-primary">完成</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 模态框结束 -->
+
+                <!-- 添加竞猜模态框开始 -->
+                <div class="modal fade" id="addguess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-dialog2" role="document" style="width: 75%!important;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" >添加竞猜</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-body">
+                                    <div class="position-center position-center2">
+                                        <form role="form" class="form-horizontal" id="guessForm" enctype="multipart/form-data"  >
+                                            <input type="hidden" name="act" value="add">
+                                            <input type="hidden" name="matchid" :value="matchid">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">投注上限</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" name="betbeanslimit" class="form-control"  v-model="addquestioninfo.betbeanslimit" placeholder="请输入投注上限" required>魔豆
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">全对奖池</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" name="awardbeans"  class="form-control" v-model="addquestioninfo.awardbeans" placeholder="请输入全对奖池" required>魔豆
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">竞猜说明</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="memo" class="form-control" v-model="addquestioninfo.memo"  placeholder="请输入竞猜说明" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="guesstabs" >
+                                                    <div class="tabitem"style="overflow: hidden"  v-for="(item,index) in addquestion" :class="{active:questionindex==index}" >
+                                                       <div @click="questionindex=index">题目{{index+1}}</div><div class="del" @click="delguess(index)">X</div>
+                                                    </div>
+                                                    <div class="btn btn-default" @click="addtitle">添加题目</div>
+                                                </div>
+                                                <div class="guessquestion" v-if="addquestion.length>0">
+                                                    <div style="display: flex;margin-bottom: 5px;"><div style="margin-right: 5px;width: 20%;">题目{{questionindex+1}}</div><div style="flex:1;border-bottom:1px solid #999999"><input style="width: 100%" type="text" v-model="addquestion[questionindex].title"></div></div>
+                                                    <div style="display: flex;justify-content: space-around;margin-bottom: 5px;" v-for=" (item,index) in addquestion[questionindex].answer">
+                                                        <div>答案{{characterList[index]}}</div><div style="border:1px solid #999999"><input type="text" v-model="item.items" placeholder="请输入答案"></div>
+                                                        <div>赔率{{characterList[index]}}</div><div style="border:1px solid #999999"><input type="text" v-model="item.odds" placeholder="请输入赔率"></div>
+                                                    </div>
+                                                    <div class="btn btn-default" @click="addanswer">添加选项</div>
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button @click="guessSubmit" type="button" class="btn btn-primary">完成</button>
+                            </div>
+                        </div>
+                </div>
+                <!-- 模态框结束 -->
+                <!-- 修改竞猜模态框开始 -->
+                <div class="modal fade" id="updataguess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-dialog2" role="document" style="width: 75%!important;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" >修改竞猜</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-body">
+                                    <div class="position-center position-center2">
+                                        <form role="form" class="form-horizontal" id="updateForm" enctype="multipart/form-data"  >
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">投注上限</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" name="betbeanslimit" class="form-control"  v-model="addquestioninfo.betbeanslimit" placeholder="请输入投注上限" required>魔豆
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">全对奖池</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" name="awardbeans"  class="form-control" v-model="addquestioninfo.awardbeans" placeholder="请输入全对奖池" required>魔豆
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">竞猜说明</label>
+                                                <div class="col-sm-10">
+                                                    <input type="text" name="memo" class="form-control" v-model="addquestioninfo.memo"  placeholder="请输入竞猜说明" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="guesstabs" >
+                                                    <div class="tabitem"style="overflow: hidden"  v-for="(item,index) in addquestion" :class="{active:questionindex==index}" >
+                                                        <div @click="questionindex=index">题目{{index+1}}</div><div class="del" @click="delguess(index)">&times;</div>
+                                                    </div>
+                                                    <div class="btn btn-default" @click="addtitle">添加题目</div>
+                                                </div>
+                                                <div class="guessquestion" v-if="addquestion.length>0">
+                                                    <div style="display: flex;margin-bottom: 5px;"><div style="margin-right: 5px;width: 20%;">题目{{questionindex+1}}</div><div style="flex:1;border-bottom:1px solid #999999"><input style="width: 100%" type="text" v-model="addquestion[questionindex].title"></div></div>
+                                                    <div style="display: flex;justify-content: space-around;margin-bottom: 5px;" v-for=" (item,index) in addquestion[questionindex].answer">
+                                                        <div>答案{{characterList[index]}}</div><div style="border:1px solid #999999"><input type="text" v-model="item.items" placeholder="请输入答案"></div>
+                                                        <div>赔率{{characterList[index]}}</div><div style="border:1px solid #999999"><input type="text" v-model="item.odds" placeholder="请输入赔率"></div>
+                                                    </div>
+                                                    <div class="btn btn-default" @click="addanswer">添加选项</div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button @click="updateguessSubmit" type="button" class="btn btn-primary">完成</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 模态框结束 -->
+                <!-- 修改竞猜状态模态框开始 -->
+                <div class="modal fade" id="guessstate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-dialog2" role="document" style="width: 75%!important;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" >修改竞猜</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-body">
+                                    <div class="position-center position-center2">
+                                        <form role="form" class="form-horizontal" id="guessstateForm" enctype="multipart/form-data" >
+                                            <input type="hidden" name="matchid" :value="matchDetail.id">
+                                            <input type="hidden" name="id" :value="guessid">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">竞猜状态</label>
+                                                <select   name="state" class="form-control input-sm m-bot15" required>
+                                                    <option  value="1" >开启</option>
+                                                    <option  value="3" >关闭</option>
+                                                </select>
+                                            </div>
+                                    </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button @click="guessStateSubmit" type="button" class="btn btn-primary">完成</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 模态框结束 -->
+                <!-- 修改报名状态模态框开始 -->
+                <div class="modal fade" id="enrollstate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-dialog2" role="document" style="width: 75%!important;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" >修改报名状态</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-body">
+                                    <div class="position-center position-center2">
+                                        <form role="form" class="form-horizontal" id="enrollstateForm" enctype="multipart/form-data" >
+                                            <input type="hidden" name="matchid" :value="matchDetail.id">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label" for="exampleInputEmail1">报名状态</label>
+                                                <select   name="state" class="form-control input-sm m-bot15" required>
+                                                    <option  value="1" >开启</option>
+                                                    <option  value="0" >关闭</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button @click="enrollStateSubmit" type="button" class="btn btn-primary">完成</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 模态框结束 -->
+            </section>
+            </section>
+        </section>
+    </section>
+</div>
+<script src="http://static.jesport.com/backend2/js/bootstrap.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="http://static.jesport.com/backend2/js/scripts.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.slimscroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.nicescroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.scrollTo.js"></script>
+<script src="http://static.jesport.com/backend2/js/vue.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script>
+<script src="http://static.jesport.com/backend2/js/qrcode.js"></script>
+<script src="http://static.jesport.com/backend2/js/laydate.js"></script>
+<script src="http://static.jesport.com/backend2/js/common.js?v=201712211801"></script>
+<script src="http://static.jesport.com/backend2/js/activeDetail.js?v=201712211801"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html >
+<head>
+  <title>网吧背景海报</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="" />
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/font.css" type="text/css"/>
+  <link href="http://static.jesport.com/backend2/css/style-responsive.css" rel="stylesheet"/>
+  <link href="http://static.jesport.com/backend2/css/font-awesome.css" rel="stylesheet"> 
+  <script src="http://static.jesport.com/backend2/js/jquery2.0.3.min.js"></script>
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/guessList.css">
+  <link href="http://static.jesport.com/backend2/css/style.css" rel='stylesheet' type='text/css' />
+  <link href="http://static.jesport.com/backend2/css/wlui.css" rel='stylesheet' type='text/css' />
+</head>
+<body st >
+  <div>
+    <section id="container">
+      <header class="header fixed-top clearfix">
+        <div class="brand">
+          <a href="javascript:;" class="logo">
+            后台管理系统
+          </a>
+          <div class="sidebar-toggle-box">
+            <div class="fa fa-bars"></div>
+          </div>
+        </div>
+        <div class="nav notify-row" id="top_menu">
+          <ul class="nav top-menu"></ul>
+        </div>
+        <div class="top-nav clearfix">
+          <ul class="nav pull-right top-menu">
+            <li>
+              <input type="text" class="form-control search" placeholder=" Search">
+            </li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                <img alt="" src="http://static.jesport.com/backend2/images/2.png">
+                <span class="username">管理员</span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu extended logout">
+                <li><a href="javascript:;"><i class=" fa fa-suitcase"></i>个人资料</a></li>
+                <li><a href="javascript:;"><i class="fa fa-cog"></i> 网吧资料</a></li>
+                <li id="logout"  class="logout"><a href="javascript:;"><i class="fa fa-key"></i> 退出</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </header>
+        <aside id="menu"></aside>
+  <section id="main-content">
+   <section class="wrapper" id="app" v-cloak>
+    <!-- 竞猜列表面包屑导航 -->
+    <div class="breadcrumb-box" >
+      <ol class="breadcrumb breadcrumb2 ">
+        <li><a href="#">首页运营位</a></li>
+        <li class="active"><a href="#">网吧图片</a></li>
+      </ol>
+    </div>
+
+
+    <div class="strip-tips cf" >
+      <span  class="tips1" >网吧列表图</span>
+      <a style="text-decoration:underline" href="javascript:;" class="tips2" id="bar-img-btn1" >运营位说明</a>
+      <div id="bar-img-box1" class="bar-img-box1"></div>
+    </div>
+    <div class="card">
+     <div class="card-box-item row"  v-cloak>
+       <div style="height: 120px; margin: 15px 0px;" class="card-item  col-md-4 " >
+         <img class="slider-img" :src="barListImg.img" />
+       </div>
+       <ul class="card-item  col-md-4 " style="margin-top: 55px;padding-left: 10%;">
+        <li class="card-list-item" style="text-align:center;">220*158</span></li>
+      </ul>
+      <div class="card-item  col-md-4 "  style="margin-top: 60px;text-align: center;"  >
+        <button type="button"  class=" btn btn-primary" data-toggle="modal" data-target="#myModal">修改图片</button>
+      </div>   
+    </div>
+  </div>
+
+
+
+  <div class="strip-tips cf" >
+    <span  class="tips1" >网吧海报背景</span>
+    <a style="text-decoration:underline" href="javascript:;" class="tips2" id="bar-img-btn2" >运营位说明</a>
+    <div id="bar-img-box2" class="bar-img-box2"></div>
+  </div>
+
+  <div class="card">
+   <div class="card-box-item row"  v-cloak>
+     <div style="height: 120px; margin: 15px 0px;" class="card-item  col-md-4 " >
+       <img class="slider-img2" :src="barPostImg.img" />
+     </div>
+     <ul class="card-item  col-md-4 " style="margin-top: 55px;padding-left: 10%;">
+       <li class="card-list-item" style="text-align:center;">750*370</span></li>
+     </ul>
+     <div class="card-item  col-md-4 "  style="margin-top: 60px;text-align: center;"  >
+      <button type="button"  class=" btn btn-primary" data-toggle="modal" data-target="#myModal2">修改图片</button>
+    </div>    
+  </div>
+</div>
+
+
+<!-- 修改网吧列表图 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document"   >
+    <div class="modal-content" style="height: 505px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">上传网吧列表图</h4>
+      </div>
+      <div class="modal-body">
+        <form id="ajaxForm" class="form-horizontal" enctype="multipart/form-data" >
+          <input   type="hidden" value="1" name="type" />
+          <div class="form-group">
+            <div class="form-group">
+             <label for="inputPassword3" class=" control-label" style="visibility:hidden; height: 0!important; ">轮播图片</label>
+             <div class="col-sm-12" style="position: relative;height: 300px;">
+              <input type="file" name="img" id="img"  class=" upload-file form-control"   name="upload" >
+              <div id="preimg" class="file-modal"></div>
+              <p style=" margin-top: 260px; text-align: center;color: #666;">支持png/jpg/jpeg；尺寸220*158；1M以内</p>
+              <p style="  text-align: center;color: #666;">点击图片上传</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      <button  type="button" class=" btn btn-primary" id="submit" >保存</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+
+<!-- 修改网吧海报背景 -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document"   >
+    <div class="modal-content" style="height: 505px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">上传网吧列表图</h4>
+      </div>
+      <div class="modal-body">
+        <form id="ajaxForm2" class="form-horizontal" enctype="multipart/form-data" >
+          <input   type="hidden" value="2" name="type" />
+          <div class="form-group">
+            <div class="form-group">
+             <label for="inputPassword3" class=" control-label" style="visibility:hidden; height: 0!important; ">轮播图片</label>
+             <div class="col-sm-12" style="position: relative;height: 300px;">
+              <input type="file" name="img" id="img2"  class=" upload-file form-control"   name="upload" >
+              <div id="preimg2" class="file-modal"></div>
+              <p style=" margin-top: 260px; text-align: center;color: #666;">支持png/jpg/jpeg；尺寸750*370；1M以内</p>
+              <p style="  text-align: center;color: #666;">点击图片上传</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      <button  type="button" class=" btn btn-primary" id="submit2" >保存</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+
+</section>
+</section>
+</section>
+</div>
+<script src="http://static.jesport.com/backend2/js/bootstrap.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="http://static.jesport.com/backend2/js/scripts.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.slimscroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.nicescroll.js"></script>
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="http://static.jesport.com/backend2/js/flot-chart/excanvas.min.js"></script><![endif]-->
+<script src="http://static.jesport.com/backend2/js/jquery.scrollTo.js"></script>
+<script src="http://static.jesport.com/backend2/js/vue.js"></script>
+
+<script src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script> 
+<script src="http://static.jesport.com/backend2/js/laydate.js"></script>
+<script src="http://static.jesport.com/backend2/js/common.js?v=201712141645"></script>
+<script src="http://static.jesport.com/backend2/js/barImg.js"></script> 
+
+
+<!-- <script src="http://static.jesport.com/backend2/js/laydate.js"></script>
+<script src="http://static.jesport.com/backend2/js/common.js?v=201712141645"></script>
+<script src="http://static.jesport.com/backend2/js/ad.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.form.min.js" type="text/javascript"></script> -->
+</body>
+</html>

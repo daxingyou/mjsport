@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<head>
+  <title>轮播图</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="" />
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/font.css" type="text/css"/> 
+  <link href="http://static.jesport.com/backend2/css/style-responsive.css" rel="stylesheet"/>
+  <link href="http://static.jesport.com/backend2/css/font-awesome.css" rel="stylesheet"> 
+  <script src="http://static.jesport.com/backend2/js/jquery2.0.3.min.js"></script>
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/guessList.css">
+  <link href="http://static.jesport.com/backend2/css/style.css" rel='stylesheet' type='text/css' />
+  <link href="http://static.jesport.com/backend2/css/wlui.css" rel='stylesheet' type='text/css' />
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/component.css">
+  <style>
+    .file-modal img {
+      width: 100%;height: 100%;display: block;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <section id="container">
+      <header class="header fixed-top clearfix">
+        <div class="brand">
+          <a href="javascript:;" class="logo">
+            后台管理系统
+          </a>
+          <div class="sidebar-toggle-box">
+            <div class="fa fa-bars"></div>
+          </div>
+        </div>
+        <div class="nav notify-row" id="top_menu">
+          <ul class="nav top-menu"></ul>
+        </div>
+        <div class="top-nav clearfix">
+          <ul class="nav pull-right top-menu">
+            <li>
+              <input type="text" class="form-control search" placeholder=" Search">
+            </li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                <img alt="" src="http://static.jesport.com/backend2/images/2.png">
+                <span class="username">管理员</span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu extended logout">
+                <li><a href="javascript:;"><i class=" fa fa-suitcase"></i>个人资料</a></li>
+                <li><a href="javascript:;"><i class="fa fa-cog"></i> 网吧资料</a></li>
+                <li id="logout"  class="logout"><a href="javascript:;"><i class="fa fa-key"></i> 退出</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </header>
+
+      <!--sidebar start-->
+      <aside id="menu"></aside>
+      <!--sidebar end-->
+
+    <section id="main-content">
+     <section class="wrapper" id="app">
+      <!-- 竞猜列表面包屑导航 -->
+      <div class="breadcrumb-box">
+        <ol class="breadcrumb breadcrumb2 ">
+          <li><a href="#">抽奖管理</a></li>
+          <li class="active"><a href="#">奖品库管理</a></li>
+        </ol>
+        <button data-toggle="modal" data-target="#myModal" type="button" class="createGuess btn btn-primary">+添加奖品</button>
+      </div>
+      <!-- 比赛数据列表 -->
+      <table class="table-main">
+        <thead>
+          <th>奖品ID</th>
+          <th>图片</th>
+          <th>名称</th>
+          <th>类型</th>
+          <th>兑换有效期</th>
+          <th>兑换说明</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in goodsList"  v-cloak>
+          <td>{{item.id}}</td>
+          <td><img width="100" height="100" :src="item.img" alt=""></td>
+          <td>{{item.name}}</td>
+          <td>{{item.type == 'GOODS' ? '实物' : '魔豆'}}</td>
+          <td>{{item.dueDays}}</td>
+          <td style="width: 400px;" class="ellipsis">{{item.memo}}</td>
+          <td>
+            <button @click="editGoods(item.id)" class="btn btn-primary">编辑</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 添加模态框开始 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document"   >
+        <div class="modal-content" style="height: 760px;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">商品信息</h4>
+          </div>
+          <div class="modal-body">
+            <form id="ajaxForm" class="form-horizontal" enctype="multipart/form-data" >
+              <div class="form-group">
+               <label for="inputPassword3" class=" control-label" style="visibility:hidden; height: 0!important; ">商品图片</label>
+               <div class="col-sm-12" style="position: relative;height: 300px;">
+                <input  type="file" name="img" id="img"  class=" upload-file form-control"   name="upload" >
+                <div id="preimg" class="file-modal"></div>
+                <p style=" margin-top: 260px; text-align: center;color: #666;">支持png/jpg/jpeg；尺寸260*260；1M以内</p>
+                <p style="  text-align: center;color: #666;">点击图片上传</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">商品名称</label>
+              <div class="col-sm-10">
+                <input name="name" type="text" class="form-control"  placeholder="请输入商品名称">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">商品名称</label>
+              <div class="col-sm-10">
+               <select name="type" class="form-control input-sm m-bot15">
+                 <option value="goods">实物</option>
+                 <option value="bean">魔豆</option>
+               </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">兑换有效期（天）</label>
+              <div class="col-sm-10">
+                <input name="duedays" type="text" class="form-control"  placeholder="用户购买商品后，需在有效期内到网吧兑换">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">兑换说明说</label>
+              <div class="col-sm-10">
+                <input name="memo" type="text" class="form-control"  placeholder="请输入商品兑换说明">
+              </div>
+            </div>
+          </form>
+          <div class="modal-footer">
+            <p style="text-align: left;">备注：</p>
+            <p style="text-align: left;">1. 魔豆奖品无需兑换，即时到账</p>
+            <p style="text-align: left;">2. 实物奖品需设置兑换有效期及兑换说明</p>
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button    type="button" class=" btn btn-primary"  id="submit" >保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 模态框结束 -->
+
+<!-- 编辑模态框开始 -->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document"   >
+        <div class="modal-content" style="height: 760px;">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">商品信息</h4>
+          </div>
+          <div class="modal-body">
+            <form id="ajaxForm2" class="form-horizontal" enctype="multipart/form-data" >
+              <input type="hidden"  :value="nowItem.id"  name="id">
+              <div class="form-group">
+               <label for="inputPassword3" class=" control-label" style="visibility:hidden; height: 0!important; ">商品图片</label>
+               <div class="col-sm-12" style="position: relative;height: 300px;">
+                <input  type="file" name="img" id="img"  class=" upload-file form-control"   name="upload" >
+                <div id="preview2" class="file-modal"></div>
+                <p style=" margin-top: 260px; text-align: center;color: #666;">支持png/jpg/jpeg；尺寸260*260；1M以内</p>
+                <p style="  text-align: center;color: #666;">点击图片上传</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">商品名称</label>
+              <div class="col-sm-10">
+                <input :value="nowItem.name" name="name" type="text" class="form-control"  placeholder="请输入商品名称">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">商品名称</label>
+              <div class="col-sm-10">
+               <select :value="nowItem.type" name="type" class="form-control input-sm m-bot15">
+                 <option value="goods">实物</option>
+                 <option value="bean">魔豆</option>
+               </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">兑换有效期（天）</label>
+              <div class="col-sm-10">
+                <input :value="nowItem.dueDays" name="duedays" type="text" class="form-control"  placeholder="用户购买商品后，需在有效期内到网吧兑换">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-2 control-label">兑换说明说</label>
+              <div class="col-sm-10">
+                <input :value="nowItem.memo" name="memo" type="text" class="form-control"  placeholder="请输入商品兑换说明">
+              </div>
+            </div>
+          </form>
+          <div class="modal-footer">
+            <p style="text-align: left;">备注：</p>
+            <p style="text-align: left;">1. 魔豆奖品无需兑换，即时到账</p>
+            <p style="text-align: left;">2. 实物奖品需设置兑换有效期及兑换说明</p>
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button    type="button" class=" btn btn-primary" @click="editSubmit"  id="submit" >保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- 模态框结束 -->
+
+</section>
+</section>
+</section>
+</div>
+<script src="http://static.jesport.com/backend2/js/bootstrap.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="http://static.jesport.com/backend2/js/scripts.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.slimscroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.nicescroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.scrollTo.js"></script>
+<script src="http://static.jesport.com/backend2/js/vue.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script> 
+<script src="http://static.jesport.com/backend2/js/laydate.js"></script>
+<script src="http://static.jesport.com/backend2/js/common.js?v=201712141645"></script>
+<script src="http://static.jesport.com/backend2/js/lotterManage.js"></script> 
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+
+.upload-img {height:100px;margin-bottom:20px;position:relative;float:left;}
+.upload-name {width:70%;margin:0 auto;float:right;}
+.upload-img input {width:100px;position:absolute;top:0px;left:50%;margin-left:-50px;height:100%;display:block;z-index:9999;opacity:0;}
+.upload-img img {width:100px;margin:0 auto;height:100%;display:block;border:1px solid #eee;}
+
+.breadcrumb-box {height:38px;margin:30px 0;overflow:hidden;}
+.breadcrumb2 {float:left;background:#fff;}
+.breadcrumb2 a {color:#000;font-size:16px;}
+.breadcrumb2 .active a {color:#97a8be;}
+.createGuess {float:right;}
+
+.guess-nav {margin:10px 0}
+.guess-nav a {color:#8391a5;}
+.guess-nav .active a {color:#337ab7!important;}
+.guess-nav-item {position:relative;}
+
+.guess-tab {text-align:center;}
+.guess-tab th {text-align:center;background:#eef1f6;}
+.guess-tab  td {color:#1f2d3d!important;font-size:14px!important;}
+
+.guess-detail-table {font-size:16px;margin-top:30px;width:70%;border:1px solid #eee;border-collapse:collapse;}
+.btn-detail {background:#50bfff!important;border:1px solid #50bfff!important;}
+.guess-detail-table tr {text-align:center;}
+.guess-detail-table th { width: 130px; text-align:center;border:1px solid #eee;padding:10px 5px;background:#99A9BF;font-weight:normal;}
+.guess-detail-table td {padding:10px 5px;border:1px solid #eee;}
+
+.timu-tiem {position:relative;padding-bottom:20px;font-size:16px;margin:15px 0px;position:relative;background:#eef1f6;box-shadow:none;border:1px solid #d1dbe5;border-radius:4px;overflow:hidden;}
+
+.question-box {margin:20px 10px;font-size:16px;color:#000!important;}
+.question-tips {color:#97a8be;width:10%;text-align:center;display:inline-block;}
+.question-item {padding-left:10px;text-align:left;display:inline-block;height:35px;line-height:35px;width:89%;background-color:#fff;background-image:none;border-radius:4px;border:1px solid #bfcbd9;box-sizing:border-box;color:#1f2d3d;font-size:inherit;height:36px;outline:0;transition:border-color .2s cubic-bezier(.645,.045,.355,1);}
+
+.answer {color:#000!important;padding-left:15%;}
+.answer .answer-item {text-align:center;width:25%;margin-right:5%;display:inline-block;border:1px solid #eee;height:35px;line-height:35px;background-color:#fff;border-radius:4px;border:1px solid #bfcbd9;box-sizing:border-box;color:#1f2d3d;font-size:inherit;height:36px;outline:0;transition:border-color .2s cubic-bezier(.645,.045,.355,1);}
+
+.notimu {padding:20px;text-align:center;}
+.question-input {color:#99A9BF!important;border:1px solid #99A9BF!important;}
+.use-tpl {text-align:center;}
+.tpl-tips {font-size:18px;display:inline-block;}
+.tpl-box {font-size:18px;display:inline-block;}
+.icon-del {position:absolute;top:8px;left:8px;width:32px;height:32px;background:url(../images/del.png) no-repeat;}
+.answer-item-active {background:url(../images/icon-sel.png) no-repeat;background-size:100% 100%;}
+.modal-dialog2 {width:50%!important;}
+.position-center2 {width:80%!important;}
+.select-default {float:left;}
+.upload-images {float:left;position:relative;}
+.input-file {position:absolute;width:110px;height:100%;left:0px;top:0px;opacity:0;}
+.teamname {margin-bottom:32px;}
+.logo-modal {padding:4px 20px;display:none;z-index:999999;background:#fff;position:absolute;left:50%;margin-left:-201px;top:-320px;width:442px;border:1px solid #d2d2d2;box-shadow:0 5px 15px rgba(0,0,0,.5);}
+.logo-item {padding:4px;width:100px;height:100px;float:left;}
+.logo-main {margin:10px 0;}
+.logo-item img {border:1px solid #eee;width:100%;height:100%;}
+.select-default:hover,.select-default:active {border:0 none;outline:none!important;}
+.form-group {position:relative;}
+.sure-btn {width:100px;display:block;margin:10px auto;}
+.logo-header {font-size:16px;padding:10px 0;text-align:center;}

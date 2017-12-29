@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<head>
+  <title>竞猜列表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/font.css" type="text/css"/> 
+  <link href="http://static.jesport.com/backend2/css/style-responsive.css" rel="stylesheet"/>
+  <link href="http://static.jesport.com/backend2/css/font-awesome.css" rel="stylesheet"> 
+  <script src="http://static.jesport.com/backend2/js/jquery2.0.3.min.js"></script>
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/guessList.css">
+  <link href="http://static.jesport.com/backend2/css/style.css" rel='stylesheet' type='text/css' />
+  <link href="http://static.jesport.com/backend2/css/wlui.css" rel='stylesheet' type='text/css' />
+  
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/component.css">
+</head>
+<body>
+  <div>
+    <section id="container">
+
+      <!--header start-->
+      <header class="header fixed-top clearfix">
+        <div class="brand">
+          <a href="javascript:;" class="logo">
+            后台管理系统
+          </a>
+          <div class="sidebar-toggle-box">
+            <div class="fa fa-bars"></div>
+          </div>
+        </div>
+        <div class="top-nav clearfix">
+          <ul class="nav pull-right top-menu">
+            <li>
+              <input type="text" class="form-control search" placeholder=" Search">
+            </li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                <img alt="" src="http://static.jesport.com/backend2/images/2.png">
+                <span class="username">管理员</span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu extended logout">
+                <li><a href="javascript:;"><i class=" fa fa-suitcase"></i>个人资料</a></li>
+                <li><a href="javascript:;"><i class="fa fa-cog"></i> 网吧资料</a></li>
+                <li id="logout"  class="logout"><a href="javascript:;"><i class="fa fa-key"></i> 退出</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <!--header end-->
+
+      <!--sidebar start-->
+      <aside id="menu"></aside>
+      <!--sidebar end-->
+
+    <!--main content start-->
+    <section id="main-content">
+     <section class="wrapper" id="app">
+      <!-- 竞猜列表面包屑导航 -->
+      <div class="breadcrumb-box cf" >
+        <ol class="breadcrumb breadcrumb2 ">
+          <li><a href="#">抽奖管理</a></li>
+          <li class="active"><a href="#">中奖记录</a></li>
+        </ol>
+      </div>
+      <!-- 表格数据头部 -->
+      <div class="navbar-form  clearfix" role="search" style="width: 100%;line-height: 34px; background: #D3DCE6; border-radius: 4px;padding:4px;margin-bottom: 20px;">
+       <div class="form-group" style="float: left;">
+         <span style="margin-left: 8px;font-size: 16px;color: #000;">奖品库</span>
+       </div>
+       <button style="float: right;margin-right: 8px;" class="btn btn-default" >查询</button>
+       <input v-model="mobile"  id="inputQuan" type="text"style="float: right;margin-top: 3px;margin-right: 20px; width: 300px;"  class="match-name-input" placeholder="请输入用户手机号查询">
+     </div>
+
+     <!-- 比赛数据列表 -->
+     <table class="table-main">
+      <thead>
+        <th>用户昵称</th>
+        <th>手机号</th>
+        <th>获得奖品</th>
+        <th>中奖时间</th>
+        <th>兑换有效期</th>
+        <th>兑换状态</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in awardList" v-cloak>
+        <td>{{item.memberInfo.name}}</td>
+        <td>{{item.memberInfo.mobile}}</td>
+        <td>{{item.goodsName}}</td>
+        <td>{{item.createdDate}}</td>
+        <td>有效</td>
+        <td>{{item.memberInfo.status == 1 ? '已兑换' : '未兑换'}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
+</section>
+</section>
+</div>
+
+<script src="http://static.jesport.com/backend2/js/bootstrap.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="http://static.jesport.com/backend2/js/scripts.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.slimscroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.nicescroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.scrollTo.js"></script>
+<script src="http://static.jesport.com/backend2/js/vue.js"></script>
+
+<script src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script> 
+<script src="http://static.jesport.com/backend2/js/laydate.js"></script>
+<script src="http://static.jesport.com/backend2/js/common.js?v=201712141645"></script>
+<script src="http://static.jesport.com/backend2/js/lotteryList.js?v=xxsxxs"></script>
+</body>
+</html>

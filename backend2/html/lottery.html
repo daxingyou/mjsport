@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<head>
+  <title>轮播图</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="" />
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/font.css" type="text/css"/> 
+  <link href="http://static.jesport.com/backend2/css/style-responsive.css" rel="stylesheet"/>
+  <link href="http://static.jesport.com/backend2/css/font-awesome.css" rel="stylesheet"> 
+  <script src="http://static.jesport.com/backend2/js/jquery2.0.3.min.js"></script>
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/guessList.css">
+  <link href="http://static.jesport.com/backend2/css/style.css" rel='stylesheet' type='text/css' />
+  <link href="http://static.jesport.com/backend2/css/wlui.css" rel='stylesheet' type='text/css' />
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/component.css">
+  <style>
+    .file-modal img {
+      width: 100%;height: 100%;display: block;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <section id="container">
+      <header class="header fixed-top clearfix">
+        <div class="brand">
+          <a href="javascript:;" class="logo">
+            后台管理系统
+          </a>
+          <div class="sidebar-toggle-box">
+            <div class="fa fa-bars"></div>
+          </div>
+        </div>
+        <div class="nav notify-row" id="top_menu">
+          <ul class="nav top-menu"></ul>
+        </div>
+        <div class="top-nav clearfix">
+          <ul class="nav pull-right top-menu">
+            <li>
+              <input type="text" class="form-control search" placeholder=" Search">
+            </li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                <img alt="" src="http://static.jesport.com/backend2/images/2.png">
+                <span class="username">管理员</span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu extended logout">
+                <li><a href="javascript:;"><i class=" fa fa-suitcase"></i>个人资料</a></li>
+                <li><a href="javascript:;"><i class="fa fa-cog"></i> 网吧资料</a></li>
+                <li id="logout"  class="logout"><a href="javascript:;"><i class="fa fa-key"></i> 退出</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </header>
+
+        <!--sidebar start-->
+        <aside id="menu"></aside>
+        <!--sidebar end-->
+
+    <section id="main-content">
+     <section class="wrapper" id="app">
+
+      <div class="navbar-form navbar-left clearfix" role="search" style="width: 100%;line-height: 34px; background: #D3DCE6; border-radius: 4px;padding:4px;margin-bottom: 20px;">
+       <div class="form-group" style="float: left;">
+         <span style="margin-left: 8px;font-size: 16px;color: #000;">活动设置</span>
+       </div>
+       <button data-target="#myModal4"  style="float: right;margin-right: 8px;" class="btn btn-default" data-toggle="modal">设置</button>
+     </div>
+
+     <table class="guess-detail-table" style="margin:0 auto;"  v-cloak>
+      <tr>
+        <th>本期活动时间</th>
+        <td v-cloak>
+          {{deadLine?deadLine.startDate:""}} 至  {{deadLine?deadLine.endDate:""}}
+        </td>
+      </tr>
+      <tr>
+        <th>本期活动状态</th>
+        <td v-cloak>
+          {{deadLine?(deadLine.isPause == 0 ? '开启' : '关闭'):""}}
+        </td>
+      </tr>
+    </table>
+
+    <!-- 竞猜列表面包屑导航 -->
+    <div class="breadcrumb-box">
+      <ol class="breadcrumb breadcrumb2 ">
+        <li><a href="#">抽奖管理</a></li>
+        <li class="active"><a href="#">抽奖活动</a></li>
+      </ol>
+      <button style="margin-left: 10px;" data-toggle="modal" data-target="#myModal3" type="button" class="createGuess btn btn-primary">概率设置</button>
+      <button data-toggle="modal" data-target="#myModal" type="button" class="createGuess btn btn-primary">+新增本期奖品</button>
+    </div>
+    <!-- 比赛数据列表 -->
+    <div class="strip-tips" style="margin-top: 50px;" >
+      <span>已上架商品</span>
+    </div>
+    <table class="table-main">
+      <thead>
+        <th>ID</th>
+        <th>图片</th>
+        <th>奖品名称</th>
+        <th>剩余份数</th>
+        <th>每份数量</th>
+        <th>概率</th>
+        <th>排序</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in goodsList" v-if="item.state == 1" v-cloak>
+        <td>{{item.id}}</td>
+        <td><img width="100" height="100" :src="item.img" alt=""></td>
+        <td>{{item.name}}</td>
+        <td>{{item.stock}}</td>
+        <td>{{item.num}}</td>
+        <td>{{item.probability*100+'%'}}</td>
+        <td>{{item.sortNum}}</td>
+        <td>
+          <button @click="editGoods(item.id)" class="btn btn-primary">编辑</button>
+          <button @click="updateGoods(item.id,0)" class="btn btn-primary">下架</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="strip-tips" style="margin-top: 50px;" >
+    <span>未上架商品</span>
+  </div>
+  <table class="table-main">
+    <thead>
+      <th>ID</th>
+      <th>图片</th>
+      <th>奖品名称</th>
+      <th>剩余份数</th>
+      <th>每份数量</th>
+      <th>概率</th>
+      <th>排序</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr v-for="item in goodsList" v-if="item.state == 0" v-cloak>
+      <td>{{item.id}}</td>
+      <td><img width="100" height="100" :src="item.img" alt=""></td>
+      <td>{{item.name}}</td>
+      <td>{{item.stock}}</td>
+      <td>{{item.num}}</td>
+      <td>{{item.probability}}</td>
+      <td>{{item.sortNum}}</td>
+      <td>
+        <button @click="editGoods(item.id)" class="btn btn-primary">编辑</button>
+        <button @click="updateGoods(item.id,1)" class="btn btn-primary">上架</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 活动设置模态框开始 -->
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document"   >
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">活动时间</h4>
+      </div>
+      <div class="modal-body">
+      <form  class="form-horizontal" enctype="multipart/form-data" >
+
+         <div class="form-group"  >
+           <label for="inputPassword3" class="col-sm-2 control-label">开始时间</label>
+           <div class="col-sm-10">
+            <input  v-model="deadLine.startDate " id="startDate"  name="stock" type="text" class="form-control"  placeholder="请输入开始时间">
+          </div>
+        </div>
+
+        <div class="form-group"  >
+         <label for="inputPassword3" class="col-sm-2 control-label">结束时间</label>
+         <div class="col-sm-10">
+           <input  v-model="deadLine.endDate " id="endDate"  name="stock" type="text" class="form-control"  placeholder="请输入结束时间">
+         </div>
+       </div>
+
+       <div class="form-group"  >
+         <label for="inputPassword3" class="col-sm-2 control-label">活动状态</label>
+         <div class="col-sm-10">
+           <select v-model="deadLine.isPause" class="form-control" >
+            <option value="0">开启</option>
+            <option value="1">暂停</option>
+          </select>
+        </div>
+      </div>
+
+
+    </form>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+      <button @click="setPause"   type="button" class=" btn btn-primary"  id="submit" >保存</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+<!-- 概率设置模态框开始 -->
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document"   >
+    <div class="modal-content" >
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">概率设置</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal" enctype="multipart/form-data" >
+         <div class="form-group" v-for="item in probabilityList"  >
+          <label for="inputPassword3" class="col-sm-2 control-label">{{item.name}}</label>
+          <div class="col-sm-8">
+            <input  v-model=" item.probability "  name="stock" type="text" class="form-control"  placeholder="请输入概率">
+
+          </div>
+          <div class="col-sm-2" style="line-height: 34px;" >%</div>
+        </div>
+
+      </form>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        <button @click="setPro"   type="button" class=" btn btn-primary"  id="submit" >保存</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+<!-- 添加模态框开始 -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document"   >
+    <div class="modal-content" style="height: 545px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">商品信息</h4>
+      </div>
+      <div class="modal-body">
+        <form id="addShopForm" class="form-horizontal" enctype="multipart/form-data" >
+          <input value="0" type="hidden" name="probability" >
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">选择奖品</label>
+            <div class="col-sm-10">
+             <select  class="form-control" name="baseid">
+               <option v-for="item in baseShopList" :value="item.id">{{item.name}}</option>
+             }
+           </select>
+         </div>
+       </div>
+       <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">剩余份数</label>
+        <div class="col-sm-10">
+          <input name="stock" type="text" class="form-control"  placeholder="请输入剩余份数">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">每份数量</label>
+        <div class="col-sm-10">
+          <input name="num" type="text" class="form-control"  placeholder="请输入每份数量">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">是否特殊开奖</label>
+        <div class="col-sm-10">
+          <select :value="nowSpecial" @change="toggle" class="form-control" name="isspecial">
+           <option value="1">是</option>
+           <option value="0">否</option>
+         </select>
+       </div>
+     </div>
+     <div v-if="nowSpecial == 1" class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">第几次开特殊奖</label>
+      <div class="col-sm-10">
+        <input name="specialnum" type="number" class="form-control"  placeholder="请输入次数">
+      </div>
+    </div>
+    <div class="form-group">
+     <label for="inputPassword3" class="col-sm-2 control-label">是否上架</label>
+     <div class="col-sm-10">
+      <select class="form-control" name="state">
+       <option value="1">上架</option>
+       <option value="0">下架</option>
+     </select>
+   </div>
+ </div>
+ <div class="form-group">
+  <label for="inputPassword3" class="col-sm-2 control-label">排序序号</label>
+  <div class="col-sm-10">
+    <input name="sortnum" type="number" class="form-control"  placeholder="请输入排序序号">
+  </div>
+</div>
+</form>
+<div class="modal-footer">
+ <p style="text-align: left;">备注：</p>
+ <p style="text-align: left;">1. 如剩余份数为0，则不会开奖</p>
+ <p style="text-align: left;">2. 特殊奖品可指定本期第几次开出，而无需设置概率</p>
+ <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+ <button @click="addShop"   type="button" class=" btn btn-primary"  id="submit" >保存</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+<!-- 编辑模态框开始 -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document"   >
+    <div class="modal-content" style="height: 545px;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">商品信息</h4>
+      </div>
+      <div class="modal-body">
+        <form id="ajaxForm2" class="form-horizontal" enctype="multipart/form-data" >
+         <input type="hidden" name="id" :value="nowItem.id">
+         <input value="0" type="hidden" name="probability" >
+         <div class="form-group">
+          <label for="inputPassword3" class="col-sm-2 control-label">选择奖品</label>
+          <div class="col-sm-10">
+           <select :value="nowItem.baseGoodsId"  class="form-control" name="baseid">
+             <option  v-for="item in baseShopList" :value="item.id">{{item.name}}</option>
+           }
+         </select>
+       </div>
+     </div>
+     <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">剩余份数</label>
+      <div class="col-sm-10">
+        <input :value="nowItem.stock" name="stock" type="text" class="form-control"  placeholder="请输入剩余份数">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">每份数量</label>
+      <div class="col-sm-10">
+        <input :value="nowItem.num" name="num" type="text" class="form-control"  placeholder="请输入每份数量">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword3" class="col-sm-2 control-label">是否特殊开奖</label>
+      <div class="col-sm-10">
+        <select :value="nowSpecial" @change="toggle" class="form-control" name="isspecial">
+         <option value="1">是</option>
+         <option value="0">否</option>
+       </select>
+     </div>
+   </div>
+   <div v-if="nowSpecial == 1" class="form-group">
+    <label for="inputPassword3" class="col-sm-2 control-label">第几次开特殊奖</label>
+    <div class="col-sm-10">
+      <input :value="nowItem.specialNum" name="specialnum" type="number" class="form-control"  placeholder="请输入次数">
+    </div>
+  </div>
+  <div class="form-group">
+   <label for="inputPassword3" class="col-sm-2 control-label">是否上架</label>
+   <div class="col-sm-10">
+    <select :value="nowItem.state" class="form-control" name="state">
+     <option value="1">上架</option>
+     <option value="0">下架</option>
+   </select>
+ </div>
+</div>
+<div class="form-group">
+  <label for="inputPassword3" class="col-sm-2 control-label">排序序号</label>
+  <div class="col-sm-10">
+    <input :value="nowItem.sortNum" name="sortnum" type="number" class="form-control"  placeholder="请输入排序序号">
+  </div>
+</div>
+</form>
+<div class="modal-footer">
+  <p style="text-align: left;">备注：</p>
+  <p style="text-align: left;">1. 如剩余份数为0，则不会开奖</p>
+  <p style="text-align: left;">2. 特殊奖品可指定本期第几次开出，而无需设置概率</p>
+  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+  <button @click="editSubmit"   type="button" class=" btn btn-primary"  id="submit" >保存</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 模态框结束 -->
+
+</section>
+</section>
+</section>
+</div>
+<script src="http://static.jesport.com/backend2/js/bootstrap.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="http://static.jesport.com/backend2/js/scripts.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.slimscroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.nicescroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.scrollTo.js"></script>
+<script src="http://static.jesport.com/backend2/js/vue.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script> 
+<script src="http://static.jesport.com/backend2/js/laydate.js"></script>
+<script src="http://static.jesport.com/backend2/js/common.js?v=201712141645"></script>
+<script src="http://static.jesport.com/backend2/js/lottery.js?v=12"></script> 
+
+</body>
+</html>

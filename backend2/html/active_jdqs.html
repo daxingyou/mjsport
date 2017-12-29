@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<head>
+    <title>活动管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/font.css" type="text/css"/>
+    <link href="http://static.jesport.com/backend2/css/style-responsive.css" rel="stylesheet"/>
+    <link href="http://static.jesport.com/backend2/css/font-awesome.css" rel="stylesheet">
+    <script src="http://static.jesport.com/backend2/js/jquery2.0.3.min.js"></script>
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/guessList.css">
+    <link href="http://static.jesport.com/backend2/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="http://static.jesport.com/backend2/css/wlui.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/component.css?v=201712211801">
+</head>
+<body>
+<div  id="app">
+    <section id="container">
+    <!--header start-->
+    <header class="header fixed-top clearfix">
+        <div class="brand">
+            <a href="javascript:;" class="logo">
+                后台管理系统
+            </a>
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars"></div>
+            </div>
+        </div>
+        <div class="top-nav clearfix">
+            <ul class="nav pull-right top-menu">
+                <li>
+                    <input type="text" class="form-control search" placeholder=" Search">
+                </li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                        <img alt="" src="http://static.jesport.com/backend2/images/2.png">
+                        <span class="username">管理员</span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu extended logout">
+                        <li><a href="javascript:;"><i class=" fa fa-suitcase"></i>个人资料</a></li>
+                        <li><a href="javascript:;"><i class="fa fa-cog"></i> 网吧资料</a></li>
+                        <li id="logout"  class="logout" @click="logout"><a href="javascript:;"><i class="fa fa-key"></i> 退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!--header end-->
+    <!--sidebar start-->
+    <aside id="menu"></aside>
+    <!--sidebar end-->
+    <!--main content start-->
+    <section id="main-content">
+        <section class="wrapper" >
+            <!-- 竞猜列表面包屑导航 -->
+            <div class="breadcrumb-box" >
+                <ol class="breadcrumb breadcrumb2 ">
+                    <li><a href="#">活动管理</a></li>
+                    <li class="active"><a href="#">绝地求生比赛</a></li>
+                </ol>
+                <button type="button" class="createGuess btn btn-primary" data-toggle="modal" data-target="#myModal">创建比赛</button>
+            </div>
+
+            <!-- tabs页卡切换 -->
+            <nav>
+                <ul class="nav nav-tabs nav-justified guess-nav">
+                    <li class="guess-nav-item"   @click="toggleTab(item.state)" v-for="item in tabLists" role="presentation" :class="{active:item.isActive}"  v-cloak><a href="#"  v-cloak>{{item.name}}</a></li>
+                </ul>
+            </nav>
+
+            <!-- 数据列表 -->
+            <div class="table-agile-info">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover b-t b-light guess-tab">
+                        <thead>
+                        <th>比赛ID</th>
+                        <th>比赛时间</th>
+                        <th>比赛类型</th>
+                        <th>房间名称</th>
+                        <th>房间密码</th>
+                        <th>人数(报名/上限)</th>
+                        <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="(item,index) in guessList"  v-cloak>
+                            <td>{{item.id}}</td>
+                            <td>{{item.startTime}}</td>
+                            <td>{{item.type==1?"单排":item==2?"双排":"四排"}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.roomPwd}}</td>
+                            <td>{{item.personLimit}}</td>
+                            <td>
+                                <a :href="'activedetail.html?id='+item.id" class=" btn-xs btn-detail btn btn-primary"  >查看详情</a>
+                                <!--<a :href="'activedetail.html?id='+item.id" class=" btn-xs btn-detail btn btn-primary"  >报名</a>-->
+                                <!--<a :href="'activedetail.html?id='+item.id" class=" btn-xs btn-detail btn btn-primary"  >竞猜</a>-->
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <!-- 添加比赛模态框 -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-dialog2" role="document" style="width: 75%!important;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">填写比赛信息</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="panel-body">
+                                <div class="position-center position-center2">
+                                    <form role="form" class="form-horizontal" id="guessForm" enctype="multipart/form-data"  >
+                                        <input type="hidden" name="act" value="add">
+                                        <div class="form-group" >
+                                            <label class="col-sm-2 control-label" for="exampleInputEmail1">比赛类型</label>
+                                            <div class="col-zm-10">
+                                                <select   name="type" class="form-control input-sm m-bot15" required @change="toggletype($event)">
+                                                    <option value="1" selected = "selected">单排</option>
+                                                    <option value="2">双排</option>
+                                                    <option value="4">四排</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="exampleInputEmail1">报名费用</label>
+                                            <div class="col-zm-10">
+                                                <input type="number" name="feebeans" class="form-control" :value="nowtype.feebeans" placeholder="请输入报名费用" required>魔豆
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="exampleInputPassword1">比赛时间</label>
+                                            <div class="col-zm-10">
+                                                <input id="starttime" name="starttime" type="text" class="form-control"   placeholder="请输入比赛时间" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="exampleInputEmail1">场次</label>
+                                            <div class="col-zm-10">
+                                                <input type="number" name="sessionnum" class="form-control" value="1" placeholder="请输入场次" required>场
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="exampleInputEmail1">比赛间隔</label>
+                                            <div class="col-zm-10">
+                                                <input type="number" name="sessioninterval" class="form-control" value="120" placeholder="请输入场次" required>分钟
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="exampleInputEmail1">人数上限</label>
+                                            <div class="col-zm-10">
+                                                <input type="number" name="personlimit" min="10" max="100" class="form-control" :value="nowtype.personlimit" placeholder="请输入人数上限" required>个
+                                            </div>
+                                        </div>
+                                        <!--<div class="form-group">-->
+                                            <!--<label class="col-sm-2 control-label" for="exampleInputEmail1">服务器数</label>-->
+                                            <!--<div class="col-zm-10">-->
+                                                <!--<input type="number" name="servernum" min="1" max="20" class="form-control" value="1" placeholder="请输入服务器数" required>个/组-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="exampleInputEmail1">房间名称</label>
+                                            <div class="col-zm-10">
+                                                <input type="text" name="name" class="form-control"  placeholder="请输入房间名称" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword3" class="col-sm-2 control-label">房间密码</label>
+                                            <div class="col-zm-10">
+                                                <input  type="text" class="form-control input-sm m-bot15" disabled value="随机8位数字">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" >
+                                            <label class="col-sm-2 control-label" for="exampleInputEmail1">比赛竞猜</label>
+                                            <div class="col-zm-10">
+                                                <select   name="state" class="form-control input-sm m-bot15"  >
+                                                    <option value="1" selected = "selected">开启</option>
+                                                    <option value="0">关闭</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword3" class="col-sm-2 control-label">比赛说明</label>
+                                            <div class="col-zm-10">
+                                                <input name="memo" type="text" class="form-control input-sm m-bot15" value=""  placeholder="请输入比赛说明">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword3" class="col-sm-2 control-label">获胜奖励</label>
+                                            <div class="col-zm-10">
+                                                <input name="winrmb" type="number" class="form-control input-sm m-bot15" value="500"  placeholder="请输入比赛说明" style="width: 30%;">现金
+                                                <input name="winbeans" type="number" class="form-control input-sm m-bot15" value="500"  placeholder="请输入比赛说明"style="width: 30%;margin-left: 10%">魔豆
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button @click="createGuess" type="button" class="btn btn-primary">创建</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+</section>
+    </section>
+    </section>
+</div>
+
+
+<script src="http://static.jesport.com/backend2/js/bootstrap.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="http://static.jesport.com/backend2/js/scripts.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.slimscroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.nicescroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.scrollTo.js"></script>
+<script src="http://static.jesport.com/backend2/js/vue.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script>
+<script src="http://static.jesport.com/backend2/js/laydate.js"></script>
+<script src="http://static.jesport.com/backend2/js/common.js?v=201712211801"></script>
+<script src="http://static.jesport.com/backend2/js/active_jdqs.js?v=201712211801"></script>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<head>
+    <title>比赛列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/font.css" type="text/css"/>
+    <link href="http://static.jesport.com/backend2/css/style-responsive.css" rel="stylesheet"/>
+    <link href="http://static.jesport.com/backend2/css/font-awesome.css" rel="stylesheet">
+    <script src="http://static.jesport.com/backend2/js/jquery2.0.3.min.js"></script>
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/guessList.css">
+    <link href="http://static.jesport.com/backend2/css/style.css?v=x" rel='stylesheet' type='text/css' />
+    <link href="http://static.jesport.com/backend2/css/wlui.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/component.css?v=xxo">
+    <link rel="stylesheet" href="http://static.jesport.com/backend2/css/addstyle.css?v=xxo">
+</head>
+<body>
+<div>
+    <section id="container">
+        <!--header start-->
+        <header class="header fixed-top clearfix">
+            <div class="brand">
+                <a href="javascript:;" class="logo">
+                    后台管理系统
+                </a>
+                <div class="sidebar-toggle-box">
+                    <div class="fa fa-bars"></div>
+                </div>
+            </div>
+            <div class="top-nav clearfix">
+                <ul class="nav pull-right top-menu">
+                    <li>
+                        <input type="text" class="form-control search" placeholder=" Search">
+                    </li>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                            <img alt="" src="http://static.jesport.com/backend2/images/2.png">
+                            <span class="username">管理员</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <li><a href="javascript:;"><i class=" fa fa-suitcase"></i>个人资料</a></li>
+                            <li><a href="javascript:;"><i class="fa fa-cog"></i> 网吧资料</a></li>
+                            <li id="logout"  class="logout"><a href="javascript:;"><i class="fa fa-key"></i> 退出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!--header end-->
+
+        <!--sidebar start-->
+        <aside id="menu"></aside>
+        <!--sidebar end-->
+        <!--main content start-->
+        <section id="main-content">
+            <section class="wrapper" id="app">
+                <!-- 竞猜列表面包屑导航 -->
+                <div class="breadcrumb-box cf" >
+                    <ol class="breadcrumb breadcrumb2 ">
+                        <li><a href="javascript:;">活动管理</a></li>
+                        <li class="active"><a href="javascript:;">女神争霸赛</a></li>
+                    </ol>
+                </div>
+                <ul class="tab-main">
+                    <li class="tab-main-panel" >
+                        <div class="navbar-form  clearfix" role="search" style="width: 100%;line-height: 34px; background: #D3DCE6; border-radius: 4px;padding:4px;margin-bottom: 20px;margin-top: 60px;">
+                            <div class="form-group" style="float: left;">
+                                <span style="margin-left: 8px;font-size: 16px;color: #000;">参赛信息</span>
+                            </div>
+                            <button  @click="showEntering"  style="float: right;margin-right: 8px;" class="btn btn-default" >添加选手</button>
+                        </div>
+                        <nav style="position: relative;">
+                            <ul style="width: 90%;" class="nav nav-tabs nav-justified guess-nav">
+                                <li class="guess-nav-item" @click="getNowState( item.state )"   v-for="item in stateList" role="presentation" :class="{active:nowState == item.state }"   v-cloak><a href="javascript:;"  v-cloak>{{item.name}}</a></li>
+                            </ul>
+                        </nav>
+                        <table style="margin-top: 20px;" class="table-main">
+                            <thead>
+                            <tr>
+                                <th>头像</th>
+                                <th >昵称</th>
+                                <th >手机号</th>
+                                <th>生日</th>
+                                <th>星座</th>
+                                <th>自我介绍</th>
+                                <th>爱好</th>
+                                <th>擅长游戏</th>
+                                <th>当前票数</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody v-for="item in memberList " style="margin-top: 20px;">
+                            <tr>
+                                <td><a :href="item.avatar" target="_blank"><img width="50" height="50"  :src="item.avatar" alt=""></a></td>
+                                <td>{{item.realname}}</td>
+                                <td>{{item.phone}}</td>
+                                <td>{{item.birthday}}</td>
+                                <td>{{item.constellation}}  </td>
+                                <td>{{item.memo}}  </td>
+                                <td>{{item.hobby}}  </td>
+                                <td>{{item.games}}</td>
+                                <td>{{item.voteNum}}</td>
+                                <td>
+                                    <button v-if="item.state==1" @click="out(item.id)" class="btn btn-default">下架</button>
+                                    <button v-if="item.state==0" @click="pass(item.id)" class="btn btn-default">通过</button>
+                                    <button  @click="changeVote(item.id)" class="btn btn-default">改票</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+
+                <!-- 录入模态框-->
+                <div class="modal fade enteringModal" id="enteringModal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" style="width: 800px;" role="document"   >
+                        <div class="modal-content" style="min-height: 250px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" >录入参赛信息</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form id="enteringForm1" class="form-horizontal" enctype="multipart/form-data" >
+                                    <div class="teaminfo">
+                                        <div class="info" style="flex: 1;">
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">昵称</label>
+                                                <div class="col-sm-10">
+                                                    <input name="realname" type="text" class="form-control input-sm m-bot15" placeholder="请输入昵称">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">电话</label>
+                                                <div class="col-sm-10">
+                                                    <input name="phone" type="text" class="form-control input-sm m-bot15" placeholder="请输入电话">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">头像</label>
+                                                <div class="col-sm-10" style="height: 100px;">
+                                                    <input type="file" name="avatar" id="avatar" style="width: 100px;height: 100px;"  class=" upload-file1 form-control"   name="upload" >
+                                                    <div id="avatarShow" class="file-modal1" style="width: 80px;height: 80px;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">生日</label>
+                                                <div class="col-sm-10">
+                                                    <input name="birthday" id="birthday" class="form-control input-sm m-bot15" placeholder="请输入生日">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">星座</label>
+                                                <div class="col-sm-10">
+                                                    <input name="constellation" type="text" class="form-control input-sm m-bot15" placeholder="请输入星座">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">个人介绍</label>
+                                                <div class="col-sm-10">
+                                                    <input name="memo" type="text" class="form-control input-sm m-bot15" placeholder="请输入个人介绍">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">爱好</label>
+                                                <div class="col-sm-10">
+                                                    <input name="hobby" type="text" class="form-control input-sm m-bot15" placeholder="请输入爱好">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">擅长游戏</label>
+                                                <div class="col-sm-10">
+                                                    <input name="games" type="text" class="form-control input-sm m-bot15" placeholder="请输入擅长游戏">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">清空</button>
+                                        <button  @click="submitEntering()"  type="button" class=" btn btn-primary" >确定</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!--<div class="modal-footer">-->
+                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">清空</button>-->
+                            <!--<button  @submit="submitEntering(this)"  type="button" class=" btn btn-primary" >确定</button>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+                <!-- 模态框结束 -->
+                <!-- 录入模态框-->
+                <div class="modal fade enteringModal" id="changeVote"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" style="width: 800px;" role="document"   >
+                        <div class="modal-content" style="min-height: 250px;">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" >录入参赛信息</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form id="enteringForm2" class="form-horizontal" enctype="multipart/form-data" >
+                                    <input type="hidden" name="id" :value="changevoteid">
+                                    <div class="teaminfo">
+                                        <div class="info" style="flex: 1;">
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-2 control-label">票数</label>
+                                                <div class="col-sm-10">
+                                                    <input name="num" type="num" class="form-control input-sm m-bot15" placeholder="请输入票数">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">清空</button>
+                                        <button  @click="submitchange()"  type="button" class=" btn btn-primary" >确定</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 模态框结束 -->
+
+            </section>
+        </section>
+    </section>
+</div>
+<script src="http://static.jesport.com/backend2/js/bootstrap.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="http://static.jesport.com/backend2/js/scripts.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.slimscroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.nicescroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.scrollTo.js"></script>
+<script src="http://static.jesport.com/backend2/js/vue.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script>
+<script src="http://static.jesport.com/backend2/js/qrcode.js"></script>
+<script src="http://static.jesport.com/backend2/js/laydate.js"></script>
+<script src="http://static.jesport.com/backend2/js/common.js?v=201712141730"></script>
+<script src="http://static.jesport.com/backend2/js/goddess.js?v=201712141730"></script>
+</body>
+</html>

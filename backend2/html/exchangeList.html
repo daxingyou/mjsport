@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<head>
+  <title>竞猜列表</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/bootstrap.min.css" >
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/font.css" type="text/css"/> 
+  <link href="http://static.jesport.com/backend2/css/style-responsive.css" rel="stylesheet"/>
+  <link href="http://static.jesport.com/backend2/css/font-awesome.css" rel="stylesheet"> 
+  <script src="http://static.jesport.com/backend2/js/jquery2.0.3.min.js"></script>
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/guessList.css">
+  <link href="http://static.jesport.com/backend2/css/style.css" rel='stylesheet' type='text/css' />
+  <link href="http://static.jesport.com/backend2/css/wlui.css" rel='stylesheet' type='text/css' />
+  <link rel="stylesheet" href="http://static.jesport.com/backend2/css/component.css">
+</head>
+<body>
+  <div  id="app">
+
+    <section id="container">
+      <!--header start-->
+      <header class="header fixed-top clearfix">
+        <div class="brand">
+          <a href="javascript:;" class="logo">
+            后台管理系统
+          </a>
+          <div class="sidebar-toggle-box">
+            <div class="fa fa-bars"></div>
+          </div>
+        </div>
+        <div class="top-nav clearfix">
+          <ul class="nav pull-right top-menu">
+            <li>
+              <input type="text" class="form-control search" placeholder=" Search">
+            </li>
+            <li class="dropdown">
+              <a data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                <img alt="" src="http://static.jesport.com/backend2/images/2.png">
+                <span class="username">管理员</span>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu extended logout">
+                <li><a href="javascript:;"><i class=" fa fa-suitcase"></i>个人资料</a></li>
+                <li><a href="javascript:;"><i class="fa fa-cog"></i> 网吧资料</a></li>
+                <li id="logout"  class="logout"><a href="javascript:;"><i class="fa fa-key"></i> 退出</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <!--header end-->
+
+      <!--sidebar start-->
+      <aside id="menu"></aside>
+      <!--sidebar end-->
+
+      <!--main content start-->
+      <section id="main-content">
+       <section class="wrapper" >
+
+        <!-- 竞猜列表面包屑导航 -->
+        <div class="breadcrumb-box" >
+          <ol class="breadcrumb breadcrumb2 ">
+            <li><a href="#">魔豆商城</a></li>
+            <li class="active"><a href="#">兑换记录</a></li>
+          </ol>
+        </div>
+
+        <!-- tabs页卡切换 -->
+        <nav>
+          <ul class="nav nav-tabs nav-justified guess-nav">
+            <li class="guess-nav-item"   @click="getGuessList(item.id)" v-for="item in tabLists" role="presentation" :class="{active:item.id == nowIndex}"  v-cloak><a href="#"  v-cloak>{{item.name}}（{{item.num}}）</a></li>
+          </ul>
+        </nav>
+
+        <!-- 竞猜数据列表 -->
+        <div class="table-agile-info">
+         <div class="table-responsive">
+          <table class="table table-bordered table-hover b-t b-light guess-tab">
+            <thead>
+              <th>真实姓名</th>
+              <th>手机号</th>
+              <th>订单号</th>
+              <th>商品</th>
+              <th>兑换码</th>
+              <th>兑换有效期</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-if="item.status == nowIndex" v-for="(item,index) in orderList"  v-cloak>
+              <td>{{item.memberName}}</td>
+              <td>{{item.mobile}}</td>
+              <td>{{item.id}}</td>
+              <td>{{item.goodsName}}</td>
+              <td>{{item.quanNo}}</td>
+              <td>{{item.status == 1 ? '未使用' : item.status == 2 ?  '已使用' : '已过期'}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <ul class="page" >
+          <li v-if="hasNextPage"   @click="pn++" class="next btn btn-default ">下一页</li>
+          <li  v-if="hasPreviousPage"  @click="pn--"  class="pre btn btn-default">上一页</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+</section>
+</section>
+</section>
+</div>
+</div>        
+
+
+<script src="http://static.jesport.com/backend2/js/bootstrap.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.dcjqaccordion.2.7.js"></script>
+<script src="http://static.jesport.com/backend2/js/scripts.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.slimscroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.nicescroll.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.scrollTo.js"></script>
+<script src="http://static.jesport.com/backend2/js/vue.js"></script>
+<script src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script> 
+<script src="http://static.jesport.com/backend2/js/laydate.js"></script>
+<script src="http://static.jesport.com/backend2/js/common.js?v=201712141645"></script>
+<script src="http://static.jesport.com/backend2/js/exchangeList.js"></script>
+
+</body>
+</html>

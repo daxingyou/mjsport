@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<head>
+	<title>登录</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1 ,maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" href="http://static.jesport.com/backend2/css/bootstrap.min.css" >
+	<link rel='stylesheet'  href="http://static.jesport.com/backend2/css/style.css"  />
+	<link rel="stylesheet" href="http://static.jesport.com/backend2/css/login.css">
+</head>
+<body>
+	<div class="log-w3" style="margin-top: 380px;">
+		<div class="w3layouts-main w3layouts-main2" style="margin: 5em auto;" >
+			<div class="site-logo"></div>
+			<h2 class="bar-site" >魔杰电竞后台管理系统</h2>
+			<form onSubmit="return false;">
+				<input placeholder="请输入账号"  style="color: #000;"  id="name" type="text" class="ggg"  >
+				<input placeholder="请输入密码"   id="pwd" type="password" class="ggg"  >
+				<div class="clearfix"></div>
+				<input id="cm-login" type="submit" value="登录" name="login">
+			</form>
+		</div>
+	</div>
+	<script src="http://static.jesport.com/backend2/js/jquery2.0.3.min.js"></script>
+	<script src="http://static.jesport.com/backend2/js/vue.js"></script>
+	<script src="http://static.jesport.com/backend2/js/common.js?v=201712141645"></script>
+	<script>
+		$("#cm-login").on('click',function(){
+			var url = window.location.href;
+			var code = url.split('?')[1] ? url.split('?')[1].split('=')[1] : '';
+			var name=$('#name').val();
+			var pass=$('#pwd').val();
+			if(!name){
+				Alert($,'账号不能为空','error');
+				return false;
+			}
+			if(!pass){
+				Alert($,'密码不能为空','error');
+				return false;
+			}
+			var data={
+				username:name,
+				password:pass
+			}
+			$.post(cmsUrl2+'member/login',data,function(json){
+				if(json.errCode == 0){
+					if(getCookie('return')){
+						window.location.href=getCookie('return')+'.html'
+					}
+					if(code){
+						window.location.href = "doChange.html?code="+code;
+					}
+					else {
+						Alert($,json.errMsg,'success',function(){
+							window.location.href = "matchList.html";
+						});
+					}
+				}
+				else {
+					Alert($,json.errMsg,'error');
+				}
+			})
+		})
+	</script>
+</body>
+</html>
