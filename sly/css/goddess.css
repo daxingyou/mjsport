@@ -1,0 +1,466 @@
+html {
+  color: #000;
+  background: #fff;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%; }
+
+* {
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box; }
+
+html,
+body {
+  font-family: Helvetica;
+  width: 100%; }
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0; }
+
+input,
+select,
+textarea {
+  font-size: 100%; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+fieldset,
+img {
+  border: 0;
+  display: block; }
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+i {
+  font-style: normal;
+  font-weight: 500; }
+
+ol,
+ul {
+  list-style: none; }
+
+caption,
+th {
+  text-align: left; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 500; }
+
+a:hover {
+  text-decoration: none; }
+
+a {
+  text-decoration: none; }
+
+input, button {
+  background: none;
+  border: 0 none; }
+
+.backpic {
+  width: 100%;
+  height: 17.78667rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 0; }
+  .backpic img {
+    width: 100%;
+    height: 100%; }
+
+.godnessSign {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1; }
+  .godnessSign .logo {
+    width: 8.17333rem;
+    height: 2.72rem;
+    margin-left: 1.8rem;
+    margin-top: 1.2rem;
+    background-image: url("http://static.jesport.com/sly/images/activeImg/goddess/logo.png");
+    background-repeat: no-repeat;
+    background-size: 8.17333rem 2.72rem; }
+  .godnessSign .info {
+    width: 5.92rem;
+    height: 3.01333rem;
+    position: fixed;
+    top: 4.62667rem;
+    right: 0.26667rem;
+    background-image: url("http://static.jesport.com/sly/images/activeImg/goddess/info.png");
+    background-repeat: no-repeat;
+    background-size: 5.92rem 3.01333rem; }
+  .godnessSign .button {
+    width: 6.25333rem;
+    height: 1.10667rem;
+    position: fixed;
+    top: 8.17333rem;
+    right: 0;
+    background-image: url("http://static.jesport.com/sly/images/activeImg/goddess/button.png");
+    background-repeat: no-repeat;
+    background-size: 6.25333rem 1.10667rem; }
+    .godnessSign .button a {
+      display: block;
+      width: 100%;
+      height: 100%; }
+  .godnessSign .gift {
+    width: 9.16rem;
+    height: 4.38667rem;
+    position: fixed;
+    top: 10.18667rem;
+    right: 0.26667rem;
+    background-image: url("http://static.jesport.com/sly/images/activeImg/goddess/gift.png");
+    background-repeat: no-repeat;
+    background-size: 9.16rem 4.38667rem; }
+  .godnessSign .mask {
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 200%;
+    background: #000;
+    opacity: 0.6;
+    z-index: 99; }
+  .godnessSign .alert-signinBox {
+    display: none;
+    z-index: 100;
+    width: 8.4rem;
+    height: 12.96rem;
+    background-color: #000000;
+    position: absolute;
+    top: 0.92rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #B6966C;
+    padding-bottom: 0.4rem;
+    border-radius: 0.13333rem;
+    border: 0.04rem solid #FF9900;
+    text-align: center; }
+    .godnessSign .alert-signinBox span.color {
+      color: #FF6600; }
+    .godnessSign .alert-signinBox .title {
+      font-size: 0.4rem;
+      color: #ffffff;
+      line-height: 1.2rem;
+      margin-bottom: 0.4rem;
+      position: relative; }
+      .godnessSign .alert-signinBox .title .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 0.8rem;
+        font-size: 0.42667rem;
+        color: #666666; }
+    .godnessSign .alert-signinBox .sign {
+      margin-bottom: 0.4rem; }
+      .godnessSign .alert-signinBox .sign .imgitem {
+        width: 7.8rem;
+        margin: 0 auto;
+        position: relative; }
+        .godnessSign .alert-signinBox .sign .imgitem .imgShow {
+          width: 2.66667rem;
+          height: 2.66667rem;
+          margin: 0 auto;
+          background-image: url("http://static.jesport.com/sly/images/activeImg/goddess/photo.png");
+          background-repeat: no-repeat;
+          background-size: 2.66667rem 2.66667rem; }
+          .godnessSign .alert-signinBox .sign .imgitem .imgShow img {
+            width: 2.66667rem;
+            height: 2.66667rem; }
+        .godnessSign .alert-signinBox .sign .imgitem input {
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          width: 2.66667rem;
+          height: 2.66667rem;
+          opacity: 0;
+          z-index: 100; }
+      .godnessSign .alert-signinBox .sign .item {
+        width: 7.8rem;
+        display: flex;
+        height: 0.70667rem;
+        justify-content: center;
+        margin: 0 auto;
+        margin-bottom: 0.2rem; }
+        .godnessSign .alert-signinBox .sign .item .name {
+          background-color: #333333;
+          width: 2.4rem;
+          line-height: 0.70667rem;
+          border-top-left-radius: 0.2rem;
+          border-bottom-left-radius: 0.2rem; }
+        .godnessSign .alert-signinBox .sign .item input {
+          width: 4.66667rem;
+          padding-left: 0.2rem;
+          height: 0.70667rem;
+          font-size: 0.32rem;
+          color: #ffffff;
+          background-color: #868686;
+          border-top-right-radius: 0.2rem;
+          border-bottom-right-radius: 0.2rem; }
+        .godnessSign .alert-signinBox .sign .item input::placeholder {
+          color: #666666; }
+        .godnessSign .alert-signinBox .sign .item select {
+          width: 4.66667rem;
+          padding-left: 0.2rem;
+          height: 0.70667rem;
+          font-size: 0.29333rem;
+          color: #ffffff;
+          background-color: #868686; }
+          .godnessSign .alert-signinBox .sign .item select option {
+            height: 0.64rem;
+            font-size: 0.26667rem; }
+    .godnessSign .alert-signinBox .btn {
+      width: 4.96rem;
+      height: 0.96rem;
+      line-height: 0.96rem;
+      font-size: 0.42667rem;
+      color: #333333;
+      margin: 0 auto;
+      background-image: url("http://static.jesport.com/sly/images/activeImg/goddess/confirm.png");
+      background-size: 4.96rem 0.96rem;
+      background-repeat: no-repeat; }
+  .godnessSign .header {
+    display: flex;
+    height: 0.8rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.13333rem; }
+    .godnessSign .header img {
+      width: 0.57333rem;
+      height: 0.57333rem; }
+    .godnessSign .header a {
+      color: #66CCFF;
+      font-size: 0.34667rem; }
+  .godnessSign .logo2 {
+    width: 8.17333rem;
+    height: 2.72rem;
+    margin-left: 1.8rem;
+    margin-top: 0.26667rem;
+    background-image: url("http://static.jesport.com/sly/images/activeImg/goddess/logo.png");
+    background-repeat: no-repeat;
+    background-size: 8.17333rem 2.72rem; }
+  .godnessSign .info2 {
+    width: 9.36rem;
+    height: 1.37333rem;
+    margin: 0 auto;
+    margin-top: 0.26667rem;
+    background-image: url("http://static.jesport.com/sly/images/activeImg/goddess/info2.png");
+    background-repeat: no-repeat;
+    background-size: 9.36rem 1.37333rem; }
+  .godnessSign .votebox {
+    width: 10rem;
+    margin-top: 0.26667rem;
+    padding: 0 0.70667rem;
+    padding-bottom: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; }
+    .godnessSign .votebox .item {
+      margin: 0.13333rem 0;
+      width: 4.04rem;
+      height: 6.46667rem;
+      border-radius: 0.13333rem;
+      background-image: url("http://static.jesport.com/sly/images/activeImg/goddess/kuang.png?v=123");
+      background-repeat: no-repeat;
+      background-size: 4.04rem 6.46667rem;
+      font-size: 0.29333rem;
+      position: relative;
+      color: #FFFFFF; }
+      .godnessSign .votebox .item .itemid {
+        font-size: 0.24rem;
+        position: absolute;
+        left: 0.26667rem;
+        top: 0.09333rem; }
+      .godnessSign .votebox .item .itemnum {
+        width: 2.30667rem;
+        height: 0.6rem;
+        line-height: 0.57333rem;
+        text-align: center;
+        padding-right: 0.13333rem;
+        font-size: 0.32rem;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 5.81333rem; }
+      .godnessSign .votebox .item .schoolimg {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 0.53333rem;
+        width: 3.6rem;
+        height: 3.6rem;
+        overflow: hidden; }
+        .godnessSign .votebox .item .schoolimg img {
+          width: 3.6rem;
+          height: auto;
+          margin: 0 auto;
+          max-width: 3.6rem; }
+      .godnessSign .votebox .item .itemname {
+        width: 2.4rem;
+        position: absolute;
+        left: 0.4rem;
+        top: 4.2rem;
+        overflow: hidden; }
+      .godnessSign .votebox .item .constellation {
+        position: absolute;
+        left: 2.89333rem;
+        top: 4.17333rem; }
+      .godnessSign .votebox .item .hobby {
+        color: #FFFFFF;
+        position: absolute;
+        left: 0.33333rem;
+        top: 4.84rem; }
+        .godnessSign .votebox .item .hobby span {
+          font-size: 0.26667rem;
+          color: #D4F1FF; }
+      .godnessSign .votebox .item .games {
+        color: #FFFFFF;
+        position: absolute;
+        left: 0.33333rem;
+        top: 5.28rem; }
+        .godnessSign .votebox .item .games span {
+          font-size: 0.26667rem;
+          color: #D4F1FF; }
+  .godnessSign .alert-votebox {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 5.33333rem;
+    width: 7.69333rem;
+    height: 5.70667rem;
+    background-image: url("http://static.jesport.com/sly/images/activeImg/goddess/vote.png?v=123");
+    background-repeat: no-repeat;
+    background-size: 7.69333rem 5.70667rem;
+    padding: 0.13333rem 0 0 0.26667rem; }
+    .godnessSign .alert-votebox .top {
+      display: flex;
+      font-size: 0.32rem;
+      color: #FFFFFF; }
+      .godnessSign .alert-votebox .top .img {
+        width: 3.6rem;
+        height: 3.6rem;
+        overflow: hidden; }
+        .godnessSign .alert-votebox .top .img img {
+          width: 3.6rem;
+          height: auto;
+          margin: 0 auto;
+          max-width: 3.6rem; }
+      .godnessSign .alert-votebox .top .info1 {
+        flex: 1; }
+        .godnessSign .alert-votebox .top .info1 .itemid {
+          line-height: 0.4rem;
+          padding-left: 0.17333rem; }
+        .godnessSign .alert-votebox .top .info1 .itemname {
+          width: 100%;
+          height: 0.56rem;
+          line-height: 0.56rem;
+          padding-left: 0.46667rem; }
+          .godnessSign .alert-votebox .top .info1 .itemname .constellation {
+            color: #D4F1FF;
+            line-height: 0.56rem;
+            font-size: 0.29333rem;
+            width: 1.06667rem;
+            float: right; }
+        .godnessSign .alert-votebox .top .info1 .hobby, .godnessSign .alert-votebox .top .info1 .games {
+          color: #FFFFFF;
+          height: 0.53333rem;
+          line-height: 0.53333rem;
+          padding-left: 0.17333rem; }
+          .godnessSign .alert-votebox .top .info1 .hobby span, .godnessSign .alert-votebox .top .info1 .games span {
+            font-size: 0.26667rem;
+            color: #D4F1FF; }
+        .godnessSign .alert-votebox .top .info1 .memo {
+          color: #FFFFFF;
+          line-height: 0.53333rem;
+          padding-left: 0.17333rem; }
+          .godnessSign .alert-votebox .top .info1 .memo span {
+            font-size: 0.26667rem;
+            color: #D4F1FF; }
+    .godnessSign .alert-votebox .votenum {
+      width: 1.26667rem;
+      text-align: center;
+      font-size: 0.32rem;
+      color: #FFFFFF;
+      position: absolute;
+      top: 4.44rem;
+      left: 3.66667rem; }
+    .godnessSign .alert-votebox .btn-vote {
+      width: 2.33333rem;
+      height: 0.6rem;
+      position: absolute;
+      top: 4.86667rem;
+      left: 3rem; }
+  .godnessSign .block {
+    display: block;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-delay: 0s; }
+@-webkit-keyframes fadeIn {
+  0% {
+    transform: translate(0rem, -12rem); }
+  100% {
+    transform: translate(0rem, 0rem);
+    top: 5.33333rem; } }
+
+/*# sourceMappingURL=goddess.css.map */

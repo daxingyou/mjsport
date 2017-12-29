@@ -1,0 +1,626 @@
+.active-pb{
+  .banner{
+    width: rem(750px);
+    height:rem(360px);
+    background-image: url("http://static.jesport.com/sly/images/active-pb/background.png");
+    background-size: rem(750px) rem(360px);
+    background-repeat: no-repeat;
+    text-align: center;
+    color: #FDC000;
+    position: relative;
+    .back{
+      position: absolute;
+      top:rem(10px);
+      left:rem(20px);
+      a{
+        display: block;
+        width: rem(32px);
+        height:rem(32px);
+        background-image: url('http://static.jesport.com/sly/images/active-pb/return.png');
+        background-size:rem(32px) rem(32px);
+        background-repeat: no-repeat;
+      }
+    }
+    .title{
+      font-size: rem(48px);
+      line-height: rem(130px);
+      height:rem(104px);
+    }
+    .type{
+      height:rem(33px);
+      line-height:rem(33px);
+      font-size: rem(24px);
+    }
+    .time{
+      line-height:rem(43px);
+      font-size: rem(24px);
+    }
+    .award{
+      font-size: rem(30px);
+      line-height: rem(104px);
+      span{
+        color: #FFFFFF;
+      }
+    }
+    .state3{
+      font-size: rem(24px);
+      width: rem(750px);
+      height:rem(76px);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      .img{
+        width: rem(30px);
+        height:rem(32px);
+        margin-right:rem(10px);
+        img{
+          width: rem(30px);
+          height:rem(32px);
+        }
+      }
+      .info{
+        position: absolute;
+        top:0;
+        right:rem(20px);
+        height:rem(76px);
+        line-height:rem(76px);
+        color: #3399FF;
+      }
+    }
+    .state1{
+      font-size: rem(24px);
+      width: rem(750px);
+      height:rem(76px);
+      color: #FFFFFF;
+      padding-left: rem(10px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      .time{
+        width: rem(360px);
+        //margin-right: rem(60px);
+      }
+      .img{
+        display: flex;
+        img{
+          margin-right: rem(15px);
+          width: rem(30px);
+          height:rem(32px);
+        }
+      }
+    }
+  }
+  .tabs{
+    background-color: #FFFFFF;
+    width: rem(750px);
+    height:(70px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 rem(150px);
+    font-size: rem(28px);
+    .active{
+      color: #FF9B00;
+      border-bottom: rem(2px) solid #FF9B00;
+    }
+  }
+  .cutline{
+    width: rem(750px);
+    height:rem(6px);
+    background-color: #f2f2f2;
+  }
+  .matchinfo{
+    width: rem(750px);
+    padding:0 rem(20px);
+    table{
+      background-color: #FFFFFF;
+      width: 100%;
+      border-collapse:collapse;
+      td{
+        height:rem(70px);
+        line-height: rem(70px);
+        font-size: rem(22px);
+        border:rem(1px) solid #bfbfbf;
+        text-align: center;
+      }
+      .name{
+        color: #9f9f9f;
+      }
+    }
+  }
+  .guessState{
+    background-color: #FFFFFF;
+    width:rem(750px);
+    height:rem(70px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    font-size: rem(24px);
+    .state{
+      width: rem(203px);
+      height:rem(70px);
+      line-height: rem(70px);
+      background-image: url("http://static.jesport.com/sly/images/active-pb/triangle.png");
+      background-repeat: no-repeat;
+      background-size:rem(203px) rem(70px);
+      color: #666666;
+    }
+    .state.active{
+      color:#FFA200;
+    }
+    .button{
+      display: flex;
+      justify-content: space-between;
+      width: rem(380px);
+      margin-right: rem(15px);
+      padding-top: rem(10px);
+      div{
+        height:rem(60px);
+        width: rem(180px);
+        img{
+          height:rem(60px);
+          width: rem(180px);
+        }
+      }
+    }
+  }
+  .questionList{
+    border-top: rem(10px) solid #FFFFFF;
+    .title{
+      display: flex;
+      align-items: center;
+      padding: 0 rem(10px);
+      height:rem(100px);
+      background-color: #FFFFFF;
+      .item{
+        width: rem(93px);
+        height:rem(40px);
+        margin: 0 rem(10px);
+        background-color: #666666;
+        color: #FFFFFF;
+        line-height: rem(40px);
+        text-align: center;
+        font-size: rem(22px);
+        border-radius: rem(5px);
+      }
+      .item.active{
+        background-color: #0099ff;
+      }
+    }
+    .qitem{
+      margin-bottom:rem(10px);
+      background-color: #ffffff;
+      padding-bottom: rem(20px);
+      .title{
+        padding:0 rem(10px);
+        height:rem(45px);
+        line-height: rem(45px);
+        display: flex;
+        align-items: center;
+        .img{
+          width: rem(30px);
+          height:rem(30px);
+          img{
+            width: rem(30px);
+            height:rem(30px);
+          }
+        }
+        .questionitem{
+          margin-left:rem(20px);
+          font-weight: bold;
+        }
+      }
+      .newanswers{
+        display: flex;
+        .answer{
+          display: flex;
+          flex-direction: column;
+          justify-content:center;
+          text-align: center;
+          width:rem(350px);
+          height:rem(188px);
+          border: 1px #d59f1d solid;
+          border-radius: rem(15px);
+          font-size: rem(30px);
+          margin: rem(10px);
+          position: relative;
+          .isbet{
+            position: absolute;
+            right:rem(10px);
+            top:0;
+            width: rem(49px);
+            height:rem(84px);
+            img{
+              width: rem(49px);
+              height:rem(84px);
+            }
+          }
+          .win{
+            position: absolute;
+            right:rem(10px);
+            bottom:rem(10px);
+            width: rem(20px);
+            height:rem(20px);
+            img{
+              width: rem(20px);
+              height:rem(20px);
+            }
+          }
+          .name{
+            color: #d59f1d;
+            font-size: rem(32px);
+            //line-height: rem(40px);
+            line-height: rem(60px);
+          }
+          .odds{
+            color: #868686;
+          }
+        }
+        .answer2{
+          width: rem(230px);
+          height:rem(120px);
+        }
+      }
+      .newanswers.newanswers2{
+        flex-wrap: wrap;
+        .answer{
+          width: rem(230px);
+        }
+      }
+    }
+
+  }
+  .mask2{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 200%;
+    background: #000;
+    opacity: 0.5;
+    z-index: 99;
+  }
+  .betwindow{
+    width: rem(680px);
+    height:rem(240px);
+    position: fixed;
+    top:rem(300px);
+    left:rem(35px);
+    z-index:100;
+    border-radius: rem(10px);
+    overflow: hidden;
+    background-color: #cccccc;
+    border:2px solid #868686;
+    .title{
+      background-color: #ffffff;
+      padding:0 rem(20px);
+      height:rem(60px);
+      line-height: rem(60px);
+      display: flex;
+      align-items: center;
+      .img{
+        width: rem(30px);
+        height:rem(30px);
+        img{
+          width: rem(30px);
+          height:rem(30px);
+        }
+      }
+      .questionitem{
+        margin-left:rem(20px);
+        font-weight: bold;
+      }
+    }
+    .balance{
+      padding:0 rem(20px);
+      line-height: rem(50px);
+      display: flex;
+      justify-content: space-between;
+    }
+    .betnum{
+      display: flex;
+      justify-content: space-around;
+      input{
+        width: rem(360px);
+        height:rem(70px);
+        border:2px solid #ff6600;
+        border-radius: rem(10px);
+        padding-left: rem(15px);
+      }
+      .sub-button{
+        width: rem(280px);
+        height:rem(70px);
+        line-height: rem(70px);
+        text-align: center;
+        background-color: #ff6600;
+        border-radius: rem(10px);
+        font-size: rem(32px);
+        color: #ffffff;
+        font-weight: bold;
+      }
+    }
+    .reward{
+      padding:0 rem(20px);
+      line-height: rem(50px);
+    }
+  }
+  .sign-alert{
+    position: absolute;
+    bottom: 0;
+    left:0;
+    right:0;
+    margin:auto;
+    width: rem(750px);
+    text-align: center;
+    background-color: #FFFFFF;
+    z-index: 100;
+    .title{
+      height:rem(56px);
+      line-height: rem(56px);
+      position: relative;
+      color:#ff9b00;
+      .close{
+        position: absolute;
+        top:rem(7px);
+        right:rem(30px);
+        height:rem(32px);
+        width: rem(32px);
+        background-image: url('http://static.jesport.com/sly/images/active-pb/x.png');
+        background-repeat: no-repeat;
+        background-size: rem(32px) rem(32px);
+
+      }
+    }
+    .item{
+      padding:0 rem(131px);
+      display: flex;
+      height:rem(72px);
+      align-items: center;
+      justify-content: center;
+      .name{
+        width: rem(155px);
+        margin-right: rem(24px);
+        color: #FF9B00;
+      }
+      .value{
+        height:rem(72px);
+        input{
+          line-height: rem(60px);
+          margin:rem(6px);
+          border-bottom: rem(2px) solid #bfbfbf;
+        }
+        input:placeholder{
+          color: #f2f2f2;
+        }
+      }
+
+    }
+    .cutline{
+      width: rem(628px);
+      height:rem(1px);
+      background-color: #bfbfbf;
+      margin:rem(35px) auto;
+    }
+    .info{
+      padding: 0 rem(72px);
+      height:rem(72px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      div{
+        width: rem(280px);
+      }
+      span{
+        color: #ff9b00;
+      }
+    }
+    .submitsign{
+      height:rem(80px);
+      width: rem(238px);
+      margin:rem(10px) auto;
+      background-image: url("http://static.jesport.com/sly/images/active-pb/confirm.png");
+      background-repeat: no-repeat;
+      background-size:rem(238px) rem(80px) ;
+    }
+  }
+  .enroll-alert{
+    position: fixed;
+    top: rem(217px);
+    left:0;
+    right:0;
+    margin:auto;
+    width: rem(530px);
+    background-color: #FFFFFF;
+    z-index: 100;
+    .title{
+      height:rem(56px);
+      line-height: rem(56px);
+      position: relative;
+      font-size: rem(30px);
+      color:#FF9B00;
+      text-align: center;
+      .close{
+        position: absolute;
+        top:rem(7px);
+        right:rem(30px);
+        height:rem(32px);
+        width: rem(32px);
+        background-image: url('http://static.jesport.com/sly/images/active-pb/x.png');
+        background-repeat: no-repeat;
+        background-size: rem(32px) rem(32px);
+
+      }
+    }
+    .item{
+      height:rem(56px);
+      display: flex;
+      align-items: center;
+      font-size: rem(28px);
+      .name{
+        width: rem(236px);
+        text-align: right;
+        margin-right: rem(10px);
+      }
+      .value{
+        flex:1;
+      }
+      .color{
+        color: #FF9B00;
+      }
+    }
+    .enrollList{
+      max-height:rem(448px);
+    }
+    .memo{
+      height:rem(100px);
+      padding:0 rem(80px);
+      font-size: rem(20px);
+      color: #5D5D5D;
+      text-align: center;
+      display: flex;align-items: center;justify-content: center;
+    }
+    .know{
+      width: rem(220px);
+      height:rem(62px);
+      margin:rem(20px) auto;
+      background-image: url('http://static.jesport.com/sly/images/active-pb/ok.png');
+      background-repeat: no-repeat;
+      background-size: rem(220px) rem(62px);
+    }
+  }
+}
+.pubgList{
+  background-color: #f2f2f2;
+  width: rem(750px);
+  max-width: 1500px;
+  margin:0 auto;
+  max-width: 1500px;
+  padding-bottom: rem(150px);
+  .headertitle{
+    display: flex;
+    justify-content: space-between;
+    padding:0 rem(20px);
+    height:rem(80px);
+    align-items: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    font-size: rem(32px);
+    color: #FF6600;
+    .return-left{
+      width: rem(32px);
+      height:rem(32px);
+      background-image: url("http://static.jesport.com/sly/images/icon-left-01.png");
+      background-size: rem(32px) rem(32px);
+      background-repeat: no-repeat;
+      a{
+        display: block;
+        width: rem(32px);
+        height:rem(32px);
+      }
+    }
+    .right{
+      width: rem(32px);
+      height:rem(32px);
+    }
+  }
+  .tabs{
+    margin-top:rem(10px);
+    background-color: #FFFFFF;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height:rem(80px);
+    padding:0 rem(30px);
+    .line{
+      background-color: #6C6C6C;
+      width: rem(2px);
+      height:rem(50px);
+    }
+    .tabitem{
+      text-align: center;
+      height:rem(70px);
+      line-height: rem(70px);
+    }
+    .tabitem.active{
+      color: #FF6600;
+      border-bottom: rem(2px) solid #FF6600;
+    }
+  }
+  .pbList{
+    .item{
+      width: rem(734px);
+      height:rem(222px);
+      max-width: 1400px;
+      margin:rem(10px) auto;
+      background-size: rem(734px) rem(222px);
+      background-repeat: no-repeat;
+      color: #FFFFFF;
+      font-size: rem(24px);
+      padding:0 rem(20px);
+      position: relative;
+      .title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height:rem(100px);
+        .name{
+          flex: 1;
+          font-size: rem(28px);
+        }
+        .state{
+          color: #FFA200;
+        }
+      }
+      .info{
+        width: rem(600px);
+        display: flex;
+        flex-wrap: wrap;
+        .infoitem{
+          width: 50%;
+          height: rem(50px);
+          display: flex;
+          align-items: center;
+          .img{
+            width: rem(30px);
+            height:rem(30px);
+            margin-right:rem(10px);
+            img{
+              width: rem(30px);
+              height:rem(30px);
+            }
+          }
+        }
+      }
+      .mystate{
+        position: absolute;
+        top:rem(100px);
+        left:rem(506px);
+        .img{
+          width: rem(179px);
+          height:rem(104px);
+          img{
+            width: rem(179px);
+            height:rem(104px);
+          }
+        }
+        .state{
+          font-size: rem(20px);
+          color: #FFA100;
+        }
+      }
+    }
+  }
+}
+.nodata{
+  height:rem(300px);
+  line-height: rem(300px);
+  text-align: center;
+  font-size: rem(32px);
+  background-color: #FFFFFF;
+}

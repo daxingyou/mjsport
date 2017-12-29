@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: #000000">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/actShark.css?version=2017112418111">
+    <title>魔圣电竞大师</title>
+</head>
+<body >
+<div class="backpic"><img src="http://static.jesport.com/sly/images/activeImg/background.jpg" alt=""></div>
+<div class="contact" id="app">
+    <div class="img img1" @click="goback()" style="margin-bottom: 0;"><img src="http://static.jesport.com/sly/images/activeImg/add_0.png" alt=""></div>
+    <div class="img" style="margin-bottom: 0;"><img src="http://static.jesport.com/sly/images/activeImg/add_1.png" alt=""></div>
+    <div class="img">
+        <img src="http://static.jesport.com/sly/images/activeImg/add_2.png" alt="">
+        <div class="btn-signin" @click="goback()"></div>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data(){
+            return {}
+        },
+        created(){},
+        methods:{
+            goback(){
+                window.location.href="leagueIndex.html"
+            }
+        },
+    })
+</script>
+</body>
+</html>

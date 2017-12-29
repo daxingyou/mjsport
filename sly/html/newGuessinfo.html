@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <!--<link rel="stylesheet" href="http://static.jesport.com/sly/css/swiper-3.4.2.min.css">-->
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201711011445">
+    <title>魔圣电竞大师</title>
+</head>
+<body style="background: #f2f2f2;">
+<div id="wrapper" class="index newguessInfo" style="background: #f2f2f2;overflow: visible; position: static;">
+    <div id="scroller" style="min-height: 100%;position: static;">
+        <div id="app">
+            <!--顶部-->
+            <div class="header" :style="{backgroundImage:'url(http://static.jesport.com/sly/images/newIndex/banner_'+guessInfo.gameId+'.png)'}">
+                <div class="title"><a href="javascript:history.go(-1);"><div class="icon-left"></div></a>{{guessInfo.title}}</div>
+                <div class="teaminfo">
+                    <div class="item">
+                        <div class="img"><img :src="guessInfo.t1Info.logo" alt=""></div>
+                        <div class="name">{{guessInfo.t1Info.name}}</div>
+                    </div>
+                    <div class="center">
+                        <div class="scroe">{{guessInfo.t1Score}}<span>-</span>{{guessInfo.t2Score}}</div>
+                        <div class="date">{{guessInfo.endDate}}</div>
+                        <div class="state">{{(guessInfo.state==3)?"已结束":(guessInfo.state==2)?"已截投":"竞猜中"}}</div>
+                    </div>
+                    <div class="item">
+                        <div class="img"><img :src="guessInfo.t2Info.logo" alt=""></div>
+                        <div class="name">{{guessInfo.t2Info.name}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="mybalance">
+                <div class="title">竞猜下注</div>
+                <a class="balancebox" href="exchangeMd.html"><span class="val">{{memberBean.balanceBean}}</span><div class="icon-right"><span  class="plus"></span></div></a>
+                <a class="records" href="newGuessRecords.html"><span class="val">竞猜记录</span><div class="icon-right"><span  class="more"></span></div></a>
+            </div>
+            <!--竞猜列表-->
+            <div class="questionList">
+                <div class="title">
+                    <div class="item"  v-for="(item,index) in tabs" :class="{active:index==state}" @click="changeTabs(index)">{{item}}</div>
+                </div>
+                <div class="qitem" v-for="item in optionsList">
+                    <div class="title">
+                        <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/hummer.png" alt=""></div>
+                        <div class="questionitem">{{item.questionTitle}}</div>
+                    </div>
+                    <div class="newanswers" :class="{newanswers2:item.answer.length>4}">
+                        <div class="answer" :class="{answer2:item.answer.length>2}" v-for="x in item.answer" @click="bet(item,x)">
+                            <div class="isbet" v-if="x.isbet"><img src="http://static.jesport.com/sly/images/newIndex/beted.png" alt=""></div>
+                            <div class="name">{{x.items}}</div>
+                            <div class="odds">{{x.odds}}</div>
+                            <div class="win" v-if="x.win"><img src="http://static.jesport.com/sly/images/newIndex/win.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--弹窗-->
+            <div class="betwindow" v-if="maskShow">
+                <div class="title">
+                    <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/hummer.png" alt=""></div>
+                    <div class="questionitem">{{betQuestion}}</div>
+                </div>
+                <div class="balance">
+                    <div>选项
+                        <span style="color: #ff0000;margin-right: 0.5rem;">{{betAns.items}}</span>
+                        赔率
+                        <span style="color: #ff0000;">{{betAns.odds}}</span></div>
+                    <div>魔豆余额 : <span style="color: #ff0000">{{memberBean.balanceBean}}</span></div>
+                </div>
+                <div class="betnum">
+                    <div><input id="input" type="number" v-model="vote" v-on:input ="inputFunc()" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></div>
+                    <div class="sub-button" @click="subBet">提交</div>
+                </div>
+                <div class="reward">预计回报 : <span style="color: #ff0000">{{rewards}}</span></div>
+            </div>
+            <div class="mask2" v-if="maskShow" @click="maskIsShow()"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201711031730"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/newGuessinfo.js?version=201711031756"></script>
+</body>
+</html>

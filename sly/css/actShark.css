@@ -1,0 +1,1133 @@
+html {
+  color: #000;
+  background: #fff;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%; }
+
+* {
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box; }
+
+html,
+body {
+  font-family: Helvetica;
+  width: 100%; }
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0; }
+
+input,
+select,
+textarea {
+  font-size: 100%; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+fieldset,
+img {
+  border: 0;
+  display: block; }
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+i {
+  font-style: normal;
+  font-weight: 500; }
+
+ol,
+ul {
+  list-style: none; }
+
+caption,
+th {
+  text-align: left; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 500; }
+
+a:hover {
+  text-decoration: none; }
+
+a {
+  text-decoration: none; }
+
+input, button {
+  background: none;
+  border: 0 none; }
+
+.logintitle {
+  height: 1.26667rem;
+  line-height: 1.26667rem;
+  text-align: center;
+  color: #ffffff;
+  font-size: 0.32rem; }
+
+.login-form {
+  width: 9.8rem;
+  height: 9.8rem;
+  margin: 0 auto;
+  background-color: #000000;
+  border-radius: 0.10667rem;
+  padding: 0;
+  border: 1px solid #cccccc; }
+  .login-form .logo {
+    width: 3.78667rem;
+    height: 2.64rem;
+    margin: 0 auto;
+    margin-top: 0.53333rem; }
+    .login-form .logo img {
+      width: 3.78667rem;
+      height: 2.64rem; }
+  .login-form .title {
+    height: 1.38667rem;
+    line-height: 1.33333rem;
+    width: 9.44rem;
+    margin: 0 auto;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: center;
+    font-size: 0.53333rem;
+    color: #E4007F; }
+    .login-form .title span {
+      color: #999999; }
+  .login-form .item {
+    width: 7.97333rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    margin: 0.8rem auto;
+    border: 0.02667rem solid #cccccc;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    position: relative; }
+    .login-form .item .option {
+      color: #ffffff;
+      display: inline-block;
+      width: 1.66667rem;
+      background-color: #414141;
+      text-align: center; }
+    .login-form .item input {
+      float: right;
+      width: 6rem;
+      height: 100%;
+      padding-left: 0.26667rem;
+      font-size: 0.4rem;
+      color: #666666; }
+    .login-form .item .getCode {
+      position: absolute;
+      right: 0.13333rem;
+      top: 0.08rem;
+      width: 2.06667rem;
+      height: 0.62667rem;
+      color: #fff;
+      padding: 0;
+      border-radius: 0.13333rem;
+      background: #267373;
+      line-height: 0.62667rem;
+      text-align: center;
+      font-size: 0.32rem; }
+  .login-form .item-validatePhone {
+    margin-top: 0.8rem;
+    padding-left: 1.33333rem;
+    padding-right: 1.33333rem;
+    background: none;
+    display: flex;
+    justify-content: space-around; }
+    .login-form .item-validatePhone .validatePhone {
+      width: 3.49333rem;
+      color: #fff;
+      border-radius: 0.53333rem;
+      height: 0.8rem;
+      background: #236946;
+      line-height: 0.8rem;
+      text-align: center;
+      font-size: 0.42667rem; }
+
+.backpic {
+  width: 100%;
+  height: 17.78667rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0; }
+  .backpic img {
+    width: 100%;
+    height: 100%; }
+
+.league {
+  width: 100%;
+  padding-bottom: 2.66667rem;
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  z-index: 1; }
+  .league .header {
+    line-height: 1.06667rem;
+    height: 1.06667rem;
+    background-color: #FFFFFF;
+    color: #B6966C;
+    position: relative;
+    font-size: 0.42667rem; }
+    .league .header .icon-left {
+      width: 0.53333rem;
+      height: 0.53333rem;
+      position: absolute;
+      top: 0.26667rem;
+      left: 0.26667rem;
+      background-image: url("http://static.jesport.com/sly/images/icon-left-01.png");
+      background-repeat: no-repeat;
+      background-size: 0.53333rem 0.53333rem; }
+  .league .banner {
+    width: 100%;
+    height: 5.14667rem;
+    margin-bottom: 0.26667rem; }
+    .league .banner img {
+      width: 100%;
+      height: 100%; }
+  .league .live {
+    width: 9.06667rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    margin: 0.2rem auto;
+    background-color: rgba(182, 150, 108, 0.3);
+    color: #ff6600;
+    text-align: center;
+    font-size: 0.42667rem; }
+  .league .content {
+    z-index: 99;
+    width: 9.33333rem;
+    margin: 0 auto;
+    padding-bottom: 0.4rem;
+    text-align: center;
+    border-bottom: 0.02667rem solid rgba(182, 150, 108, 0.3); }
+    .league .content .title1 {
+      line-height: 1.10667rem;
+      font-size: 0.34667rem;
+      color: #B6966C; }
+    .league .content .title2 {
+      line-height: 0.98667rem;
+      font-size: 0.6rem;
+      color: #ffffff; }
+    .league .content .explain {
+      margin: 0.26667rem 0;
+      line-height: 0.53333rem;
+      font-size: 0.29333rem;
+      color: #ffffff; }
+    .league .content .md {
+      margin-top: 0.17333rem;
+      margin-bottom: 0.37333rem;
+      line-height: 0.37333rem;
+      font-size: 0.29333rem;
+      color: #B6966C; }
+    .league .content .btn-vote {
+      background-image: url("http://static.jesport.com/sly/images/activeImg/vote.png"); }
+    .league .content .mdexplain {
+      line-height: 0.8rem;
+      font-size: 0.24rem;
+      font-weight: bold; }
+    .league .content span {
+      color: #ff9900; }
+    .league .content .signin {
+      margin-top: 0.26667rem; }
+      .league .content .signin .item {
+        text-align: left;
+        height: 0.8rem;
+        line-height: 0.4rem;
+        color: #B6966C;
+        font-size: 0.24rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+        .league .content .signin .item .name {
+          margin-right: 0.13333rem; }
+        .league .content .signin .item .sign {
+          color: #ffffff;
+          font-weight: bold;
+          display: inline-block;
+          width: 0.42667rem;
+          height: 0.42667rem;
+          border-radius: 50%;
+          margin: 0 0.04rem;
+          background-image: url("http://static.jesport.com/sly/images/activeImg/choose.png");
+          background-repeat: no-repeat;
+          background-size: 0.42667rem 0.42667rem; }
+        .league .content .signin .item .sign.active {
+          background-image: url("http://static.jesport.com/sly/images/activeImg/choosed.png");
+          color: #ff9900; }
+  .league .exchange {
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 0.26667rem;
+    color: #ffffff; }
+    .league .exchange .title {
+      height: 2.05333rem;
+      line-height: 2.04rem;
+      font-size: 0.8rem; }
+      .league .exchange .title span {
+        color: #FF6600; }
+    .league .exchange .record {
+      position: relative; }
+      .league .exchange .record .btn-record {
+        z-index: 10;
+        position: absolute;
+        right: 0.13333rem;
+        top: 0.26667rem;
+        color: #3399ff;
+        font-size: 0.29333rem;
+        width: 2.17333rem;
+        height: 0.4rem;
+        line-height: 0.4rem; }
+      .league .exchange .record .mdnum {
+        width: 4.8rem;
+        margin: 0 auto;
+        height: 0.93333rem;
+        line-height: 0.93333rem;
+        font-size: 0.4rem;
+        background-image: url("http://static.jesport.com/sly/images/activeImg/hadmoney.png");
+        background-repeat: no-repeat;
+        background-size: 4.8rem 0.93333rem;
+        position: relative; }
+        .league .exchange .record .mdnum div {
+          position: absolute;
+          width: 0.93333rem;
+          text-align: center;
+          top: 0;
+          left: 2.33333rem;
+          color: #ff9900;
+          font-size: 0.4rem; }
+      .league .exchange .record .giftList {
+        display: flex;
+        justify-content: space-around;
+        padding-top: 0.26667rem; }
+        .league .exchange .record .giftList .item {
+          width: 3.44rem;
+          height: 4.05333rem; }
+          .league .exchange .record .giftList .item img {
+            width: 3.44rem;
+            height: 4.05333rem; }
+    .league .exchange .explain {
+      margin: 0.13333rem 0;
+      line-height: 0.8rem;
+      font-size: 0.24rem;
+      color: #ffffff; }
+  .league .drawbox {
+    width: 9.33333rem;
+    margin: 0 auto;
+    padding: 0.13333rem 0;
+    text-align: center;
+    border-top: 0.02667rem solid rgba(182, 150, 108, 0.3);
+    border-bottom: 0.02667rem solid rgba(182, 150, 108, 0.3);
+    color: #ffffff; }
+    .league .drawbox .title {
+      margin-top: 0.26667rem;
+      line-height: 0.93333rem;
+      font-size: 0.6rem; }
+      .league .drawbox .title span {
+        color: #ff9900; }
+    .league .drawbox .explain {
+      margin: 0.13333rem 0;
+      line-height: 0.8rem;
+      font-size: 0.29333rem; }
+    .league .drawbox .friends-btn {
+      background-image: url("http://static.jesport.com/sly/images/activeImg/friends.png"); }
+    .league .drawbox .record {
+      width: 100%;
+      margin-top: 0.33333rem;
+      margin-bottom: 0.4rem;
+      position: relative; }
+      .league .drawbox .record .btn-record {
+        position: absolute;
+        right: 0.13333rem;
+        top: 0.26667rem;
+        color: #3399ff;
+        font-size: 0.29333rem;
+        width: 2.17333rem;
+        height: 0.4rem;
+        line-height: 0.4rem;
+        z-index: 10; }
+      .league .drawbox .record .mdnum {
+        width: 4.8rem;
+        margin: 0 auto;
+        height: 0.93333rem;
+        line-height: 0.86667rem;
+        font-size: 0.32rem;
+        background-image: url("http://static.jesport.com/sly/images/activeImg/chance.png");
+        background-repeat: no-repeat;
+        background-size: 4.8rem 0.93333rem;
+        position: relative; }
+        .league .drawbox .record .mdnum div {
+          position: absolute;
+          width: 0.73333rem;
+          text-align: center;
+          top: 0;
+          left: 1.73333rem;
+          color: #ff9900;
+          font-size: 0.4rem; }
+      .league .drawbox .record .giftList {
+        padding-top: 0.26667rem; }
+        .league .drawbox .record .giftList .item {
+          width: 3.38667rem;
+          height: 4rem;
+          border: 0.02667rem solid #B6966C;
+          border-radius: 0.13333rem; }
+          .league .drawbox .record .giftList .item .top {
+            height: 3.2rem; }
+          .league .drawbox .record .giftList .item .btn-change {
+            height: 0.8rem;
+            line-height: 0.8rem;
+            font-size: 0.50667rem;
+            color: #625740;
+            border-radius: 0.13333rem;
+            background-color: #FCC05A; }
+    .league .drawbox #luck {
+      width: 8.66667rem;
+      margin: 0 auto; }
+      .league .drawbox #luck table {
+        width: 100%;
+        height: 5.62667rem; }
+        .league .drawbox #luck table tr {
+          width: 100%;
+          height: 2.4rem;
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+        .league .drawbox #luck table .luck-unit {
+          background-color: #000000;
+          border: 0.04rem solid #B6966C;
+          width: 1.86667rem;
+          height: 1.86667rem;
+          position: relative; }
+          .league .drawbox #luck table .luck-unit img {
+            width: 1.76rem;
+            height: 1.76rem;
+            margin: 0.04rem auto; }
+          .league .drawbox #luck table .luck-unit .name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 1.70667rem;
+            height: 0.53333rem;
+            font-size: 0.24rem;
+            overflow: hidden; }
+        .league .drawbox #luck table .luck-unit.active {
+          border: 0.04rem solid #ffffff; }
+        .league .drawbox #luck table .cjBtn {
+          width: 4rem;
+          font-size: 0.66667rem;
+          text-align: center;
+          line-height: 1.70667rem;
+          color: #82714D;
+          background-color: #FCC05A; }
+        .league .drawbox #luck table .cjBtn:active {
+          color: #ff0000; }
+  .league .signinbox {
+    width: 9.33333rem;
+    padding-bottom: 0.26667rem;
+    margin: 0 auto;
+    text-align: center;
+    border-bottom: 0.02667rem solid rgba(182, 150, 108, 0.3); }
+    .league .signinbox .title {
+      height: 2.16rem;
+      line-height: 2.16rem;
+      font-size: 0.8rem; }
+    .league .signinbox span {
+      color: #ff6600; }
+    .league .signinbox .sign-btn {
+      background-image: url("http://static.jesport.com/sly/images/activeImg/sign.png");
+      margin-bottom: 0.53333rem; }
+    .league .signinbox .contact-btn {
+      background-image: url("http://static.jesport.com/sly/images/activeImg/addr.png");
+      margin-bottom: 0.53333rem; }
+    .league .signinbox .explain {
+      margin: 0.26667rem 0 0.4rem 0;
+      font-size: 0.29333rem; }
+      .league .signinbox .explain .color {
+        color: #FFCC00; }
+    .league .signinbox .qrimg {
+      width: 3.41333rem;
+      height: 3.41333rem;
+      margin: 0 auto; }
+      .league .signinbox .qrimg img {
+        width: 3.41333rem;
+        height: 3.41333rem; }
+  .league .description {
+    width: 10rem;
+    margin: 0 auto;
+    text-align: center; }
+    .league .description .title {
+      height: 1.86667rem;
+      line-height: 2.16rem;
+      font-size: 0.8rem; }
+    .league .description .explain {
+      width: 8.74667rem;
+      height: 3.70667rem;
+      margin: 0 auto; }
+      .league .description .explain img {
+        width: 8.74667rem;
+        height: 3.70667rem; }
+    .league .description .des {
+      line-height: 0.4rem;
+      font-size: 0.21333rem; }
+    .league .description .partner {
+      width: 100%;
+      height: 4.09333rem;
+      margin-top: 0.53333rem;
+      margin-bottom: 0.26667rem; }
+      .league .description .partner img {
+        width: 100%;
+        height: 100%; }
+  .league .btn {
+    width: 4.96rem;
+    height: 0.96rem;
+    line-height: 0.96rem;
+    font-size: 0.42667rem;
+    color: #333333;
+    margin: 0 auto;
+    background-size: 4.96rem 0.96rem;
+    background-repeat: no-repeat; }
+  .league .mask {
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 200%;
+    background: #000;
+    opacity: 0.6;
+    z-index: 99; }
+  .league .alert-content {
+    position: fixed;
+    z-index: 100;
+    width: 9.46667rem;
+    background-color: #000000;
+    top: 0.4rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #999999;
+    padding-bottom: 0.26667rem; }
+    .league .alert-content .title {
+      line-height: 1.2rem;
+      position: relative; }
+      .league .alert-content .title .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 0.8rem;
+        font-size: 0.42667rem;
+        color: #666666; }
+    .league .alert-content .gamebox {
+      display: flex;
+      justify-content: space-around;
+      padding-bottom: 0.13333rem;
+      margin: 0 0.33333rem;
+      border-bottom: 0.02667rem solid rgba(153, 153, 153, 0.4); }
+      .league .alert-content .gamebox .item {
+        width: 3.34667rem;
+        height: 2.86667rem;
+        padding: 0.02667rem; }
+        .league .alert-content .gamebox .item img {
+          width: 3.34667rem;
+          height: 2.2rem;
+          opacity: 0.6; }
+        .league .alert-content .gamebox .item .name {
+          opacity: 0.6;
+          height: 0.8rem;
+          line-height: 0.8rem; }
+      .league .alert-content .gamebox .active .name {
+        opacity: 1; }
+      .league .alert-content .gamebox .active img {
+        opacity: 1; }
+    .league .alert-content .title2 {
+      width: 100%;
+      padding: 0 0.33333rem;
+      line-height: 1.06667rem;
+      height: 1.06667rem;
+      position: relative;
+      text-align: left; }
+      .league .alert-content .title2 .name {
+        color: #FBA512;
+        font-size: 0.42667rem; }
+      .league .alert-content .title2 .ordertabs {
+        position: absolute;
+        z-index: 100;
+        top: 0;
+        right: 0.26667rem;
+        line-height: 1.06667rem;
+        height: 1.06667rem;
+        color: #999999; }
+        .league .alert-content .title2 .ordertabs .order {
+          display: inline-block; }
+        .league .alert-content .title2 .ordertabs .active {
+          color: #ffffff; }
+    .league .alert-content .slide {
+      width: 8.8rem;
+      padding: 0.26667rem;
+      overflow-y: auto; }
+      .league .alert-content .slide .schoolList {
+        height: 9.33333rem;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column; }
+        .league .alert-content .slide .schoolList .item {
+          margin: 0.13333rem 0.33333rem;
+          width: 2.73333rem;
+          height: 4.25333rem;
+          border-radius: 0.13333rem;
+          background-image: url("http://static.jesport.com/sly/images/activeImg/box.png");
+          background-repeat: no-repeat;
+          background-size: 2.73333rem 4.25333rem;
+          font-size: 0.26667rem;
+          position: relative; }
+          .league .alert-content .slide .schoolList .item .itemid {
+            font-size: 0.24rem;
+            position: absolute;
+            right: 0.13333rem;
+            top: 0.13333rem; }
+          .league .alert-content .slide .schoolList .item .itemnum {
+            width: 2.73333rem;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            color: #FF6600;
+            top: 3.13333rem; }
+          .league .alert-content .slide .schoolList .item .schoolimg {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0.89333rem;
+            margin: auto;
+            width: 2.13333rem;
+            height: 2.13333rem;
+            border-radius: 50%; }
+            .league .alert-content .slide .schoolList .item .schoolimg img {
+              border-radius: 50%;
+              width: 2.13333rem;
+              height: 2.13333rem; }
+          .league .alert-content .slide .schoolList .item .itemname {
+            width: 2.73333rem;
+            text-align: center;
+            position: absolute;
+            left: 0;
+            top: 0.4rem; }
+          .league .alert-content .slide .schoolList .item .btn-change {
+            height: 0.8rem;
+            line-height: 0.8rem;
+            font-size: 0.50667rem;
+            color: #625740;
+            border-radius: 0.13333rem;
+            background-color: #FCC05A; }
+    .league .alert-content .rank {
+      line-height: 1.06667rem;
+      color: #3399FF;
+      font-size: 0.29333rem; }
+  .league .alert-pushvote {
+    z-index: 100;
+    width: 9.46667rem;
+    background-color: #000000;
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #B6966C;
+    padding-bottom: 0.4rem;
+    border: 1px solid #999999; }
+    .league .alert-pushvote .title {
+      color: #ffffff;
+      line-height: 1.2rem;
+      margin-bottom: 0.4rem;
+      position: relative; }
+      .league .alert-pushvote .title .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 0.8rem;
+        font-size: 0.42667rem;
+        color: #666666; }
+    .league .alert-pushvote .mdnum {
+      height: 1.06667rem;
+      line-height: 1.06667rem; }
+      .league .alert-pushvote .mdnum .sign {
+        color: #ffffff;
+        font-weight: bold;
+        display: inline-block;
+        width: 0.42667rem;
+        height: 0.42667rem;
+        border-radius: 50%;
+        margin: 0 0.04rem;
+        background-image: url("http://static.jesport.com/sly/images/activeImg/choose.png");
+        background-repeat: no-repeat;
+        background-size: 0.42667rem 0.42667rem; }
+      .league .alert-pushvote .mdnum .sign.active {
+        background-image: url("http://static.jesport.com/sly/images/activeImg/choosed.png");
+        color: #ff9900; }
+    .league .alert-pushvote .color {
+      color: #ff6600; }
+    .league .alert-pushvote .push-btn {
+      background-image: url("http://static.jesport.com/sly/images/activeImg/button.png"); }
+  .league .exchangeList {
+    border: 1px solid #999999;
+    z-index: 100;
+    width: 9.46667rem;
+    background-color: #000000;
+    position: fixed;
+    top: 0.8rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #B6966C;
+    padding-bottom: 0.4rem; }
+    .league .exchangeList .title {
+      color: #ffffff;
+      line-height: 1.2rem;
+      margin-bottom: 0.4rem;
+      position: relative; }
+      .league .exchangeList .title .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 0.8rem;
+        font-size: 0.42667rem;
+        color: #666666; }
+    .league .exchangeList .items {
+      height: 5.33333rem;
+      overflow-y: auto; }
+      .league .exchangeList .items .item {
+        width: 7.8rem;
+        height: 0.70667rem;
+        line-height: 0.70667rem;
+        text-align: center;
+        margin: 0 auto;
+        display: flex;
+        border-bottom: 1px solid #000000;
+        border-radius: 0.13333rem;
+        overflow: hidden;
+        background-color: #333333; }
+        .league .exchangeList .items .item .state {
+          width: 1.66667rem;
+          background-color: #ffffff; }
+        .league .exchangeList .items .item .state.active {
+          background-color: #ff9900;
+          color: #000000; }
+        .league .exchangeList .items .item .name {
+          flex: 1; }
+    .league .exchangeList .giftbox {
+      width: 4.86667rem;
+      height: 7.13333rem;
+      margin: 0.26667rem auto;
+      background-color: #ffffff;
+      border-radius: 0.2rem; }
+      .league .exchangeList .giftbox .title {
+        line-height: 0.86667rem;
+        color: #000;
+        font-size: 0.26667rem;
+        margin-bottom: 0; }
+      .league .exchangeList .giftbox .imgcode {
+        width: 4.66667rem;
+        height: 2.26667rem;
+        margin: 0 auto;
+        margin-bottom: 0.13333rem; }
+        .league .exchangeList .giftbox .imgcode img {
+          width: 100%;
+          height: 100%; }
+      .league .exchangeList .giftbox .codeimg {
+        width: 2.54667rem;
+        height: 2.54667rem;
+        margin: 0 auto;
+        border: 1px solid #000; }
+        .league .exchangeList .giftbox .codeimg img {
+          width: 100%;
+          height: 100%; }
+      .league .exchangeList .giftbox .desc {
+        font-size: 0.26667rem; }
+  .league .wingift {
+    z-index: 100;
+    width: 9.44rem;
+    background-color: #000000;
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #999999;
+    padding-bottom: 0.4rem; }
+    .league .wingift .title {
+      height: 3.06667rem;
+      line-height: 3.06667rem;
+      position: relative; }
+      .league .wingift .title span {
+        color: #B6966C; }
+      .league .wingift .title .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 0.8rem;
+        height: 0.8rem;
+        line-height: 0.8rem;
+        font-size: 0.42667rem;
+        color: #666666; }
+    .league .wingift .img {
+      width: 1.70667rem;
+      height: 1.70667rem;
+      border: 1px solid #B6966C;
+      border-radius: 0.13333rem;
+      overflow: hidden;
+      margin: 0 auto; }
+      .league .wingift .img img {
+        width: 1.70667rem;
+        height: 1.70667rem; }
+    .league .wingift .watch {
+      padding: 0 1.06667rem;
+      display: flex;
+      justify-content: center;
+      line-height: 1.53333rem; }
+      .league .wingift .watch .btn-watch {
+        color: #3399ff; }
+    .league .wingift .way {
+      padding: 0 1.06667rem;
+      text-align: left; }
+      .league .wingift .way span {
+        color: #3399ff;
+        font-size: 0.29333rem;
+        line-height: 0.33333rem; }
+  .league .sharebox {
+    position: fixed;
+    top: 1.22667rem;
+    left: 1.05333rem;
+    z-index: 100;
+    width: 7.89333rem;
+    height: 6.96rem; }
+    .league .sharebox img {
+      width: 100%;
+      hieight: 100%; }
+    .league .sharebox .iknow-btn {
+      position: absolute;
+      top: 5.6rem;
+      left: 1.6rem;
+      width: 5.33333rem;
+      height: 1.06667rem; }
+  .league .alert-signinBox {
+    z-index: 100;
+    width: 9.46667rem;
+    background-color: #000000;
+    position: absolute;
+    top: 2.66667rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #B6966C;
+    padding-bottom: 0.4rem;
+    border-radius: 0.13333rem;
+    border: 1px solid #999999; }
+    .league .alert-signinBox .title {
+      color: #ffffff;
+      line-height: 1.2rem;
+      margin-bottom: 0.4rem;
+      position: relative; }
+      .league .alert-signinBox .title .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 0.8rem;
+        font-size: 0.42667rem;
+        color: #666666; }
+    .league .alert-signinBox .sign {
+      margin-bottom: 0.4rem; }
+      .league .alert-signinBox .sign .item {
+        width: 7.8rem;
+        display: flex;
+        height: 1.06667rem;
+        justify-content: center;
+        margin: 0 auto;
+        margin-bottom: 0.2rem;
+        border-radius: 0.13333rem;
+        overflow: hidden; }
+        .league .alert-signinBox .sign .item .name {
+          background-color: #333333;
+          width: 2.4rem;
+          line-height: 1.06667rem; }
+        .league .alert-signinBox .sign .item input {
+          width: 4.66667rem;
+          padding-left: 0.2rem;
+          height: 1.06667rem;
+          font-size: 0.32rem;
+          color: #ffffff;
+          background-color: #868686; }
+        .league .alert-signinBox .sign .item input::placeholder {
+          color: #666666; }
+        .league .alert-signinBox .sign .item select {
+          width: 4.66667rem;
+          padding-left: 0.2rem;
+          height: 1.06667rem;
+          font-size: 0.32rem;
+          color: #ffffff;
+          background-color: #868686; }
+          .league .alert-signinBox .sign .item select option {
+            height: 1.06667rem;
+            font-size: 0.32rem; }
+  .league .alert-rankList {
+    z-index: 99;
+    width: 9.46667rem;
+    background-color: #000000;
+    position: fixed;
+    top: 1.06667rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #B6966C;
+    padding-bottom: 0.4rem;
+    border-radius: 0.13333rem;
+    border: 1px solid #999999; }
+    .league .alert-rankList .title {
+      color: #ffffff;
+      line-height: 1.2rem;
+      margin-bottom: 0.4rem;
+      position: relative; }
+      .league .alert-rankList .title span {
+        color: #FF9900; }
+      .league .alert-rankList .title .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 0.8rem;
+        font-size: 0.42667rem;
+        color: #666666; }
+    .league .alert-rankList .rankList {
+      width: 7.73333rem;
+      height: 9.33333rem;
+      margin: 0.26667rem auto;
+      overflow: hidden;
+      overflow-y: auto; }
+      .league .alert-rankList .rankList .item {
+        display: flex;
+        line-height: 0.8rem;
+        height: 0.8rem;
+        font-size: 0.32rem;
+        justify-content: center; }
+        .league .alert-rankList .rankList .item .rank {
+          width: 0.8rem; }
+        .league .alert-rankList .rankList .item .name {
+          text-align: left;
+          width: 4rem;
+          overflow: hidden; }
+        .league .alert-rankList .rankList .item div {
+          border-bottom: 1px solid #f2f2f2; }
+  .league .signIn-content {
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 0.4rem;
+    color: #ffffff; }
+    .league .signIn-content .title {
+      height: 1.78667rem;
+      line-height: 2.04rem;
+      font-size: 0.8rem; }
+      .league .signIn-content .title span {
+        color: #FF6600; }
+    .league .signIn-content .record {
+      position: relative; }
+      .league .signIn-content .record .mdnum {
+        width: 4.8rem;
+        margin: 0 auto;
+        height: 0.93333rem;
+        line-height: 0.93333rem;
+        font-size: 0.4rem;
+        background-image: url("http://static.jesport.com/sly/images/activeImg/moneybg.png");
+        background-repeat: no-repeat;
+        background-size: 4.8rem 0.93333rem;
+        position: relative; }
+        .league .signIn-content .record .mdnum span {
+          color: #ff9900;
+          font-size: 0.4rem; }
+    .league .signIn-content .explain {
+      margin: 0 0 0.26667rem 0;
+      font-size: 0.24rem;
+      color: #ffffff; }
+    .league .signIn-content .giftimg {
+      margin: 0 auto;
+      width: 2.30667rem;
+      height: 2.37333rem; }
+      .league .signIn-content .giftimg img {
+        width: 2.30667rem;
+        height: 2.37333rem; }
+    .league .signIn-content .datemark {
+      margin: 0.26667rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .league .signIn-content .datemark .img {
+        display: flex;
+        height: 0.42667rem; }
+        .league .signIn-content .datemark .img img {
+          width: 0.42667rem;
+          height: 0.42667rem; }
+      .league .signIn-content .datemark .img.active:after {
+        color: #FF6600; }
+      .league .signIn-content .datemark .img:last-of-type:after {
+        content: ""; }
+      .league .signIn-content .datemark .img:after {
+        line-height: 0.42667rem;
+        content: "-"; }
+    .league .signIn-content .sign-btn {
+      width: 2.68rem;
+      height: 0.64rem;
+      margin: 0.4rem auto; }
+      .league .signIn-content .sign-btn img {
+        width: 2.68rem;
+        height: 0.64rem; }
+
+.contact {
+  width: 10rem; }
+  .contact .img {
+    position: relative;
+    width: 10rem;
+    margin-bottom: 1px; }
+    .contact .img img {
+      width: 10rem; }
+    .contact .img .btn-signin {
+      position: absolute;
+      width: 5rem;
+      height: 1rem;
+      top: 1.90667rem;
+      left: 0;
+      right: 0;
+      margin: auto; }
+  .contact .img1 {
+    margin-bottom: 0.13333rem; }
+
+.leaguerecord {
+  padding-top: 0.26667rem;
+  text-align: center;
+  font-size: 0.37333rem; }
+  .leaguerecord .header {
+    height: 1.06667rem;
+    line-height: 1.06667rem;
+    border-bottom: 1px;
+    font-size: 0.53333rem; }
+  .leaguerecord .tab-btn {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    display: flex;
+    justify-content: space-around; }
+    .leaguerecord .tab-btn .btn {
+      width: 2.66667rem;
+      border: 1px solid #868686;
+      background: #fff;
+      border-radius: 0.13333rem;
+      text-align: center;
+      outline: none; }
+    .leaguerecord .tab-btn .active {
+      background: #666;
+      color: #fff; }
+  .leaguerecord .info {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.4rem;
+    align-items: center;
+    height: 1.2rem; }
+    .leaguerecord .info .allnum {
+      text-align: center;
+      line-height: 0.8rem;
+      color: #333333;
+      padding-left: 0.13333rem; }
+    .leaguerecord .info select {
+      height: 0.8rem; }
+  .leaguerecord table {
+    margin-top: 0.13333rem;
+    font-size: 0.24rem;
+    border-collapse: collapse;
+    width: 100%; }
+    .leaguerecord table tr {
+      border: 1px solid #eee;
+      text-align: center;
+      line-height: 0.66667rem; }
+      .leaguerecord table tr th {
+        background: #666;
+        color: #fff;
+        border: 1px solid #eee;
+        font-weight: normal;
+        text-align: center; }
+      .leaguerecord table tr td {
+        border: 1px solid #eee; }
+      .leaguerecord table tr .red {
+        color: #f52020; }
+      .leaguerecord table tr .green {
+        color: #008800; }
+      .leaguerecord table tr .date {
+        line-height: 0.4rem; }
+    .leaguerecord table tr:nth-child(odd) {
+      background-color: #f2f2f2; }
+    .leaguerecord table tr:nth-child(even) {
+      background-color: #cccccc; }
+  .leaguerecord .tab-btn2 {
+    margin-top: 0.26667rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    display: flex;
+    justify-content: space-around; }
+    .leaguerecord .tab-btn2 .btn {
+      font-size: 0.32rem;
+      width: 2.66667rem;
+      border: 1px solid #eee;
+      background: #f2f2f2;
+      border-radius: 0.13333rem;
+      text-align: center;
+      outline: none; }
+
+/*# sourceMappingURL=actShark.css.map */

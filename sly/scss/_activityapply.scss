@@ -1,0 +1,1889 @@
+.applywrapper{
+  top:0;
+  .activityapply{
+    max-width: rem(750px);
+    margin: 0 auto;
+    .bannerimg{
+      width: rem(750px);
+      height:rem(320px);
+      img{
+        width: 100%;
+        height:100%;
+      }
+    }
+    .ruletitle{
+      background-color: #FFFFFF;
+      width: rem(750px);
+      height:rem(80px);
+      line-height: rem(80px);
+      padding:0 rem(20px);
+      .lefticon{
+        width: rem(5px);
+        height:rem(40px);
+        float: left;
+        margin-top: rem(20px);
+        background-color: #E4007F;
+      }
+      .matchname{
+        display: inline-block;
+        width: rem(530px);
+        margin-left: rem(20px);
+        font-size: rem(26px);
+      }
+      .ruleinfo{
+        width: rem(130px);
+        float: right;
+        color: #E4007F;
+        img{
+          float: right;
+          margin-top: rem(27.5px);
+          width: rem(25px);
+          height:rem(25px);
+        }
+      }
+    }
+    .ruledetail{
+      width: rem(730px);
+      height:rem(320px);
+      margin:0 auto;
+      border: 1px solid #b4bac8;
+      .items{
+        height:rem(80px);
+        line-height:rem(80px);
+        font-size: rem(26px);
+        color: #535a62;
+        display: flex;
+        .diamondicon{
+          display: inline-block;
+          width: rem(10px);
+          height:rem(10px);
+          background-color: #a9c1d9;
+          transform: rotate(45deg);
+          margin :rem(35px) rem(10px);
+        }
+        .ruleitem{
+          width: rem(120px);
+        }
+      }
+    }
+    .cutline{
+      width:rem(750px);
+      height:rem(10px);
+      background-color: #f3f3f3;
+      margin: rem(20px) 0;
+    }
+    .applybox{
+      width: rem(730px);
+      height:rem(195px);
+      margin:0 auto;
+      margin-top: rem(40px);
+      border: 1px solid #b4bac8;
+      position: relative;
+      padding-top: rem(20px);
+      .applytitle{
+        height: rem(60px);
+        line-height: rem(60px);
+        width: rem(200px);
+        text-align: center;
+        position: absolute;
+        top:rem(-30px);
+        left:rem(265px);
+        font-size: rem(28px);
+        background-color: #FFFFFF;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-around;
+        .diamondicon{
+          display: inline-block;
+          width: rem(10px);
+          height:rem(10px);
+          background-color: #a9c1d9;
+          transform: rotate(45deg);
+          margin :rem(25px) 0;
+        }
+      }
+      .btn1{
+        .bind-box{
+          background-color:#FFFFFF;
+          height:rem(150px);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .diamond1{
+            width: 0;
+            height: 0;
+            border-top: rem(36px) solid transparent;
+            border-right: rem(30px) solid #EF6095;
+            border-bottom: rem(36px) solid transparent;
+            margin-right: -1px;
+          }
+          .diamond2{
+            width: 0;
+            height: 0;
+            border-top: rem(36px) solid transparent;
+            border-left: rem(30px) solid #EF6095;
+            border-bottom: rem(36px) solid transparent;
+            margin-left: -1px;
+          }
+          .apply-btn{
+            width: rem(300px);
+            height:rem(72px);
+            line-height:rem(72px);
+            font-size: rem(30px);
+            text-align: center;
+            background-color: #EF6095;
+            color: #FFFFFF;
+          }
+        }
+      }
+      .memberbox{
+        width: 100%;
+        padding-top: rem(20px);
+      }
+      .btn2{
+        .teamitem{
+          display: flex;
+          //line-height: rem(120px);
+          font-size: rem(26px);
+          padding:rem(20px);
+          color: #525662;
+          border-bottom: 1px solid #6C6C6C;
+          .teamimg{
+            width: rem(120px);
+            height:rem(120px);
+            background-image: url(http://static.jesport.com/sly/images/indeximages/match-bg.png);
+            background-size: rem(120px) rem(120px);
+            background-repeat: no-repeat;
+            img{
+              margin: rem(20px);
+              width: rem(80px);
+              height:rem(80px);
+            }
+          }
+          .teamname{
+            width:rem(400px);
+            padding-left: rem(10px);
+            .memberimglist{
+              margin-top: rem(10px);
+              display: flex;
+              .memberimg{
+                width: rem(55px);
+                height:rem(55px);
+                border: 1px solid #6C6C6C;
+                border-radius: 50%;
+                overflow: hidden;
+                margin-right: rem(10px);
+                img{
+                  margin:rem(2px);
+                  width: rem(50px);
+                  height:rem(50px);
+                }
+              }
+            }
+          }
+          .bind-box{
+            background-color:#FFFFFF;
+            height:rem(120px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .diamond1{
+              width: 0;
+              height: 0;
+              border-top: rem(25px) solid transparent;
+              border-right: rem(30px) solid #EF6095;
+              border-bottom: rem(25px) solid transparent;
+              margin-right: -1px;
+            }
+            .diamond2{
+              width: 0;
+              height: 0;
+              border-top: rem(25px) solid transparent;
+              border-left: rem(30px) solid #EF6095;
+              border-bottom: rem(25px) solid transparent;
+              margin-left: -1px;
+            }
+            .apply-btn{
+              width: rem(140px);
+              height:rem(50px);
+              line-height:rem(50px);
+              font-size: rem(30px);
+              text-align: center;
+              background-color: #EF6095;
+              color: #FFFFFF;
+            }
+          }
+          .status{
+            line-height: rem(120px);
+            color: #aeb6b9;
+          }
+        }
+      }
+    }
+    .memberitem{
+      display: flex;
+      justify-content: space-between;
+      line-height: rem(90px);
+      font-size: rem(26px);
+      padding:rem(20px);
+      color: #525662;
+      border-bottom: 1px solid #6C6C6C;
+      .memberimg{
+        display: inline-block;
+        width: rem(90px);
+        height:rem(90px);
+        border: 1px solid #868686;
+        border-radius: 50%;
+        overflow: hidden;
+        img{
+          width: 100%;
+          height:100%;
+        }
+      }
+      .membername{
+        flex: 1;
+        padding-left: rem(20px);
+        position: relative;
+        .captainicon{
+          position: absolute;
+          left:rem(250px);
+          top:0;
+          color: #bbc0c4;
+          font-size: rem(20px);
+          line-height: rem(30px);
+          text-align: center;
+          img{
+            width: rem(50px);
+            height:rem(50px);
+          }
+        }
+      }
+      .status{
+      }
+    }
+    .playerbox{
+      width: rem(730px);
+      border: 1px solid #b4bac8;
+      border-bottom: none;
+      position: relative;
+      padding-top: rem(20px);
+      margin:0 auto;
+      margin-top: rem(40px);
+      .applytitle{
+        height: rem(60px);
+        line-height: rem(60px);
+        width: rem(200px);
+        text-align: center;
+        position: absolute;
+        top:rem(-30px);
+        left:rem(265px);
+        font-size: rem(28px);
+        background-color: #FFFFFF;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-around;
+        .diamondicon{
+          display: inline-block;
+          width: rem(10px);
+          height:rem(10px);
+          background-color: #a9c1d9;
+          transform: rotate(45deg);
+          margin :rem(25px) 0;
+        }
+      }
+      .teamitem{
+        display: flex;
+        line-height: rem(120px);
+        font-size: rem(26px);
+        padding:rem(20px);
+        color: #525662;
+        border-bottom: 1px solid #6C6C6C;
+        .teamimg{
+          width: rem(120px);
+          height:rem(120px);
+          background-image: url(http://static.jesport.com/sly/images/indeximages/match-bg.png);
+          background-size: rem(120px) rem(120px);
+          background-repeat: no-repeat;
+          img{
+            margin: rem(20px);
+            width: rem(80px);
+            height:rem(80px);
+          }
+        }
+        .teamname{
+          width:rem(275px);
+          padding-left: rem(10px);
+        }
+        .captainimg{
+          width: rem(80px);
+          height:rem(80px);
+          border: 1px solid #6C6C6C;
+          border-radius:50%;
+          margin:rem(20px) 0;
+          padding:rem(2px);
+          img{
+            border-radius: 50%;
+            width: rem(75px);
+            height:rem(75px);
+          }
+        }
+        .captainname{
+          //width: rem(170px);
+          flex: 1;
+          margin-left: rem(20px);
+        }
+        .captainicon{
+          padding-top: rem(20px);
+          color: #bbc0c4;
+          font-size: rem(20px);
+          line-height: rem(30px);
+          text-align: center;
+          img{
+            width: rem(50px);
+            height:rem(50px);
+          }
+        }
+      }
+
+    }
+    .playernum{
+      height: rem(60px);
+      line-height: rem(60px);
+      width: rem(300px);
+      text-align: center;
+      font-size: rem(28px);
+      background-color: #FFFFFF;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-around;
+      margin: 0 auto;
+      color: #bec2cd;
+      font-size: rem(24px);
+      .diamondicon{
+        display: inline-block;
+        width: rem(10px);
+        height:rem(10px);
+        background-color: #a9c1d9;
+        transform: rotate(45deg);
+        margin :rem(25px) 0;
+      }
+    }
+    .myteamborder{
+      width: rem(730px);
+      margin :0 auto;
+      border:1px solid #b4bac8;
+      position: relative;
+      padding-top:rem(30px);
+      .applytitle{
+        height: rem(60px);
+        line-height: rem(60px);
+        width: rem(200px);
+        text-align: center;
+        position: absolute;
+        top:rem(-30px);
+        left:rem(265px);
+        font-size: rem(28px);
+        background-color: #FFFFFF;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-around;
+        .diamondicon{
+          display: inline-block;
+          width: rem(10px);
+          height:rem(10px);
+          background-color: #a9c1d9;
+          transform: rotate(45deg);
+          margin :rem(25px) 0;
+        }
+      }
+      .teaminfo{
+        display: flex;
+        justify-content: space-between;
+        padding:0 rem(20px);
+        color: #E4007F;
+        .teamimgname{
+          width: rem(200px);
+          .teamimg {
+            width: rem(120px);
+            height: rem(120px);
+            margin:0 auto;
+            background-image: url(http://static.jesport.com/sly/images/indeximages/match-bg.png);
+            background-size: rem(120px) rem(120px);
+            background-repeat: no-repeat;
+            padding: rem(20px);
+            img {
+              width: rem(80px);
+              height: rem(80px);
+            }
+          }
+          .teamname{
+            line-height: rem(60px);
+            text-align: center;
+            color: #4f5160;
+          }
+        }
+
+      }
+      .teammember{
+        height:rem(80px);
+        line-height: rem(80px);
+        padding: 0 rem(20px);
+        border-top: 1px solid #b4bac8;
+        border-bottom: 1px solid #b4bac8;
+        .membernum{
+          margin-left: rem(10px);
+          color: #E4007F;
+        }
+      }
+    }
+    .invitebtn{
+      .bind-box{
+        background-color:#FFFFFF;
+        height:rem(150px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .diamond1{
+          width: 0;
+          height: 0;
+          border-top: rem(36px) solid transparent;
+          border-right: rem(30px) solid #EF6095;
+          border-bottom: rem(36px) solid transparent;
+          margin-right: -1px;
+        }
+        .diamond2{
+          width: 0;
+          height: 0;
+          border-top: rem(36px) solid transparent;
+          border-left: rem(30px) solid #EF6095;
+          border-bottom: rem(36px) solid transparent;
+          margin-left: -1px;
+        }
+        .apply-btn{
+          width: rem(300px);
+          height:rem(72px);
+          line-height:rem(72px);
+          font-size: rem(30px);
+          text-align: center;
+          background-color: #EF6095;
+          color: #FFFFFF;
+        }
+      }
+    }
+    .memberinfo{
+      margin-top:rem(20px);
+    }
+    .msak{
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 130%;
+      background: #000;
+      opacity: 0.3;
+      z-index: 99;
+    }
+    .teamalert{
+      z-index: 100;
+      width: rem(600px);
+      position: fixed;
+      top:rem(100px);
+      left:rem(75px);
+      text-align: center;
+      border-radius: rem(10px);
+      .title{
+        background-color:#FFFFFF;
+        color: #EF6095;
+        height:rem(120px);
+        line-height: rem(120px);
+        font-size: rem(36px);
+        display: flex;
+        justify-content: space-around;
+        align-items:center;
+        padding:0 rem(120px);
+        .diamond{
+          transform:rotate(45deg);
+          width: rem(16px);
+          height:rem(16px);
+          background-color: #EF6095;
+        }
+        //margin-bottom: rem(20px);
+      }
+      .cutline2{
+        //width: rem(560px);
+        height:rem(2px);
+        background-color: #FFFFFF;
+        background-image:url("http://static.jesport.com/sly/images/cutline.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
+      .alertcontent{
+        background-color:#FFFFFF;
+        font-size: rem(28px);
+        line-height: rem(80px);
+        padding: 0 rem(40px) ;
+        .infobox{
+          //clear: both;
+          display: flex;
+          position: relative;
+          .item{
+            display: inline-block;
+            //float: left;
+            width: rem(180px);
+            font-size: rem(26px);
+            height:rem(80px);
+            margin: rem(20px) 0;
+            padding-left:rem(20px);
+            text-align: left;
+            border-right: 1px solid #6C6C6C;
+          }
+          .value{
+            display: inline-block;
+            width: rem(320px);
+            margin-left: rem(20px);
+            overflow: hidden;
+            input{
+              margin-top: rem(20px);
+              height:rem(80px);
+              line-height: rem(80px);
+            }
+          }
+          .imgShow{
+            position: absolute;
+            top: rem(20px);
+            left: rem(180px);
+            z-index: 2;
+            width: rem(340px);
+            height: rem(80px);
+            line-height: rem(80px);
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            #imgShow {
+              display: inline-block;
+              width: rem(260px);
+              height:rem(80px);
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              padding-left: rem(20px);
+              img{
+                width: rem(80px);
+                height:rem(80px);
+              }
+            }
+            .button {
+              display: inline-block;
+              background-image: url("http://static.jesport.com/sly/images/icon-right.png");
+              background-repeat: no-repeat;
+              background-size:rem(35px) rem(35px);
+              width: rem(35px);
+              height:rem(35px);
+              text-align: center;
+              border: none;
+              color: #fff;
+            }
+          }
+          #img {
+            position: absolute;
+            top: 0;
+            left: rem(180px);
+            z-index: 3;
+            opacity: 0;
+            width: rem(340px);
+            height: rem(120px);
+            line-height: 40px;
+            cursor: pointer;
+          }
+        }
+      }
+      .bind-box{
+        background-color:#FFFFFF;
+        height:rem(150px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .diamond1{
+          width: 0;
+          height: 0;
+          border-top: rem(36px) solid transparent;
+          border-right: rem(30px) solid #EF6095;
+          border-bottom: rem(36px) solid transparent;
+          margin-right: -1px;
+        }
+        .diamond2{
+          width: 0;
+          height: 0;
+          border-top: rem(36px) solid transparent;
+          border-left: rem(30px) solid #EF6095;
+          border-bottom: rem(36px) solid transparent;
+          margin-left: -1px;
+        }
+        .bind-btn{
+          width: rem(300px);
+          height:rem(72px);
+          line-height:rem(72px);
+          font-size: rem(30px);
+          background-color: #EF6095;
+          color: #FFFFFF;
+        }
+      }
+      .close{
+        height:rem(150px);
+        font-size: 0;
+        padding-top: rem(45px);
+        img{
+          width: rem(60px);
+          height:rem(60px);
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+.alertnative{
+  top:0;
+  .title{
+    height:rem(80px);
+    line-height: rem(80px);
+    padding:0 rem(20px);
+    font-size: rem(30px);
+    color: #64646e;
+    img{
+      float: left;
+      width: rem(40px);
+      height:rem(40px);
+      margin:rem(20px) rem(10px);
+    }
+  }
+  .memberitem{
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: rem(730px);
+    height:rem(140px);
+    margin: 0 auto;
+    padding:0 rem(10px);
+    background-color: #FFFFFF;
+    border:1px solid #b7bcc0;
+    margin-bottom: rem(10px);
+    .memberimg{
+      width: rem(88px);
+      height:rem(88px);
+      border: 1px solid #c9c9c9;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: rem(30px);
+      img{
+        width: rem(88px);
+        height:rem(88px);
+      }
+    }
+    .name{
+      width: rem(210px);
+      .name1{
+        height:rem(67px);
+        font-size: rem(28px);
+        color: #51545d;
+      }
+      .name2{
+        color: #b1b4c3;
+        font-size: rem(24px);
+      }
+    }
+    .captainicon{
+      position: absolute;
+      left:rem(290px);
+      top:rem(30px);
+      color: #bbc0c4;
+      font-size: rem(20px);
+      line-height: rem(30px);
+      text-align: center;
+      img{
+        width: rem(50px);
+        height:rem(50px);
+      }
+    }
+    .telnum{
+      width: rem(170px);
+      margin-left: rem(20px);
+      color: #7c8292;
+      font-size: rem(24px);
+    }
+    .gard{
+      width: rem(140px);
+      color: #7c8292;
+      font-size: rem(24px);
+    }
+    .choose{
+      width: rem(42px);
+      height:rem(42px);
+      border-radius: 50%;
+      border: rem(5px) solid #abb6d2;
+    }
+    .active{
+      border: rem(5px) solid #e46695;
+      .center{
+        width: rem(16px);
+        height:rem(16px);
+        border-radius: 50%;
+        margin:rem(8px);
+        background-color: #e46695;
+      }
+    }
+  }
+  .chosebtn{
+    width: rem(750px);
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    left:0;
+    .bind-box{
+      background-color:#FFFFFF;
+      height:rem(100px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .diamond1{
+        width: 0;
+        height: 0;
+        border-top: rem(36px) solid transparent;
+        border-right: rem(30px) solid #EF6095;
+        border-bottom: rem(36px) solid transparent;
+        margin-right: -1px;
+      }
+      .diamond2{
+        width: 0;
+        height: 0;
+        border-top: rem(36px) solid transparent;
+        border-left: rem(30px) solid #EF6095;
+        border-bottom: rem(36px) solid transparent;
+        margin-left: -1px;
+      }
+      .bind-btn{
+        width: rem(300px);
+        height:rem(72px);
+        line-height:rem(72px);
+        font-size: rem(30px);
+        text-align: center;
+        background-color: #EF6095;
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+.activityproject{
+  max-width: rem(750px);
+  margin: 0 auto;
+  top:0;
+  .bannerimg{
+    width: rem(750px);
+    height:rem(320px);
+    img{
+      width: 100%;
+      height:100%;
+    }
+  }
+  .ruletitle{
+    background-color: #FFFFFF;
+    width: rem(750px);
+    height:rem(80px);
+    line-height: rem(80px);
+    padding:0 rem(20px);
+    .lefticon{
+      width: rem(5px);
+      height:rem(40px);
+      float: left;
+      margin-top: rem(20px);
+      background-color: #E4007F;
+    }
+    .matchname{
+      display: inline-block;
+      width: rem(530px);
+      margin-left: rem(20px);
+      font-size: rem(26px);
+    }
+    .ruleinfo{
+      width: rem(130px);
+      float: right;
+      color: #E4007F;
+      img{
+        float: right;
+        margin-top: rem(27.5px);
+        width: rem(25px);
+        height:rem(25px);
+      }
+    }
+  }
+  .cutline{
+    width:rem(750px);
+    height:rem(10px);
+    background-color: #f3f3f3;
+  }
+  .guess{
+    width: rem(750px);
+    .guesstitle{
+      height: rem(80px);
+      line-height: rem(80px);
+      width:100% ;
+      padding:0  rem(250px);
+      text-align: center;
+      font-size: rem(28px);
+      background-color: #FFFFFF;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-around;
+      .diamondicon{
+        display: inline-block;
+        width: rem(10px);
+        height:rem(10px);
+        background-color: #a9c1d9;
+        transform: rotate(45deg);
+        margin :rem(35px) 0;
+      }
+    }
+    .questionitem{
+      width: 100%;
+      overflow: hidden;
+      background-color: #FFFFFF;
+      .question{
+        border-top: 1px solid #FB6D9D;
+        color: #57607C;
+        height:rem(100px);
+        line-height: rem(100px);
+        font-size: rem(28px);
+        margin: 0 rem(10px);
+        overflow: hidden;
+        text-align: center;
+        position: relative;
+        .qstatus{
+          position: absolute;
+          top:0;
+          left: 0;
+          width: rem(150px);
+          height:rem(45px);
+          line-height: rem(45px);
+          background: #FB6D9D;
+          text-align: center;
+          font-size: rem(24px);
+          color: #FFFFFF;
+          .sjx{
+            float: right;
+            width: 0;
+            height: 0;
+            border-bottom: rem(46px) solid #FFFFFF;
+            border-left: rem(46px) solid transparent;
+          }
+        }
+        .qcontent{
+          width: 100%;
+          height:100%;
+        }
+      }
+      .actoptions{
+        clear: both;
+        width: 100%;
+        padding:0 rem(10px) 0 rem(60px);
+        display: flex;
+        flex-wrap: wrap;
+        .optionitem{
+          position: relative;
+          margin:0 rem(50px) rem(50px) 0;
+          width: rem(290px);
+          height:rem(114px);
+          border-radius: rem(5px);
+          border: 1px solid #AABCD6;
+          .sjx{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 0;
+            height:0;
+            border-bottom: rem(55px) solid transparent;
+            border-left: rem(55px) solid #AABCD6;
+            border-top: rem(55px) solid transparent;
+            z-index: 1;
+          }
+          .left{
+            position: absolute;
+            top:0;
+            left: 0;
+            width: rem(48px);
+            height: rem(114px);
+            line-height: rem(105px);
+            text-align: center;
+            font-size: rem(32px);
+            color: #FFFFFF;
+            z-index: 2;
+          }
+          .right{
+            position: absolute;
+            right:0;
+            top:0;
+            width: rem(235px);
+            text-align: center;
+            color: #AABCD6;
+            font-size: rem(24px);
+            .answer{
+              height:rem(70px);
+              line-height:rem(70px);
+              font-size: rem(28px);
+              color: #6E86A7;
+            }
+          }
+        }
+      }
+    }
+    .moregyess{
+      border-top: 1px solid #AABCD6;
+      background-color: #FFFFFF;
+      height:rem(80px);
+      line-height: rem(80px);
+      font-size: rem(28px);
+      color: #EF6095;
+      text-align: center;
+      span{
+        display: inline-block;
+        width: rem(25px);
+        height:rem(25px);
+        img{
+          float: left;
+          width: rem(25px);
+          height:rem(25px);
+          margin-top:rem(3px);
+          opacity: 0.5;
+        }
+      }
+
+    }
+  }
+  .votebox{
+    width: 100%;
+    text-align: center;
+    .votetitle{
+      height:rem(48px);
+      line-height: rem(48px);
+      margin: rem(20px);
+      display: flex;
+      justify-content: space-between;
+      font-size: rem(26px);
+      .left{
+        color: #AABCD6;
+        img{
+          float: left;
+          margin-top: rem(11.5px);
+          width: rem(25px);
+          height:rem(25px);
+          opacity: 0.5;
+        }
+      }
+      .right{
+        color: #FB6D9D;
+        img{
+          float: right;
+          margin-top: rem(11.5px);
+          width: rem(25px);
+          height:rem(25px);
+          opacity: 0.5;
+        }
+      }
+      .center{
+        width: rem(200px);
+        font-size: rem(28px);
+        overflow: hidden;
+        display: flex;
+        justify-content: space-around;
+        .diamondicon{
+          display: inline-block;
+          width: rem(10px);
+          height:rem(10px);
+          background-color: #a9c1d9;
+          transform: rotate(45deg);
+          margin :rem(20px) 0;
+        }
+      }
+    }
+    .publish{
+      width: rem(530px);
+      height:rem(48px);
+      line-height: rem(48px);
+      margin: rem(32px) auto rem(50px);
+      background-color: rgba(170,188,214,0.2);
+      color: #FB6D9D;
+      border-radius: rem(24px);
+    }
+    .votelist{
+      width: 100%;
+      padding: 0 0 0 rem(20px);
+      display: flex;
+      flex-wrap: wrap;
+      .voteitem{
+        width:rem(224px);
+        height:rem(310px);
+        margin-right: rem(15px);
+        margin-bottom: rem(32px);
+        background-image: url("http://static.jesport.com/sly/images/votebg.png");
+        background-repeat: no-repeat;
+        background-size:rem(224px) rem(308px);
+        position: relative;
+        .voteimg{
+          position: absolute;
+          top:rem(23px);
+          left:rem(66px);
+          width: rem(93px);
+          height:rem(93px);
+          img{
+            width: rem(93px);
+            height:rem(93px);
+          }
+        }
+        .teamname{
+          position: absolute;
+          top:rem(140px);
+          left: 0;
+          width: 100%;
+          height:rem(60px);
+          line-height: rem(60px);
+          color: #57607C;
+          font-size: rem(26px);
+          overflow: hidden;
+        }
+        .popularity{
+          width: 100%;
+          position: absolute;
+          left: 0;
+          top:rem(200px);
+          height:rem(60px);
+          line-height: rem(60px);
+          color: #AABCD6;
+          font-size: rem(24px);
+          overflow: hidden;
+        }
+        .supportbtn{
+          width: rem(178px);
+          position: absolute;
+          top:rem(260px);
+          left:rem(24px);
+          height:rem(48px);
+          line-height: rem(48px);
+          color: #7E93B0;
+          font-size: rem(28px);
+        }
+      }
+    }
+    .morevote{
+      border-top:1px solid #AABCD6;
+      margin-top:rem(30px);
+      height:rem(80px);
+      line-height: rem(80px);
+      color: #EF6095;
+      text-align: center;
+      .changesjx{
+        display: inline-block;
+        margin-top: rem(28px);
+        width: 0;
+        height: 0;
+        border-top: rem(12px) solid #EF6095;
+        border-left: rem(12px) solid transparent;
+        border-right: rem(12px) solid transparent;
+      }
+    }
+  }
+  .matchbox{
+    .matchtitle{
+      height: rem(80px);
+      line-height: rem(80px);
+      width:100% ;
+      padding:0  rem(250px);
+      text-align: center;
+      font-size: rem(28px);
+      background-color: #FFFFFF;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-around;
+      .diamondicon{
+        display: inline-block;
+        width: rem(10px);
+        height:rem(10px);
+        background-color: #a9c1d9;
+        transform: rotate(45deg);
+        margin :rem(35px) 0;
+      }
+    }
+    .matchnav{
+      .left{
+        float: left;
+        width: rem(20px);
+        height:rem(100px);
+        padding:rem(38px) rem(4px);
+        .sjx{
+          width: 0;
+          height: 0;
+          border-right: rem(12px) solid #AABCD6;
+          border-top: rem(12px) solid transparent;
+          border-bottom: rem(12px) solid transparent;
+        }
+
+      }
+      .right{
+        float: right;
+        width: rem(20px);
+        height:rem(100px);
+        padding:rem(38px) rem(4px);
+        .sjx{
+          width: 0;
+          height: 0;
+          border-left: rem(12px) solid #AABCD6;
+          border-top: rem(12px) solid transparent;
+          border-bottom: rem(12px) solid transparent;
+        }
+
+      }
+      .system{
+        width: rem(710px);
+        height:rem(100px);
+        margin:0 auto;
+        //display: inline;
+        white-space: nowrap;
+        overflow-x:scroll;
+        overflow-y:hidden;
+        text-align: center;
+        .navitem{
+          display: inline-block;
+          width: rem(200px);
+          height:rem(48px);
+          line-height: rem(48px);
+          margin:rem(26px) rem(18px);
+          border:1px solid #aabcd6;
+          color: #AABCD6;
+          border-radius: rem(24px);
+        }
+        .active{
+          border:1px solid #EF6095;
+          color: #EF6095;
+        }
+      }
+    }
+    .matchtitle2{
+      width: rem(750px);
+      padding:0 rem(20px);
+      height:rem(80px);
+      line-height: rem(80px);
+      border-top:1px solid #aabcd6;
+      display: flex;
+      justify-content: space-between;
+      color: #57607C;
+      font-size: rem(28px);
+      .info{
+        font-size: rem(24px);
+        color: #AABCD6;
+      }
+    }
+    .matchlist{
+      .matchitem{
+        width: rem(710px);
+        margin:rem(20px);
+        padding:0  rem(5px);
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        border:1px solid #AABCD6;
+        .team{
+          width: rem(250px);
+          .img{
+            width: rem(120px);
+            height:rem(120px);
+            margin:0 auto;
+            padding:rem(20px);
+            background-image: url(http://static.jesport.com/sly/images/indeximages/match-bg.png);
+            background-size: rem(120px) rem(120px);
+            background-repeat: no-repeat;
+            img{
+              width: rem(80px);
+              height:rem(80px);
+            }
+          }
+          .name{
+            height:rem(44px);
+            line-height: rem(44px);
+            color: #57607C;
+          }
+        }
+        .result,.vs{
+          color: #3A3F4F;
+          font-size: rem(72px);
+          line-height: rem(150px);
+        }
+      }
+    }
+  }
+  .ranktitle,.knockouttitle{
+    width: rem(710px);
+    margin:rem(20px);
+    height:rem(80px);
+    line-height: rem(80px);
+    color: #57607C;
+    font-size: rem(28px);
+  }
+  .ranklist{
+    margin: 0 auto;
+    text-align: center;
+    tr{
+      border: 1px solid #aabcd6;
+      height:rem(80px);
+      line-height: rem(80px);
+      td{
+        text-align: center;
+        font-size: rem(28px);
+        padding:rem(20px) 0;
+      }
+      td:nth-of-type(1){
+
+      }
+      td:nth-of-type(2){
+        display: flex;
+        //justify-content: space-between;
+        .img{
+          width: rem(80px);
+          height:rem(80px);
+          padding:rem(13px);
+          background-image: url(http://static.jesport.com/sly/images/indeximages/match-bg.png);
+          background-size: rem(80px) rem(80px);
+          background-repeat: no-repeat;
+          img{
+            width: rem(53px);
+            height:rem(53px);
+          }
+        }
+        .name{
+          margin-left: rem(45px);
+          color: #57607C;
+        }
+      }
+      td:nth-of-type(3){
+
+      }
+      td:nth-of-type(4){
+        font-weight: bold;
+      }
+    }
+    thead,th{
+      color: #57607C;
+      font-size: rem(28px);
+      text-align: center;
+    }
+    .ranknum{
+      width: rem(100px);
+    }
+    .rankteam{
+      width: rem(310px);
+    }
+    .rankscore{
+      width: rem(200px);
+    }
+    .integral{
+      width: rem(100px);
+    }
+  }
+}
+.guess-popups{
+  display: none;
+  z-index: 100;
+  width: rem(560px);
+  position: fixed;
+  top:rem(202px);
+  left:rem(95px);
+  text-align: center;
+  border-radius: rem(10px);
+  overflow: hidden;
+  .title{
+    background-color:#FFFFFF;
+    color: #EF6095;
+    height:rem(120px);
+    line-height: rem(120px);
+    font-size: rem(36px);
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    padding:0 rem(20px);
+    .diamond{
+      transform:rotate(45deg);
+      width: rem(16px);
+      height:rem(16px);
+      background-color: #EF6095;
+    }
+    //margin-bottom: rem(20px);
+  }
+  .cutline{
+    width: rem(560px);
+    height:rem(2px);
+    background-color: #FFFFFF;
+    background-image:url("http://static.jesport.com/sly/images/cutline.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .cutline2{
+    width: rem(560px);
+    height:rem(2px);
+    background-color: #FFFFFF;
+    background-image:url("http://static.jesport.com/sly/images/cutline.png");
+    background-size: rem(560px) rem(2px);
+    background-repeat: no-repeat;
+    padding-bottom: rem(30px);
+  }
+  .content{
+    background-color:#FFFFFF;
+    font-size: rem(28px);
+    padding:  rem(20px);
+    .popquestion{
+      text-align: center;
+      color: #6E86A7;
+      font-size: rem(28px);
+    }
+    .popanswerlist{
+      padding: rem(20px) 0;
+      line-height: rem(80px);
+      .popansweritem{
+        width:rem(440px);
+        margin: rem(20px) auto;
+        border: 1px solid #57607C;
+        color: #57607C;
+        border-radius: rem(10px);
+        font-size: rem(32px);
+        display: flex;
+        .left{
+          width: rem(122px);
+          border-right:1px dashed #57607C;
+          font-weight: bold;
+        }
+        .right{
+          width: rem(318px);
+        }
+      }
+      .active{
+        border: 1px solid #EF6095;
+        color: #EF6095;
+        .left{
+          border-right:1px dashed #EF6095;
+        }
+      }
+    }
+    .actoptions{
+      width:rem(440px);
+      margin:0 auto;
+      line-height: rem(80px);
+      color: #57607C;
+      font-size: rem(28px);
+      display: flex;
+      .name{
+        width: rem(138px);
+      }
+      .value{
+        width: rem(302px);
+        text-align: center;
+        .notenum{
+          height:rem(48px);
+          margin: rem(16px) 0;
+          line-height: rem(48px);
+          border-radius: rem(24px);
+          border: 1px solid #AABCD6;
+          display: flex;
+          justify-content: space-between;
+          .btn{
+            margin:rem(8px);
+            width: rem(32px);
+            height:rem(32px);
+            line-height: rem(32px);
+            font-size: rem(28px);
+            border-radius: 100%;
+            color: #FFFFFF;
+          }
+          .btn-add{
+            background-color: #EF6095;
+          }
+          .btn-minus{
+            background-color: #AABCD6;
+          }
+        }
+      }
+    }
+  }
+  .bind-box{
+    background-color:#FFFFFF;
+    background-image: url(http://static.jesport.com/sly/images/cutline.png);
+    background-size: 100% 2px;
+    background-repeat: no-repeat;;
+    height:rem(150px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .diamond1{
+      width: 0;
+      height: 0;
+      border-top: rem(36px) solid transparent;
+      border-right: rem(30px) solid #EF6095;
+      border-bottom: rem(36px) solid transparent;
+      margin-right: -1px;
+    }
+    .diamond2{
+      width: 0;
+      height: 0;
+      border-top: rem(36px) solid transparent;
+      border-left: rem(30px) solid #EF6095;
+      border-bottom: rem(36px) solid transparent;
+      margin-left: -1px;
+    }
+    .bind-btn{
+      width: rem(300px);
+      height:rem(72px);
+      line-height:rem(72px);
+      font-size: rem(30px);
+      background-color: #EF6095;
+      color: #FFFFFF;
+    }
+  }
+  .stop.bind-box{
+    .diamond1{
+      border-right: rem(30px) solid #F2F2F2;
+    }
+    .diamond2{
+      border-left: rem(30px) solid #F2F2F2;
+    }
+    .bind-btn{
+      color: #C9C9C9;
+      background-color: #F2F2F2;
+    }
+  }
+  .close{
+    height:rem(150px);
+    font-size: 0;
+    padding-top: rem(45px);
+    img{
+      width: rem(60px);
+      height:rem(60px);
+      margin: 0 auto;
+    }
+  }
+}
+.support-popups{
+  display: none;
+  z-index: 100;
+  width: rem(560px);
+  position: fixed;
+  top:rem(202px);
+  left:rem(95px);
+  text-align: center;
+  border-radius: rem(10px);
+  overflow: hidden;
+  .title{
+    background-color:#FFFFFF;
+    color: #EF6095;
+    height:rem(120px);
+    line-height: rem(120px);
+    font-size: rem(36px);
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    padding:0 rem(20px);
+    .diamond{
+      transform:rotate(45deg);
+      width: rem(16px);
+      height:rem(16px);
+      background-color: #EF6095;
+    }
+    //margin-bottom: rem(20px);
+  }
+  .cutline{
+    width: rem(560px);
+    height:rem(2px);
+    background-color: #FFFFFF;
+    background-image:url("http://static.jesport.com/sly/images/cutline.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .content{
+    width: 100%;
+    padding:0 rem(60px);
+    margin: 0 auto;
+    background-color:#FFFFFF;
+    .img{
+      width: rem(140px);
+      height:rem(140px);
+      margin: 0 auto;
+      padding:rem(23px);
+      background-image: url(http://static.jesport.com/sly/images/indeximages/match-bg.png);
+      background-size: rem(140px) rem(140px);
+      background-repeat: no-repeat;
+      img{
+        width: rem(93px);
+        height:rem(93px);
+      }
+    }
+    .name{
+      line-height: rem(60px);
+      font-size: rem(30px);
+      text-align: center;
+      color: #57607C;
+      margin-bottom: rem(20px);
+    }
+    .popularinfo{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      margin-bottom: rem(40px);
+      line-height: rem(80px);
+      font-size: rem(26px);
+      color: #AABCD6;
+      .string{
+        height: rem(60px);
+        width: rem(2px);
+        background-color: #aabcd6;
+      }
+      .remqi,.modou{
+        width: rem(219px);
+      }
+    }
+    .btn-box{
+      display: flex;
+      justify-content: space-between;
+      padding-bottom:rem(72px);
+      .buy-btn,.support-btn{
+        width: rem(198px);
+        text-align: center;
+        border-radius: rem(10px);
+        font-size: rem(28px);
+        color: #FFFFFF;
+        .title1{
+          height:rem(48px);
+          line-height: rem(48px);
+        }
+        .value1{
+          height:rem(40px);
+          line-height: rem(40px);
+          font-size: rem(24px);
+        }
+      }
+      .support-btn{
+        background-color: #EF6095;
+      }
+      .buy-btn{
+        background-color: #18D2BA;
+      }
+    }
+  }
+  .close{
+    height:rem(150px);
+    font-size: 0;
+    padding-top: rem(45px);
+    img{
+      width: rem(60px);
+      height:rem(60px);
+      margin: 0 auto;
+    }
+  }
+}
+.award-popups{
+  z-index: 100;
+  width: rem(560px);
+  position: fixed;
+  top:rem(202px);
+  left:rem(95px);
+  text-align: center;
+  border-radius: rem(10px);
+  overflow: hidden;
+  .title{
+    background-color:#FFFFFF;
+    color: #EF6095;
+    height:rem(120px);
+    line-height: rem(120px);
+    font-size: rem(36px);
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    padding:0 rem(20px);
+    .diamond{
+      transform:rotate(45deg);
+      width: rem(16px);
+      height:rem(16px);
+      background-color: #EF6095;
+    }
+    //margin-bottom: rem(20px);
+  }
+  .cutline{
+    width: rem(560px);
+    height:rem(2px);
+    background-color: #FFFFFF;
+    background-image:url("http://static.jesport.com/sly/images/cutline.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  .content{
+    width: 100%;
+    background-color:#FFFFFF;
+    .championbox{
+      padding:rem(20px) rem(60px);
+      display: flex;
+      .cupimg{
+        width: rem(122px);
+        height:rem(80px);
+        padding:0 rem(21px);
+        img{
+          width: rem(80px);
+          height:rem(80px);
+        }
+      }
+    }
+    .voteaward{
+      padding:rem(20px) rem(60px);
+      display: flex;
+      justify-content: space-between;
+      font-size: rem(26px);
+      .name{
+        width: rem(116px);
+        height:rem(48px);
+        line-height: rem(48px);
+        color: #6E86A7;
+      }
+      .modounum{
+        width: rem(318px);
+        background-color: rgba(170, 188, 214, 0.2);
+        color: #EF6095;
+        height:rem(48px);
+        line-height: rem(48px);
+        border-radius: rem(24px);
+      }
+    }
+    .teambox{
+      width: rem(438px);
+      line-height: rem(80px);
+      display: flex;
+      .img{
+        width: rem(80px);
+        height:rem(80px);
+        //margin: 0 auto;
+        padding:rem(13px);
+        background-image: url(http://static.jesport.com/sly/images/indeximages/match-bg.png);
+        background-size: rem(80px) rem(80px);
+        background-repeat: no-repeat;
+        margin-right: rem(20px);
+        img{
+          width: rem(54px);
+          height:rem(54px);
+        }
+      }
+    }
+    .voteinfo{
+      height:rem(80px);
+      width: 100%;
+      margin: rem(20px) auto;
+      .isvote{
+        font-size: rem(24px);
+        color: #aabcd6;
+      }
+      .tpxq{
+        margin-top: rem(10px);
+        font-size: rem(28px);
+        color:#EF6095;
+      }
+    }
+    .teamlist{
+      padding: 0 rem(60px);
+      .teamitem{
+        border-top: 1px solid #aabcd6;
+        display: flex;
+        padding: rem(20px) 0;
+        line-height: rem(80px);
+        color: #57607C;
+        font-size: rem(26px);
+        .img{
+          width: rem(80px);
+          height:rem(80px);
+          //margin: 0 auto;
+          padding:rem(13px);
+          background-image: url(http://static.jesport.com/sly/images/indeximages/match-bg.png);
+          background-size: rem(80px) rem(80px);
+          background-repeat: no-repeat;
+          margin-right: rem(20px);
+          img{
+            width: rem(54px);
+            height:rem(54px);
+          }
+        }
+        .name{
+          width: rem(180px);
+        }
+        .modou{
+          width: rem(140px);
+        }
+      }
+    }
+    .cutline2{
+      width: 100%;
+      height:rem(2px);
+      background-color: #FFFFFF;
+      background-image:url("http://static.jesport.com/sly/images/cutline.png");
+      background-size: 100% rem(2px);
+      background-repeat: no-repeat;
+      padding-bottom: rem(20px);
+    }
+  }
+  .close{
+    height:rem(150px);
+    font-size: 0;
+    padding-top: rem(45px);
+    img{
+      width: rem(60px);
+      height:rem(60px);
+      margin: 0 auto;
+    }
+  }
+}
+.netactivity{
+  top:0;
+  .netbartitle{
+    width: 100%;
+    height:rem(100px);
+    background-color: #FFFFFF;
+    padding:rem(22px) rem(20px);
+    .netbarchoose{
+      width: rem(310px);
+      height:rem(56px);
+      border-radius: rem(28px);
+      line-height: rem(56px);
+      background-color: #EF6095;
+      color: #FFFFFF;
+      font-size: rem(24px);
+      display: flex;
+      padding-left:rem(20px);
+      .img{
+        width: rem(40px);
+        height:rem(40px);
+        margin-top: rem(8px);
+        margin-right: rem(10px);
+        img{
+          width: rem(32px);
+          height:rem(40px);
+        }
+      }
+    }
+  }
+  .activityitem{
+    margin-top: rem(20px);
+    .img{
+      width: 100%;
+      height:rem(320px);
+      position: relative;
+      .state{
+        position: absolute;
+        bottom: rem(20px);
+        right:rem(20px);
+        //width: rem(96px);
+        display: inline-block;
+        padding:0 rem(20px);
+        height:rem(35px);
+        color: #FFFFFF;
+        text-align: center;
+        line-height: rem(35px);
+        //background-color: #EF6095;
+        border-radius: rem(8px);
+        z-index: 99;
+      }
+      .personstatebox{
+        position: absolute;
+        top: rem(20px);
+        left:rem(20px);
+        color: #FFFFFF;
+        text-align: center;
+        line-height: rem(35px);
+        //background-color: #EF6095;
+        z-index: 99;
+        div{
+          padding:0 rem(20px);
+          height:rem(35px);
+          border-radius: rem(8px);
+          margin-bottom: rem(10px);
+        }
+      }
+      img{
+        width:100%;
+        height:rem(320px);
+      }
+    }
+    .activityinfo{
+      width: 100%;
+      background-color: #FFFFFF;
+      height:rem(80px);
+      padding:0 rem(20px);
+      line-height: rem(80px);
+      display: flex;
+      justify-content: space-between;
+      .name{
+        color: #57607C;
+        font-size: rem(28px);
+      }
+      .date{
+        color: #aabcd6;
+        font-size: rem(24px);
+      }
+    }
+  }
+  .activityitem_league{
+    display: block;
+    width: rem(740px);
+    margin: rem(10px) auto;
+    border-radius: rem(20px);
+    overflow: hidden;
+    .img {
+      width: rem(740px);
+      height: rem(264px);
+      img {
+        width: rem(740px);
+        height: rem(264px);
+      }
+    }
+  }
+}
+.applyRuleInfo{
+  top:0;
+  .title{
+    height:rem(160px);
+    line-height: rem(160px);
+    background-image: url("http://static.jesport.com/sly/images/bg-ruleInfo.jpg");
+    background-repeat: no-repeat;
+    background-size: rem(750px) rem(160px);
+    color: #FFFFFF;
+    text-align: center;
+    font-size: rem(45px);
+  }
+  .rulebox{
+    width: 100%;
+    padding: 0 rem(60px);
+    .item{
+      display: flex;
+      padding:rem(16px) 0;
+      line-height: rem(50px);
+      color: #57607C;
+      font-size: rem(26px);
+      .name{
+        text-align: right;
+        padding-right:rem(20px);
+        width: rem(160px);
+        border-right: 1px solid #aabcd6;
+      }
+      .value{
+        text-align: left;
+        padding-left:rem(20px);
+      }
+    }
+    .cutline{
+      width: 100%;
+      height:rem(2px);
+      background-color: #FFFFFF;
+      background-image:url("http://static.jesport.com/sly/images/bg-ruleitem.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+  }
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201708231645">
+    <title>适用门店</title>
+</head>
+<body style="background-color: #f2f2f2">
+
+<div id="app" class="newBarList">
+    <div class="netbarList">
+        <a class="item" v-for="item in list" href="javascript:;">
+            <div class="corp_img"><img :src="item.logo?item.logo:''" alt="网吧图片" /></div>
+            <div class="corp_details">
+                <div class="corp_name">
+                    <div class="name">{{item.name}}</div>
+                    <div class="addr">{{item.address}}</div>
+                </div>
+                <div class="corp_grade">
+                    <div class="grade_icon">
+                        <i class="icon-sx"></i>
+                        <i class="icon-sx"></i>
+                        <i class="icon-sx"></i>
+                        <i class="icon-sx"></i>
+                        <i class="icon-sx"></i>
+                    </div>
+                </div>
+                <div class="corp_price">10元 / 小时</div>
+                <div class="corp_match">
+                    <div class="vipitem" style="background-image: url('http://static.jesport.com/sly/images/newIndex/List_icon_1.png')">VIP包房</div>
+                    <div class="vipitem" style="background-image: url('http://static.jesport.com/sly/images/newIndex/List_icon_2.png')">电影包房</div>
+                    <div class="vipitem" style="background-image: url('http://static.jesport.com/sly/images/newIndex/List_icon_3.png')">游戏特权</div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201709061357"></script>
+<!--<script type="text/javascript" src="http://static.jesport.com/sly/js/applynetbar.js?version=201708231645"></script>-->
+<script>
+    new Vue({
+        el:"#app",
+        data(){
+            return {
+                goodId:null,
+                list:[]
+            }
+        },
+        created(){
+            this.getNetbarlist();
+        },
+        methods:{
+
+            getNetbarlist(){
+                var _this=this;
+                _this.goodId=window.location.href.split("=")[1];
+                var data={goodsid:this.goodId}
+                console.log(data)
+                $.getJSON(listUrl+"store/goods/detail",data,function(json){
+                    console.log(json)
+                    _this.list=json.goodsInfo.netbarList;
+                })
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

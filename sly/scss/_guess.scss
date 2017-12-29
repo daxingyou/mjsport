@@ -1,0 +1,197 @@
+#header{
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  .guessheader{
+    border-color: #111;
+    background-color: #231815;
+    color: #fff;
+    height: rem(88px);
+    line-height: rem(88px);
+    padding:0 rem(20px);
+    position: relative;
+    .wtitle{
+      text-align: center;
+      font-size: rem(33px);
+      color: #fff;
+    }
+    .chose_mode{
+      position: absolute;
+      right: rem(20px);
+      top:rem(22px);
+      .match_tab{
+        //margin:0 rem(20px);
+        width: rem(180px);
+        height:rem(44px);
+        line-height:rem(44px);
+        border-radius: rem(22px);
+        color: #FFFFFF;
+        background-color: #333333;
+        display: flex;
+        .mode{
+          flex:1;
+          font-size:rem(26px);
+          border-radius: rem(22px);
+          text-align: center;
+        }
+        .mode_active{
+          background-color: #E4007F;
+        }
+      }
+    }
+  }
+}
+
+.guess{
+  .nav{
+    height:rem(182px);
+    width:rem(750px);
+    padding:rem(16px) rem(10px);
+    overflow: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    .pic{
+      display: inline-block;
+      margin:0 rem(10px);
+      width: rem(220px);
+      height:rem(150px);
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+.guesswrapper{
+  top:0;
+}
+.intbar{
+  display: block;
+}
+.league{
+    /*display: none;*/
+  }
+.allmatch{
+  background: #f2f2f2;
+    width: 100%;
+    overflow: auto;
+    overflow-x: hidden;
+  
+  }
+.match{
+  margin-top: rem(90px);
+  margin-bottom: rem(110px);
+  .match_date{
+        height:rem(60px);
+        line-height:rem(60px);
+        background-color: #231815;
+        font-size: rem(28px);
+        text-align: center;
+        color: #CC9900;
+      }
+  .match_list{
+        background: #fff;
+        padding-bottom:rem(10px);
+        .match_info{
+          border-bottom: 1px solid #e4e4e4;
+          padding: rem(20px);
+          .item-top{
+            @include wflex;
+            margin-bottom: rem(20px);
+            .item-title{
+              color: #868686;
+            }
+            .item-time{
+              color: #868686;
+            }
+          }
+          .match_name{
+            height:rem(48px);
+            text-align: center;
+            font-size: rem(24px);
+            color: #868686;
+            position: relative;
+            .follow{
+              position: absolute;
+              right:0;
+              top: 0;
+              width: rem(108px);
+              //height:rem(32px);
+              .follow_num{
+                display: inline-block;
+                height:rem(32px);
+                line-height:rem(32px);
+              }
+              a{
+                display: inline-block;
+                width: rem(32px);
+                height:rem(32px);
+                .follow_icon{
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+            }
+          }
+          .item-main{
+            @include wflex;
+            .item-img{
+              display: inline-block;
+              width: rem(80px);
+              height: rem(80px);
+              a{
+                display: block;
+                img{
+                  display: block;
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+            }
+            .item-left{
+              text-align: center;
+              width: rem(200px);
+            }
+            .item-cen{
+              text-align: center;
+              width: rem(200px);
+              .score-list{
+                height: rem(80px);
+                line-height: rem(80px);
+                font-size: rem(36px);
+              }
+              .look-btn{
+                text-align: center;
+                .state1{
+                  display: none;
+                  color: #CC9900;
+                  border: 1px solid #CC9900;
+                  border-radius: 10rem;
+                  width: rem(140px);
+                  height: rem(45px);
+                  line-height: rem(45px);
+                }
+                .state2{
+                  display: inline-block;
+                  background-color: #E4007F;
+                  color: #FFFFFF;
+                  border-radius: 10rem;
+                  width: rem(140px);
+                  height: rem(45px);
+                  line-height: rem(45px);
+                }
+              }
+            }
+            .item-right{
+              text-align: center;
+              width: rem(200px);
+            }
+          }
+        }
+      }
+}
+#match-box2{
+  display: none;
+}

@@ -1,0 +1,130 @@
+  <!DOCTYPE html>
+  <html lang="en" >
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>报名信息</title>
+    <style>
+      html {
+        font-size: 20px;
+      }
+      @media only screen and (min-width: 400px) {
+        html {
+          font-size: 21.33333333px !important;
+        }
+      }
+      @media only screen and (min-width: 414px) {
+        html {
+          font-size: 22.08px !important;
+        }
+      }
+      @media only screen and (min-width: 480px) {
+        html {
+          font-size: 25.6px !important;
+        }
+      }
+      html,body,form{width: 100%;overflow: hidden;background: #eee;}
+      *{border:0 none;outline: none;margin:0;padding:0;}
+      .goods-edit-modal{background: #fff;}
+      .goods-item{position: relative;padding:0 .2rem;background: #fff;height: 2.2rem;line-height: 2.2rem;border: 1px solid #eee;}
+      .goods-item span{ background: #fff; float: left; height: 2.2rem;line-height: 2.2rem;}
+      .goods-item input,select,textarea{background: #fff; float: right; height: 2.2rem;line-height: 2.2rem; text-align: right; font-size: .8rem;}
+      .bar-btn{width: 6rem;height: 1.6rem;line-height: 1.6rem;text-align: center;border-radius: 2.2rem; margin:1.8rem 0;background: #1296db; display: inline-block; color: #fff; font-size: .8rem;}
+      select{  appearance:none;
+        -moz-appearance:none;
+        -webkit-appearance:none;
+        background: url(http://static.jesport.com/sly/images/icon-right2.png) no-repeat scroll right center transparent;
+        background-size: .6rem .6rem;
+          padding-right: 1rem;
+      }
+      </style>
+    </head>
+    <body >
+      <form id="form" class="goods-edit-modal" style="margin:0;padding:0;">
+        <div class="goods-fino" style="text-align: center;background: #eee;padding:.5rem;">报名信息</div>
+        <div class="goods-item ac-item">
+          <span>姓名</span>
+          <input id="ac-name1" type="text" placeholder="请输入真实姓名">
+        </div>
+        <div class="goods-item ac-item">
+          <span>手机号码</span>
+          <input id="ac-mobile1" type="text" placeholder="请输入手机号">
+        </div>
+        <div class="goods-item ac-item">
+          <span>年龄</span>
+          <input id="ac-age1" type="text" placeholder="请输入年龄">
+        </div>
+        <div class="goods-item ac-item" style="margin-top: .4rem;">
+          <span>段位</span>
+          <!--  <span style="position: absolute;width: 2rem;height: 1.6rem;background-size: 2rem;height: 1.6rem;background:#fff url(images/icon-right2.png) no-repeat; right: 0;top: 0;"></span> -->
+          <input id="ac-level1" type="text" placeholder="请输入段位">
+       </select>
+     </div>
+     <div class="goods-item ac-item">
+      <span>报名方式</span>
+      <select name="" id="ac-type1">
+      <option value="战队">战队</option>
+      <option value="单人">单人</option>
+      </select>
+    </div>
+    <div class="goods-item ac-item" >
+      <span>选择队友段位</span>
+      <input id="ac-friend1" type="text" placeholder="请输入队友段位">
+    </div>
+    <div class="goods-item ac-item" style="margin-bottom: .4rem;">
+      <span>战队名称</span>
+      <input id="ac-teamname1" type="text" placeholder="请输入战队名称">
+    </div>
+    <div class="goods-item ac-item"  style="height: 5rem;width: 100%;">
+      <textarea id="mome" placeholder="简单介绍一下自己吧！" style="font-size: .8rem;width:100%;height: 100%;line-height: 1.4rem; text-align: left;"></textarea>
+    </div>
+    <div style="text-align: center;background:#eee;">
+      <span id="sign" class="bar-btn">立即报名</span>
+    </div>
+  </form>
+  <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+  <script type="text/javascript"> 
+   if($("#ac-type1").val() == "单人"){
+     $("#ac-friend1").parent().css({"display":"block"});
+     $("#ac-teamname1").parent().css({"display":"none"});
+   }
+   else {
+     $("#ac-friend1").parent().css({"display":"none"});
+     $("#ac-teamname1").parent().css({"display":"block"});
+   }
+   $("#ac-type1").on("change",function(){
+     if($("#ac-type1").val() == "单人"){
+       $("#ac-friend1").parent().css({"display":"block"});
+       $("#ac-teamname1").parent().css({"display":"none"});
+     }
+     else {
+       $("#ac-friend1").parent().css({"display":"none"});
+       $("#ac-teamname1").parent().css({"display":"block"});
+     }
+   });
+   $("#sign").on("click",function(){
+    var data = {
+      name : $("#ac-name1").val(),
+      mobile: $("#ac-mobile1").val(),
+      age: $("#ac-age1").val(),
+      memo: $("#mome").val(),
+      teamname:$("#ac-teamname1").val() ? $("#ac-teamname1").val() : " ",
+      level:$("#ac-level1").val(),
+      friendlevel:$("#ac-friend1").val() ? $("#ac-friend1").val() : " ",
+      type:$("#ac-type1").val()
+    }
+    $.post('activity/add',data,function(json){
+      alert(json.errMsg);
+      if(json.errCode == 0){
+        window.location.href = "signSuccess.html";
+      }
+    });
+  });
+</script>
+</body>
+
+</html>

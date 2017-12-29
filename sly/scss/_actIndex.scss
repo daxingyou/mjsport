@@ -1,0 +1,1026 @@
+.actIndex{
+  padding-bottom: rem(100px);
+  .bannerimg{
+    width: rem(750px);
+    height:rem(320px);
+    position: relative;
+    .left{
+      position: absolute;
+      left:rem(20px);
+      top:rem(20px);
+      display: block;
+      width:rem(32px);
+      height:rem(32px);
+      background-image: url("http://static.jesport.com/sly/images/icon-left-01.png");
+      background-repeat: no-repeat;
+      background-size: rem(32px) rem(32px);
+
+    }
+    img{
+      width: 100%;
+      height:100%;
+    }
+  }
+  .gamename{
+    height:rem(80px);
+    line-height: rem(80px);
+    font-size: rem(32px);
+    color: #BA9C74;
+    text-align: center;
+    background-color: #ffffff;
+    margin-bottom: rem(15px);
+  }
+  .pageTbas{
+    height:rem(80px);
+    line-height: rem(80px);
+    font-size: rem(24px);
+    color: #999999;
+    text-align: center;
+    background-color: #ffffff;
+    margin-bottom: rem(15px);
+    border-bottom: 1px solid #999999;
+    display: flex;
+    //justify-content: space-around;
+    .item{
+      flex:1;
+    }
+    .item.active{
+      border-bottom: rem(10px) solid #ff6600;
+    }
+  }
+  .matchbox{
+    .system{
+      margin:rem(15px) 0;
+      display: flex;
+      font-size: rem(24px);
+      .navitem{
+        width: rem(93px);
+        height:rem(43px);
+        line-height:rem(43px);
+        border-radius: rem(8px);
+        text-align: center;
+        margin: 0 rem(20px);
+        background-color: #666666;
+        color: #ffffff;
+      }
+      .navitem.active{
+        background-color: #0099ff;
+      }
+    }
+    .matchtitle2{
+      width: rem(750px);
+      padding:0 rem(20px);
+      height:rem(80px);
+      line-height: rem(80px);
+      border-top:1px solid #aabcd6;
+      display: flex;
+      justify-content: space-between;
+      color: #57607C;
+      font-size: rem(28px);
+      .date{
+        font-size: rem(22px);
+        color: #666666;
+      }
+      .info{
+        font-size: rem(26px);
+        color: #B6966C;
+      }
+    }
+    .saicheng{
+      font-size: rem(22px);
+      color:#666666;
+      text-align: center;
+      line-height: rem(40px);
+    }
+    .matchlist{
+      .matchitem{
+        width: rem(710px);
+        margin:rem(20px);
+        padding:0  rem(5px);
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        border-radius: rem(20px);
+        border-left:1px solid #999999;
+        border-right:1px solid #999999;
+        background-color: #ffffff;
+        .team{
+          width: rem(250px);
+          .img{
+            width: rem(120px);
+            height:rem(120px);
+            margin:0 auto;
+            padding:rem(20px);
+            background-image: url(http://static.jesport.com/sly/images/indeximages/match-bg.png);
+            background-size: rem(120px) rem(120px);
+            background-repeat: no-repeat;
+            img{
+              width: rem(80px);
+              height:rem(80px);
+            }
+          }
+          .name{
+            height:rem(44px);
+            line-height: rem(44px);
+            color: #57607C;
+          }
+        }
+        .result,.vs{
+          color: #3A3F4F;
+          font-size: rem(72px);
+          line-height: rem(150px);
+        }
+      }
+    }
+    .ranklist{
+      margin: 0 auto;
+      text-align: center;
+      background-color: #ffffff;
+      border-radius: rem(20px);
+      border-right:rem(15px);
+      tr{
+        border-bottom: 1px solid #aabcd6;
+        height:rem(80px);
+        line-height: rem(80px);
+        td{
+          text-align: center;
+          font-size: rem(28px);
+          padding:rem(20px) 0;
+        }
+        td:nth-of-type(1){
+
+        }
+        td:nth-of-type(2){
+          display: flex;
+          //justify-content: space-between;
+          .img{
+            width: rem(80px);
+            height:rem(80px);
+            padding:rem(13px);
+            background-image: url(http://static.jesport.com/sly/images/indeximages/match-bg.png);
+            background-size: rem(80px) rem(80px);
+            background-repeat: no-repeat;
+            img{
+              width: rem(53px);
+              height:rem(53px);
+            }
+          }
+          .name{
+            margin-left: rem(45px);
+            color: #57607C;
+          }
+        }
+        td:nth-of-type(3){
+
+        }
+        td:nth-of-type(4){
+          font-weight: bold;
+        }
+      }
+      thead,th{
+        color: #57607C;
+        font-size: rem(28px);
+        text-align: center;
+      }
+      .ranknum{
+        width: rem(100px);
+      }
+      .rankteam{
+        width: rem(310px);
+      }
+      .rankscore{
+        width: rem(200px);
+      }
+      .integral{
+        width: rem(100px);
+      }
+    }
+  }
+  .votebox{
+    .top{
+      .text{
+        display: flex;
+        //justify-content: center;
+        align-items: center;
+        padding:0 rem(10px);
+        margin-bottom: rem(5px);
+        .img{
+          width: rem(30px);
+          height:rem(30px);
+          img{
+            width: rem(30px);
+            height:rem(30px);
+          }
+        }
+        .text{
+          margin-left: rem(20px);
+          font-size: rem(28px);
+          color: #999999;
+        }
+      }
+      .title{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding:0 rem(20px);
+        .sum{
+          color: #999999;
+          width: rem(340px);
+          height:rem(50px);
+          border: rem(2px) solid #FF6600;
+          border-radius: rem(10px);
+          padding:0 rem(10px);
+          display: flex;
+          align-items: center;
+          .img{
+            margin:0 rem(10px);
+            width: rem(32px);
+            height:rem(32px);
+            img{
+              width: rem(32px);
+              height:rem(32px);
+            }
+          }
+          .color{
+            color: #FF6600;
+          }
+        }
+        .btn{
+          font-size: rem(26px);
+          color: #3399ff;
+
+        }
+      }
+    }
+    .votelist{
+      display: flex;
+      //padding:0 rem(5px);
+      //justify-content: space-around;
+      flex-wrap: wrap;
+      text-align: center;
+      .voteitem{
+        margin: rem(15px) rem(11px);
+        width: rem(227px);
+        padding-top:rem(5px);
+        padding-bottom: rem(15px);
+        background-color: #ffffff;
+        border-right:2px solid #cccccc;;
+        border-bottom:2px solid #cccccc;;
+        .img{
+          margin:0 auto;
+          width: rem(85px);
+          height:rem(85px);
+          border:1px solid #666666;
+          border-radius: 50%;
+          overflow: hidden;
+          img{
+            width: rem(85px);
+            height:rem(85px);
+          }
+        }
+        .name{
+          color: #66ccff;
+          font-size: rem(26px);
+          font-weight: bold;
+          line-height: rem(60px);
+        }
+        .num{
+          @include dja;
+          color: #666666;
+          font-size: rem(22px);
+          margin:rem(10px) 0;
+          .img2{
+            margin:0 rem(10px);
+            width: rem(32px);
+            height:rem(32px);
+            img{
+              width: rem(32px);
+              height:rem(32px);
+            }
+          }
+          .mdnum{
+            color: #ff6600;
+            font-size: rem(28px);
+          }
+        }
+        .vote-btn{
+          width: rem(180px);
+          margin: 0 auto;
+          background-color: #66ccff;
+          border-radius: rem(10px);
+          height:rem(56px);
+          line-height: rem(56px);
+          font-size: rem(22px);
+          color: #ffffff;
+        }
+        .odds{
+          @include dja;
+          margin:rem(10px) 0;
+          font-size: rem(20px);
+          color: #999999;
+          .num2{
+            margin:0 rem(10px) ;
+            color: #ff0000;
+          }
+        }
+      }
+    }
+  }
+  .guessbox{
+    .questionitem{
+      width: 100%;
+      overflow: hidden;
+      background-color: #FFFFFF;
+      .question{
+        border-top: 1px solid #FB6D9D;
+        color: #57607C;
+        height:rem(100px);
+        line-height: rem(100px);
+        font-size: rem(28px);
+        margin: 0 rem(10px);
+        overflow: hidden;
+        text-align: center;
+        position: relative;
+        .qstatus{
+          position: absolute;
+          top:0;
+          left: 0;
+          width: rem(150px);
+          height:rem(45px);
+          line-height: rem(45px);
+          background: #FB6D9D;
+          text-align: center;
+          font-size: rem(24px);
+          color: #FFFFFF;
+          .sjx{
+            float: right;
+            width: 0;
+            height: 0;
+            border-bottom: rem(46px) solid #FFFFFF;
+            border-left: rem(46px) solid transparent;
+          }
+        }
+        .qcontent{
+          width: 100%;
+          height:100%;
+        }
+      }
+      .actoptions{
+        clear: both;
+        width: 100%;
+        padding:0 rem(10px) 0 rem(60px);
+        display: flex;
+        flex-wrap: wrap;
+        .optionitem{
+          position: relative;
+          margin:0 rem(50px) rem(50px) 0;
+          width: rem(290px);
+          height:rem(114px);
+          border-radius: rem(5px);
+          border: 1px solid #AABCD6;
+          .sjx{
+            position: absolute;
+            top:0;
+            left:0;
+            width: 0;
+            height:0;
+            border-bottom: rem(55px) solid transparent;
+            border-left: rem(55px) solid #AABCD6;
+            border-top: rem(55px) solid transparent;
+            z-index: 1;
+          }
+          .left{
+            position: absolute;
+            top:0;
+            left: 0;
+            width: rem(48px);
+            height: rem(114px);
+            line-height: rem(105px);
+            text-align: center;
+            font-size: rem(32px);
+            color: #FFFFFF;
+            z-index: 2;
+          }
+          .right{
+            position: absolute;
+            right:0;
+            top:0;
+            width: rem(235px);
+            text-align: center;
+            color: #AABCD6;
+            font-size: rem(24px);
+            .answer{
+              height:rem(70px);
+              line-height:rem(70px);
+              font-size: rem(28px);
+              color: #6E86A7;
+            }
+          }
+        }
+      }
+    }
+    .questionList{
+      margin-top: rem(10px);
+      .title{
+        display: flex;
+        align-items: center;
+        padding: 0 rem(10px);
+        height:rem(100px);
+        background-color: #FFFFFF;
+        .item{
+          width: rem(93px);
+          height:rem(40px);
+          margin: 0 rem(10px);
+          background-color: #666666;
+          color: #FFFFFF;
+          line-height: rem(40px);
+          text-align: center;
+          font-size: rem(22px);
+          border-radius: rem(5px);
+        }
+        .item.active{
+          background-color: #0099ff;
+        }
+      }
+      .qitem{
+        margin-bottom:rem(10px);
+        background-color: #ffffff;
+        padding-bottom: rem(20px);
+        .title{
+          padding:0 rem(10px);
+          height:rem(45px);
+          line-height: rem(45px);
+          display: flex;
+          align-items: center;
+          .img{
+            width: rem(30px);
+            height:rem(30px);
+            img{
+              width: rem(30px);
+              height:rem(30px);
+            }
+          }
+          .questionitem{
+            margin-left:rem(20px);
+            font-weight: bold;
+          }
+        }
+        .newanswers{
+          display: flex;
+          .answer{
+            display: flex;
+            flex-direction: column;
+            justify-content:center;
+            text-align: center;
+            width:rem(350px);
+            height:rem(188px);
+            border: 1px #d59f1d solid;
+            border-radius: rem(15px);
+            font-size: rem(30px);
+            margin: rem(10px);
+            position: relative;
+            .isbet{
+              position: absolute;
+              right:rem(10px);
+              top:0;
+              width: rem(49px);
+              height:rem(84px);
+              img{
+                width: rem(49px);
+                height:rem(84px);
+              }
+            }
+            .win{
+              position: absolute;
+              right:rem(10px);
+              bottom:rem(10px);
+              width: rem(20px);
+              height:rem(20px);
+              img{
+                width: rem(20px);
+                height:rem(20px);
+              }
+            }
+            .name{
+              color: #d59f1d;
+              font-size: rem(32px);
+              //line-height: rem(40px);
+              line-height: rem(60px);
+            }
+            .odds{
+              color: #868686;
+            }
+          }
+          .answer2{
+            width: rem(230px);
+            height:rem(120px);
+          }
+        }
+        .newanswers.newanswers2{
+          flex-wrap: wrap;
+          .answer{
+            width: rem(230px);
+          }
+        }
+      }
+
+    }
+  }
+  .rulebox{
+    width: 100%;
+    padding: 0 rem(60px);
+    .item{
+      display: flex;
+      padding:rem(16px) 0;
+      line-height: rem(50px);
+      color: #57607C;
+      font-size: rem(26px);
+      .name{
+        text-align: right;
+        padding-right:rem(20px);
+        width: rem(160px);
+        border-right: 1px solid #aabcd6;
+      }
+      .value{
+        text-align: left;
+        padding-left:rem(20px);
+      }
+    }
+    .cutline{
+      width: 100%;
+      height:rem(2px);
+      background-color: #FFFFFF;
+      background-image:url("http://static.jesport.com/sly/images/bg-ruleitem.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+  }
+  .mask1{
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 200%;
+    background: #000;
+    opacity: 0.6;
+    z-index: 99;
+  }
+  .award-alert{
+    z-index: 100;
+    width: rem(560px);
+    padding-bottom: rem(20px);
+    position: fixed;
+    top:rem(202px);
+    left:rem(95px);
+    text-align: center;
+    border-radius: rem(10px);
+    overflow: hidden;
+    .title{
+      background-color:#FFFFFF;
+      color: #EF6095;
+      height:rem(100px);
+      line-height: rem(100px);
+      font-size: rem(36px);
+      position: relative;
+      text-align: center;
+      .close{
+        width: rem(50px);
+        height:rem(50px);
+        line-height: rem(50px);
+        font-size: 40px;
+        position: absolute;
+        right:rem(10px);
+        top:rem(10px);
+      }
+    }
+    .content{
+      width: 100%;
+      background-color:#FFFFFF;
+      padding-bottom: rem(20px);
+      .teambox{
+        color: #999999;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        span{
+          color: #EF6095;}
+      }
+      .voteaward{
+        padding:rem(20px) rem(60px);
+        display: flex;
+        justify-content: space-between;
+        font-size: rem(26px);
+        .name{
+          width: rem(116px);
+          height:rem(48px);
+          line-height: rem(48px);
+          color: #6E86A7;
+        }
+        .modounum{
+          width: rem(318px);
+          background-color: rgba(170, 188, 214, 0.2);
+          color: #EF6095;
+          height:rem(48px);
+          line-height: rem(48px);
+          border-radius: rem(24px);
+        }
+      }
+      .winteaminfo{
+        margin:0 rem(20px);
+        border: rem(2px) solid #FF6600;
+        .title2{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin:0 rem(30px);
+          padding:rem(10px) 0;
+          border-bottom: rem(1px) solid #999999;
+          .img{
+            width: rem(30px);
+            height:rem(30px);
+            img{
+              width: rem(30px);
+              height:rem(30px);
+            }
+          }
+          .text{
+            margin-left: rem(20px);
+            font-size: rem(28px);
+            color: #999999;
+          }
+        }
+      }
+      .teambox{
+        width: rem(438px);
+        line-height: rem(80px);
+        display: flex;
+        .img{
+          width: rem(80px);
+          height:rem(80px);
+          //margin: 0 auto;
+          padding:rem(13px);
+          background-image: url(http://static.jesport.com/sly/images/indeximages/match-bg.png);
+          background-size: rem(80px) rem(80px);
+          background-repeat: no-repeat;
+          margin-right: rem(20px);
+          img{
+            width: rem(54px);
+            height:rem(54px);
+          }
+        }
+      }
+      .voteinfo{
+        height:rem(80px);
+        width: 100%;
+        margin: rem(20px) auto;
+        .isvote{
+          font-size: rem(24px);
+          color: #aabcd6;
+        }
+        .tpxq{
+          margin-top: rem(10px);
+          font-size: rem(28px);
+          color:#EF6095;
+        }
+      }
+      .teamlist{
+        padding: 0 rem(60px);
+        .teamitem{
+          border-top: 1px solid #aabcd6;
+          display: flex;
+          padding: rem(20px) 0;
+          line-height: rem(80px);
+          color: #57607C;
+          font-size: rem(26px);
+          .img{
+            width: rem(80px);
+            height:rem(80px);
+            //margin: 0 auto;
+            padding:rem(13px);
+            background-image: url(http://static.jesport.com/sly/images/indeximages/match-bg.png);
+            background-size: rem(80px) rem(80px);
+            background-repeat: no-repeat;
+            margin-right: rem(20px);
+            img{
+              width: rem(54px);
+              height:rem(54px);
+            }
+          }
+          .name{
+            width: rem(180px);
+          }
+          .modou{
+            width: rem(140px);
+          }
+        }
+      }
+    }
+  }
+  .alert-guess{
+    //display: none;
+    z-index: 100;
+    width: rem(560px);
+    position: fixed;
+    top:rem(202px);
+    left:rem(95px);
+    text-align: center;
+    border-radius: rem(10px);
+    overflow: hidden;
+    .title{
+      background-color:#FFFFFF;
+      color: #EF6095;
+      height:rem(120px);
+      line-height: rem(120px);
+      font-size: rem(36px);
+      display: flex;
+      justify-content: space-around;
+      align-items:center;
+      padding:0 rem(20px);
+      .diamond{
+        transform:rotate(45deg);
+        width: rem(16px);
+        height:rem(16px);
+        background-color: #EF6095;
+      }
+      //margin-bottom: rem(20px);
+    }
+    .cutline{
+      width: rem(560px);
+      height:rem(2px);
+      background-color: #FFFFFF;
+      background-image:url("http://static.jesport.com/sly/images/cutline.png");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+    .cutline2{
+      width: rem(560px);
+      height:rem(2px);
+      background-color: #FFFFFF;
+      background-image:url("http://static.jesport.com/sly/images/cutline.png");
+      background-size: rem(560px) rem(2px);
+      background-repeat: no-repeat;
+      padding-bottom: rem(30px);
+    }
+    .content{
+      background-color:#FFFFFF;
+      font-size: rem(28px);
+      padding:  rem(20px);
+      .popquestion{
+        text-align: center;
+        color: #6E86A7;
+        font-size: rem(28px);
+      }
+      .popanswerlist{
+        padding: rem(20px) 0;
+        line-height: rem(80px);
+        .popansweritem{
+          width:rem(440px);
+          margin: rem(20px) auto;
+          border: 1px solid #57607C;
+          color: #57607C;
+          border-radius: rem(10px);
+          font-size: rem(32px);
+          display: flex;
+          .left{
+            width: rem(122px);
+            border-right:1px dashed #57607C;
+            font-weight: bold;
+          }
+          .right{
+            width: rem(318px);
+          }
+        }
+        .active{
+          border: 1px solid #EF6095;
+          color: #EF6095;
+          .left{
+            border-right:1px dashed #EF6095;
+          }
+        }
+      }
+      .actoptions{
+        width:rem(440px);
+        margin:0 auto;
+        line-height: rem(80px);
+        color: #57607C;
+        font-size: rem(28px);
+        display: flex;
+        .name{
+          width: rem(138px);
+        }
+        .value{
+          width: rem(302px);
+          text-align: center;
+          .notenum{
+            height:rem(48px);
+            margin: rem(16px) 0;
+            line-height: rem(48px);
+            border-radius: rem(24px);
+            border: 1px solid #AABCD6;
+            display: flex;
+            justify-content: space-between;
+            .btn{
+              margin:rem(8px);
+              width: rem(32px);
+              height:rem(32px);
+              line-height: rem(32px);
+              font-size: rem(28px);
+              border-radius: 100%;
+              color: #FFFFFF;
+            }
+            .btn-add{
+              background-color: #EF6095;
+            }
+            .btn-minus{
+              background-color: #AABCD6;
+            }
+          }
+        }
+      }
+    }
+    .bind-box{
+      background-color:#FFFFFF;
+      background-image: url(http://static.jesport.com/sly/images/cutline.png);
+      background-size: 100% 2px;
+      background-repeat: no-repeat;;
+      height:rem(150px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .diamond1{
+        width: 0;
+        height: 0;
+        border-top: rem(36px) solid transparent;
+        border-right: rem(30px) solid #EF6095;
+        border-bottom: rem(36px) solid transparent;
+        margin-right: -1px;
+      }
+      .diamond2{
+        width: 0;
+        height: 0;
+        border-top: rem(36px) solid transparent;
+        border-left: rem(30px) solid #EF6095;
+        border-bottom: rem(36px) solid transparent;
+        margin-left: -1px;
+      }
+      .bind-btn{
+        width: rem(300px);
+        height:rem(72px);
+        line-height:rem(72px);
+        font-size: rem(30px);
+        background-color: #EF6095;
+        color: #FFFFFF;
+      }
+    }
+    .stop.bind-box{
+      .diamond1{
+        border-right: rem(30px) solid #F2F2F2;
+      }
+      .diamond2{
+        border-left: rem(30px) solid #F2F2F2;
+      }
+      .bind-btn{
+        color: #C9C9C9;
+        background-color: #F2F2F2;
+      }
+    }
+    .close{
+      height:rem(150px);
+      font-size: 0;
+      padding-top: rem(45px);
+      img{
+        width: rem(60px);
+        height:rem(60px);
+        margin: 0 auto;
+      }
+    }
+  }
+  .betwindow{
+    width: rem(680px);
+    height:rem(240px);
+    position: fixed;
+    top:rem(300px);
+    left:rem(35px);
+    z-index:100;
+    border-radius: rem(10px);
+    overflow: hidden;
+    background-color: #cccccc;
+    border:2px solid #868686;
+    .title{
+      background-color: #ffffff;
+      padding:0 rem(20px);
+      height:rem(60px);
+      line-height: rem(60px);
+      display: flex;
+      align-items: center;
+      .img{
+        width: rem(30px);
+        height:rem(30px);
+        img{
+          width: rem(30px);
+          height:rem(30px);
+        }
+      }
+      .questionitem{
+        margin-left:rem(20px);
+        font-weight: bold;
+      }
+    }
+    .balance{
+      padding:0 rem(20px);
+      line-height: rem(50px);
+      display: flex;
+      justify-content: space-between;
+    }
+    .betnum{
+      display: flex;
+      justify-content: space-around;
+      input{
+        width: rem(360px);
+        height:rem(70px);
+        border:2px solid #ff6600;
+        border-radius: rem(10px);
+        padding-left: rem(15px);
+      }
+      .sub-button{
+        width: rem(280px);
+        height:rem(70px);
+        line-height: rem(70px);
+        text-align: center;
+        background-color: #ff6600;
+        border-radius: rem(10px);
+        font-size: rem(32px);
+        color: #ffffff;
+        font-weight: bold;
+      }
+    }
+    .reward{
+      padding:0 rem(20px);
+      line-height: rem(50px);
+    }
+  }
+  .alert-support{
+    width: rem(680px);
+    height:rem(240px);
+    position: fixed;
+    top:rem(300px);
+    left:rem(35px);
+    z-index:100;
+    border-radius: rem(10px);
+    overflow: hidden;
+    background-color: #cccccc;
+    border:2px solid #868686;
+    .title{
+      background-color: #ffffff;
+      padding:0 rem(20px);
+      height:rem(60px);
+      line-height: rem(60px);
+      display: flex;
+      align-items: center;
+      .img{
+        width: rem(30px);
+        height:rem(30px);
+        img{
+          width: rem(30px);
+          height:rem(30px);
+        }
+      }
+      .questionitem{
+        margin-left:rem(20px);
+        font-weight: bold;
+      }
+    }
+    .balance{
+      padding:0 rem(20px);
+      line-height: rem(50px);
+      display: flex;
+      justify-content: space-between;
+    }
+    .betnum{
+      display: flex;
+      justify-content: space-around;
+      input{
+        width: rem(360px);
+        height:rem(70px);
+        border:2px solid #ff6600;
+        border-radius: rem(10px);
+        padding-left: rem(15px);
+      }
+      .sub-button{
+        width: rem(280px);
+        height:rem(70px);
+        line-height: rem(70px);
+        text-align: center;
+        background-color: #ff6600;
+        border-radius: rem(10px);
+        font-size: rem(32px);
+        color: #ffffff;
+        font-weight: bold;
+      }
+    }
+    .reward{
+      padding:0 rem(20px);
+      line-height: rem(50px);
+    }
+  }
+}

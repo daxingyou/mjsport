@@ -1,0 +1,42 @@
+.info-header{
+	height: rem(150px);
+	padding:rem(20px);
+	border-bottom: 1px solid #E4E4E4;
+	.info-title{
+		font-size: rem(30px);
+	}
+	.info-about{
+		@include wflex;
+		.info-about-left{
+			font-size: rem(30px);
+			color: #666;
+			.info-source{
+						margin-right: rem(20px);		
+			}
+			.info-public-date{
+				
+			}
+		}
+		.info-about-right{
+			.icon-times{
+				@include im;
+				width: rem(50px);
+				height: rem(50px);
+				background: url(http://static.jesport.com/sly/images/icon-bf.png) no-repeat;
+				background-size: rem(50px) rem(50px);
+			}
+			.times-num{
+				@include im;
+			}
+		}
+	}
+}
+.info-content{
+	padding: rem(20px);
+	overflow: hidden;
+	width: 100%;
+	img{
+		width: 100%;
+		display: block;
+	}
+}

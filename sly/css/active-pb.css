@@ -1,0 +1,626 @@
+html {
+  color: #000;
+  background: #fff;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%; }
+
+* {
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box; }
+
+html,
+body {
+  font-family: Helvetica;
+  width: 100%; }
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0; }
+
+input,
+select,
+textarea {
+  font-size: 100%; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+fieldset,
+img {
+  border: 0;
+  display: block; }
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+i {
+  font-style: normal;
+  font-weight: 500; }
+
+ol,
+ul {
+  list-style: none; }
+
+caption,
+th {
+  text-align: left; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 500; }
+
+a:hover {
+  text-decoration: none; }
+
+a {
+  text-decoration: none; }
+
+input, button {
+  background: none;
+  border: 0 none; }
+
+.active-pb .banner {
+  width: 10rem;
+  height: 4.8rem;
+  background-image: url("http://static.jesport.com/sly/images/active-pb/background.png");
+  background-size: 10rem 4.8rem;
+  background-repeat: no-repeat;
+  text-align: center;
+  color: #FDC000;
+  position: relative; }
+  .active-pb .banner .back {
+    position: absolute;
+    top: 0.13333rem;
+    left: 0.26667rem; }
+    .active-pb .banner .back a {
+      display: block;
+      width: 0.42667rem;
+      height: 0.42667rem;
+      background-image: url("http://static.jesport.com/sly/images/active-pb/return.png");
+      background-size: 0.42667rem 0.42667rem;
+      background-repeat: no-repeat; }
+  .active-pb .banner .title {
+    font-size: 0.64rem;
+    line-height: 1.73333rem;
+    height: 1.38667rem; }
+  .active-pb .banner .type {
+    height: 0.44rem;
+    line-height: 0.44rem;
+    font-size: 0.32rem; }
+  .active-pb .banner .time {
+    line-height: 0.57333rem;
+    font-size: 0.32rem; }
+  .active-pb .banner .award {
+    font-size: 0.4rem;
+    line-height: 1.38667rem; }
+    .active-pb .banner .award span {
+      color: #FFFFFF; }
+  .active-pb .banner .state3 {
+    font-size: 0.32rem;
+    width: 10rem;
+    height: 1.01333rem;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; }
+    .active-pb .banner .state3 .img {
+      width: 0.4rem;
+      height: 0.42667rem;
+      margin-right: 0.13333rem; }
+      .active-pb .banner .state3 .img img {
+        width: 0.4rem;
+        height: 0.42667rem; }
+    .active-pb .banner .state3 .info {
+      position: absolute;
+      top: 0;
+      right: 0.26667rem;
+      height: 1.01333rem;
+      line-height: 1.01333rem;
+      color: #3399FF; }
+  .active-pb .banner .state1 {
+    font-size: 0.32rem;
+    width: 10rem;
+    height: 1.01333rem;
+    color: #FFFFFF;
+    padding-left: 0.13333rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative; }
+    .active-pb .banner .state1 .time {
+      width: 4.8rem; }
+    .active-pb .banner .state1 .img {
+      display: flex; }
+      .active-pb .banner .state1 .img img {
+        margin-right: 0.2rem;
+        width: 0.4rem;
+        height: 0.42667rem; }
+.active-pb .tabs {
+  background-color: #FFFFFF;
+  width: 10rem;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  font-size: 0.37333rem; }
+  .active-pb .tabs .active {
+    color: #FF9B00;
+    border-bottom: 0.02667rem solid #FF9B00; }
+.active-pb .cutline {
+  width: 10rem;
+  height: 0.08rem;
+  background-color: #f2f2f2; }
+.active-pb .matchinfo {
+  width: 10rem;
+  padding: 0 0.26667rem; }
+  .active-pb .matchinfo table {
+    background-color: #FFFFFF;
+    width: 100%;
+    border-collapse: collapse; }
+    .active-pb .matchinfo table td {
+      height: 0.93333rem;
+      line-height: 0.93333rem;
+      font-size: 0.29333rem;
+      border: 0.01333rem solid #bfbfbf;
+      text-align: center; }
+    .active-pb .matchinfo table .name {
+      color: #9f9f9f; }
+.active-pb .guessState {
+  background-color: #FFFFFF;
+  width: 10rem;
+  height: 0.93333rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  font-size: 0.32rem; }
+  .active-pb .guessState .state {
+    width: 2.70667rem;
+    height: 0.93333rem;
+    line-height: 0.93333rem;
+    background-image: url("http://static.jesport.com/sly/images/active-pb/triangle.png");
+    background-repeat: no-repeat;
+    background-size: 2.70667rem 0.93333rem;
+    color: #666666; }
+  .active-pb .guessState .state.active {
+    color: #FFA200; }
+  .active-pb .guessState .button {
+    display: flex;
+    justify-content: space-between;
+    width: 5.06667rem;
+    margin-right: 0.2rem;
+    padding-top: 0.13333rem; }
+    .active-pb .guessState .button div {
+      height: 0.8rem;
+      width: 2.4rem; }
+      .active-pb .guessState .button div img {
+        height: 0.8rem;
+        width: 2.4rem; }
+.active-pb .questionList {
+  border-top: 0.13333rem solid #FFFFFF; }
+  .active-pb .questionList .title {
+    display: flex;
+    align-items: center;
+    padding: 0 0.13333rem;
+    height: 1.33333rem;
+    background-color: #FFFFFF; }
+    .active-pb .questionList .title .item {
+      width: 1.24rem;
+      height: 0.53333rem;
+      margin: 0 0.13333rem;
+      background-color: #666666;
+      color: #FFFFFF;
+      line-height: 0.53333rem;
+      text-align: center;
+      font-size: 0.29333rem;
+      border-radius: 0.06667rem; }
+    .active-pb .questionList .title .item.active {
+      background-color: #0099ff; }
+  .active-pb .questionList .qitem {
+    margin-bottom: 0.13333rem;
+    background-color: #ffffff;
+    padding-bottom: 0.26667rem; }
+    .active-pb .questionList .qitem .title {
+      padding: 0 0.13333rem;
+      height: 0.6rem;
+      line-height: 0.6rem;
+      display: flex;
+      align-items: center; }
+      .active-pb .questionList .qitem .title .img {
+        width: 0.4rem;
+        height: 0.4rem; }
+        .active-pb .questionList .qitem .title .img img {
+          width: 0.4rem;
+          height: 0.4rem; }
+      .active-pb .questionList .qitem .title .questionitem {
+        margin-left: 0.26667rem;
+        font-weight: bold; }
+    .active-pb .questionList .qitem .newanswers {
+      display: flex; }
+      .active-pb .questionList .qitem .newanswers .answer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        width: 4.66667rem;
+        height: 2.50667rem;
+        border: 1px #d59f1d solid;
+        border-radius: 0.2rem;
+        font-size: 0.4rem;
+        margin: 0.13333rem;
+        position: relative; }
+        .active-pb .questionList .qitem .newanswers .answer .isbet {
+          position: absolute;
+          right: 0.13333rem;
+          top: 0;
+          width: 0.65333rem;
+          height: 1.12rem; }
+          .active-pb .questionList .qitem .newanswers .answer .isbet img {
+            width: 0.65333rem;
+            height: 1.12rem; }
+        .active-pb .questionList .qitem .newanswers .answer .win {
+          position: absolute;
+          right: 0.13333rem;
+          bottom: 0.13333rem;
+          width: 0.26667rem;
+          height: 0.26667rem; }
+          .active-pb .questionList .qitem .newanswers .answer .win img {
+            width: 0.26667rem;
+            height: 0.26667rem; }
+        .active-pb .questionList .qitem .newanswers .answer .name {
+          color: #d59f1d;
+          font-size: 0.42667rem;
+          line-height: 0.8rem; }
+        .active-pb .questionList .qitem .newanswers .answer .odds {
+          color: #868686; }
+      .active-pb .questionList .qitem .newanswers .answer2 {
+        width: 3.06667rem;
+        height: 1.6rem; }
+    .active-pb .questionList .qitem .newanswers.newanswers2 {
+      flex-wrap: wrap; }
+      .active-pb .questionList .qitem .newanswers.newanswers2 .answer {
+        width: 3.06667rem; }
+.active-pb .mask2 {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 200%;
+  background: #000;
+  opacity: 0.5;
+  z-index: 99; }
+.active-pb .betwindow {
+  width: 9.06667rem;
+  height: 3.2rem;
+  position: fixed;
+  top: 4rem;
+  left: 0.46667rem;
+  z-index: 100;
+  border-radius: 0.13333rem;
+  overflow: hidden;
+  background-color: #cccccc;
+  border: 2px solid #868686; }
+  .active-pb .betwindow .title {
+    background-color: #ffffff;
+    padding: 0 0.26667rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    display: flex;
+    align-items: center; }
+    .active-pb .betwindow .title .img {
+      width: 0.4rem;
+      height: 0.4rem; }
+      .active-pb .betwindow .title .img img {
+        width: 0.4rem;
+        height: 0.4rem; }
+    .active-pb .betwindow .title .questionitem {
+      margin-left: 0.26667rem;
+      font-weight: bold; }
+  .active-pb .betwindow .balance {
+    padding: 0 0.26667rem;
+    line-height: 0.66667rem;
+    display: flex;
+    justify-content: space-between; }
+  .active-pb .betwindow .betnum {
+    display: flex;
+    justify-content: space-around; }
+    .active-pb .betwindow .betnum input {
+      width: 4.8rem;
+      height: 0.93333rem;
+      border: 2px solid #ff6600;
+      border-radius: 0.13333rem;
+      padding-left: 0.2rem; }
+    .active-pb .betwindow .betnum .sub-button {
+      width: 3.73333rem;
+      height: 0.93333rem;
+      line-height: 0.93333rem;
+      text-align: center;
+      background-color: #ff6600;
+      border-radius: 0.13333rem;
+      font-size: 0.42667rem;
+      color: #ffffff;
+      font-weight: bold; }
+  .active-pb .betwindow .reward {
+    padding: 0 0.26667rem;
+    line-height: 0.66667rem; }
+.active-pb .sign-alert {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 10rem;
+  text-align: center;
+  background-color: #FFFFFF;
+  z-index: 100; }
+  .active-pb .sign-alert .title {
+    height: 0.74667rem;
+    line-height: 0.74667rem;
+    position: relative;
+    color: #ff9b00; }
+    .active-pb .sign-alert .title .close {
+      position: absolute;
+      top: 0.09333rem;
+      right: 0.4rem;
+      height: 0.42667rem;
+      width: 0.42667rem;
+      background-image: url("http://static.jesport.com/sly/images/active-pb/x.png");
+      background-repeat: no-repeat;
+      background-size: 0.42667rem 0.42667rem; }
+  .active-pb .sign-alert .item {
+    padding: 0 1.74667rem;
+    display: flex;
+    height: 0.96rem;
+    align-items: center;
+    justify-content: center; }
+    .active-pb .sign-alert .item .name {
+      width: 2.06667rem;
+      margin-right: 0.32rem;
+      color: #FF9B00; }
+    .active-pb .sign-alert .item .value {
+      height: 0.96rem; }
+      .active-pb .sign-alert .item .value input {
+        line-height: 0.8rem;
+        margin: 0.08rem;
+        border-bottom: 0.02667rem solid #bfbfbf; }
+      .active-pb .sign-alert .item .value input:placeholder {
+        color: #f2f2f2; }
+  .active-pb .sign-alert .cutline {
+    width: 8.37333rem;
+    height: 0.01333rem;
+    background-color: #bfbfbf;
+    margin: 0.46667rem auto; }
+  .active-pb .sign-alert .info {
+    padding: 0 0.96rem;
+    height: 0.96rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center; }
+    .active-pb .sign-alert .info div {
+      width: 3.73333rem; }
+    .active-pb .sign-alert .info span {
+      color: #ff9b00; }
+  .active-pb .sign-alert .submitsign {
+    height: 1.06667rem;
+    width: 3.17333rem;
+    margin: 0.13333rem auto;
+    background-image: url("http://static.jesport.com/sly/images/active-pb/confirm.png");
+    background-repeat: no-repeat;
+    background-size: 3.17333rem 1.06667rem; }
+.active-pb .enroll-alert {
+  position: fixed;
+  top: 2.89333rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 7.06667rem;
+  background-color: #FFFFFF;
+  z-index: 100; }
+  .active-pb .enroll-alert .title {
+    height: 0.74667rem;
+    line-height: 0.74667rem;
+    position: relative;
+    font-size: 0.4rem;
+    color: #FF9B00;
+    text-align: center; }
+    .active-pb .enroll-alert .title .close {
+      position: absolute;
+      top: 0.09333rem;
+      right: 0.4rem;
+      height: 0.42667rem;
+      width: 0.42667rem;
+      background-image: url("http://static.jesport.com/sly/images/active-pb/x.png");
+      background-repeat: no-repeat;
+      background-size: 0.42667rem 0.42667rem; }
+  .active-pb .enroll-alert .item {
+    height: 0.74667rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.37333rem; }
+    .active-pb .enroll-alert .item .name {
+      width: 3.14667rem;
+      text-align: right;
+      margin-right: 0.13333rem; }
+    .active-pb .enroll-alert .item .value {
+      flex: 1; }
+    .active-pb .enroll-alert .item .color {
+      color: #FF9B00; }
+  .active-pb .enroll-alert .enrollList {
+    max-height: 5.97333rem; }
+  .active-pb .enroll-alert .memo {
+    height: 1.33333rem;
+    padding: 0 1.06667rem;
+    font-size: 0.26667rem;
+    color: #5D5D5D;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  .active-pb .enroll-alert .know {
+    width: 2.93333rem;
+    height: 0.82667rem;
+    margin: 0.26667rem auto;
+    background-image: url("http://static.jesport.com/sly/images/active-pb/ok.png");
+    background-repeat: no-repeat;
+    background-size: 2.93333rem 0.82667rem; }
+
+.pubgList {
+  background-color: #f2f2f2;
+  width: 10rem;
+  max-width: 1500px;
+  margin: 0 auto;
+  max-width: 1500px;
+  padding-bottom: 2rem; }
+  .pubgList .headertitle {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.26667rem;
+    height: 1.06667rem;
+    align-items: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    font-size: 0.42667rem;
+    color: #FF6600; }
+    .pubgList .headertitle .return-left {
+      width: 0.42667rem;
+      height: 0.42667rem;
+      background-image: url("http://static.jesport.com/sly/images/icon-left-01.png");
+      background-size: 0.42667rem 0.42667rem;
+      background-repeat: no-repeat; }
+      .pubgList .headertitle .return-left a {
+        display: block;
+        width: 0.42667rem;
+        height: 0.42667rem; }
+    .pubgList .headertitle .right {
+      width: 0.42667rem;
+      height: 0.42667rem; }
+  .pubgList .tabs {
+    margin-top: 0.13333rem;
+    background-color: #FFFFFF;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 1.06667rem;
+    padding: 0 0.4rem; }
+    .pubgList .tabs .line {
+      background-color: #6C6C6C;
+      width: 0.02667rem;
+      height: 0.66667rem; }
+    .pubgList .tabs .tabitem {
+      text-align: center;
+      height: 0.93333rem;
+      line-height: 0.93333rem; }
+    .pubgList .tabs .tabitem.active {
+      color: #FF6600;
+      border-bottom: 0.02667rem solid #FF6600; }
+  .pubgList .pbList .item {
+    width: 9.78667rem;
+    height: 2.96rem;
+    max-width: 1400px;
+    margin: 0.13333rem auto;
+    background-size: 9.78667rem 2.96rem;
+    background-repeat: no-repeat;
+    color: #FFFFFF;
+    font-size: 0.32rem;
+    padding: 0 0.26667rem;
+    position: relative; }
+    .pubgList .pbList .item .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 1.33333rem; }
+      .pubgList .pbList .item .title .name {
+        flex: 1;
+        font-size: 0.37333rem; }
+      .pubgList .pbList .item .title .state {
+        color: #FFA200; }
+    .pubgList .pbList .item .info {
+      width: 8rem;
+      display: flex;
+      flex-wrap: wrap; }
+      .pubgList .pbList .item .info .infoitem {
+        width: 50%;
+        height: 0.66667rem;
+        display: flex;
+        align-items: center; }
+        .pubgList .pbList .item .info .infoitem .img {
+          width: 0.4rem;
+          height: 0.4rem;
+          margin-right: 0.13333rem; }
+          .pubgList .pbList .item .info .infoitem .img img {
+            width: 0.4rem;
+            height: 0.4rem; }
+    .pubgList .pbList .item .mystate {
+      position: absolute;
+      top: 1.33333rem;
+      left: 6.74667rem; }
+      .pubgList .pbList .item .mystate .img {
+        width: 2.38667rem;
+        height: 1.38667rem; }
+        .pubgList .pbList .item .mystate .img img {
+          width: 2.38667rem;
+          height: 1.38667rem; }
+      .pubgList .pbList .item .mystate .state {
+        font-size: 0.26667rem;
+        color: #FFA100; }
+
+.nodata {
+  height: 4rem;
+  line-height: 4rem;
+  text-align: center;
+  font-size: 0.42667rem;
+  background-color: #FFFFFF; }
+
+/*# sourceMappingURL=active-pb.css.map */

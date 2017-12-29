@@ -1,0 +1,289 @@
+
+.lottery{
+  .header{
+    width: 100%;
+    height:rem(479px);
+    padding-top:rem(239px);
+    background:url("http://static.jesport.com/sly/images/lottery-bg.png") no-repeat;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+    .header-before{
+      content: attr(header-before);
+      display: block;
+      width: rem(45px);
+      height: rem(45px);
+      position: fixed;
+      top:rem(28px);
+      left:rem(44px);
+      background:url("http://static.jesport.com/sly/images/point-left.png") no-repeat;
+      -webkit-background-size:100% 100%;
+      background-size:100% 100%;
+    }
+    .getmodou{
+      height:rem(240px);
+      .allmodou{
+        color: #FEE39D;
+        span{
+          display: inline-block;
+          width: rem(200px);
+          height:rem(88px);
+          line-height:rem(88px);
+          margin-left:rem(260px);
+          font-size: rem(66px);
+          text-align: center;
+        }
+        i{
+          display: inline-block;
+          background:url("http://static.jesport.com/sly/images/modou.png") no-repeat ;
+          -webkit-background-size:100% 100%;
+          background-size:100% 100%;
+          height:rem(53px);
+          width:rem(46px);
+        }
+      }
+      .modou-box{
+        margin-top:rem(20px);
+        display: flex;
+        padding-left: rem(160px);
+        color: #fff9e9;
+        .modouinfo{
+          width: rem(400px);
+          div {
+            height: rem(60px);
+            line-height: rem(60px);
+            font-size: rem(28px);
+            display: flex;
+            justify-content: space-around;
+            .multi, .modou {
+              width: rem(185px);
+              span {
+                overflow: hidden;
+                width: rem(100px);
+                text-align: center;
+              }
+            }
+          }
+        }
+        .modou-btn{
+          height:rem(120px);
+          line-height:rem(120px);
+          a{
+            color: #fff9e9;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  .header2{
+    width: 100%;
+    height:rem(479px);
+    padding-top:rem(160px);
+    background:url("http://static.jesport.com/sly/images/lottery-bg2.jpg") no-repeat;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%;
+    .header-before{
+      content: attr(header-before);
+      display: block;
+      width: rem(45px);
+      height: rem(45px);
+      position: fixed;
+      top:rem(28px);
+      left:rem(44px);
+      background:url("http://static.jesport.com/sly/images/icon-left-black.png") no-repeat ;
+      -webkit-background-size:100% 100%;
+      background-size:100% 100%;
+    }
+    .getmodou{
+      height:rem(240px);
+      .allmodou{
+      }
+      .modou-box{
+        margin-top:rem(20px);
+        display: flex;
+        padding-left: rem(160px);
+        color: #D53843;
+        .modouinfo{
+          width: rem(400px);
+          div {
+            height: rem(60px);
+            line-height: rem(60px);
+            font-size: rem(28px);
+            display: flex;
+            justify-content: space-around;
+            .multi, .modou {
+              width: rem(185px);
+              span {
+                overflow: hidden;
+                width: rem(100px);
+                text-align: center;
+              }
+            }
+          }
+        }
+        .modou-btn{
+          height:rem(120px);
+          line-height:rem(120px);
+          a{
+            color: #ff6666;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  .lottery-content{
+    height:rem(855px);
+    background-color: #FFF9E9;
+    overflow: hidden;
+    .title{
+      height:rem(80px);
+      line-height:rem(80px);
+      color:#CC293A;
+      font-size: rem(50px);
+      text-align: center;
+    }
+    .scroll-content{
+      margin:0 rem(20px);
+      border-top:2px dashed #999999;
+      border-bottom:1px dashed #999999;
+      display: flex;
+      .img{
+        width: rem(70px);
+        height: rem(70px);
+        img{
+          width: 100%;
+          height:100%;
+        }
+      }
+      .list_lh{
+        padding:rem(10px) rem(30px);
+        width: rem(640px);
+        height:rem(72px);
+        overflow: hidden;
+        .scdiv{
+          position:relative;
+          animation: HorizontalScroll 10s linear 1s infinite;
+          @keyframes HorizontalScroll {
+            from {top:0px}
+            to {top:rem(-156px)}
+          }
+        }
+
+        li{
+          height:rem(52px);
+          line-height:rem(52px);
+          color: #CC293A;
+          font-size: rem(28px);
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+    .lottery-tab{
+      margin: rem(20px);
+      height:rem(67px);
+      border-bottom: 1px solid #666;
+      display: flex;
+      align-items:flex-end;
+      div{
+        width: rem(200px);
+        border:1px solid #666;
+        background-color: #fff9e9;
+        height:rem(56px);
+        line-height:rem(56px);
+        text-align: center;
+        font-size: rem(30px);
+      }
+      .active_tab{
+        height:rem(66px);
+        linen-height:rem(66px);
+        background-color: #FEE39D;
+      }
+    }
+    .rank-content{
+      margin:0 rem(20px);
+      height:rem(415px);
+      .onerank{
+        height:rem(75px);
+        line-height:rem(75px);
+        border-bottom: 1px solid #666666;
+        margin-top: rem(10px);
+        font-size: rem(30px);
+        display: flex;
+        justify-content: space-between;
+        .img{
+          width: rem(66px);
+          height:rem(70px);
+          img{
+            width: 100%;
+            height:100%;
+          }
+        }
+        .img:nth-of-type(4),.img:nth-of-type(5){
+          width: rem(42px);
+          height:rem(45px);
+          img{
+            width: 100%;
+            height:100%;
+          }
+        }
+        .name{
+          width:rem(240px);
+          //text-align: left;
+          overflow: hidden;
+        }
+        .bonus{
+          width:rem(160px);
+          text-align: center;
+          img{
+            float: right;
+            margin-top: rem(13px);
+            width: rem(42px);
+            height:rem(49px);
+          }
+        }
+        .bonusinfo{
+          width: rem(160px);
+          div{
+            height:rem(37px);
+            line-height:rem(37px);
+            font-size: rem(24px);
+
+          }
+        }
+      }
+    }
+    .record-content{
+      display: none;
+      margin-top: rem(20px);
+      height:rem(530px);
+      overflow: hidden;
+      ul{
+        padding:rem(10px) rem(30px);
+        //height:rem(480px);
+        //overflow-x: hidden;
+        li{
+          height:rem(56px);
+          line-height:rem(56px);;
+          color: #666666;
+          font-size: rem(26px);
+          display: flex;
+          justify-content: space-between;
+          .getbonus{
+            width: rem(150px);
+            color: #D53843;
+            text-align: center;
+            overflow: hidden;
+            img{
+              float: right;
+              margin-top: rem(5px);
+              width: rem(36px);
+              height:rem(42px);
+            }
+          }
+        }
+      }
+    }
+  }
+}

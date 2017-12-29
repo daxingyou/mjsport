@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=2017110613392">
+    <title>魔圣电竞大师</title>
+</head>
+<body style="background-color: #f2f2f2;">
+<!--<div id="wrapper" class="netactivity" style="background: #f2f2f2;">-->
+    <!--<div id="scroller">-->
+<div id="app" class="netactivity">
+    <div class="netbaractivitylist">
+        <div class="activityitem" v-for="item in activityList"  @click="gomyactivity(item.id)">
+            <div class="img">
+                <div class="personstatebox">
+                    <div class="personstate" v-if="item.state==1" style="background-color: #3399FF">参赛</div>
+                    <div class="personstate" v-if="item.voteAntes>0" style="background-color: #EF6095">竞猜 {{item.voteAntes}} 魔豆</div>
+                    <div class="personstate" v-if="item.feeVote>0" style="background-color: #33CC99">投票 {{item.feeVote}} 魔豆</div>
+                </div>
+                <img :src="item.poster" alt="">
+            </div>
+            <div class="activityinfo">
+                <div class="name">{{item.name}}</div>
+                <div class="date">{{item.startDate}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--</div>-->
+<!--</div>-->
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=2017110613392"></script>
+<script >
+    new Vue({
+        el:"#app",
+        data(){
+            return {
+                activityList:[],
+            }
+        },
+        created(){
+            this.getList();
+        },
+        methods:{
+            getList(){
+                var _this=this;
+                $.getJSON(listUrl+'sports/m/match/list',function(json){
+                    console.log(json);
+                    if(json.errCode==0){
+                        if(json.matchList.length==0){
+                            var url="netbaractivity.html?id="+json.netbarId;
+                            $("#app").html("<div class='nodata'>暂未参与活动,<a href="+url+">前往参与</a></div>")
+                        }else{
+                            _this.activityList=json.matchList;
+                        }
+
+                    }
+                })
+            },
+            gomyactivity(id){
+//                $(".activityitem").on("tap",function(){
+                    window.location.href = "actSign.html?id="+id;
+//                })
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

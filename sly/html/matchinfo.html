@@ -1,0 +1,228 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201709011545">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+    <div class="mheader" id="header">
+        <div class="wheader">
+            <div class="back"></div>
+            <div class="wtitle" id="match_name"></div>
+            <div class="header_right"><!-- <a href="" class="go">前往</a> --></div>
+        </div>
+        <div class="match-list ">
+            <div class="match-list-item">
+                <div class="item-main">
+                    <div class="item-left">
+                        <div class="item-img">
+                            <a href="javascript:;">
+                                <img src="http://static.jesport.com/sly/images/item1.png" alt="" class="team1img">
+                            </a>
+                        </div>
+                        <p class="dname" id="lname"></p>
+                    </div>
+                    <div class="item-cen">
+                        <p class="score-list"><span class="time2" id="time"></span></p>
+                        <div class="look-btn">
+                            <a href="javascript:;">竞&nbsp;猜</a>
+                        </div>
+                    </div>
+                    <div class="item-right">
+                        <div class="item-img">
+                            <a href="javascript:;">
+                                <img src="http://static.jesport.com/sly/images/item2.png" alt="" class="team2img">
+                            </a>
+                        </div>
+                        <p class="dname" id="rname"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tabs-box">
+        <div class="tab info_active matchtab" >比赛详情<div></div></div>
+        <div class="tab guesstab" >有奖竞猜<div></div></div>
+        <div class="tab statab" >技术统计<div></div></div>
+    </div>
+    <div class="guessheader" id="guessheader" style="display: none;">
+        <div class="rule-btn"></div>
+        <div class="guessTab">
+            <div class="mode mode_active quests">过关模式</div>
+            <div class="mode  single">单关模式</div>
+
+        </div>
+    </div>
+    <div class="guess-mask"></div>
+    <div class="guess-rule-modal" >
+        <div class="guess-rule-title">竞猜的规则</div>
+        <div class="dan-guess-box">
+            <div class="dan-guess-title">单关竞猜</div>
+            <p>每道题都可以单独投注。</p>
+            <p>每注10魔豆，可投多倍。</p>
+            <p>单独奖池，根据本题用户投入的魔豆作为最终奖池。</p>
+            <p>投注后根据最终赔率，计算所得魔豆。</p>
+        </div>
+        <div class="shuang-guess-box">
+            <div class="shuang-guess-title">过关竞猜</div>
+            <p>6道题全部给出答案后即可投注。</p>
+            <p>每注100魔豆，不可投多倍。。</p>
+            <p>仅有一次投注机会，可多选。</p>
+            <p>特等奖：一等奖内抽出一名，获得特等红包(必开超级大奖)</p>
+            <p>一个奖池，包含本场比赛过关竞猜中所有投入的魔豆</p>
+            <p>一等奖：6道题全对，可获得一个一等红包。</p>
+            <p>二等奖：5道题全对，可获得一个二等红包。</p>
+            <p>三等奖：4道题全对，可获得一个三等红包。</p>
+        </div>
+    </div>
+    <div class="matchinfo info" id="matchinfo">
+        <div class="infolist">
+            <div class="name">比赛时间</div>
+            <div class="details" id="startTime"></div>
+        </div>
+        <div class="infolist">
+            <div class="name">举办地点</div>
+            <div class="details" id="address"></div>
+        </div>
+       <div class="infolist">
+        <div class="name">比赛游戏</div>
+        <div class="details" id="gamename"></div>
+    </div>
+    <div class="infolist">
+        <div class="name">比赛规则</div>
+        <div class="rulelist">
+            <p class="rule" id="rule1"></p>
+            <p class="rule" id="rule2"></p>
+            <p class="rule" id="rule3"></p>
+        </div>
+    </div>
+    <div class="infolist">
+        <div class="name">参赛队伍</div>
+        <div class="teamlists">
+            <div class="team team1">
+                <div class="teamimg"><img src="http://static.jesport.com/sly/images/item1.png" alt="" class="team1img"></div>
+                <div id="p1Name"></div>
+            </div>
+            <div class="team team2">
+                <div class="teamimg"><img src="http://static.jesport.com/sly/images/item2.png" alt="" class="team2img"></div>
+                <div calss="teamname" id="p2Name"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="guessinfo info">
+    <div class="modeinfo">
+        <div class="singleinfo">
+            <div class="items" style="padding-bottom:5.2rem;" id="items"></div>
+        </div>
+        <div class="arcardinfo">
+            <div class="items" style="padding-bottom:5.2rem;" id="items2"></div>
+        </div>
+    </div>
+</div>
+    <div class="tecinfo info">
+        <div id="allmatch">
+        </div>
+    </div>
+    <div class="arcard_answer" id="arcard_answer" style="display:none;">
+        <div class="myanswer">
+        <div class="answer_name">已选</div>
+        <div id="double_options" class="answer_options">
+            <div class="answer_option"></div>
+            <div class="answer_option"></div>
+            <div class="answer_option"></div>
+            <div class="answer_option"></div>
+            <div class="answer_option"></div>
+            <div class="answer_option"></div>
+        </div>
+        <div class="answer_clear">清空
+            <div class="answer_clear_img"><img src="http://static.jesport.com/sly/images/clear.jpg" /></div></div>
+        </div>
+        <div class="bottom">
+            <div class="bottom_info">
+                <div class="bottom1 total">
+                    <div class="bottom2 bottom2_total" style="display: none">共<span id="total_num_span2" class="total_num_span">0</span>注</div>
+                    <div style="display: none;" class="bottom2 bottom2_input">投<input id="multiple2" type="number" disabled="disabled" class="multiple" value="1" />倍</div>
+                </div>
+                <div class="bottom1 income">
+                 <div class="bottom2 bottom2_md">奖池<span id="total_num3" class="total_num">0</span>魔豆</div>
+                 <div class="bottom2 bottom2_md">共需<span id="total_num2" class="total_num">0</span>魔豆<span style="margin-left: 10px;">最高可赢得</span><span id="all_mdnum">0</span>魔豆</div>
+             </div>
+         </div>
+         <div class="bottom_sub" id="submit2" ><a href="javascript:;">提交</a></div>
+     </div>
+    </div>
+    <div class="single_answer" id="single_answer" style="display:none;">
+        <div class="myanswer">
+        <div class="answer_name">已选</div>
+        <div id="single_options" class="answer_options">
+            <div class="answer_option"></div>
+            <div class="answer_option"></div>
+            <div class="answer_option"></div>
+            <div class="answer_option"></div>
+            <div class="answer_option"></div>
+            <div class="answer_option"></div>
+        </div>
+        <div class="answer_clear">清空
+            <div class="answer_clear_img"><img src="http://static.jesport.com/sly/images/clear.jpg" /></div></div>
+        </div>
+        <div class="bottom">
+            <div class="bottom_info">
+                <div class="bottom1 total">
+                    <div class="bottom2 bottom2_total">共<span id="total_num_span" class="total_num_span">0</span>注</div>
+                    <div style="display: none;" class="bottom2 bottom2_input">投<input type="number" id="multiple" class="multiple" value="1"/>倍</div>
+                </div>
+                <div class="bottom1 income">
+                    <!-- <div class="bottom2 bottom2_income">最高收益<span class="income_num">0</span>倍</div> -->
+                    <div class="bottom2 bottom2_md">共<span id="total_num" class="total_num">0</span>魔豆</div>
+                </div>
+            </div>
+            <div class="bottom_sub"><a id="submit" href="javascript:;">提交</a></div>
+        </div>
+    </div>
+    <div class="result-box" id="result-box">
+        <div class="result">
+            <div class="single">
+                <div>单关</div>
+                <div class="multi">共<span id="single-mulit"></span>注</div>
+                <div class="modou"><span id="single-modou"></span>魔豆</div>
+            </div>
+            <div>
+                <div>过关</div>
+                <div class="multi">共<span id="arcard-mulit"></span>注</div>
+                <div class="modou"><span id="arcard-modou"></span>魔豆</div>
+            </div>
+        </div>
+        <div class="result-btn">
+            <div id="wait">等待开奖！</div>
+            <div id="hadopen">
+                <div>奖品已领!</div>
+                <a href="javascript:;">查看详情</a>
+            </div>
+            <div id="losing">
+                <div>未中奖!</div>
+                <a href="javascript:;">查看详情</a>
+            </div>
+            <div id="over">
+                <a href="javascript:;" id="golottery"><img src="http://static.jesport.com/sly/images/luckybag.png" alt=""></a>
+                <p>点击开奖!</p>
+            </div>
+
+        </div>
+    </div>
+    
+  </div>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/zepto.min.js"></script>
+  <script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+  <script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201708311435"></script>
+  <script type="text/javascript" src="http://static.jesport.com/sly/templat/commonTpl.js?version=201708311514"></script>
+  <script type="text/javascript" src="http://static.jesport.com/sly/js/match.js?version=201709011545"></script>
+</body>
+</html>

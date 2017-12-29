@@ -1,0 +1,934 @@
+div.gmask{
+	display: none;
+	left: 0;
+	top: 0;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.3;
+	z-index: 9999;
+}
+div.nmask{
+	display: none;
+	left: 0;
+	top: rem(166px);
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0;
+	z-index: 9999;
+}
+div.kmask{
+	display: none;
+	left: 0;
+	top: 0;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.8;
+	z-index: 9999;
+}
+div.score-modal{
+	@include cen;
+	box-shadow: 0 3px 9px rgba(0,0,0,.5);
+	display: none;
+	width: rem(600px);
+	height: rem(1000px);
+	background: $f0;
+	overflow: hidden;
+	z-index: 99999;
+	padding: 0 rem(20px);
+	.modal-header{
+		@include wflex;
+		padding: 0 rem(30px);
+		height: rem(31px);
+		line-height: rem(31px);
+		margin-top: rem(36px);
+		margin-bottom: rem(38px);
+		span{
+			@include dpr(24px);
+			color: #000;
+			font-weight: 600;
+		}
+	}
+	.modal-main{
+		width: rem(560px);
+		div{
+			background: #fff;
+			@include wflex;
+			margin-bottom: rem(11px);
+		}
+		h2{
+			height: 100%;
+			width: rem(30px);
+			@include hflex;
+			justify-content:center;
+			span{
+				@include dpr(24px);
+				color: #fff;
+				text-align: center;
+			}
+		}
+		ul{
+				width: rem(530px);
+				@include wflex;
+				align-items:stretch;
+				flex-wrap:wrap;
+				justify-content:flex-start;
+			li{
+					width: rem(106px);
+					height: rem(70px);
+					line-height: rem(70px);
+					text-align: center;
+					
+					@include dpr(20px);
+					border:1px solid #f0f0f0;
+			}
+			.other{
+					width: 100%;
+			}
+		}
+		.host-panel{
+			height: rem(280px);
+			h2{
+				background: #27a814;
+			}
+			ul{
+				color: #28a814;
+				li{
+					color: #28a814;
+				}
+				
+			}
+		}
+		.flat-panel{
+			height: rem(140px);
+			h2{
+				background: $cc;
+			}
+			ul{
+				color: $cc;
+				li{
+					color: $cc;
+				}
+				.flat-other{
+					width: 100%;
+				}
+			}
+		}
+		.guest-panel{
+			height: rem(280px);
+			h2{
+					background: $bg;
+			}
+			ul{
+				color: $bg;
+				li{
+					color: $bg;
+				}
+			}
+		}
+	}
+	.modal-footer{
+		@include wflex;
+		button{
+			border-radius: 4px;
+			width: rem(270px);
+			height: rem(75px);
+			line-height: rem(75px);
+			text-align: center;
+			background: $f9;
+			color: #fff;
+			@include dpr(28px);
+		}
+	}
+}
+div.bet-modal{
+	z-index: 999999;
+	display: none;
+	width: rem(600px);
+	height: rem(828px);
+	@include cen;
+	background: #fff;
+	box-shadow: 0 3px 9px rgba(0,0,0,.5);
+	padding:0 rem(20px);
+	h2{
+		@include dpr(28px);
+		text-align: center;
+		height: rem(37px);
+		line-height: (37px);
+		margin-top: rem(16px);
+		margin-bottom: rem(45px);
+		font-weight: 600;
+	}
+	h3{
+		@include dpr(24px);
+		height: rem(31px);
+		line-height: (31px);
+		margin-bottom: rem(20px);
+		font-weight: 600;
+	}
+	.keyboard{
+		.screen{
+			background: #FFFFFF;
+			border: 1px solid #FF9F00;
+			border-radius: 8px;
+			height: rem(80px);
+			line-height: rem(80px);
+			padding:0 rem(40px);
+			@include dpr(28px);
+			color: #000;
+			margin-bottom: rem(10px);
+			text-align: center;
+		}
+		ul{
+			@include wflex;
+			flex-wrap:wrap;
+			margin-bottom: rem(20px);
+			li{
+				margin-bottom: rem(10px);
+				width: rem(180px);
+				height: rem(100px);
+				line-height: rem(100px);
+				background: #FFFFFF;
+				border: 1px solid #FF9F00;
+				@include dpr(28px);
+				color: #000;
+				text-align: center;
+				font-weight: 600;
+			}
+		}
+	}
+	.statement{
+		label{
+			margin-left: rem(180px);
+			font-weight: 600;
+			input{
+				vertical-align: middle;
+				width: rem(30px);
+				height: rem(30px);
+			}
+			span{
+				@include dpr(24px);
+				color: $f9;
+				vertical-align: middle;
+				display: inline-block;
+			}
+			a{
+				@include dpr(24px);
+				color: $f9;
+				vertical-align: middle;
+				display: inline-block;
+			}
+		}
+	}
+}
+.fork{
+		width: rem(50px);
+		height: rem(50px);
+		position: absolute;
+		right: 0;
+		top: 0;
+		@include guessBg2;
+		background-position: left rem(-1350px);
+	}
+.buy{
+		background: $f9;
+		text-align: center;
+	    a{
+	    	height: rem(130px);
+			line-height: rem(130px);
+			@include dpr(28px);
+			color: #fff;
+			display: inline-block;
+	    }
+	}
+.love-modal{
+	@include hlmodal;
+	height: rem(520px);
+	dl{
+		@include hldl;
+		dt{
+			text-indent: -9999px;
+		}
+		dt.love-icon1{
+			width: rem(77px);
+			height: rem(43px);
+			@include guessBg2;
+			background-position: left rem(-600px);
+		}
+		dt.love-icon2{
+			width: rem(91px);
+			height: rem(102px);
+			@include guessBg2;
+			background-position: left rem(-750px);
+		}
+		dt.remove-gag{
+			width: rem(77px);
+			height: rem(66px);
+			@include guessBg2;
+			background-position: left rem(-900px);
+		}
+		dd{
+			@include wflex;
+			@include dpr(28px);
+			span.love-icon{
+				 width: rem(40px);
+		  	 	 height: rem(45px);
+		  		 @include guessBg;
+				 background-position: left rem(-750px);
+				 margin-left: rem(15px);
+			}
+		}
+	}
+
+}
+.hate-modal{
+	@include hlmodal;
+	height: rem(910px);
+	dl{
+		@include hldl;
+		dt{
+			text-indent: -9999px;
+			@include guessBg2;
+		}
+		dt.egg{
+			width: rem(71px);
+			height: rem(56px);
+			background-position: left rem(-1050px);	
+		}
+		dt.then{
+			width: rem(64px);
+			height: rem(40px);
+			background-position: left rem(-1200px);
+		}
+		dt.gag10{
+			width: rem(77px);
+			height: rem(66px);
+			background-position: right rem(-300px);
+		}
+		dt.gag30{
+			width: rem(77px);
+			height: rem(66px);
+			background-position: right rem(-450px);
+		}
+		dt.gag60{
+			width: rem(77px);
+			height: rem(66px);
+			background-position: right rem(-600px);
+		}
+		dt.gag180{
+			width: rem(77px);
+			height: rem(66px);
+			background-position: right rem(-750px);
+		}
+		dd{
+			@include wflex;
+			@include dpr(28px);
+			.hate-add1{
+			
+		   }
+		   .hate-icon{
+			 width: rem(40px);
+		  	 height: rem(45px);
+		  	 @include guessBg;
+			 background-position: left rem(-900px);
+			 margin-left: rem(15px);
+		   }
+		}
+		
+	}
+}
+.invite-modal{
+	@include modal;
+	width: rem(600px);
+	height: rem(540px);
+	h2{
+		@include modal-h2;
+		margin-bottom: rem(50px);
+	}
+	ul{
+		overflow: hidden;
+		li{
+			color: $cc;
+			@include dpr(24px);
+			line-height: rem(31px);
+			margin-bottom: rem(36px);
+		}
+	}
+	div.invite-btn-menu{
+		margin-top: rem(10px);
+		.invite-btn-item{
+			@include modal-btn;
+		}
+	}
+	div.invite-btn{
+		@include modal-btn;
+	}
+}
+.room-modal{
+	@include modal;
+	width: rem(600px);
+	height: rem(410px);
+	padding-bottom: rem(30px);
+	h2{
+		@include modal-h2;
+	}
+	p{
+		color: $cc;
+		margin-bottom: rem(36px);
+		@include dpr(24px);
+		span.room-pwd{
+			color: #000;
+		}
+	}
+	
+	a.into-room{
+		display: block;
+		@include modal-btn;
+	}
+	a.into-room3{
+		display: block;
+		@include modal-btn;
+	}
+}
+
+.share-modal{
+	top: 0;
+	left: 0;
+	position: fixed;
+	z-index: 99999;
+	width: 100%;
+	height: 100%;
+	display: none;
+	@include dpr(36px);
+	color: #fff;
+	.kfork{
+		background: url(http://static.jesport.com/sly/images/icon_fork.png) no-repeat;
+		background-size: rem(84px) rem(84px);
+		width: rem(84px);
+		height: rem(84px);
+		position: absolute;
+		left: 50%;
+		margin-left: rem(-42px);
+		top: rem(800px);
+	}
+	.icon-share1{
+		background: url(http://static.jesport.com/sly/images/icon_jiantou.png) no-repeat;
+		background-size: rem(100px) rem(100px); 
+		width: rem(100px);
+		height: rem(100px);
+		position: absolute;
+		right: rem(40px);
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.share-text{
+		position: absolute;
+		right: rem(40px);
+		top: rem(100px);
+		background: url(http://static.jesport.com/sly/images/icon_kuang.png) no-repeat;
+		background-size: rem(650px) rem(340px); 
+		width: rem(650px);
+		height: rem(340px);
+		padding: rem(47px) rem(37px);
+		span{
+			font-weight: 600;
+		}
+	}
+	.share-text2{
+		padding: 0 rem(60px);
+		position: absolute;
+		right: rem(40px);
+		top: rem(500px);
+		line-height: rem(100px);
+		span{
+			display: inline-block;
+			vertical-align: middle;
+
+		}
+		.icon-share2{
+			background: url(http://static.jesport.com/sly/images/icon_dian.png) no-repeat;
+			background-size: rem(90px) rem(40px); 
+			width: rem(90px);
+			height: rem(40px);
+		}
+		.icon-share3{
+			margin-left: rem(20px);
+			background: url(http://static.jesport.com/sly/images/icon_pengyouquan.png) no-repeat;
+			background-size: rem(160px) rem(60px); 
+			width: rem(160px);
+			height: rem(60px);
+
+		}
+		
+	}
+}
+
+.share-modal4{
+	top: 0;
+	left: 0;
+	position: fixed;
+	z-index: 99999;
+	width: 100%;
+	height: 100%;
+	display: none;
+	@include dpr(36px);
+	color: #fff;
+	.kfork{
+		background: url(http://static.jesport.com/sly/images/icon_fork.png) no-repeat;
+		background-size: rem(84px) rem(84px);
+		width: rem(84px);
+		height: rem(84px);
+		position: absolute;
+		left: 50%;
+		margin-left: rem(-42px);
+		top: rem(800px);
+	}
+	.icon-share1{
+		background: url(http://static.jesport.com/sly/images/icon_jiantou.png) no-repeat;
+		background-size: rem(100px) rem(100px); 
+		width: rem(100px);
+		height: rem(100px);
+		position: absolute;
+		right: rem(40px);
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.share-text{
+		position: absolute;
+		right: rem(40px);
+		top: rem(100px);
+		background: url(http://static.jesport.com/sly/images/icon_kuang.png) no-repeat;
+		background-size: rem(650px) rem(340px); 
+		width: rem(650px);
+		height: rem(340px);
+		padding: rem(47px) rem(37px);
+		span{
+			font-weight: 600;
+		}
+	}
+	.share-text2{
+		padding: 0 rem(60px);
+		position: absolute;
+		right: rem(40px);
+		top: rem(500px);
+		line-height: rem(100px);
+		span{
+			display: inline-block;
+			vertical-align: middle;
+
+		}
+		.icon-share2{
+			background: url(http://static.jesport.com/sly/images/icon_dian.png) no-repeat;
+			background-size: rem(90px) rem(40px); 
+			width: rem(90px);
+			height: rem(40px);
+		}
+		.icon-share3{
+			margin-left: rem(20px);
+			background: url(http://static.jesport.com/sly/images/icon_pengyouquan.png) no-repeat;
+			background-size: rem(160px) rem(60px); 
+			width: rem(160px);
+			height: rem(60px);
+
+		}
+		
+	}
+}
+
+.wdl-modal{
+	@include modal;
+	width: rem(600px);
+	height: rem(352px);
+	padding-bottom: rem(20px);
+	h2{
+		@include modal-h2;
+	}
+	p{
+		color: $cc;
+		margin-bottom: rem(36px);
+		@include dpr(24px);
+	}
+	ul{
+		@include wflex;
+		li.modal-btn{
+			@include modal-btn;
+			width: rem(270px);
+		}
+	}
+}
+
+#success-modal{
+	width: rem(600px);
+	height: rem(352px);
+	@include modal;
+	h2{
+		@include modal-h2;
+	}
+	p{
+		color: $cc;
+		margin-bottom: rem(36px);
+		@include dpr(24px);
+		text-align: center;
+	}
+	ul{
+		text-align: center;
+		display: block;
+		.success-btn{
+			@include modal-btn;
+			display: inline-block;
+			width: rem(270px);
+		}
+	}
+}
+
+.sco-modal{
+	overflow: hidden;
+	@include modal;
+	width: rem(600px);
+	max-height: rem(500px);
+	padding-bottom: rem(20px);
+	h2{
+		@include modal-h2;
+	}
+	p{
+		color: $cc;
+		margin-bottom: rem(36px);
+		@include dpr(24px);
+		word-wrap: break-word;
+	}
+	.score-list{
+		color: $f9;
+		@include dpr(28px);
+		.comma{
+			color: #000;
+		}
+	}
+	ul{
+		width: rem(560px);
+		position: absolute;
+		bottom: rem(20px);
+		@include wflex;
+		li.modal-btn{
+			@include modal-btn;
+			width: rem(270px);
+		}
+	}
+}
+
+.fish-success-modal{
+	@include modal;
+	width: rem(600px);
+	height: rem(450px);
+	h2{
+		@include modal-h2;
+		margin-top: rem(32px);
+		margin-bottom: rem(49px);
+	}
+	p{
+		text-align: center;
+		color: $f9;
+		margin-bottom: rem(36px);
+		@include dpr(24px);
+	}
+	div.fish-modal-main{
+		padding: 0 rem(130px);
+		margin-bottom: rem(42px);
+		span{
+			display: inline-block;
+		}
+		span.icon-fish{
+			width: rem(110px);
+			height: rem(112px);
+			@include fishBg;
+			background-position: right rem(-1050px);
+			vertical-align: middle;
+			margin-right: rem(60px);
+		}
+		span.fish-num{
+			height: rem(112px);
+			line-height: rem(112px);
+			@include dpr(36px);
+			color: #000;
+			vertical-align: middle;
+		}
+	}
+	ul{
+		@include wflex;
+		li.modal-btn{
+			@include modal-btn;
+			width: rem(560px);
+		}
+	}
+}
+.buyFishModal{
+	@include modal;
+	width: rem(600px);
+	height: rem(800px);
+	h2{
+		@include modal-h2;
+		margin-bottom: rem(30px);
+	}
+	ul{
+		padding:0 rem(30px);
+		@include wflex;
+		flex-wrap:wrap;
+		li{
+			height: rem(150px);
+			padding-top: rem(30px);
+			border-bottom: 1px solid $bd;
+			width: rem(250px);
+			text-align: center;
+			div.coin{
+				padding-left: rem(70px);
+				@include wflex;
+				span.icon-coin{
+					@include icon-gold;
+					display: inline-block;
+					vertical-align: middle;
+					width: rem(50px);
+					height: rem(50px);
+				}
+				span.coin-text{
+					text-align: left;
+					display: inline-block;
+					@include dpr(28px);
+					color: $cc;
+					vertical-align: middle;
+					flex:1;
+				}
+			}
+			div.price{
+					@include dpr(28px);
+					color: $f9;
+			}
+		}
+		.active{
+			background:#ff9f00;
+			span.coin-text{
+					color: #fff!important;
+			}
+			div.price{
+					color: #fff;
+			}
+		}
+	}
+	.modal-btn{
+		@include modal-btn;
+		display: block;
+	}
+}
+
+/**
+ * 公共样式
+ */
+ul.share{
+		overflow: hidden;
+		@include wflex;
+		margin-bottom: rem(20px);
+		li{
+			margin-top: rem(30px);
+			width: rem(275px);
+			height: rem(80px);
+			text-align: center;
+			border: 1px solid $f9;
+			border-radius: rem(10px);
+			line-height: rem(80px);
+			span{
+				color: $f9;
+				display: inline-block;
+				vertical-align: middle;
+			}
+			span.icon-wx{
+				width: rem(30px);
+				height: rem(28px);
+				@include guessBg2;
+				background-position: left rem(-300px);
+			}
+			span.icon-qq{
+				width: rem(24px);
+				height: rem(28px);
+				@include guessBg2;
+				background-position: left rem(-450px);
+			}
+		}
+}
+
+#success-modal2{
+	width: rem(600px);
+	height: rem(352px);
+	h2{
+		margin:  rem(32px) 0 rem(80px);
+	}
+	ul.success{
+		justify-content:center;
+		li{
+			width: 100%;
+		}
+	}
+	span.share-text{
+		@include dpr(28px);
+	}
+}
+
+.wdl-select-modal{
+	width: rem(600px);
+	height: rem(615px);
+	@include modal;
+	h2{
+		@include dpr(28px);
+		color: #000;
+		margin-top: rem(25px);
+		font-weight: 600;
+		text-align: center;
+		margin-bottom: rem(58px);
+	}
+	.wdl-text{
+		color: $bg;
+		@include dpr(28px);
+		margin-bottom: rem(40px);
+	}
+	.wdl-list{
+		li{
+			height: rem(80px);
+			line-height: rem(80px);
+			text-align: center;
+			color: $cc;
+			border:1px solid $bg;
+			margin-bottom: rem(10px);
+			@include dpr(28px);
+			border-radius: rem(6px);
+		}
+		li.active{
+			background: $gs;
+			color: #000;
+		}
+		
+	}
+
+}
+.wdl-btn{
+		margin-top: rem(30px);
+		height: rem(80px);
+		line-height: rem(80px);
+		background:$f9;
+		@include dpr(36px);
+		text-align: center;
+		border-radius: rem(10px);
+		color: #fff;
+	}
+
+.catch-fish-modal{
+	width: rem(600px);
+	height: rem(630px);
+	@include modal;
+	h1{
+		@include dpr(28px);
+		color: #000;
+		margin-top: rem(25px);
+		font-weight: 600;
+		text-align: center;
+	}
+	p{
+		text-align: center;
+		margin-top: rem(34px);
+		a{
+			color: #000;
+			@include dpr(24px);
+			font-weight: 600;
+			span{
+				display: inline-block;
+				vertical-align: middle;
+			}
+			.go{
+				display: inline-block;
+				width: rem(14px);
+				height: rem(24px);
+				@include fishBg;
+				background-position: right rem(-150px);
+				vertical-align: middle;
+				margin-left: rem(10px);
+				margin-bottom: rem(4px);
+			}
+		}
+	}
+	.add-box1{
+		margin-top: rem(50px);
+		bottom: rem(170px);
+		padding: 0 rem(10px);
+		@include wflex;
+		height: rem(80px);
+		line-height: rem(80px);
+		background-size: rem(520px) rem(80px);
+		border-radius: 100px;
+		border:1px solid $f9;
+		color: $f9;
+		.reduce{
+			opacity: 1;
+			width: rem(62px);
+			height: rem(62px);
+			@include fishBg;
+			background-position: left rem(-600px);
+			color: $f9;
+		}
+		.add-text{
+			opacity: 1;
+			overflow: hidden;
+			width: rem(300px);
+			color: #fff;
+			@include dpr(28px);
+			height: rem(80px);
+			@include wflex;
+			text-align: center;
+			color: $f9;
+			span{
+
+				width: rem(100px);
+				height: rem(80px);
+			}
+			input{
+				color: $f9;
+				text-align: center;
+				width: rem(100px);
+			}
+		}
+		.plus{
+			width: rem(62px);
+			height: rem(62px);
+			@include fishBg;
+			background-position: left rem(-750px);
+		}
+	}
+	.catch-sure-btn{
+		margin-top: rem(30px);
+		@include modal-btn;
+	}
+	.overplus{
+		@include wflex;
+		z-index: 99999;
+		height: rem(30px);
+		line-height: rem(30px);
+		margin-top: rem(50px);
+		.text{
+			@include dpr(24px);
+			color: #000;
+			font-weight: 600;
+		}
+		
+		.use-double-card{
+			input{
+				width: rem(30px);
+				height: rem(30px);
+				vertical-align: middle;
+				margin-left:rem(25px);
+			}
+			@include dpr(24px);
+			color: #000;
+			font-weight: 600;
+		}
+	}
+}

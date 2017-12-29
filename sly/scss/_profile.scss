@@ -1,0 +1,499 @@
+.pheader{
+	height: rem(360px);
+	width: 100%;
+	color: #FFFFFF;
+	background-image: url("http://static.jesport.com/sly/images/pofileimg/pofilebg.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	position: relative;
+	margin-bottom: rem(16px);
+	.pheader-top{
+		//position: absolute;
+		//top:rem(44px);
+		//left:0;
+		padding-top: rem(44px);
+		width: 100%;
+		.pheader-img{
+			margin: 0 auto;
+			width: rem(133px);
+			height:rem(133px);
+			border:rem(3px) solid #f2f2f2;
+			border-radius: 100%;
+			overflow: hidden;
+			img{
+				border-radius: 100%;
+				border:4px solid #fff;
+				display: block;
+				width: rem(126px);
+				height:rem(126px);
+				background: #fff;
+			}
+		}
+		.name{
+			margin-top: rem(10px);
+			font-size: rem(32px);
+			width: 100%;
+			height:rem(44px);
+			line-height:rem(44px);
+			text-align: center;
+			overflow: hidden;
+			color: #fff;
+		}
+	}
+	.meminfo{
+		width: rem(400px);
+		margin: rem(5px) auto;
+		height:rem(45px);
+		line-height: rem(45px);
+		display: flex;
+		position: relative;
+		.memitem{
+			width: rem(200px);
+			display: flex;
+			.img{
+				float: left;
+				width: rem(35px);
+				height:rem(35px);
+				margin: rem(5px);
+				img{
+					width: rem(35px);
+					height:rem(35px);
+				}
+			}
+			.memdetail{
+				width: rem(150px);
+				font-size: rem(26px);
+				text-align: center;
+				a{
+					color: #00ffff;
+					text-decoration: underline;
+				}
+			}
+		}
+		.notice-icon{
+			position: absolute;
+			width: rem(40px);
+			height:rem(40px);
+			right:rem(-30px);
+			top:rem(3px);
+			background-image: url("http://static.jesport.com/sly/images/pofileimg/icon-notice.png") ;
+			background-size:rem(40px) rem(40px);
+			background-repeat: no-repeat;
+		}
+		.notice-content{
+			display: none;
+			position: absolute;
+			background-color: rgba(0,0,0,0.8);
+			left:rem(270px);
+			bottom: rem(45px);
+			width: rem(300px);
+			border-radius: rem(10px);
+			padding:rem(3px) rem(5px);
+			font-size: rem(19px);
+		}
+	}
+	.balance{
+		padding-top: rem(8px);
+		border-top: 1px solid rgba(256,256,256,0.3);
+		width: rem(550px);
+		height:rem(56px);
+		margin:0 auto;
+		line-height: rem(56px);
+		display: flex;
+		justify-content: space-around;
+		.balanceitem{
+			width: rem(240px);
+			height:rem(56px);
+			background-image: url("http://static.jesport.com/sly/images/pofileimg/balancebg.png");
+			background-size: rem(240px) rem(56px);
+			background-repeat: no-repeat;
+			padding: 0 rem(5px);
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: nowrap;
+			text-align: center;
+			.img{
+				margin:rem(9px) rem(5px);
+				width: rem(38px);
+				height:rem(38px);
+				img{
+					width: rem(38px);
+					height:rem(38px);
+				}
+				#myrighticon{
+					display: none;
+				}
+			}
+			#my_num{
+				span{
+					font-size: rem(18px);
+				}
+			}
+		}
+	}
+}
+.profile-menu{
+	display: flex;
+	flex-wrap: nowrap;
+	.box-item{
+		width: rem(186px);
+		height:rem(186px);
+		background: #fff;
+		margin-right: 1px;
+		.item{
+			margin-top: rem(20px);
+			.icon{
+				display: block;
+				width: rem(90px);
+				height:rem(90px);
+				margin: 0 auto;
+				background-size: rem(90px) rem(90px);
+				background-repeat: no-repeat;
+			}
+			.icon-bet{
+				background-image: url(http://static.jesport.com/sly/images/pofileimg/icon-bet.png);
+			}
+			.bd{
+				color: #0099FF!important;
+				margin-left: rem(350px)!important;
+			}
+			.icon-mdshop{
+				background-image: url(http://static.jesport.com/sly/images/pofileimg/icon-mdshop.png);
+			}
+			.icon-safe{
+				background-image: url(http://static.jesport.com/sly/images/pofileimg/icon-safe.png);
+			}
+			.icon-about{
+				background-image: url(http://static.jesport.com/sly/images/icon-about.png) ;
+			}
+			.name{
+				display: block;
+			margin: rem(5px) rem(20px) 0;
+				font-size: rem(28px);
+				color: #57607C;
+				line-height: rem(38px);
+				text-align: center;
+			}
+			.desc{
+				display: block;
+				//line-height: rem(30px);
+				font-style: rem(20px);
+				text-align: center;
+				color: #AABCD6;
+			}
+			.bd-input{
+				@include im;
+
+				font-size: rem(28px);
+				padding:rem(4px) rem(20px) 0;
+			}
+			.icon-exchange{
+				background-image: url(http://static.jesport.com/sly/images/pofileimg/icon-exchange.png) ;
+			}
+		}
+		.bdidcard{
+			float: right;
+			height:rem(50px);
+			line-height: rem(50px);
+			font-size: rem(28px);
+			color: #666666;
+		}
+	}
+}
+.profile-main{
+	margin-top: rem(10px);
+	overflow: hidden;
+	.box-item{
+		margin-top:rem(10px);
+		//margin-top: 2px;
+		padding: rem(20px) rem(20px);
+		background: #fff;
+		@include wflex;
+		.item{
+			.icon-bet{
+				display: inline-block;
+				vertical-align: middle;
+				width: rem(50px);
+				height: rem(50px);
+				background: url(http://static.jesport.com/sly/images/icon-jc.png) no-repeat;
+				background-size: rem(50px) rem(50px);
+			}
+			.bd{
+				color: #0099FF!important;
+				margin-left: rem(350px)!important;
+			}
+			.icon-mdshop{
+				display: inline-block;
+				vertical-align: middle;
+				width: rem(50px);
+				height: rem(50px);
+				background: url(http://static.jesport.com/sly/images/icon-mdshop.png) no-repeat;
+				background-size: rem(50px) rem(50px);
+			}
+			.icon-safe{
+				display: inline-block;
+				vertical-align: middle;
+				width: rem(50px);
+				height: rem(50px);
+				background: url(http://static.jesport.com/sly/images/icon-safe.png) no-repeat;
+				background-size: rem(50px) rem(50px);
+			}
+			.icon-about{
+				display: inline-block;
+				vertical-align: middle;
+				width: rem(50px);
+				height: rem(50px);
+				background: url(http://static.jesport.com/sly/images/icon-about.png) no-repeat;
+				background-size: rem(50px) rem(50px);
+			}
+			.name{
+				display: inline-block;
+				vertical-align: middle;
+				font-size: rem(32px);
+				color: #231815;
+				margin-left: rem(10px);
+			}
+			.bd-input{
+				@include im;
+
+				font-size: rem(28px);
+				padding:rem(4px) rem(20px) 0;
+			}
+			.icon-exchange{
+				display: inline-block;
+				vertical-align: middle;
+				width: rem(50px);
+				height: rem(50px);
+				background: url(http://static.jesport.com/sly/images/icon-about.png) no-repeat;
+				background-size: rem(50px) rem(50px);
+			}
+		}
+		.icon-right{
+			width: rem(30px);
+			height: rem(30px);
+			background: url(http://static.jesport.com/sly/images/icon-right.png) no-repeat;
+			background-size: rem(30px) rem(30px);
+		}
+		.bdidcard{
+			float: right;
+			height:rem(50px);
+			line-height: rem(50px);
+			font-size: rem(28px);
+			color: #666666;
+		}
+		//.md-shop{
+		//	.name{color: #868686;}
+		//}
+	}
+}
+.widthDraw{
+	width: rem(750px);
+	max-width: 1500px;
+	margin:0 auto;
+	.headtitle{
+		background-color: #FFFFFF;
+		width: 100%;
+		height:rem(80px);
+		line-height: rem(80px);
+		font-size: rem(32px);
+		color: #B89972;
+		text-align: center;
+		position: relative;
+		margin-bottom: rem(10px);
+		.return-left{
+			position: absolute;
+			left:rem(20px);
+			top:rem(20px);
+			display: block;
+			width:rem(32px);
+			height:rem(32px);
+			background-image: url("http://static.jesport.com/sly/images/icon-left-01.png");
+			background-repeat: no-repeat;
+			background-size: rem(32px) rem(32px);
+		}
+	}
+	.withbox{
+		background-color: #FFFFFF;
+		margin-bottom: rem(10px);
+		padding:0 rem(20px);
+		max-height: rem(700px);
+		.title{
+			height:rem(60px);
+			line-height: rem(50px);
+			color: #999999;
+			font-size: rem(28px);
+		}
+		.content{
+			padding-bottom: rem(30px);
+			.hbbox{
+				width: rem(260px);
+				height:rem(50px);
+				line-height: rem(50px);
+				padding-left:rem(72px);
+				font-size: rem(20px);
+				color: #575F7B;
+				border: rem(1px) solid #D92209 ;
+				border-radius: rem(25px);
+				margin:0 auto;
+				background-image: url('http://static.jesport.com/sly/images/newProfile/icon_6.png');
+				background-repeat: no-repeat;
+				background-size: rem(32px) rem(32px);
+				background-position: rem(30px) rem(9px);
+				.num{
+					margin:0 rem(10px);
+					color: #FF0000;
+					font-size: rem(24px);
+				}
+			}
+			.btn-withdraw{
+				background-color: #D92209;
+				width: rem(260px);
+				height:rem(50px);
+				color: #FFFFFF;
+				line-height: rem(50px);
+				text-align: center;
+				border: rem(1px) solid #D92209 ;
+				border-radius: rem(25px);
+				margin:rem(30px) auto;
+			}
+			.infobox{
+				padding:0 rem(20px);
+				font-size: rem(24px);
+				margin-bottom: rem(20px);
+				.info{
+					display: flex;
+					.name{
+						text-align: right;
+						width:rem(120px);
+						margin-right: rem(10px);
+					}
+					.value{
+						flex: 1;
+						color: #999999;
+
+					}
+				}
+
+			}
+			.info-btn{
+				background-color: #6699FF;
+				width: rem(260px);
+				height:rem(50px);
+				color: #FFFFFF;
+				line-height: rem(50px);
+				text-align: center;
+				border-radius: rem(25px);
+				margin:0 auto;
+			}
+		}
+		.pagebtn{
+			display: flex;
+			justify-content: space-around;
+			padding-bottom:rem(20px);
+			.btn{
+				width: rem(120px);
+				height:rem(40px);
+				border-radius: rem(10px);
+				line-height: rem(40px);
+				text-align: center;
+				border: rem(1px) solid #999999;
+			}
+		}
+	}
+	.addaccount,.alert-show{
+		position: fixed;
+		z-index: 100;
+		top:rem(240px);
+		left:0;
+		right:0;
+		margin:auto;
+		width: rem(680px);
+		background-color: #FFFFFF;
+		padding-bottom: rem(30px);
+		border-radius: rem(10px);
+		.title{
+			height:rem(60px);
+			text-align: center;
+			line-height: rem(70px);
+			position: relative;
+			font-size: rem(32px);
+			.close{
+				position: absolute;
+				right:rem(10px);
+				top:0;
+				width: rem(40px);
+				height:rem(40px);
+				line-height: rem(40px);
+				font-size: rem(50px);
+			}
+		}
+		.infobox{
+			.item{
+				display: flex;
+				align-items: center;
+				height:rem(80px);
+				font-size: rem(24px);
+				color: #666666;
+				padding:0 rem(45px);
+				.name{
+					width: rem(140px);
+					text-align: right;
+					margin-right: rem(10px);
+				}
+				.value{
+					width: rem(370px);
+					height:rem(68px);
+					border-radius: rem(10px);
+					border:rem(2px) solid #FF6600;
+					position: relative;
+					input{
+						width: 100%;
+						height:rem(68px);
+						padding: 0 rem(15px);
+					}
+					.btn{
+						width: rem(155px);
+						height:rem(47px);
+						position: absolute;
+						text-align: center;
+						line-height: rem(47px);
+						border-radius: rem(10px);
+						top:rem(10px);
+						right:rem(10px);
+						background-color: #66CCCC;
+						color: #FFFFFF;
+					}
+					.btn.active{
+						background-color: #e46695;
+					}
+				}
+			}
+			.msg{
+				margin:rem(20px) auto;
+				text-align: center;
+				color: #666666;
+				font-size: rem(22px);
+			}
+		}
+		.btnbox{
+			display: flex;
+			justify-content: center;
+			margin-bottom: rem(20px);
+			.btn{
+				width: rem(260px);
+				height:rem(68px);
+				background-color: #FF6600;
+				color: #FFFFFF;
+				line-height: rem(68px);
+				text-align: center;
+				border-radius: rem(20px);
+				font-size: rem(32px);
+			}
+		}
+		.attention{
+			padding:0 rem(15px);
+			font-size: rem(24px);
+			color: #666666;
+		}
+	}
+}

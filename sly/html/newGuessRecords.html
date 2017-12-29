@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201711031553">
+    <title>魔圣电竞大师</title>
+</head>
+<body style="background: #f2f2f2;">
+<div id="wrapper" class="index newrecordList" style="background: #f2f2f2;overflow: visible; position: static;">
+    <div id="scroller" style="min-height: 100%;position: static;">
+        <div id="app">
+            <div class="headertitle"><div class="return-left"><a href="javascript:history.go(-1);"></a></div><div>我的竞猜</div><div class="right"></div></div>
+            <div class="recordhead">
+                <!--<div class="left"></div>-->
+                <!--<div class="title"></div>-->
+                <div class="record-tabs">
+                    <div class="item "v-for="item in tabs" :class="{active:item.state==state}" @click="getDrawlist(item)">{{item.name}}</div>
+                </div>
+            </div>
+            <div class="recordList">
+                <div class="item" style="line-height:160px;" v-if="listInfo.length==0" >您还没有参加竞猜哦，去最新的竞猜看看吧！<a href="newGuessList.html">立即进入></a></div>
+                <div class="item" v-for="item in listInfo">
+                    <div class="title">
+                        <div class="name"  v-cloak>{{item.guessTitle}}</div>
+                        <div  v-cloak>{{item.betDate}}</div>
+                    </div>
+                    <div class="center">
+                        <div class="guessInfo">
+                            <div v-if="state!=0">
+                                <span  v-cloak>{{item.t1Name}}</span>
+                                <span>vs</span>
+                                <span  v-cloak>{{item.t2Name}}</span>
+                            </div>
+                            <div v-if="state!=0">
+                                <span v-cloak>{{item.betItem}}</span>
+                                <span v-cloak >{{item.betOdds}}倍</span>
+                            </div>
+                            <div v-if="state==0">
+                                <span v-cloak>{{item.questionTitle}}</span>
+                            </div>
+                            <div v-if="state==0">
+                                <span v-cloak>选项{{item.betItem}}</span>
+                                <span v-cloak >赔率{{item.betOdds}}倍</span>
+                            </div>
+                        </div>
+                        <div v-if="!item.answer" class="status" :class="{over:!item.answer}">待开奖</div>
+                        <div v-if="item.answer" class="status" :class="{lose:item.award==0}">{{item.award==0?"未中奖":"已中奖"}}</div>
+                    </div>
+                    <div class="balance"  v-cloak>
+                        <div v-cloak><span>下注金额:</span>{{item.betBeans}}</div>
+                        <div v-if="item.answer" :style="{color:item.answer?'#ff0000':'#000'}" v-cloak><span>{{item.answer!=""?"返还":"退还"}}:</span>{{item.answer!=""?item.award:item.betBeans}}</div>
+                        <div v-if="!item.answer" :style="{color:item.answer?'#ff0000':'#000'}" v-cloak><span>预计返还:</span>{{Math.round(item.betOdds * 10000 * item.betBeans /10000)}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/swiper-3.4.2.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201711091553"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/newRecord.js?version=201711091553"></script>
+
+</body>
+</html>

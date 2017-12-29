@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201712221426">
+    <title>魔圣电竞大师</title>
+    <style>
+    </style>
+</head>
+<body>
+<div class="turntablebg" id="turntablebg">
+    <div class="activity-date">活动时间：<span id="startdate">2017.7.8</span> -- <span id="enddate">2017.7.10</span></div>
+    <div class="md_num" id="md_num">剩余魔豆：<span id="memberBeanInfo">0</span></div>
+    <div class="exc-btn"><a href="javascript:;"></a></div>
+    <div class="mygift"><a href="javascript:;">我的奖励</a></div>
+    <div class="explain">本次活动与苹果公司无关。</div>
+    <div class="wininfo">
+        <div class="infoscroll">
+            <ul class="ul1" id="ul1"></ul>
+            <ul class="ul2"></ul>
+        </div>
+    </div>
+    <div class="mask"></div>
+    <div class="login" id="logintable">
+        <div class="form-group">
+            <div class="form-item" >
+                <input type="text" value="" id="phoneNumber" placeholder="请输入手机号">
+            </div>
+            <div class="form-item">
+                <input type="text" id="code" class="item-code" placeholder="请输入验证码">
+                <input  type="button" class="getCode" id="getCode" value="获取验证码" />
+            </div>
+            <div class="form-item item-validatePhone">
+                <div id="validatePhone" class="validatePhone">手机登录</div>
+                <!--<div class="wechatlogin" id="wechatlogin">微信登录</div>-->
+            </div>
+        </div>
+    </div>
+    <div class="alertidcard">
+        <div class="idcardinfo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;检测到您暂未绑定身份证，将无法正确获取到您网吧账户下的完整信息，将会影响到您支付方面的操作，请联系网吧前台绑定身份证后重试</div>
+        <div class="idcard-btn">知道了</div>
+    </div>
+    <div class="hadgift" id="hadgift">
+        <div class="myinfo">
+            <div id="myname"></div>
+            <div id="mynum"></div>
+        </div>
+        <div class="gifttabs">
+            <div class="goodstab active">实物奖品</div>
+            <div class="mdtab">魔豆奖品</div>
+        </div>
+        <div class="giftlist" id="giftlist">
+            <div class="onegift">
+                <div class="giftimg"><img src="http://static.jesport.com/sly/images/lottery/6.png" alt=""></div>
+                <div class="giftinfo">
+                    <div class="giftname"> item.goodsName</div>
+                    <div class="excdesc">兑换说明：前台领取</div>
+                    <div class="excdate">兑换有效期：2017-07-19前</div>
+                    <div class="status">+str+</div>
+                </div>
+            </div>
+        </div>
+        <div class="giftlist" id="giftlist1"></div>
+    </div>
+    <div class="nowin winmessage">
+        <div class="know"></div>
+    </div>
+    <div class="haswin winmessage">
+        <div class="wingift">
+            <div class="giftimg"><img src="http://static.jesport.com/sly/images/1.png" alt="" id="wingiftimg"></div>
+            <div class="giftname"></div>
+        </div>
+        <div class="know"></div>
+    </div>
+    <div class="dark-star star"></div>
+    <div class="shine-star star"></div>
+    <div id="luck">
+            <table>
+                <tr>
+                    <td class="luck-unit luck-unit-0"><img src="http://static.jesport.com/sly/images/1.png"></td>
+                    <td class="luck-unit luck-unit-1"><img src="http://static.jesport.com/sly/images/2.png"></td>
+                    <td class="luck-unit luck-unit-2"><img src="http://static.jesport.com/sly/images/3.png"></td>
+                </tr>
+                <tr>
+                    <td class="luck-unit luck-unit-7"><img src="http://static.jesport.com/sly/images/6.png"></td>
+                    <td  class="cjBtn" id="btn"></td>
+                    <td class="luck-unit luck-unit-3"><img src="http://static.jesport.com/sly/images/5.png"></td>
+                </tr>
+                <tr>
+                    <td class="luck-unit luck-unit-6"><img src="http://static.jesport.com/sly/images/3.png"></td>
+                    <td class="luck-unit luck-unit-5"><img src="http://static.jesport.com/sly/images/4.png"></td>
+                    <td class="luck-unit luck-unit-4"><img src="http://static.jesport.com/sly/images/8.png"></td>
+                </tr>
+            </table>
+        </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/zepto.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201711091553"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/templat/commonTpl.js?version=201708021815"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/turntable.js?version=201708031815"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+.cash-tab{
+	border-top: 1px solid #666666;
+	background: #000;
+	@include wflex;
+	li{
+		height: rem(80px);
+		line-height: rem(80px);
+		font-size: rem(36px);
+		flex:1;
+		text-align: center;
+	}
+	.cash-sq{
+		border-right: 1px solid #666;
+		color: #E4007F;
+	}
+	.cash-jl{
+		color: #CC9900;
+		font-size: rem(32px);
+
+	}
+	.active{
+		border-bottom:5px solid #E4007F;
+	}
+}
+.cash-tips{
+		text-align: center;
+		height: rem(50px);
+		line-height: rem(50px);
+		color: #868686;
+}
+.add-alipay{
+	height: rem(120px);
+	line-height: rem(120px);
+	text-align: center;
+	width: 100%;
+	background: #fff;
+	.icon-add{
+		@include im;
+		width: rem(50px);
+		height: rem(50px);
+		background: url(http://static.jesport.com/sly/images/icon-add.png) no-repeat;
+		background-size: rem(50px) rem(50px);
+	}
+	.add-text{
+		@include im;
+		font-size: rem(34px);
+		color: #999;
+		
+	}
+}

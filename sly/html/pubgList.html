@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;background-color: #f2f2f2" >
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta http-equiv="pragma"   content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+    <meta http-equiv="expires" content="Wed,26 Feb 1998 08:21:57 GMT" />
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201711091553">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/active-pb.css?v=201712151408">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+<div class="pubgList" id="app">
+    <div class="headertitle"><div class="return-left"><a href="javascript:history.go(-1);"></a></div><div>绝地求生比赛</div><div class="right"></div></div>
+    <div class="tabs">
+        <div class="tabitem" :class="{active:tabindex==0}" @click="tabclick(0)" >全部比赛</div>
+        <div class="line"></div>
+        <div class="tabitem" :class="{active:tabindex==1}" @click="tabclick(1)">我的比赛</div>
+    </div>
+    <div class="pbList">
+        <div class="item" v-for="item in matchList" @click="goActivedetail(item.id)" :style="{backgroundImage:'url(http://static.jesport.com/sly/images/active-pb/bk_' + item.picindex +'.png)'}">
+            <div class="title">
+                <div class="name">{{item.name}}</div>
+                <div class="state">{{item.state==2?"已结束":item.state==1?"报名中":"进行中"}}</div>
+            </div>
+            <div class="info">
+                <div class="infoitem">
+                    <div class="img"><img src="http://static.jesport.com/sly/images/active-pb/award.png" alt=""></div>
+                    <div class="detail">{{item.winRmb}}元+{{item.winBeans}}魔豆</div>
+                </div>
+                <div class="infoitem">
+                    <div class="img"><img src="http://static.jesport.com/sly/images/active-pb/type.png" alt=""></div>
+                    <div class="detail">{{item.type==1?"单排":item.type==2?"双排":"四排"}}</div>
+                </div>
+                <div class="infoitem">
+                    <div class="img"><img src="http://static.jesport.com/sly/images/active-pb/time.png" alt=""></div>
+                    <div class="detail">{{item.startTime}}开赛</div>
+                </div>
+                <div class="infoitem">
+                    <div class="img"><img src="http://static.jesport.com/sly/images/active-pb/person.png" alt=""></div>
+                    <div class="detail">{{item.enrollNum}}/{{item.personLimit}}</div>
+                </div>
+            </div>
+            <div class="mystate" v-if="item.winEnrollId==loginMemberId">
+                <div class="img"><img src="http://static.jesport.com/sly/images/active-pb/win.png" alt=""></div>
+            </div>
+        </div>
+        <div class="nodata" v-if="matchList.length==0">没有记录</div>
+    </div>
+    <!--赛事竞猜-->
+    <div></div>
+    <!--遮罩-->
+    <div class="mask" v-if="maskShow" @touchmove.prevent @click="maskShowclick"></div>
+</div>
+<div id="newFooter">
+    <div class="menu">
+        <a href="index.html"><div class="icon-home-hover"></div><div class="menu-item active" >首页</div></a>
+        <a href="newCorps.html"><span class="icon-corps"></span><span class="menu-item" >网吧</span></a>
+        <a href="newGuessList.html" ><span class="icon-match"></span><span class="menu-item" >竞猜</span></a>
+        <a href="profile.html"><span class="icon-profile"></span><span  class="menu-item" >个人</span></a>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201712151408"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/pubgList.js?v=201712151416"></script>
+</body>
+</html>

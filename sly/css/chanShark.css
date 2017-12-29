@@ -1,0 +1,493 @@
+html {
+  color: #000;
+  background: #fff;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%; }
+
+* {
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box; }
+
+html,
+body {
+  font-family: Helvetica;
+  width: 100%; }
+
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0; }
+
+input,
+select,
+textarea {
+  font-size: 100%; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+fieldset,
+img {
+  border: 0;
+  display: block; }
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+i {
+  font-style: normal;
+  font-weight: 500; }
+
+ol,
+ul {
+  list-style: none; }
+
+caption,
+th {
+  text-align: left; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: 500; }
+
+a:hover {
+  text-decoration: none; }
+
+a {
+  text-decoration: none; }
+
+input, button {
+  background: none;
+  border: 0 none; }
+
+.channelmask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  background: #000;
+  opacity: 0.5; 
+  height: 200%;
+  }
+
+.btn-return {
+  border-top: 0.13333rem solid #f2f2f2;
+  border-bottom: 0.26667rem solid #f2f2f2; }
+  .btn-return a {
+    display: block;
+    line-height: 0.8rem;
+    text-align: center;
+    font-size: 0.4rem;
+    color: #3399FF; }
+
+.loginbox {
+  width: 100%;
+  position: absolute;
+  top: 2rem;
+  left: 0; }
+  .loginbox .logo {
+    width: 2.66667rem;
+    height: 2.66667rem;
+    margin: 0 auto; }
+    .loginbox .logo img {
+      width: 2.66667rem;
+      height: 2.66667rem; }
+  .loginbox .item {
+    width: 6.66667rem;
+    margin: 0.26667rem auto;
+    font-size: 0.4rem; }
+    .loginbox .item input {
+      margin-left: 0.26667rem;
+      height: 1.06667rem;
+      line-height: 1.06667rem;
+      font-size: 0.37333rem; }
+  .loginbox .loginbtn {
+    margin-top: 0.4rem;
+    width: 2.66667rem;
+    height: 1.06667rem;
+    line-height: 1.06667rem;
+    text-align: center;
+    margin: 0  auto;
+    border-radius: 0.13333rem;
+    border: 1px solid #868686; }
+
+.index .personinfo {
+  height: 2.66667rem;
+  padding: 0 0.26667rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+  borde-bottom: 0.13333rem solid #f2f2f2; }
+  .index .personinfo .img {
+    width: 1.33333rem;
+    height: 1.33333rem;
+    border-radius: 0.66667rem;
+    border: 1px solid #868686;
+    overflow: hidden;
+    z-index: 1; }
+    .index .personinfo .img img {
+      width: 1.33333rem;
+      height: 1.33333rem; }
+  .index .personinfo .info {
+    flex: 1;
+    margin-left: 0.26667rem;
+    font-size: 0.37333rem; }
+    .index .personinfo .info .item {
+      display: inline-block; }
+    .index .personinfo .info .roleName {
+      color: #EF6095;
+      font-weight: bold;
+      font-size: 0.45333rem; }
+  .index .personinfo .icon-right {
+    width: 0.53333rem;
+    height: 0.53333rem;
+    background-image: url("http://static.jesport.com/channel/images/icon-right01.png");
+    background-repeat: no-repeat;
+    background-size: 0.53333rem 0.53333rem;
+    opacity: 0.5; }
+.index .balancebox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 1.33333rem;
+  border-bottom: 0.13333rem solid #f2f2f2; }
+  .index .balancebox .string {
+    width: 0.04rem;
+    height: 0.8rem;
+    font-size: 0.4rem;
+    background-color: #aabcd6; }
+  .index .balancebox .item {
+    width: 3.2rem;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    padding: 0 0.26667rem; }
+  .index .balancebox .balance {
+    color: #18D2BA; }
+  .index .balancebox .frozenBalance {
+    color: #EF6095; }
+.index .btn-2 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 1.33333rem;
+  text-align: center;
+  border-bottom: 0.13333rem solid #f2f2f2; }
+  .index .btn-2 .item {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    padding: 0 0.26667rem;
+    width: 4rem;
+    border-radius: 0.4rem;
+    background-color: rgba(170, 188, 214, 0.2); }
+.index .sublist {
+  height: 0.93333rem;
+  line-height: 0.8rem;
+  border-bottom: 0.13333rem solid #f2f2f2; }
+  .index .sublist a {
+    display: block;
+    text-align: center;
+    font-size: 0.42667rem;
+    color: #3399FF; }
+.index .finance {
+  width: 100%; }
+  .index .finance .title {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    padding: 0 0.13333rem; }
+    .index .finance .title .string {
+      float: left;
+      margin: 0.13333rem;
+      width: 0.13333rem;
+      height: 0.53333rem;
+      background-color: #aabcd6; }
+  .index .finance .cutline {
+    width: 50%;
+    border: 2px solid rgba(170, 188, 214, 0.2); }
+  .index .finance .listbox {
+    max-height: 8rem;
+    height: 8rem;
+    overflow: auto;
+    width: 100%; }
+    .index .finance .listbox .item {
+      padding: 0 0.26667rem;
+      border-bottom: 0.06667rem solid #f2f2f2;
+      line-height: 1.06667rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.37333rem; }
+      .index .finance .listbox .item .date {
+        width: 2rem; }
+      .index .finance .listbox .item .type {
+        width: 1.06667rem; }
+      .index .finance .listbox .item .num {
+        width: 1.06667rem; }
+      .index .finance .listbox .item .red {
+        color: #EF6095; }
+      .index .finance .listbox .item .green {
+        color: #18D2BA; }
+.index .findUserModal {
+  position: fixed;
+  top: 1.33333rem;
+  left: 0.73333rem;
+  width: 8.53333rem;
+  z-index: 1050;
+  background: #fff; }
+  .index .findUserModal .title {
+    height: 1.33333rem;
+    line-height: 1.33333rem;
+    text-align: center;
+    font-size: 0.42667rem; }
+  .index .findUserModal .btnBox {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 1.33333rem;
+    width: 100%;
+    padding: 0 0.26667rem;
+    margin: 0.66667rem 0; }
+    .index .findUserModal .btnBox .btn {
+      width: 1.33333rem;
+      height: 0.66667rem;
+      line-height: 0.66667rem;
+      border-radius: 10%;
+      border: 1px solid #868686;
+      text-align: center; }
+    .index .findUserModal .btnBox .btn1 {
+      color: #18D2BA; }
+    .index .findUserModal .btnBox .btn2 {
+      color: #EF6095; }
+  .index .findUserModal .input {
+    margin: 0.13333rem 0.26667rem;
+    line-height: 0.66667rem;
+    font-size: 0.37333rem; }
+    .index .findUserModal .input span {
+      text-align: right;
+      display: inline-block;
+      width: 2rem; }
+    .index .findUserModal .input input {
+      margin-left: 0.13333rem;
+      height: 0.66667rem;
+      border: 1px solid #868686; }
+  .index .findUserModal .ruleinfo {
+    margin-top: 0.26667rem;
+    line-height: 0.53333rem;
+    padding: 0 0.26667rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.32rem; }
+    .index .findUserModal .ruleinfo .p1 {
+      margin-bottom: 0.26667rem; }
+.index .personModal .imgbox .img {
+  width: 1.33333rem;
+  height: 1.33333rem;
+  border-radius: 0.66667rem;
+  border: 1px solid #868686;
+  margin: 0.13333rem auto;
+  overflow: hidden; }
+  .index .personModal .imgbox .img img {
+    width: 1.33333rem;
+    height: 1.33333rem; }
+.index .personModal .imgbox .btn-changeimg {
+  line-height: 0.8rem;
+  font-size: 0.34667rem;
+  text-align: center;
+  position: relative;
+  color: #57607C; }
+  .index .personModal .imgbox .btn-changeimg #file {
+    position: absolute;
+    left: 0;
+    top: 0; }
+.index .personModal .infobox {
+  width: 8rem;
+  margin: 0 auto; }
+  .index .personModal .infobox tr td {
+    height: 0.66667rem;
+    line-height: 0.66667rem;
+    border: 1px solid #868686;
+    overflow: hidden;
+    white-space: nowrap; }
+  .index .personModal .infobox tr td:nth-of-type(1) {
+    width: 1.6rem;
+    text-align: center; }
+  .index .personModal .infobox tr td:nth-of-type(2) {
+    padding-left: 0.13333rem; }
+    .index .personModal .infobox tr td:nth-of-type(2) .bankinfo {
+      display: inline-block;
+      width: 4.93333rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+    .index .personModal .infobox tr td:nth-of-type(2) .btn-setting {
+      float: right;
+      display: inline-block;
+      width: 0.8rem;
+      height: 0.53333rem;
+      line-height: 0.53333rem;
+      margin: 0.06667rem 0.06667rem;
+      border: 1px solid #868686;
+      border-radius: 10%;
+      text-align: center; }
+.index .realName .title {
+  margin: 0 0.26667rem;
+  border-bottom: 1px solid #aabcd6; }
+.index .realName .nameInput {
+  margin: 0.4rem 0;
+  height: 1.06667rem; }
+  .index .realName .nameInput input {
+    height: 1.06667rem;
+    line-height: 1.06667rem;
+    font-size: 0.4rem;
+    width: 100%;
+    text-align: center; }
+.index .cashModal .type {
+  width: 100%;
+  padding: 0 0.26667rem;
+  line-height: 0.8rem;
+  font-size: 0.37333rem; }
+  .index .cashModal .type .select {
+    width: 1.6rem;
+    height: 0.53333rem; }
+    .index .cashModal .type .select .item {
+      width: 2rem;
+      height: 0.66667rem;
+      line-height: 0.66667rem;
+      font-size: 0.42667rem;
+      text-align: center; }
+.index .qrcode #findCodeModal {
+  width: 3.41333rem;
+  height: 3.41333rem;
+  margin: 0 auto; }
+.index .qrcode .codeimg {
+  width: 3.41333rem;
+  height: 3.41333rem;
+  margin: 0 auto; }
+  .index .qrcode .codeimg #imgOne {
+    width: 3.41333rem;
+    height: 3.41333rem; }
+.index .peopleNum {
+  min-height: 5.33333rem;
+  max-height: 13.33333rem;
+  overflow: auto; }
+  .index .peopleNum .num {
+    width: 5.33333rem;
+    line-height: 0.8rem;
+    margin: 0 0.26667rem;
+    border-bottom: 2px solid #aabcd6; }
+  .index .peopleNum .memList {
+    line-height: 0.66667rem;
+    font-size: 0.37333rem;
+    margin: 0.13333rem 0.4rem;
+    padding: 0 0.13333rem;
+    border-bottom: 1px solid #868686;
+    display: flex;
+    justify-content: space-between; }
+  .index .peopleNum .more {
+    height: 0.8rem;
+    line-height: 0.8rem;
+    text-align: center;
+    margin-bottom: 0.4rem;
+    color: #3399FF;
+    font-size: 0.4rem; }
+.subList .listbox{
+  margin-top: 0.3rem}
+.subList .listbox .item {
+  background-color: #ffffff;
+  display: block;
+  width: 100%;
+  height: 1.33333rem;
+  padding: 0 0.26667rem;
+  color: #000000;
+  display: flex;
+  border-bottom: 1px solid #868686; }
+  .subList .listbox .item .info {
+    width: 8.13333rem;
+    display: flex;
+    align-items: center; }
+    .subList .listbox .item .info .img {
+      width: 1.06667rem;
+      height: 1.06667rem;
+      border-radius: 0.53333rem;
+      border: 1px solid #868686;
+      overflow: hidden;
+      margin-right: 0.26667rem; }
+      .subList .listbox .item .info .img img {
+        height: 1.06667rem;
+        border-radius: 0.53333rem; }
+    .subList .listbox .item .info .detail {
+      height: 1.33333rem;
+      font-size: 0.34667rem;
+      flex: 1; }
+      .subList .listbox .item .info .detail .roleName {
+        color: #EF6095;
+        font-size: 0.42667rem;
+        line-height: 0.66667rem; }
+      .subList .listbox .item .info .detail .role {
+        color: #aabcd6;
+        line-height: 0.66667rem;
+        font-size: 0.37333rem; }
+    .subList .listbox .item .info .balance {
+      width: 2rem;
+      line-height: 1.33333rem;
+      font-size: 0.45333rem;
+      color: #000000; }
+      .subList .listbox .item .info .balance span {
+        color: #57607C; }
+  .subList .listbox .item .icon-right {
+    float: right;
+    width: 0.53333rem;
+    height: 0.53333rem;
+    margin: 0.4rem 0 0.4rem 0.8rem;
+    background-image: url("http://static.jesport.com/channel/images/icon-right01.png");
+    background-repeat: no-repeat;
+    background-size: 0.53333rem 0.53333rem;
+    opacity: 0.5; }
+
+/*# sourceMappingURL=shark.css.map */

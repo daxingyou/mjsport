@@ -1,0 +1,143 @@
+{
+  "errno": 0,
+  "data": {
+    "issue": "17052412",
+    "bonus": 0,
+    "close": true,
+    "questions": [
+      {
+        "id": "01",
+        "question": "单关-自定义题目1",
+        "answer": "2",
+        "options": [
+          {
+            "id": "1",
+            "answer": "选项1A",
+            "isselect": false,
+            "odds": "6.0",
+            "bet_multi": 0
+          },
+          {
+            "id": "2",
+            "answer": "选项1B",
+            "isselect": false,
+            "odds": "1.0",
+            "bet_multi": 11
+          }
+        ]
+      },
+      {
+        "id": "02",
+        "question": "单关-自定义题目2",
+        "answer": "1",
+        "options": [
+          {
+            "id": "1",
+            "answer": "选项2A",
+            "isselect": false,
+            "odds": "6.0",
+            "bet_multi": 0
+          },
+          {
+            "id": "2",
+            "answer": "选项2B",
+            "isselect": false,
+            "odds": "4.67",
+            "bet_multi": 0
+          },
+          {
+            "id": "3",
+            "answer": "选项2C",
+            "isselect": false,
+            "odds": "1.27",
+            "bet_multi": 11
+          }
+        ]
+      },
+      {
+        "id": "03",
+        "question": "单关-自定义题目3",
+        "answer": "1",
+        "options": [
+          {
+            "id": "1",
+            "answer": "选项2A",
+            "isselect": false,
+            "odds": "6.0",
+            "bet_multi": 0
+          },
+          {
+            "id": "2",
+            "answer": "选项2B",
+            "isselect": false,
+            "odds": "4.67",
+            "bet_multi": 0
+          },
+          {
+            "id": "3",
+            "answer": "选项2C",
+            "isselect": false,
+            "odds": "1.27",
+            "bet_multi": 11
+          }
+        ]
+      },
+      {
+        "id": "04",
+        "question": "单关-自定义题目4",
+        "answer": "1",
+        "options": [
+          {
+            "id": "1",
+            "answer": "选项2A",
+            "isselect": false,
+            "odds": "6.0",
+            "bet_multi": 0
+          },
+          {
+            "id": "2",
+            "answer": "选项2B",
+            "isselect": false,
+            "odds": "4.67",
+            "bet_multi": 0
+          },
+          {
+            "id": "3",
+            "answer": "选项2C",
+            "isselect": false,
+            "odds": "1.27",
+            "bet_multi": 11
+          }
+        ]
+      },
+      {
+        "id": "05",
+        "question": "单关-自定义题目5",
+        "answer": "1",
+        "options": [
+          {
+            "id": "1",
+            "answer": "选项2A",
+            "isselect": false,
+            "odds": "6.0",
+            "bet_multi": 0
+          },
+          {
+            "id": "2",
+            "answer": "选项2B",
+            "isselect": false,
+            "odds": "4.67",
+            "bet_multi": 0
+          },
+          {
+            "id": "3",
+            "answer": "选项2C",
+            "isselect": false,
+            "odds": "1.27",
+            "bet_multi": 11
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/actShark.css?version=201711211027">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+<div class="backpic"><img src="http://static.jesport.com/sly/images/activeImg/background.jpg" alt=""></div>
+<div id="app" class="league" >
+    <div class="voteIndex">
+        <div class="title">
+            <div class="icon-left"><a href="javascript:history.go(-1);"></a></div>
+            请选择游戏和学校投票
+        </div>
+        <div class="gamebox">
+            <div class="item" :class="{active:gameid==1}" @click="getVotelist">
+                <img :src="gameid==1? 'http://static.jesport.com/sly/images/activeImg/game1.png':'http://static.jesport.com/sly/images/activeImg/game_1_un.png'" alt=""></div>
+            <div class="item" :class="{active:gameid==2}" @click="getVotelist2">
+                <img :src="gameid==2? 'http://static.jesport.com/sly/images/activeImg/game2.png':'http://static.jesport.com/sly/images/activeImg/game_2_un.png'" alt="">
+            </div>
+        </div>
+        <div>
+            <div class="name"></div>
+            <div class="btn-watch">查看排行</div>
+        </div>
+    </div>
+    <!--<div class="banner">-->
+        <!--<img src="http://static.jesport.com/sly/images/activeImg/banner.png" alt="">-->
+    <!--</div>-->
+    <!--<div class="live" @click="livebtn">观看比赛直播</div>-->
+    <!--投票-->
+    <div class="content">
+        <div class="title1">魔杰杯 王者荣耀 英雄联盟 石家庄高校挑战赛</div>
+        <div class="title2">支持母校 投票换礼</div>
+        <div class="explain">说明文字说明文字说明文字说明文字说明文字说明文字说明文字</div>
+        <div class="btn btn-vote" @click="maskShow=true;contentShow=true;">立即投票</div>
+        <div class="md">+<span>10</span>魔豆</div>
+        <div class="mdexplain">连续7天投票一共可以获得<span>200</span>魔豆</div>
+        <div class="signin">
+            <div class="item">
+                <span class="name">王者荣耀</span>
+                <span class="sign" v-for="item in game1SigninInfo" :class="{active:item.state==1}"></span>
+            </div>
+            <div class="item">
+                <span class="name">英雄联盟</span>
+                <span class="sign" v-for="item in game2SigninInfo" :class="{active:item.state==1}"></span>
+            </div>
+        </div>
+    </div>
+    <!--兑换-->
+    <div class="exchange">
+        <div class="title">免费兑好礼</div>
+        <div class="record">
+            <div class="mdnum">您已拥有<span>{{memberBeans}}</span>魔豆</div>
+            <div class="btn-record" @click="goExcrecord()">兑换记录</div>
+            <div class="giftList">
+                <div class="item" @click="goshop()">
+                    <img src="http://static.jesport.com/sly/images/activeImg/exchange1.png" alt="">
+                    <!--<div class="top">10元网吧兑换卷</div>-->
+                    <!--<div class="btn-change">兑换</div>-->
+                </div>
+                <div class="item" @click="goshop()">
+                    <img src="http://static.jesport.com/sly/images/activeImg/exchange2.png" alt="">
+                    <!--<div class="top">10元网吧兑换卷</div>-->
+                    <!--<div class="btn-change">兑换</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--抽奖-->
+    <div class="drawbox">
+        <div class="title">分享活动 抽<span>iPhone8</span></div>
+        <div class="explain">说明文字说明文字说明文字说明文字</div>
+        <div class="btn" @click="goshare">邀请好友</div>
+        <div class="record">
+            <div class="btn-record" @click="getExchangeList()">中奖记录</div>
+            <div class="mdnum"><div>{{chanceNum}}</div></div>
+        </div>
+        <div id="luck">
+            <table>
+                <tr>
+                    <td class="luck-unit luck-unit-0" :class="{active:luck.active==0}"><img :src="goodslist[0].img"></td>
+                    <td class="luck-unit luck-unit-1" :class="{active:luck.active==1}"><img :src="goodslist[1].img"></td>
+                    <td class="luck-unit luck-unit-2" :class="{active:luck.active==2}"><img :src="goodslist[2].img"></td>
+                    <td class="luck-unit luck-unit-3" :class="{active:luck.active==3}"><img :src="goodslist[3].img"></td>
+                </tr>
+                <tr>
+                    <td class="luck-unit luck-unit-9" :class="{active:luck.active==9}"><img :src="goodslist[9].img"></td>
+                    <td  class="cjBtn" id="btn" colspan="2" @click="draw">点击抽奖</td>
+                    <td class="luck-unit luck-unit-4" :class="{active:luck.active==4}"><img :src="goodslist[4].img"></td>
+                </tr>
+                <tr>
+                    <td class="luck-unit luck-unit-8" :class="{active:luck.active==8}"><img :src="goodslist[5].img"></td>
+                    <td class="luck-unit luck-unit-7" :class="{active:luck.active==7}"><img :src="goodslist[6].img"></td>
+                    <td class="luck-unit luck-unit-6" :class="{active:luck.active==6}"><img :src="goodslist[7].img"></td>
+                    <td class="luck-unit luck-unit-5" :class="{active:luck.active==5}"><img :src="goodslist[8].img"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!--报名-->
+    <div class="signinbox">
+        <div class="title"><span>绝地求生 </span> 活动报名</div>
+        <div class="explain">说明文字说明文字说明文字说明文字说明文字</div>
+        <div class="btn" @click="gosign()">立即报名</div>
+    </div>
+    <!--活动说明-->
+    <div class="description">
+        <div class="title">活动说明</div>
+        <div class="explain">说明文字说明文字说明文字说明文字说明文字</div>
+        <div class="des">jesport.com@2017</div>
+        <div class="des">活动最终解释权归官方所有</div>
+        <div class="partner"><img src="http://static.jesport.com/sly/images/activeImg/partner.png" alt=""></div>
+    </div>
+    <!--&lt;!&ndash;合作伙伴&ndash;&gt;-->
+    <!--<div class="partner">-->
+    <!--<div class="title">合作伙伴</div>-->
+    <!--<div class="parList">-->
+    <!--<div class="item"></div>-->
+    <!--<div class="item"></div>-->
+    <!--<div class="item"></div>-->
+    <!--<div class="item"></div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--弹框-->
+    <!--遮罩-->
+    <div class="mask" v-if="maskShow" @click="maskShowclick()"></div>
+    <!--投票弹框-->
+    <div class="alert-content" v-if="contentShow">
+        <div class="title">请选择游戏和学校投票<div class="close" @click="maskShowclick()">X</div></div>
+        <div class="gamebox">
+            <div class="item" :class="{active:gameid==1}" @click="getVotelist">
+                <img :src="gameid=1? 'http://static.jesport.com/sly/images/activeImg/game1.png':'http://static.jesport.com/sly/images/activeImg/game1_un.png'" alt=""></div>
+            <div class="item" :class="{active:gameid==2}" @click="getVotelist2">
+                <img :src="gameid=2? 'http://static.jesport.com/sly/images/activeImg/game2.png':'http://static.jesport.com/sly/images/activeImg/game2_un.png'" alt="">
+            </div>
+        </div>
+        <div class="slide">
+            <div class="schoolList">
+                <div class="item" v-for="item in voteList">
+                    <div class="top">
+                        <span class="itemid">#{{item.id}}</span>
+                        <span class="itemnum">{{item[game]}}票</span>
+                        <div class="itemname">{{item.name}}</div>
+                    </div>
+                    <div class="btn-change" @click="govote(item.id)">投票</div>
+                </div>
+            </div>
+        </div>
+        <div class="rank" @click="getRank()">查看排名</div>
+    </div>
+    <div class="alert-pushvote" v-if="pushShow">
+        <div class="title">投票成功<div class="close" @click="maskShowclick">X</div></div>
+        <div class="mdnum">+<span class="color">10</span>魔豆</div>
+        <div class="mdnum">
+            连续7天投票额外获得<span class="color">30</span>魔豆
+            已完成 x/7天
+        </div>
+        <div class="mdnum" v-if="gameid==1"><span class="sign" v-for="item in game1SigninInfo" :class="{active:item.state==1}"></span></div>
+        <div class="mdnum" v-if="gameid==2"><span class="sign" v-for="item in game2SigninInfo" :class="{active:item.state==1}"></span></div>
+        <div class="btn" @click="goreload">确认</div>
+    </div>
+    <!--兑换列表-->
+    <div class="exchangeList" v-if="exchangeShow">
+        <div class="title">兑奖记录<div class="close" @click="maskShowclick">X</div></div>
+        <div class="items">
+            <div class="item" v-for="item in listdraw">
+                <div class="name">{{item.goodsName}}</div>
+                <div class="state" :class="{active:item.state==0}" @click="findCode(item)">{{item.state==0?"兑换":"已兑换"}}</div>
+            </div>
+        </div>
+        <div class="giftbox" v-if="codeShow">
+            <div class="title">奖品 : {{codeinfo.goodsName}}</div>
+            <div class="imgcode"><img id="barcode" /></div>
+            <div id="findCodeModal"></div>
+            <div class="codeimg"><img id="imgOne" :src="qrcodeSrc" alt=""></div>
+            <div class="desc">兑换时请出示兑换码</div>
+        </div>
+    </div>
+    <!--分享-->
+    <div class="sharebox" v-if="shareShow">
+        <img src="http://static.jesport.com/sly/images/fenxiang.png" alt="点击右上角分享">
+        <div class="iknow-btn" @click="shareShow=false;maskShow=false;"></div>
+    </div>
+    <!--中奖-->
+    <div class="wingift" v-if="wingiftShow">
+        <div class="title">恭喜您获得了<span>{{wingiftInfo.name}}</span><div class="close" @click="maskShowclick">X</div></div>
+        <div class="img"><img :src="wingiftInfo.img" alt=""></div>
+        <div class="watch" v-if="wingiftInfo.beansNum==0"><span>您可以在中奖记录查看并兑换</span><span class="btn-watch" @click="watchlist">查看</span></div>
+        <div class="way" v-if="wingiftInfo.beansNum==0"><span>兑换方式 : </span>兑换方式兑换方式兑换方式兑换方式兑换方式</div>
+        <div class="watch" v-if="wingiftInfo.beansNum!=0"><span>魔豆已经自动加入到您的账户中</span><span class="btn-watch" @click="watchlist">查看</span></div>
+    </div>
+    <!--报名-->
+    <div class="alert-signinBox" v-if="signinBoxShow">
+        <div class="title">绝地求生 报名<div class="close" @click="maskShowclick">X</div></div>
+        <div  class="sign">
+            <div class="item">
+                <div class="name">姓名</div>
+                <input v-model="realname" type="text" placeholder="请输入您的真实姓名"/>
+            </div>
+            <div class="item">
+                <div class="name">电话</div>
+                <input v-model="phone" type="text" placeholder="请输入可以联系到您的电话"/>
+            </div>
+            <div class="item">
+                <div class="name">游戏昵称</div>
+                <input v-model="nickname"type="text" placeholder="您在绝地求生中主账号的昵称"/>
+            </div>
+            <div class="item">
+                <div class="name">单排分数</div>
+                <input v-model="score" type="text" placeholder="您在绝地求生中单排的分数"/>
+            </div>
+            <div class="item">
+                <div class="name">学校名称</div>
+                <input v-model="school" type="text" placeholder="您的学校名称"/>
+            </div>
+        </div>
+        <div class="btn" @click="signIn">确认</div>
+    </div>
+    <!--排名-->
+    <div class="alert-rankList" v-if="rankShow">
+        <div class="title">投票排名<div class="close" @click="maskShowclick">X</div></div>
+        <div class="rankList">
+            <div class="item" v-for="(item,index) in rankList">
+                <div class="rank">{{index+1}}</div>
+                <div class="name">{{item.name}}</div>
+                <div class="num">{{item[game]}}票</div>
+            </div>
+        </div>
+        <div class="btn" @click="maskShowclick">确认</div>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/JsBarcode.code128.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201711211027"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/leagueIndex.js?v=201711211027"></script>
+</body>
+</html>

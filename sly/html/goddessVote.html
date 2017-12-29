@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta http-equiv="pragma"   content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+    <meta http-equiv="expires" content="Wed,26 Feb 1998 08:21:57 GMT" />
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/goddess.css?v=201712151854">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+<div class="backpic"><img src="http://static.jesport.com/sly/images/activeImg/goddess/background1.jpg" alt=""></div>
+<div class="godnessSign" id="app">
+    <div class="header">
+        <div></div>
+        <div><a href="goddess.html">我要报名 >></a></div>
+    </div>
+    <div class="logo2"></div>
+    <div class="info2"></div>
+    <div class="votebox">
+        <div class="item" v-for="item in voteList"  @click="goVote(item)">
+            <span class="itemid">{{item.id<9?"0"+item.id:item.id}}</span>
+            <div class="schoolimg" ><img :src="item.avatar" alt=""></div>
+            <div class="itemname">{{item.realname}}</div>
+            <div class="constellation">{{item.constellation}}</div>
+            <div class="hobby"><span>爱好</span>&nbsp;&nbsp;{{item.hobby}}</div>
+            <div class="games"><span>擅长</span>&nbsp;&nbsp;{{item.games}}</div>
+            <div class="itemnum" @click="goVote(item)">{{item.voteNum}}</div>
+        </div>
+    </div>
+    <!--遮罩-->
+    <div class="mask" v-if="maskShow" @touchmove.prevent @click="maskShowclick"></div>
+    <!--投票弹框-->
+    <div class="alert-votebox" :class="{'block':voteShow}">
+        <div class="top">
+            <div class="img"><img :src="nowitem.avatar" alt=""></div>
+            <div class="info1">
+                <div class="itemid">#{{nowitem.id<9?"0"+nowitem.id:nowitem.id}}</div>
+                <div class="itemname">
+                    <span>{{nowitem.realname}}</span>
+                    <span class="constellation">{{nowitem.constellation}}</span>
+                </div>
+                <div class="hobby"><span>爱好</span>&nbsp;&nbsp;{{nowitem.hobby}}</div>
+                <div class="games"><span>擅长</span>&nbsp;&nbsp;{{nowitem.games}}</div>
+                <div class="memo"><span>介绍</span>&nbsp;&nbsp;{{nowitem.memo}}</div>
+            </div>
+        </div>
+        <div class="votenum">{{nowitem.voteNum}}</div>
+        <div class="btn-vote" @click="pushvote"></div>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201712151904"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/goddessvote.js?v=201712151904"></script>
+</body>
+</html>

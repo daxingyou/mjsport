@@ -1,0 +1,63 @@
+.balance-box{
+	height: rem(200px);
+	padding: rem(30px) rem(20px);
+	background: #fff;
+	@include wflex;
+	.balance-left{
+		.surplus{
+			margin-bottom: rem(10px);
+			font-size: rem(36px);
+			.md-num{
+				@include im;
+				color: #CC9900;
+				font-size: rem(36px);
+			}
+			.md-text{
+				margin-left: rem(10px);
+				color: #000;
+				font-size: rem(28px);
+			}
+		}
+		.tips{
+			color: #868686;
+			font-size:rem(32px);
+		}
+	}
+	.balance-right{
+		margin-right:rem(30px);
+		.exchange{
+			display: block;
+			color: #FFFFFF;
+			font-size: rem(32px);
+			width: rem(160px);
+			height:rem(48px);
+			line-height:rem(48px);
+			background-color: #E4007F;
+			border-radius: rem(48px);
+			text-align: center;
+		}
+	}
+}
+.alipay-panel{
+	background: #fff;
+	height: rem(180px);
+	.alipay-item{
+		padding:rem(20px);
+		font-size: rem(32px);	
+		span{
+			
+		}
+		input{
+			width: rem(420px);
+		}
+	}
+}
+.next{
+	margin-top: rem(180px);
+	text-align: center;
+	.next-btn{
+		display: inline-block;
+		width: rem(400px)!important;
+		@include btn;
+	}
+}

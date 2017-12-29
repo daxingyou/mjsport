@@ -1,0 +1,67 @@
+
+//项目按钮
+@mixin btn{
+            width: rem(180px);
+            height: rem(60px);
+            background: #E4007F;
+            border-radius: rem(30px);
+            text-align: center;
+            line-height: rem(60px);
+            font-size: rem(34px);
+            color: #fff;
+            letter-spacing: 8px;
+}
+
+//计算rem
+@function rem( $a ){
+    @return  ( $a / 75px) * 1rem;
+}
+
+//垂直居中mixins
+@mixin cen{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+//常用flex
+@mixin wflex{
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: nowrap;
+    align-items:stretch;
+}
+@mixin hflex{
+    display: flex;
+    justify-content:space-between;
+    flex-wrap: nowrap;
+    align-items:center;
+    flex-direction: column;
+}
+
+
+@mixin syh{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+//阴影盒子
+@mixin modal-shadow{
+     box-shadow: 0 3px 9px rgba(0,0,0,.5);
+}
+
+@mixin im{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@mixin dja{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,298 @@
+.buy-panel{
+	background: #fff;
+	margin-top: rem(20px);
+	//height: rem(420px);
+	padding: rem(30px) 0 rem(30px) rem(40px);
+	.buy-item{
+		margin-right: rem(30px);
+		margin-bottom: rem(30px);
+		@include im;
+		width:rem(200px);
+		height: rem(88px);
+		color: #CC9900;
+		font-size: rem(25px);
+		text-align: center;
+		//padding:rem(20px) rem(5px);
+		border: 1px solid #CC9900;
+		border-radius: rem(20px);
+		.mdnum{
+			display: block;
+			line-height:rem(88px);
+		}
+		.growth{
+			display: block;
+		}
+	}
+	.active{
+		background: #E4007F;
+		color: #fff;
+	}
+}
+.mdpaymode{
+	color: #323C46;
+	.mode{
+		margin-top: rem(10px);
+		height:rem(100px);
+		line-height:rem(100px);
+		font-size: rem(30px);
+		background-color: #FFFFFF;
+		.lefticon{
+			float: left;
+			display: inline-block;
+			margin: rem(29px) rem(20px);
+			width: rem(42px);
+			height:rem(42px);
+		}
+		.wechaticon{
+			background-image: url("http://static.jesport.com/sly/images/WeChatpay.png");
+			background-repeat: no-repeat;
+			background-size: rem(42px) rem(42px);
+		}
+		.mjicon{
+			background-image: url("http://static.jesport.com/sly/images/myuan-black.png");
+			background-repeat: no-repeat;
+			background-size: rem(42px) rem(42px);
+		}
+		.choseicon{
+			float: right;
+			display: inline-block;
+			margin: rem(29px) rem(20px);
+			width: rem(42px);
+			height:rem(42px);
+			border-radius: 100%;
+			border: 1px solid #231815;
+			background: none;
+			background-size: rem(41px) rem(41px);
+		}
+		.active{
+			border:none;
+			background: url("http://static.jesport.com/sly/images/chose-icon.png") no-repeat;
+			background-size: rem(41px) rem(41px);
+
+		}
+	}
+	.mybalance{
+		background-color: #FFFFFF;
+		padding: 0 rem(20px);
+		.border{
+			margin:0 rem(20px);
+			border-top: 1px solid #868686;
+		}
+		.balancebox{
+			display: inline-block;
+			width: rem(640px);
+			padding-left: rem(60px);
+			height:rem(80px);
+			line-height: rem(80px);
+			font-size: rem(28px);
+			#barname{
+				float: right;
+				color: #868686;
+			}
+		}
+		.right{
+			float: right;
+			width: rem(60px);
+			height:80px;
+			//background: url("http://static.jesport.com/sly/images/icon-right.png") no-repeat rem(10px) rem(20px);
+			background-size: rem(40px) rem(40px);
+		}
+
+	}
+}
+.myuandesc{
+	position: fixed;
+	bottom: rem(120px);
+	padding:rem(20px);
+	font-size: rem(28px);
+	color: #868686;
+}
+.excahnge-bottom{
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	//height:rem(160px);
+	.total_pay{
+		margin-top: rem(2px);
+		background-color: #FFFFFF;
+		.paymoneybox{
+			display:block;
+			font-size: rem(24px);
+			height:rem(98px);
+			line-height:rem(98px);
+			text-align: left;
+			color: #231815;
+			.payicon{
+				display: inline-block;
+				float: left;
+				margin: rem(29px);
+				width: rem(40px);
+				height:rem(40px);
+				img{
+					width: 100%;
+					height:100%;
+				}
+			}
+			.moneynum{
+				line-height:rem(98px);
+				font-size: rem(40px);
+				color: #987C4D;
+				margin-right: rem(10px);
+			}
+		}
+
+		.paymoneybox.my{
+			display: none;
+		}
+		.exchange-btn{
+			position: fixed;
+			right:0;
+			bottom: 0;
+			width:rem(280px);
+			height:rem(98px);
+			line-height:rem(98px);
+			color: #FFFFFF;
+			font-size: rem(32px);
+			text-align: center;
+			background-color: #E4007F;
+		}
+	}
+}
+.payinfo{
+	.payname,.paymoney,.blancenum{
+		padding:rem(30px);
+		font-size: rem(30px);
+		height:rem(80px);
+		line-height: rem(80px);
+
+	}
+}
+.password{
+	padding:rem(20px);
+	.title{
+		padding:rem(20px);
+		height: rem(80px);
+		line-height: rem(80px);
+		font-size: rem(30px);
+		color: #868686;
+	}
+	.form-item{
+		margin-top: rem(20px);
+		background: #fff;
+		border-radius: rem(80px);
+		height: rem(80px);
+		line-height: rem(80px);
+		input{
+			padding-left: rem(20px);
+			width: 100%;
+			line-height: rem(80px);
+		}
+	}
+
+}
+.payresult{
+	width: 100%;
+	padding:rem(20px);
+	.img{
+		margin:0 auto;
+		width: rem(150px);
+		height: rem(150px);
+		img{
+			width: 100%;
+			height:100%;
+		}
+	}
+	.title{
+		height: rem(80px);
+		line-height: rem(80px);
+		font-size: rem(30px);
+		text-align: center;
+	}
+}
+.alertbind{
+	//display: none;
+	z-index: 100;
+	width: rem(560px);
+	height:rem(574px);
+	position: fixed;
+	top:rem(300px);
+	left:rem(83px);
+	text-align: center;
+	border-radius: rem(10px);
+	.title{
+		background-color:#FFFFFF;
+		color: #EF6095;
+		height:rem(120px);
+		line-height: rem(120px);
+		font-size: rem(36px);
+		display: flex;
+		justify-content: space-around;
+		align-items:center;
+		padding:0 rem(20px);
+		.diamond{
+			transform:rotate(45deg);
+			width: rem(16px);
+			height:rem(16px);
+			background-color: #EF6095;
+		}
+		//margin-bottom: rem(20px);
+	}
+	.cutline{
+		width: rem(560px);
+		height:rem(2px);
+		background-color: #FFFFFF;
+		background-image:url("http://static.jesport.com/sly/images/cutline.png");
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+	.alertcontent{
+
+		background-color:#FFFFFF;
+		height:rem(150px);
+		font-size: rem(28px);
+		text-align: center;
+		line-height: rem(40px);
+		padding:  rem(20px);
+	}
+	.bind-box{
+		background-color:#FFFFFF;
+		height:rem(150px);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.diamond1{
+			width: 0;
+			height: 0;
+			border-top: rem(36px) solid transparent;
+			border-right: rem(30px) solid #EF6095;
+			border-bottom: rem(36px) solid transparent;
+			margin-right: -1px;
+		}
+		.diamond2{
+			width: 0;
+			height: 0;
+			border-top: rem(36px) solid transparent;
+			border-left: rem(30px) solid #EF6095;
+			border-bottom: rem(36px) solid transparent;
+			margin-left: -1px;
+		}
+		.bind-btn{
+			width: rem(300px);
+			height:rem(72px);
+			line-height:rem(72px);
+			font-size: rem(30px);
+			background-color: #EF6095;
+			color: #FFFFFF;
+		}
+	}
+	.close{
+		height:rem(150px);
+		font-size: 0;
+		padding-top: rem(45px);
+		img{
+			width: rem(60px);
+			height:rem(60px);
+			margin: 0 auto;
+		}
+	}
+}

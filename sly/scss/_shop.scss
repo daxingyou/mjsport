@@ -1,0 +1,492 @@
+.bheader{
+  position: fixed;
+  z-index: 1;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: rem(190px);
+  background-image: url("http://static.jesport.com/sly/images/shopimg/headerbg.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding-left: rem(50px);
+  overflow: hidden;
+  .back{
+    position: fixed;
+    top:rem(20px);
+    left: rem(5px);
+    display: inline-block;
+    width: rem(50px);
+    height:rem(50px);
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    background-image: url("http://static.jesport.com/sly/images/icon-left.png");
+    background-repeat: no-repeat;
+    background-size: rem(50px) rem(50px);
+  }
+  .barname{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: rem(90px);
+    text-align: center;
+    font-size: rem(32px);
+    color: #FFFFFF;
+  }
+  .shopbalance{
+    display: flex;
+    height:rem(100px);
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    padding: rem(15px) rem(50px);
+    .balanceinfo{
+      width: rem(300px);
+      height:rem(70px);
+      background: url("http://static.jesport.com/sly/images/shopimg/bannerbg.png") ;
+      background-size:  100% 100% ;
+      background-repeat: no-repeat;
+      display: flex;
+      .balanceitem{
+        width: rem(220px);
+        height:rem(70px);
+        padding-left:rem(60px);
+        line-height:rem(70px);
+        font-size: rem(32px);
+        color: #57607C;
+      }
+      #md_num{
+        background: url("http://static.jesport.com/sly/images/shopimg/icon-md.png");
+        background-size: rem(36px) rem(36px) ;
+        background-position: rem(17px) rem(13px);
+        background-repeat: no-repeat;
+      }
+      #myuan_num{
+        background: url("http://static.jesport.com/sly/images/shopimg/icon-gift.png") ;
+        background-size: rem(36px) rem(36px) ;
+        background-position: rem(17px) rem(13px);
+        background-repeat: no-repeat;
+      }
+      img{
+        width: rem(40px);
+        height:rem(40px);
+        float: right;
+        margin: rem(15px);
+      }
+    }
+  }
+}
+.shopwrapper{
+  top:rem(200px);
+}
+#goodsListscroll{
+  //position: absolute;
+  //top:rem(190px);
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  background-color: #f2f2f2;
+  .goodsList{
+    width: 100%;
+    padding: 0 rem(25px);
+    display: flex;
+    flex-wrap: wrap;
+    .list-item{
+      width: rem(300px);
+      height:rem(420px);
+      margin: rem(30px) rem(25px);
+      background-color: #FFFFFF;
+      .goodimg{
+        width: rem(260px);
+        height:rem(260px);
+        margin: rem(10px) auto;
+        img{
+          width: rem(260px);
+          height:rem(260px);
+        }
+      }
+      .goodinfo{
+        display: flex;
+        justify-content: space-around;
+        height:rem(70px);
+        line-height: rem(70px);
+        font-size: rem(28px);
+        padding:  0 rem(20px) ;
+        .goodvalue{
+          color: #CC9900;
+          color: #EF6095;
+          img{
+            width: rem(30px);
+            height:rem(30px);
+            float: left;
+            margin-top: rem(20px);
+          }
+        }
+        .refervalue{
+          color: #57607C;
+          text-decoration: line-through;
+        }
+      }
+      .exchange-btn{
+        margin-top: rem(10px);
+        width: 100%;
+        height:rem(60px);
+        line-height: rem(48px);
+        background-color: #57607C;
+        color: #FFFFFF;
+        font-size: rem(28px);
+        text-align: center;
+      }
+    }
+  }
+}
+#mytip{
+  width:100%;
+  height:60px;
+  z-index:1000;
+  line-height:60px;
+  text-align:center;
+  color:#fff;
+  position:absolute;
+  bottom:0;
+  background-color: #000000;
+  opacity: 0.5;
+  display: none;
+}
+//兑换详情
+.goodsinfo{
+  position: absolute;
+  top:0;
+  left: 0;
+  overflow: hidden;
+  width: 100%;
+  .list-item{
+    width: 100%;
+    display: flex;
+    padding: rem(20px);
+    background-color: #FFFFFF;
+    .goodimg{
+      width: rem(260px);
+      height:rem(260px);
+      margin: 0 rem(40px) rem(40px) 0;
+      img{
+        width: rem(260px);
+        height:rem(260px);
+      }
+    }
+    .goodinfo{
+      width: rem(410px);
+      line-height: rem(80px);
+      .goodname{
+        font-size: rem(32px);
+        overflow: hidden;
+        color: #57607C;
+        padding-left: rem(15px);
+      }
+      .goodvalue{
+        display: flex;
+        font-size: rem(28px);
+        .value{
+          margin-right: rem(30px);
+          #cost{color: #EF6095;}
+          img{
+            width: rem(40px);
+            height:rem(40px);
+            float: left;
+            margin: rem(20px) rem(10px);
+          }
+        }
+        .refervalue{
+          color: #57607C;
+          text-decoration: line-through;
+        }
+      }
+      #goodsexchange-btn{
+        width: rem(410px);
+        margin-top: rem(30px);
+        height:rem(70px);
+        line-height: rem(70px);
+        border-radius: rem(70px);
+        background-color: #EF6095;
+        color: #FFFFFF;
+        font-size: rem(32px);
+        text-align: center;
+      }
+    }
+  }
+  .tonerbar{
+    width: 100%;
+    height:rem(84px);
+    line-height:rem(60px);
+    font-size: rem(28px);
+    background-color: #FFFFFF;
+    padding-bottom: rem(24px);
+    .returnbtn{
+      width: rem(211px);
+      margin: 0 auto ;
+      color: #7E859B;
+      img{
+        float: right;
+        margin-top: rem(16px);
+        width: rem(28px);
+        height: rem(28px);
+      }
+    }
+  }
+  .userule{
+    margin-top: rem(24px);
+    width: 100%;
+    padding:0 rem(40px);
+    color: #868686;
+    .title{
+      height:rem(80px);
+      line-height: rem(80px);
+      font-size: rem(30px);
+      color: #EF6095;
+      border-bottom: 1px solid #DDE2E9;
+      padding-left: rem(40px);
+      background-image: url("http://static.jesport.com/sly/images/shopimg/icon-userrule.png");
+      background-size: rem(36px) rem(36px);
+      background-repeat: no-repeat;
+      background-position:  0 rem(22px);
+    }
+    .ruleinfo{
+      margin-top: rem(20px);
+      font-size: rem(26px);
+      line-height: rem(45px);
+      white-space: pre-wrap;
+    }
+  }
+}
+#goodsexchangebtn{
+  position: absolute;
+  left:rem(75px);
+  bottom: rem(60px);
+  width: rem(600px);
+  height:rem(70px);
+  line-height:rem(70px);
+  border-radius: rem(70px);
+  background-color: #E4007F;
+  color: #FFFFFF;
+  font-size: rem(40px);
+  text-align: center;
+}
+.goodspayment{
+  //margin-top: rem(20px);
+  padding:rem(20px);
+  .infoitem{
+    //height:rem(80px);
+    line-height: rem(80px);
+    font-size: rem(30px);
+    color: #231815;
+    .itemname{
+      float: left;
+    }
+  }
+}
+.completepay{
+  padding-top: rem(200px);
+  width: 100%;
+  .img{
+    width: rem(150px);
+    height:rem(150px);
+    margin: 0 auto;
+    img{
+      width: rem(150px);
+      height:rem(150px);
+    }
+  }
+  .paytitle{
+    text-align: center;
+    height:rem(120px);
+    line-height:rem(120px);
+    font-size: rem(28px);
+    color: #000;
+  }
+}
+//兑换记录
+.excrecordwrapper{
+  top:0;
+  .excrecord{
+    width: rem(750px);
+    .recorditem{
+      border-bottom: 2px solid #f2f2f2;
+      background-color: #FFFFFF;
+      width: 100%;
+      height:rem(140px);
+      padding:rem(20px) 0;
+      margin:rem(1px);
+      display: flex;
+      .img{
+        width: rem(176px);
+        height:rem(100px);
+        img{
+          margin-left: rem(33px);
+          width: rem(100px);
+          height:rem(100px);
+        }
+      }
+      .recordinfo{
+        width: rem(544px);
+        height:rem(100px);
+        font-size: rem(26px);
+        position: relative;
+        .name{
+          height:rem(40px);
+          line-height:rem(40px);
+        }
+        .status{
+          position: absolute;
+          top:0;
+          right:0;
+          //color: #FF4C4E;
+        }
+        .pay{
+          margin-top:rem(30px);
+          height:rem(30px);
+          line-height:rem(30px);
+          font-size: rem(20px);
+          color: #868686;
+          #paymdnum{
+            color: #CC9900;
+          }
+        }
+        .invalidDate{
+          color: #868686;
+          font-size: rem(20px);
+          position: absolute;
+          bottom:0;
+          right:0;
+        }
+      }
+    }
+    .match_date{
+      height:rem(60px);
+      line-height:rem(60px);
+      padding-left: rem(20px);
+      //background-color: #231815;
+      font-size: rem(24px);
+      color: #868686;
+    }
+  }
+}
+
+.excgoodinfo{
+  position: absolute;
+  top:rem(120px);
+  left: 0;
+  width: rem(750px);
+ .goodinfo{
+   background-color: #FFFFFF;
+   .img{
+     display: inline-block;
+     vertical-align:top;
+      width: rem(176px);
+     height:rem(136px);
+     img{
+       margin-left: rem(20px);
+       width: rem(136px);
+       height:rem(136px);
+     }
+   }
+   .infodetail{
+     display: inline-block;
+     vertical-align:top;
+     width: rem(564px);
+     height:rem(135px);
+     .goodname{
+       height:rem(104px);
+       line-height:rem(50px);
+       font-size: rem(32px);
+     }
+     .goodmdnum{
+       height: rem(30px);
+       line-height: rem(30px);
+       font-size: rem(28px);
+       color: #868686;
+       #mdnum{
+         color: #CC9900;
+       }
+     }
+   }
+ }
+  .orderdetail{
+    padding: rem(30px) rem(20px);
+    background-color: #FFFFFF;
+    .orderitem{
+      height:rem(60px);
+      line-height:rem(60px);
+      font-size: rem(28px);
+    }
+  }
+  .ordertitle{
+    height:rem(60px);
+    line-height: rem(60px);
+    text-align: center;
+    font-size: rem(30px);
+    background-color: #f2f2f2;
+  }
+  .excnum{
+    font-size: rem(28px);
+    padding:0 rem(20px);
+    height:rem(80px);
+    line-height: rem(80px);
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .exccode{
+    height:rem(440px);
+    width:100%;
+    .imgcode{
+      width: rem(300px);
+      height:rem(150px);
+      margin:0 auto;
+      margin-bottom:rem(10px);
+      img{
+        width: 100%;
+        height:100%;
+      }
+    }
+    #exccode{
+      width: rem(300px);
+      height:rem(300px);
+      margin:0 auto;
+      padding: rem(2px);
+      img{
+        display: block;
+        width: 100%;
+        height:100%;
+      }
+    }
+  }
+  .prompt{
+    font-size: rem(26px);
+    background-color: #FFFFFF;
+    padding: rem(20px);
+    color: #868686;
+    line-height: rem(30px);
+  }
+  #goshop{
+    width: rem(600px);
+    height:rem(70px);
+    margin: rem(20px) auto;
+    line-height:rem(70px);
+    border-radius: rem(70px);
+    background-color: #E4007F;
+    color: #FFFFFF;
+    font-size: rem(40px);
+    text-align: center;
+  }
+}
+.shoplogin{
+  display: none;
+  background-color: #f2f2f2;
+  border-radius: rem(10px);
+  z-index: 1000;
+  position: absolute;
+  top:rem(200px);
+  left:rem(25px);
+  width: rem(700px);
+  height:rem(500px);
+}
+.allpynetvar{
+  top:0;
+}

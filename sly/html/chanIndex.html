@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="yes" name="apple-touch-fullscreen">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+	<link rel="stylesheet" href="http://static.jesport.com/sly/css/chanShark.css">
+	<title>分销系统主页</title>
+</head>
+<body>
+	<div id="app">
+		
+		<div class="index">
+			<div class="btn-return" v-if="desid!=0"><a  href="Javascript:history.go(-1)">返回下级列表</a></div>
+			<div @click="(desid==0) ? isShowProfileModal=true:isShowProfileModal=false" class="personinfo">
+				<div class="img"><img :src="channelInfo ? channelInfo.logo : ''" alt=""></div>
+				<div class="info" v-cloak>
+					<div class="roleName">{{channelInfo.roleName}}</div>
+					<!--<div class="item">{{channelInfo.role}}</div>-->
+					<div class="item">{{channelInfo.realName}}</div>
+				</div>
+				<div class="icon-right" v-if="desid==0"></div>
+			</div>
+			<div class="balancebox">
+				<div class="item balance">余额：<span>{{channelInfo.financeInfo.balance}}</span> </div>
+				<div class="string"></div>
+				<div class="item frozenBalance">冻结金额：<span>{{channelInfo.financeInfo.frozenBalance}}</span></div>
+			</div>
+			<div class="btn-2" v-if="desid==0">
+				<div @click="findSignUser" class="item">查看注册用户</div>
+				<div @click="findCode" class="item">推广二维码</div>
+			</div>
+			<div class="sublist" v-if="channelInfo.role != 'BAR_ASSISTANT' && desid==0"><a  href="chanSubList.html">查看下级收入情况</a></div>
+			<div class="finance">
+				<div class="title"><div class="string"></div>资金变动记录（90天内）</div>
+				<div class="cutline"></div>
+				<ul class="listbox">
+					<li v-for="item in FinanceList" class="item" v-cloak>
+						<div class="date">{{item.createdDate}}</div>
+						<div class="type">{{item.type == 'WITHDRAW' ? '提现' : '收入'}}</div>
+						<div class="num" :class="{green:item.type == 'WITHDRAW',red:item.type != 'WITHDRAW'}">{{item.type == 'WITHDRAW' ? '-' : '+'}}{{item.money}}</div>
+					</li>
+				</ul>
+				<div  @click="financePn++"  v-if="FinanceList.hasNextPage">点击加载更多</div>
+			</div>
+			<!-- 模态框黑色遮罩 -->
+			<div class="mask" @click="isShowCashModal=false;isShowModal=false;isShowCodeModal=false;isShowProfileModal=false;isShowRealnameModal:false;isShowPwdModal=false;" v-if="isShowCashModal||isShowModal || isShowCodeModal || isShowProfileModal || isShowRealnameModal || isShowPwdModal"></div>
+			<!--<div class="mask"></div>-->
+			<!-- 查看注册用户模态框 -->
+			<div class="findUserModal peopleNum" v-if="isShowModal">
+				<div class="title">注册用户（30天内）</div>
+				<div class="num">30天内共推广了{{regMemberList.total}}名用户</div>
+				<ul>
+					<li v-for="item in regMemberList.list" class="memList" v-cloak>
+						<div class="name">{{item.mobile}}</div>
+						<div class="date">{{item.createdDate}}</div>
+					</li>
+				</ul>
+				<div class="more" @click="userPn++" v-if="regMemberList.hasNextPage">点击查看更多</div>
+			</div>
+			<!-- 推广二维码 -->
+			<div  class="findUserModal qrcode"  v-if="isShowCodeModal">
+				<div class="title">个人二维码</div>
+				<div id="findCodeModal">
+				</div>
+				<div class="codeimg"><img id="imgOne" src="" alt=""></div>
+				<div class="ruleinfo">
+					<p class="p1">*用户通过该二维码注册后，该用户之后的充值将给您分成</p>
+				</div>
+			</div>
+			<!-- 修改提现账号 -->
+			<div class="findUserModal cashModal " v-if="isShowCashModal" >
+				<div class="title">修改提现账号</div>
+				<form id="editAccInfo" >
+					<div class="type">
+						<span>选择提现方式 : </span>
+						<select v-model="accountInfo.type" name="acctype" class="select">
+							<option class="item" value="ALI">支付宝</option>
+							<option value="BANK">银行</option>
+						</select>
+					</div>
+					<div class="input"><span>账号 :</span><input type="text" name="accno" placeholder="请输入账号"></div>
+					<div v-if="accountInfo.type == 'BANK'"  class="input"><span>银行名称:</span><input type="text" name="bankname" placeholder="请输入银行名称"></div>
+					<div v-if="accountInfo.type == 'BANK'"  class="input"><span>开户行名称:</span><input  type="text" name="bankdeposit" placeholder="请输入开户行名称"></div>
+					<div class="btnBox">
+						<div class="btn btn1" @click="editAccInfo">确定</div>
+						<div class="btn btn2" @click="isShowCashModal=false;">取消</div>
+					</div>
+				</form>
+			</div>
+			<!-- 修改密码 -->
+			<div class="findUserModal " v-if="isShowPwdModal" >
+				<div class="title">修改密码</div>
+				<div class="nameInput input" >
+					<span >修改密码 : </span><input type="password" v-model="password" placeholder="请输入密码">
+				</div>
+				<div class="btnBox">
+					<div class="btn btn1" @click="setPassword">确定</div>
+					<div class="btn btn2" @click="isShowPwdModal=false;">取消</div>
+				</div>
+			</div>
+			<!-- 设置真实姓名 -->
+			<div class="findUserModal realName " v-if="isShowRealnameModal"  >
+				<div class="title">修改真实姓名</div>
+				<div class="nameInput">
+					<input type="text" v-model="realName" placeholder="请输入真实姓名">
+				</div>
+				<div class="btnBox">
+					<div class="btn btn1" @click="setPassword">确定</div>
+					<div class="btn btn2" @click="isShowRealnameModal=false;">取消</div>
+				</div>
+
+			</div>
+			<!-- 修改个人资料 -->
+			<div  class="findUserModal personModal" v-if="isShowProfileModal" isShowProfileModal>
+				<div class="title">个人资料</div>
+				<div class="imgbox">
+					<div class="img"><img  witdh="100" height="100" :src="channelInfo ? channelInfo.logo : ''" alt=""></div>
+					<form id="uploadHeader" enctype="multipart/form-data" class="btn-changeimg">
+						<label for="file">
+							<div>点击更换头像</div>
+							<input @change="editHeader" style="opacity: 0;" id="file" name="avatar" type="file">
+						</label>
+					</form>
+				</div>
+				<table class="infobox">
+					<tbody>
+						<tr>
+							<td>登录ID</td>
+							<td v-cloak>{{channelInfo.id}}</td>
+						</tr>
+						<tr>
+							<td>角色</td>
+							<td v-cloak>
+								{{channelInfo.roleName}}
+							</td>
+						</tr>
+						<tr>
+							<td>真实姓名</td>
+							<td>
+								<span v-cloak>{{channelInfo.realName}}</span>
+								<span @click="isShowRealnameModal=true;isShowProfileModal=false;"  class="btn-setting">设置</span>
+							</td>
+						</tr>
+						<tr>
+							<td>提现资料</td>
+							<td>
+								<div class="bankinfo">
+									<span v-cloak>{{accountInfo.type == 'ALI' ? '支付宝:' : '银行账号:'}}{{accountInfo.accountNo}}</span>
+									<span v-if="accountInfo.type == 'BANK'" >开户银行:{{accountInfo.bankName}}</span>
+									<span v-if="accountInfo.type == 'BANK'">开户行名称:{{accountInfo.bankDeposit}}</span>
+								</div>
+								<span @click="isShowCashModal=true;isShowProfileModal=false;" class="btn-setting">修改</span>
+							</td>
+						</tr>
+						<tr>
+							<td>账号密码</td>
+							<td>*****<span @click="isShowPwdModal=true;isShowProfileModal=false;" class="btn-setting">修改</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="ruleinfo">
+					<p class="p1">*真实姓名用于提现设置后不能修改</p>
+					<p class="p2">*请填写自己的提现方式，可以填写支付宝、和银行卡。支付宝清填写支付宝账号，银行卡清填写银行名称、开户行、银行账号。支付宝和银行卡必须与真实姓名对应。打款失败冻结资金不会消除，请联系官方。</p>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+	<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+	<script type="text/javascript" src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script>
+	<script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+	<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201710311126"></script>
+	<script type="text/javascript" src="http://static.jesport.com/sly/js/chanIndex.js?version=201710311126"></script>
+</body>
+</html>

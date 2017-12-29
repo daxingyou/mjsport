@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201710311341">
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <title>魔圣电竞大师</title>
+</head>
+<body style="background: #f2f2f2;">
+<div id="wrapper" class="index newprofile" style="overflow: visible; position: static;">
+    <div id="scroller" style="min-height: 100%;position: static;">
+        <div id="app">
+            <div class="profileinfo">
+                <div class="img"  v-cloak><img :src="memberinfo.avatar?memberinfo.avatar:'http://static.jesport.com/sly/images/face.png'" alt=""></div>
+                <div class="info">
+                    <div class="tel" v-cloak>{{memberinfo.secretMobile}}</div>
+                    <div class="status" v-cloak>{{channelInfo?channelInfo.roleName:"网吧会员"}}</div>
+                </div>
+                <!--<div class="icon-right"><a href="javascript:;"></a></div>-->
+            </div>
+            <div class="balanceBox">
+                <div class="item mdnum" v-cloak>
+                    <span class="name">魔豆</span>
+                    <span class="val">{{balance.balanceBean}}</span>
+                </div>
+                <div class="item bag" @click="showQrcode" v-cloak>
+                    <span class="name">红包</span>
+                    <span class="val">{{financeInfo!=null?financeInfo.balanceMoney:0}}</span>
+                </div>
+            </div>
+            <div class="navbox">
+                <a href="leagueIndex.html" class="navitem">
+                    <div class="icon" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_5.png')"></div>
+                    <div class="name">高校联赛</div>
+                </a>
+                <a href="newGuessRecords.html" class="navitem">
+                    <div class="icon" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_7.png')"></div>
+                    <div class="name">竞猜记录</div>
+                </a>
+                <a href="excrecord.html" class="navitem">
+                    <div class="icon" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_8.png')"></div>
+                    <div class="name">兑换记录</div>
+                </a>
+                <a :href="'myactivity.html?id='+netbarId" class="navitem">
+                    <div class="icon" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_10.png')"></div>
+                    <div class="name">我的活动</div>
+                </a>
+            </div>
+            <div class="menuList">
+                <a href="exchangeMd.html" class="item" >
+                    <div class="img" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_6.png')"></div>
+                    <div class="name">魔豆充值</div>
+                    <div class="icon-right"></div>
+                </a>
+                <a href="mdAccount.html" class="item" >
+                    <div class="img" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_14.png')"></div>
+                    <div class="name">消费记录</div>
+                    <div class="icon-right"></div>
+                </a>
+                <a :href="'newNetbarInfo.html?id='+netbarId" class="item" >
+                    <div class="img" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_3.png')"></div>
+                    <div class="name">我的网吧</div>
+                    <div class="icon-right"></div>
+                </a>
+                <a href="newChanIndex.html" class="item" v-if="channelInfo">
+                    <div class="img" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_11.png')"></div>
+                    <div class="name">我的渠道</div>
+                    <div class="icon-right"></div>
+                </a>
+
+                <a href="safe.html" class="item">
+                    <div class="img" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_12.png')"></div>
+                    <div class="name">安全设置</div>
+                    <div class="icon-right"></div>
+                </a>
+                <a href="javascript:;" class="item" @click="logout()">
+                    <div class="img" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_13.png')"></div>
+                    <div class="name">退出登录</div>
+                    <div class="icon-right"></div>
+                </a>
+            </div>
+            <!--弹框-->
+            <div class="mask2" v-if="maskShow" @click="maskShowclick" ></div>
+            <div class="alert-wxcode" v-if="codeShow"><img src="http://static.jesport.com/sly/images/newProfile/wxcode.png" alt=""></div>
+        </div>
+    </div>
+</div>
+<div id="newFooter">
+    <div class="menu">
+        <a href="index.html"><div class="icon-home"></div><div class="menu-item" >首页</div></a>
+        <a href="newCorps.html"><span class="icon-corps"></span><span class="menu-item" >网吧</span></a>
+        <a href="newGuessList.html" ><span class="icon-match"></span><span class="menu-item" >竞猜</span></a>
+        <a href="profile.html"><span class="icon-profile-hover"></span><span  class="menu-item active" >个人</span></a>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201710311341"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/newProfile.js?version=201710311541"></script>
+</body>
+</html>

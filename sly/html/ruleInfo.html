@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=2017092809sdfs38">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+<div id="wrapper" class="applyRuleInfo" style="background: #FFFFFF;">
+    <div id="app">
+        <div class="title">{{matchInfo.name}}</div>
+        <div class="rulebox">
+            <div class="item">
+                <div class="name">比赛游戏</div>
+                <div class="value">{{matchInfo.gameName}}</div>
+            </div>
+            <div class="cutline"></div>
+            <div class="item">
+                <div class="name">比赛时间</div>
+                <div class="value">{{matchInfo.startDate}} - {{matchInfo.endDate}}</div>
+            </div>
+            <div class="cutline"></div>
+            <div class="item">
+                <div class="name">比赛地点</div>
+                <div class="value">{{matchInfo.addr}}</div>
+            </div>
+            <div class="cutline"></div>
+            <div class="item">
+                <div class="name">报名时间</div>
+                <div class="value">{{matchInfo.enrollEndDate}} 截止</div>
+            </div>
+            <div class="cutline"></div>
+            <div class="item">
+                <div class="name">参赛模式</div>
+                <div class="value">{{matchInfo.enrollType == 'TEAM' ? '战队赛' : (matchInfo.enrollType == 'PERSON' ? '单人赛':'队长赛')}}</div>
+            </div>
+            <div class="cutline"></div>
+            <div class="item">
+                <div class="name">战队成员数</div>
+                <div class="value">{{matchInfo.teamNum}}</div>
+            </div>
+            <div class="cutline"></div>
+            <div class="item">
+                <div class="name">报名权限</div>
+                <div class="value">{{matchInfo.enrollLimit == 'MEMBER' ? '会员可报名':'所有人'}}</div>
+            </div>
+            <div class="cutline"></div>
+            <div class="item">
+                <div class="name">活动奖励</div>
+                <div class="value">{{matchInfo.awardDesc}}</div>
+            </div>
+            <div class="cutline"></div>
+            <div class="item">
+                <div class="name">比赛说明</div>
+                <div class="value">{{matchInfo.caption}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/zepto.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/ruleInfo.js"></script>
+</body>
+</html>

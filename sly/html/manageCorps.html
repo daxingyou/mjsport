@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201709280938">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+    <div id="app" class="alertnative" style="background: #f2f2f2;">
+        <div >
+            <div class="title">
+                <img  class="icon-flag" src="http://static.jesport.com/sly/images/icon-flag.png" alt="">
+                战队备选成员
+            </div>
+            <div class="memberlist">
+                <div class="memberitem" v-for="(item,index) in cropsList">
+                    <div class="memberimg"><img :src="item.memberAvatar" alt=""></div>
+                    <div class="name">
+                        <div class="name1">{{item.realName}}</div>
+                        <div class="name2">{{item.memberName}}</div>
+                    </div>
+                    <div class="captainicon" v-if="item.role == 1"><img src="http://static.jesport.com/sly/images/captainicon.png" alt=""><div>队长</div></div>
+                    <div class="telnum">{{item.mobile}}</div>
+                    <div class="gard">{{item.levelName}}</div>
+                    <div  @click="toggleState(item.state,index)"  class="choose" :class="{'active':item.state == 1}"><div class="center"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="chosebtn">
+            <div class="bind-box">
+                <div class="diamond1"></div>
+                <div class="bind-btn" @click="ajaxSubmit">确定选择</div>
+                <div class="diamond2"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/zepto.min.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/common.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/manageCorps.js"></script>
+</body>
+</html>

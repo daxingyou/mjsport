@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;background-color: #f2f2f2;" >
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta http-equiv="pragma"   content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+    <meta http-equiv="expires" content="Wed,26 Feb 1998 08:21:57 GMT" />
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?v=201712151408">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+    <div id="app" class="widthDraw">
+        <div class="headtitle"><div class="return-left" @click="returnleft"></div>我的红包</div>
+        <div class="withbox">
+            <div class="title">红包提现</div>
+            <div class="content">
+                <div class="hbbox">红包<span class="num">{{financeInfo.balanceMoney}}</span></div>
+                <div class="btn-withdraw" @click="widthdrawadd">提现</div>
+            </div>
+        </div>
+        <div class="withbox">
+            <div class="title">提现信息</div>
+            <div class="content">
+                <div class="infobox" v-if="accountlist">
+                    <div class="info">
+                        <div class="name">提现支付宝</div>
+                        <div class="value">{{accountlist.accountInfo}}</div>
+                    </div>
+                    <div class="info">
+                        <div class="name">真实姓名</div>
+                        <div class="value">{{accountlist.realName}}</div>
+                    </div>
+                </div>
+                <div class="add-btn info-btn" v-if="!accountlist" @click="addaccount">添加账号</div>
+                <div class="update-btn info-btn" v-if="accountlist" @click="addaccount">修改信息</div>
+            </div>
+        </div>
+        <div class="withbox">
+            <div class="title">提现记录</div>
+            <div class="content">
+                <div class="withList">
+                    <div class="item" v-for="item in withdraw">
+                        <span>{{item.createdDate}}</span>提现<span>{{item.money}}</span>
+                        <span class="state">{{item.status=="SUCCESS"?"提现成功":item.status=="INIT"?"未审核":item.status=="FAIL"?"提现失败":"提现中"}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="pagebtn">
+                <div class="prepage btn" @click="lastpageClick" v-if="hasPreviousPage">上一页</div>
+                <div class="nextpage btn" @click="nextpageClick" v-if="hasNextPage">下一页</div>
+            </div>
+        </div>
+        <!--弹窗-->
+        <div class="mask2" v-if="maskShow" @click="maskClick"></div>
+        <!--添加账号-->
+        <div class="addaccount alert-show" v-if="addShow">
+            <div class="title" >设置支付宝信息<div class="close" @click="maskClick">&times;</div></div>
+            <div class="infobox">
+                <div class="item">
+                    <div class="name">支付宝:</div>
+                    <div class="value"><input type="text" v-model="accountdata.account" placeholder="请输入支付宝账号"/></div>
+                </div>
+                <div class="item">
+                    <div class="name">姓名:</div>
+                    <div class="value"><input type="text" v-model="accountdata.realname" placeholder="请输入真实姓名"/></div>
+                </div>
+                <div class="item">
+                    <div class="name">手机验证码:</div>
+                    <div class="value"><input type="text" v-model="accountdata.code"/><span class="btn" :class="{active:clickstate}" @click="getCode">{{validate}}</span></div>
+                </div>
+                <p class="msg" v-if="clickstate">验证码已经发到您的手机{{memberInfo.secretMobile}}</p>
+            </div>
+            <div class="btnbox">
+                <div class="btn submit" @click="setwidthdrawSubmit">提交</div>
+            </div>
+        </div>
+        <!--申请提现-->
+        <div class="widthdrawAdd alert-show" v-if="widthdrawshow">
+            <div class="title" >红包提现<div class="close" @click="maskClick">&times;</div></div>
+            <div class="infobox">
+                <div class="item">
+                    <div class="name">提现金额:</div>
+                    <div class="value"><input type="number" v-model="money" placeholder="请输入提现金额"/></div>
+                </div>
+                <div class="msg">支付宝：{{accountlist.accountInfo}}</div>
+            </div>
+            <div class="btnbox">
+                <div class="btn submit" @click="withdrawSubmit">提交</div>
+            </div>
+            <div class="attention">*红包提现后，会在3-5个工作日后打到您的支付宝账号中去。</div>
+            <div class="attention"> *提现金额为200-5000元</div>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201712151408"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/withdraw.js?v=201712151416"></script>
+</body>
+</html>

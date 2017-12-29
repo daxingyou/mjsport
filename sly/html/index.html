@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <style>
+
+    </style>
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201712261326">
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <title>魔圣电竞大师</title>
+
+</head>
+<body style="background: #f2f2f2;">
+    <div id="wrapper" class="index newindex" style="overflow: visible; position: static;max-width: 750px;margin: 0 auto;">
+    <div id="scroller" style="min-height: 100%;position: static;">
+        <div id="app">
+            <div class="swiper-container">
+                <div class="swiper-wrapper" >
+                    <div class="swiper-slide" v-for="item in slider"><a :href="item.url"><img :src="item.img" alt=""></a></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <!--导航-->
+            <div class="nav">
+                <div class="item" v-if="firstAdvShow">
+                    <a :href="firstAdv.url">
+                        <div class="img"><img :src="firstAdv.img" alt=""></div>
+                        <div class="name">{{firstAdv.title}}</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a :href="'netbaractivity.html?id='+netbarid">
+                        <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/icon_2.png" alt=""></div>
+                        <div class="name">网吧活动</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a :href="'newNetbarInfo.html?id='+netbarid">
+                        <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/icon_3.png" alt=""></div>
+                        <div class="name">我的网吧</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a :href="'shop.html?id='+netbarid">
+                        <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/icon_4.png" alt=""></div>
+                        <div class="name">兑换商城</div>
+                    </a>
+                </div>
+                <div class="item">
+                    <a href="turntable.html">
+                        <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/icon_5.png" alt=""></div>
+                        <div class="name">积分抽奖</div>
+                    </a>
+                </div>
+            </div>
+            <!--最新竞猜-->
+            <div class="guessbox">
+                <div class="guessnav">
+                    <div class="title">最新赛事</div>
+                    <div class="guessnav" v-for="item in gametab">
+                        <div class="item " :class="{active:item.isActive}" @click="toggleTab(item.id)">
+                            <div class="name">{{item.name}}</div><div class="border"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="guesses">
+                    <div class="item" v-for="item in newestList" :style="{backgroundImage:'url(http://static.jesport.com/sly/images/newIndex/card_'+item.gameId+'.png)'}" >
+                        <a :href="'newGuessinfo.html?id='+item.optionsInfo.guessId">
+                            <div class="top">
+                                <div class="title">
+                                    <div class="name">{{item.title}}</div>
+                                    <div class="date">{{item.endDate}}</div>
+                                </div>
+                                <div class="teams">
+                                    <div class="teaminfo">
+                                        <div class="img"><img :src="item.t1Info.logo" alt=""></div>
+                                        <div class="name name-left">{{item.t1Info.name}}</div>
+                                    </div>
+                                    <div class="scroe">{{item.t1Score}}<span>-</span>{{item.t2Score}}</div>
+                                    <div class="teaminfo">
+                                        <div class="name name-right">{{item.t2Info.name}}</div>
+                                        <div class="img"><img :src="item.t2Info.logo" alt=""></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <div class="detail" v-if="item.state!=3" >
+                                    <div class="bet left">{{item.optionsInfo.questionOddsMap.A}}</div>
+                                    <div class="newquestion">
+                                        <div class="guessdetail">{{item.optionsInfo.questionTitle}}</div>
+                                        <div class="godetail"><div>竞猜中>></div></div>
+                                    </div>
+                                    <div class="bet right">{{item.optionsInfo.questionOddsMap.C?item.optionsInfo.questionOddsMap.C:item.optionsInfo.questionOddsMap.B}}</div>
+                                </div>
+                                <div class="guessover" v-if="item.state==3"><div>已结束</div></div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+<div id="newFooter">
+    <div class="menu">
+        <a href="index.html"><div class="icon-home-hover"></div><div class="menu-item active" >首页</div></a>
+        <a href="newCorps.html"><span class="icon-corps"></span><span class="menu-item" >网吧</span></a>
+        <a href="newGuessList.html" ><span class="icon-match"></span><span class="menu-item" >竞猜</span></a>
+        <a href="profile.html"><span class="icon-profile"></span><span  class="menu-item" >个人</span></a>
+    </div>
+</div>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/swiper-3.4.2.min.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+    <!--<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>-->
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201712271349"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/newIndex.js?version=201711091553"></script>
+</body>
+</html>

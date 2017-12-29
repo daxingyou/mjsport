@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201708231645">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/other.css?version=7984657987">
+    <title>比赛竞猜</title>
+</head>
+<body>
+    <div id="app">
+        <div id="wrapper" class="activityproject" style="background: #f2f2f2; overflow: visible;position: static;">
+            <div id="scroller" style="position: static;">
+
+                <div class="guess" style="margin-top: 20px;">
+                    <div @click="toggleModal(index)"  class="questionitem" v-for="(item,index) in guessList">
+                        <div class="question">
+                            <div class="qcontent">{{item.title}}</div>
+                            <div class="qstatus">{{item.state == 1 ? '竞猜中' : item.state == 2 ? '已结束' : '已截投'}}<div class="sjx"></div></div>
+                        </div>
+                        <div class="actoptions">
+                            <div class="optionitem" v-for="item2 in item.questionItemsObj">
+                                <div class="left">{{item2.questionLetter}}</div>
+                                <div class="right">
+                                    <div class="answer">{{item2.questionVal}}</div>
+                                    <div>已投<span class="mdnum">{{item2.betSum}}</span>魔豆</div>
+                                </div>
+                                <div class="sjx"></div>
+                                 <div v-if="item2.questionLetter == item.answer " class="win"></div>
+                            </div>
+
+                        </div>
+                        <div class="cutline"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="mask" style="display: none"></div>
+        <div  class="guess-popups" style="display: none;top: 2rem;">
+            <div class="title"><div class="diamond"></div><div>{{  nowGuess.state == 1  ? '提交竞猜' : '竞猜结果'}}</div><div class="diamond"></div></div>
+            <div class="cutline"></div>
+            <div v-if=" nowGuess.state == 1 " class="content">
+                <div class="popquestion">{{nowGuess ? nowGuess.questionTitle : '' }}</div>
+                <div @click="selectAswer(index)" class="popanswerlist" v-for="(item,index) in nowGuess ?  nowGuess.questionItemsObj : []">
+                    <div class="popansweritem" :class="{active:nowIndex == index}">
+                        <div class="left">{{item.questionLetter}}</div>
+                        <div class="right">{{item.questionVal}}</div>
+                    </div>
+                </div>
+                <div class="actoptions">
+                    <div class="name">投注数 : </div>
+                    <div class="value">
+                        <div class="notenum">
+                            <div @click="sub"  class=" btn btn-minus">一</div>
+                            <div class="">{{betNum}}注</div>
+                            <div @click="add" class=" btn btn-add">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="actoptions">
+                    <div class="name">共&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计 : </div>
+                    <div class="value">{{totalBean}}魔豆</div>
+                </div>
+                <div class="actoptions">
+                    <div class="name">我的余额 : </div>
+                    <div class="value">{{memberBean}}魔豆</div>
+                </div>
+            </div>
+            <div class="content" style="padding-bottom: 1rem;">
+                <p v-if="winSum != 0">恭喜！本次竞猜中奖{{winSum}}魔豆，奖励已发送至您的账户</p>
+                <p v-if="winSum == 0">很遗憾，本次竞猜未中奖，再接再厉！</p>
+            </div>
+            <div v-if=" nowGuess.state == 1 "   class="bind-box ">
+                <div  class="diamond1"></div>
+                <div  @click="submitAjax" class="bind-btn">提交</div>
+                <div  class="diamond2"></div>
+            </div>
+            <div class="close"><img src="http://static.jesport.com/sly/images/icon-close.png" alt=""></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/common.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/guessList.js?v=1x1x"></script>
+</body>
+</html>

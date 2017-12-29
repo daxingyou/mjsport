@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="yes" name="apple-touch-fullscreen">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+	<link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201711091553">
+	<link rel="stylesheet" href="http://static.jesport.com/sly/css/chanShark.css?version=201711091553">
+	<title>分销系统下级列表</title>
+</head>
+<body style="background-color: #f2f2f2">
+	<div id="app" class="index newprofile">
+		<div class="subList">
+			<a  href="Javascript:history.go(-1)" class="chan-top">
+				<div class="icon-left"></div>
+				<div>下级列表</div>
+			</a>
+			<div class="listbox">
+				<a :href=" 'newChanIndex.html?desid='+item.id" v-for="item in deslist" class="item">
+					<div class="info">
+						<div class="img"><img :src="item ? item.logo : ''" alt=""></div>
+						<div class="detail" style="line-height: 1.33333rem; font-size: 0.45333rem;" v-cloak>
+							{{item.nickname}}({{item.roleName}})
+						</div>
+
+						<div class="balance" style="width: 3rem;color: #999999;" >
+							余额：<span style="color: #ff0000;" v-cloak>{{(item.financeInfo == null) ? 0 : item.financeInfo.balance}}</span>
+						</div>
+					</div>
+					<div class="icon-right"></div>
+				</a>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+	<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+	<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201711091553"></script>
+	<script type="text/javascript" src="http://static.jesport.com/sly/js/chanSubList.js?version=201711091553"></script>
+</body>
+</html>

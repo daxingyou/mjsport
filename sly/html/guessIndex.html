@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201712071735">
+    <title>魔圣电竞大师</title>
+</head>
+<body style="background-color: #f2f2f2">
+<div id="app" class="actIndex" style="background-color: #f2f2f2">
+    <div class="bannerimg">
+        <a :href='"netbaractivity.html?id="+matchInfo.netbarId' class="left"></a>
+        <img id="bannerimg" :src="matchInfo ? matchInfo.poster : '' " alt="">
+    </div>
+    <div class="gamename">{{matchInfo ? matchInfo.name : ''}}</div>
+    <div class="pageTbas">
+        <div class="item" v-for="item in pageTabs" :class="{active:showTab==item.showTab}" @click="pagechange(item)">
+           {{item.title}}
+        </div>
+    </div>
+    <!--页卡-->
+    <div class="pages">
+        <!--活动投票-->
+        <div class="votebox" v-if="showTab==0">
+            <div class="top">
+                <div class="text">
+                    <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/hummer.png" alt=""></div>
+                    <div class="text">你觉得哪支队伍可以取胜？</div>
+                </div>
+                <div class="title">
+                    <div class="sum">
+                        <div>奖池</div>
+                        <div class="img"><img src="http://static.jesport.com/sly/images/icon-md1206.png" alt=""></div>
+                        <div class="color">{{winTeamInfo.voteBetSum}}</div>
+                    </div>
+                    <div class="btn" @click="voterecordShow=true;maskShow=true;">投票记录</div>
+                </div>
+            </div>
+
+            <div class="votelist">
+                <div class="voteitem" v-for="(item,index) in winTeamInfo.voteList" >
+                    <div class="img"><img :src="item.logo?item.logo:'http://static.jesport.com/avatar/def.png'" alt=""></div>
+                    <div class="name">{{item.teamName?item.teamName:"未知队名"}}</div>
+                    <div class="num">
+                        <div class="img2"><img src="http://static.jesport.com/sly/images/icon-md1206.png" alt=""></div>
+                        <div class="mdnum">{{item.awardNum}}</div>
+
+                    </div>
+                    <div class="vote-btn" @click="support(item.teamId,index)">支持</div>
+                    <div class="odds"> <span>当前赔率</span><span class="num2">{{item.odds}}</span></div>
+                </div>
+            </div>
+        </div>
+        <!--比赛竞猜-->
+        <div class="guessbox" v-if="showTab==1">
+            <div class="questionList">
+                <!--<div class="title">-->
+                    <!--<div class="item"  v-for="(item,index) in tabs" :class="{active:index==state}" @click="changeTabs(index)">{{item}}</div>-->
+                <!--</div>-->
+                <div class="qitem" v-for="item in optionsList">
+                    <div class="title">
+                        <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/hummer.png" alt=""></div>
+                        <div class="questionitem">{{item.questionTitle}}</div>
+                    </div>
+                    <div class="newanswers" :class="{newanswers2:item.answer.length>4}">
+                        <div class="answer" :class="{answer2:item.answer.length>2}" v-for="x in item.answer" @click="bet(item,x)">
+                            <div class="isbet" v-if="x.isbet"><img src="http://static.jesport.com/sly/images/newIndex/beted.png" alt=""></div>
+                            <div class="name">{{x.items}}</div>
+                            <div class="odds">赔率:{{x.odds}}</div>
+                            <div class="win" v-if="x.win"><img src="http://static.jesport.com/sly/images/newIndex/win.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--比赛赛程-->
+        <div class="matchbox" v-if="showTab==2">
+            <div class="system">
+                <div @click="toggleMach(index)" :class="{active: index == nowMatchRule}" v-for="(item,index) in scheduInfo ? scheduInfo.groupList : []" class="navitem ">{{item.groupName}}</div>
+            </div>
+            <div class="matchtitle2">
+                <div class="date">
+                    <span>{{nowMatch ? nowMatch.matchDate : ''}}</span>
+                </div>
+                <div class="info">
+                    <span>{{matchInfo ? matchInfo.gameName : ''}}</span>
+                    <span>{{nowMatch ? nowMatch.groupOutletMemberCnt : '' }}v{{nowMatch ? nowMatch.groupOutletMemberCnt : '' }}</span>
+                    <span>BO{{nowMatch ? nowMatch.groupBo : '' }}</span>
+                </div>
+            </div>
+            <div class="saicheng">比赛赛程</div>
+            <div class="matchlist">
+                <div v-for="(item,index) in nowMatch ? nowMatch.scheduleList : []" class="matchitem">
+                    <div class="team">
+                        <div class="img"><img :src="item ? item.t1Logo : ''" alt=""></div>
+                        <div class="name">{{item.t1Name}}</div>
+                    </div>
+                    <div class="vs" style="display: none">vs</div>
+                    <div class="result">{{item.t1Score}}-{{item.t2Score}}</div>
+                    <div class="team">
+                        <div class="img"><img :src="item ? item.t2Logo : ''" alt=""></div>
+                        <div class="name">{{item.t2Name}}</div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="nowMatch.rankList"  class="saicheng">积分榜</div>
+            <table v-if="nowMatch.rankList" class="ranklist">
+                <thead>
+                <tr>
+                    <th class="ranknum">排名</th>
+                    <th class="rankteam">战队</th>
+                    <th class="rankscore">胜平负</th>
+                    <th class="integral">积分</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item,index) in nowMatch ?  nowMatch.rankList : []" class="rankitem">
+                    <td>{{index+1}}</td>
+                    <td class="">
+                        <div class="img"><img :src="item ? item.teamLogo : ''" alt=""></div>
+                        <div class="name">{{item ? item.teamName : ''}}</div>
+                    </td>
+                    <td>{{item.winNum}}/{{item.drawNum}}/{{item.loseNum}}</td>
+                    <td>{{item.point}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div></div>
+        </div>
+        <!--规则详情-->
+        <div class="ruleinfobox" v-if="showTab==3">
+            <div class="rulebox">
+                <div class="item">
+                    <div class="name">比赛游戏</div>
+                    <div class="value">{{matchInfo.gameName}}</div>
+                </div>
+                <div class="cutline"></div>
+                <div class="item">
+                    <div class="name">比赛时间</div>
+                    <div class="value">{{matchInfo.startDate}} - {{matchInfo.endDate}}</div>
+                </div>
+                <div class="cutline"></div>
+                <div class="item">
+                    <div class="name">比赛地点</div>
+                    <div class="value">{{matchInfo.addr}}</div>
+                </div>
+                <div class="cutline"></div>
+                <div class="item">
+                    <div class="name">报名时间</div>
+                    <div class="value">{{matchInfo.enrollEndDate}} 截止</div>
+                </div>
+                <div class="cutline"></div>
+                <div class="item">
+                    <div class="name">参赛模式</div>
+                    <div class="value">{{matchInfo.enrollType == 'TEAM' ? '战队赛' : (matchInfo.enrollType == 'PERSON' ? '单人赛':'队长赛')}}</div>
+                </div>
+                <div class="cutline"></div>
+                <div class="item">
+                    <div class="name">战队成员数</div>
+                    <div class="value">{{matchInfo.teamNum}}</div>
+                </div>
+                <div class="cutline"></div>
+                <div class="item">
+                    <div class="name">报名权限</div>
+                    <div class="value">{{matchInfo.enrollLimit == 'MEMBER' ? '会员可报名':'所有人'}}</div>
+                </div>
+                <div class="cutline"></div>
+                <div class="item">
+                    <div class="name">活动奖励</div>
+                    <div class="value">{{matchInfo.awardDesc}}</div>
+                </div>
+                <div class="cutline"></div>
+                <div class="item">
+                    <div class="name">比赛说明</div>
+                    <div class="value">{{matchInfo.caption}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--弹框-->
+    <div class="mask1" v-if="maskShow" @click="maskShowclick"></div>
+    <!--支持投票-->
+    <div class="alert-support" v-if="supportShow">
+        <div class="title">
+            <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/hummer.png" alt=""></div>
+            <div class="questionitem">支持{{nowMatch.teamName}}</div>
+        </div>
+        <div class="balance">
+            <div>选项
+                <span style="color: #ff0000;margin-right: 0.5rem;">{{nowMatch.teamName}}</span>
+                赔率
+                <span style="color: #ff0000;">{{nowMatch.odds}}</span></div>
+            <div>魔豆余额 : <span style="color: #ff0000">{{memberBean.balanceBean}}</span></div>
+        </div>
+        <div class="betnum">
+            <div><input  type="number" v-model="vote" v-on:input ="inputFunc()" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></div>
+            <div class="sub-button" @click="voteAjax">提交</div>
+        </div>
+        <div class="reward">预计回报 : <span style="color: #ff0000">{{rewards}}</span></div>
+    </div>
+    <!--竞猜-->
+    <div class="betwindow" v-if="guessShow">
+        <div class="title">
+            <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/hummer.png" alt=""></div>
+            <div class="questionitem">{{betQuestion}}</div>
+        </div>
+        <div class="balance">
+            <div>选项
+                <span style="color: #ff0000;margin-right: 0.5rem;">{{betAns.items}}</span>
+                赔率
+                <span style="color: #ff0000;">{{betAns.odds}}</span></div>
+            <div>魔豆余额 : <span style="color: #ff0000">{{memberBean.balanceBean}}</span></div>
+        </div>
+        <div class="betnum">
+            <div><input id="input" type="number" v-model="vote" v-on:input ="inputFunc()" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></div>
+            <div class="sub-button" @click="subBet">提交</div>
+        </div>
+        <div class="reward">预计回报 : <span style="color: #ff0000">{{rewards}}</span></div>
+    </div>
+
+    <!--投票记录-->
+    <div class="award-alert" v-if="voterecordShow">
+        <div class="title">我的支持<div class="close" @click="maskShowclick">&times;</div></div>
+        <div class="content"  >
+            <div class="winteaminfo">
+                <div class="title2">
+                    <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/hummer.png" alt=""></div>
+                    <div class="text">你觉得哪支队伍可以取胜？</div>
+                </div>
+                <div v-if="awardInfo.winTeamInfo" class="championbox" >
+                    <div class="teambox">
+                        <!--<div  class="img"><img :src=" awardInfo.winTeamInfo ?   awardInfo.winTeamInfo.logo : 'http://static.jesport.com/avatar/def.png' " alt=""></div>-->
+                        <div class="name">结果 : <span>{{awardInfo.winTeamInfo.name ?  awardInfo.winTeamInfo.name : 'name'}}</span></div>
+                        <div class="odds">最终赔率 : <span>{{awardInfo.winTeamInfo ?  awardInfo.winTeamOdds : 'odds'}}</span></div>
+                    </div>
+                </div>
+                <div style="text-align: center; display: block; width: 100%;padding: 0.26667rem 0.1rem;"  class="voteaward">
+                    <div  style="display: inline-block;" v-if="awardInfo.winTeamInfo"  class="name">最终奖励</div>
+                    <div style="display: inline-block;background: rgba(170, 188, 214, 0.2);"  class="modounum">{{awardInfo.winTeamInfo ? awardInfo.award+'  魔豆' : '尚未开奖'}}</div>
+                </div>
+            </div>
+            <div class="voteinfo">
+                <div class="isvote" v-if="awardInfo.winTeamInfo">恭喜，奖励魔豆已经发送至您的账户</div>
+                <div class="tpxq">支持记录</div>
+            </div>
+            <div class="teamlist" style="height: 6rem;overflow-y: auto;">
+                <div class="teamitem">
+                    <div>队伍图标</div>
+                    <div class="name">支持队伍</div>
+                    <div class="modou">投入魔豆</div>
+                </div>
+                <div v-for="item in awardInfo ?  awardInfo.voteList : []" class="teamitem">
+                    <div class="img"><img :src="item.logo?  item.logo : ''" alt=""></div>
+                    <div class="name">{{item.teamName?item.teamName:"unknow"}}</div>
+                    <div class="modou">{{item.beans}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201712071801"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/actIndex.js?v=201712071735"></script>
+</body>
+</html>

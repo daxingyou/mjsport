@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/actShark.css?version=201712051105">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+<div class="backpic"><img src="http://static.jesport.com/sly/images/activeImg/punch/background.jpg" alt=""></div>
+<div id="app" class="league" >
+    <div class="header">
+        <div class="icon-left"></div>
+        每日领奖，好礼不断
+    </div>
+    <div class="signIn-content">
+        <div class="title">每日领<span>豆</span>换好礼</div>
+        <div class="explain">每日领魔豆，连续7天额外赠送更多</div>
+        <div class="giftimg"><img src="http://static.jesport.com/sly/images/activeImg/punch/prize.png" alt=""></div>
+        <div class="datemark" >
+            <div class="img" :class="{active:item.state==1}" v-for="item in signinList"><img :src="item.img" alt=""></div>
+        </div>
+        <div class="sign-btn" @click="submitSignin"><img src="http://static.jesport.com/sly/images/activeImg/punch/button_1.png" alt=""></div>
+        <div class="record">
+            <div class="mdnum">您已拥有 <span>{{memberBeans}}</span> 魔豆</div>
+        </div>
+    </div>
+    <!--抽奖-->
+    <div class="drawbox">
+        <div class="title">转盘转不停，豪礼天天抽<br/><span>iPhone X</span> 等你来拿</div>
+
+        <div class="record">
+            <div class="btn-record" @click="getExchangeList()">中奖记录</div>
+            <div class="mdnum"><div>{{chanceNum}}</div></div>
+        </div>
+        <div id="luck">
+            <table>
+                <tr>
+                    <td class="luck-unit luck-unit-0" :class="{active:luck.active==0}" :data-id="goodslist[0].id"><img :src="goodslist[0].img?goodslist[0].img:''"></td>
+                    <td class="luck-unit luck-unit-1" :class="{active:luck.active==1}" :data-id="goodslist[1].id"><img :src="goodslist[1].img?goodslist[1].img:''"></td>
+                    <td class="luck-unit luck-unit-2" :class="{active:luck.active==2}" :data-id="goodslist[2].id"><img :src="goodslist[2].img?goodslist[2].img:''"></td>
+                    <td class="luck-unit luck-unit-3" :class="{active:luck.active==3}" :data-id="goodslist[3].id"><img :src="goodslist[3].img?goodslist[3].img:''"></td>
+                </tr>
+                <tr>
+                    <td class="luck-unit luck-unit-9" :class="{active:luck.active==9}" :data-id="goodslist[9].id"><img :src="goodslist[9].img?goodslist[9].img:''"></td>
+                    <td  class="cjBtn" id="btn" colspan="2" @click="draw">点击抽奖</td>
+                    <td class="luck-unit luck-unit-4" :class="{active:luck.active==4}" :data-id="goodslist[4].id"><img :src="goodslist[4].img?goodslist[4].img:''"></td>
+                </tr>
+                <tr>
+                    <td class="luck-unit luck-unit-8" :class="{active:luck.active==8}" :data-id="goodslist[8].id"><img :src="goodslist[8].img?goodslist[8].img:''"></td>
+                    <td class="luck-unit luck-unit-7" :class="{active:luck.active==7}" :data-id="goodslist[7].id"><img :src="goodslist[7].img?goodslist[7].img:''"></td>
+                    <td class="luck-unit luck-unit-6" :class="{active:luck.active==6}" :data-id="goodslist[6].id"><img :src="goodslist[6].img?goodslist[6].img:''"></td>
+                    <td class="luck-unit luck-unit-5" :class="{active:luck.active==5}" :data-id="goodslist[5].id"><img :src="goodslist[5].img?goodslist[5].img:''"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!--弹框-->
+    <!--遮罩-->
+    <div class="mask" v-if="maskShow" @touchmove.prevent @click="maskShowclick"></div>
+    <!--兑换列表-->
+    <div class="exchangeList" v-if="exchangeShow">
+        <div class="title">兑奖记录<div class="close" @click="maskShow=false;exchangeShow=false;">X</div></div>
+        <div class="items" id="itemsList" @scroll="abcd">
+            <div class="item" v-for="item in listdraw" >
+                <div class="name">{{item.goodsName}}</div>
+                <div class="state" :class="{active:item.state==0}" @click="findCode(item)">{{item.state==0?"兑换":"已兑换"}}</div>
+            </div>
+        </div>
+        <div class="giftbox" v-if="codeShow">
+            <div class="title">奖品 : {{codeinfo.goodsName}}</div>
+            <div class="imgcode"><img id="barcode" /></div>
+            <div id="findCodeModal"></div>
+            <div class="codeimg"><img id="imgOne" :src="qrcodeSrc" alt=""></div>
+            <div class="desc">兑换说明：魔杰电竞（石家庄店）<br/>出示二维码兑换</div>
+        </div>
+    </div>
+    <!--中奖-->
+    <div class="wingift" v-if="wingiftShow">
+        <div class="title">恭喜您获得了<span>{{wingiftInfo.name}}</span><div class="close" @click="wingiftShow=false;maskShow=false;">X</div></div>
+        <div class="img"><img :src="wingiftInfo.img" alt=""></div>
+        <div class="watch" v-if="wingiftInfo.beansNum==0"><span>您可以在中奖记录查看并兑换</span><span class="btn-watch" @click="watchlist">查看</span></div>
+        <div class="watch" v-if="wingiftInfo.beansNum!=0"><span>魔豆已经自动加入到您的账户中</span><span class="btn-watch" @click="watchlist">查看</span></div>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/backend2/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/JsBarcode.code128.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201711241149"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/punch.js?v=201712051105"></script>
+</body>
+</html>

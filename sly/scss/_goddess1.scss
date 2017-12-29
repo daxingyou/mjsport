@@ -1,0 +1,406 @@
+.backpic{
+  width: 100%;
+  height:rem(1334px);
+  position: fixed;
+  bottom:0;
+  left:0;
+  z-index:0;
+  img{
+    width: 100%;
+    height:100%;
+  }
+}
+.godnessSign{
+  position: relative;
+  width: 100%;
+  height:100%;
+  z-index: 1;
+  .logo{
+    width: rem(613px);
+    height:rem(204px);
+    margin-left: rem(135px);
+    margin-top:rem(90px);
+    background-image: url('http://static.jesport.com/sly/images/activeImg/goddess/logo.png') ;
+    background-repeat: no-repeat;
+    background-size: rem(613px) rem(204px);
+  }
+  .info{
+    width: rem(444px);
+    height:rem(226px);
+    position: fixed;
+    top:rem(347px);
+    right:rem(20px);
+    background-image: url('http://static.jesport.com/sly/images/activeImg/goddess/info.png') ;
+    background-repeat: no-repeat;
+    background-size: rem(444px) rem(226px);
+  }
+  .button{
+    width: rem(469px);
+    height:rem(83px);
+    position: fixed;
+    top:rem(613px);
+    right:0;
+    background-image: url('http://static.jesport.com/sly/images/activeImg/goddess/button.png') ;
+    background-repeat: no-repeat;
+    background-size: rem(469px) rem(83px);
+    a{
+      display: block;
+      width: 100%;
+      height:100%;
+    }
+  }
+  .gift{
+    width: rem(687px);
+    height:rem(329px);
+    position: fixed;
+    top:rem(764px);
+    right:rem(20px);
+    background-image: url('http://static.jesport.com/sly/images/activeImg/goddess/gift.png') ;
+    background-repeat: no-repeat;
+    background-size: rem(687px) rem(329px);
+  }
+  .mask{
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 200%;
+    background: #000;
+    opacity: 0.6;
+    z-index: 99;
+  }
+  .alert-signinBox{
+    display: none;
+    z-index: 100;
+    width: rem(630px);
+    height:rem(972px);
+    background-color: #000000;
+    position: absolute;
+    top:rem(69px);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #B6966C;
+    padding-bottom:rem(30px);
+    border-radius: rem(10px);
+    border:rem(3px) solid #FF9900;
+    text-align: center;
+    span.color{
+      color: #FF6600;
+    }
+    .title{
+      font-size: rem(30px);
+      color: #ffffff;
+      line-height: rem(90px);
+      margin-bottom: rem(30px);
+      position: relative;
+      .close{
+        position: absolute;
+        right:0;
+        top:0;
+        width: rem(60px);
+        font-size: rem(32px);
+        color: #666666;
+      }
+    }
+    .sign{
+      margin-bottom: rem(30px);
+      .imgitem{
+        width: rem(585px);
+        margin:0 auto;
+        position: relative;
+        .imgShow{
+          width: rem(200px);
+          height:rem(200px);
+          margin:0 auto;
+          background-image: url("http://static.jesport.com/sly/images/activeImg/goddess/photo.png");
+          background-repeat: no-repeat;
+          background-size: rem(200px) rem(200px);
+          img{
+            width: rem(200px);
+            height:rem(200px);
+          }
+        }
+        input{
+          cursor: pointer;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          width: rem(200px);
+          height:rem(200px);
+          opacity: 0;
+          z-index: 100;
+        }
+      }
+      .item{
+        width: rem(585px);
+        display: flex;
+        height:rem(53px);
+        justify-content: center;
+        margin:0 auto;
+        margin-bottom: rem(15px);
+        .name{
+          background-color: #333333;
+          width: rem(180px);
+          line-height:rem(53px);
+          border-top-left-radius:rem(15px);
+          border-bottom-left-radius:rem(15px);
+        }
+        input{
+          width: rem(350px);
+          padding-left: rem(15px);
+          height:rem(53px);
+          font-size: rem(24px);
+          color: #ffffff;
+          background-color: #868686;
+          border-top-right-radius:rem(15px);
+          border-bottom-right-radius:rem(15px);
+        }
+        input::placeholder{
+          color: #666666;
+        }
+        select{
+          width: rem(350px);
+          padding-left: rem(15px);
+          height:rem(53px);
+          font-size: rem(22px);
+          color: #ffffff;
+          background-color: #868686;
+          option{
+            height:rem(48px);
+            font-size: rem(20px);
+          }
+        }
+
+      }
+    }
+    .btn{
+      width: rem(372px);
+      height:rem(72px);
+      line-height: rem(72px);
+      font-size: rem(32px);
+      color: #333333;
+      margin:0 auto;
+      //position: relative;
+      background-image: url('http://static.jesport.com/sly/images/activeImg/goddess/confirm.png');
+      background-size: rem(372px) rem(72px);
+      background-repeat: no-repeat;
+    }
+  }
+
+  .header{
+    display: flex;
+    height:rem(60px);
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 rem(10px);
+    img {
+      width: rem(43px);
+      height:rem(43px);
+    }
+    a{
+      color: #66CCFF;
+      font-size: rem(26px);
+    }
+  }
+  .logo2{
+    width: rem(613px);
+    height:rem(204px);
+    margin-left: rem(135px);
+    margin-top:rem(20px);
+    background-image: url('http://static.jesport.com/sly/images/activeImg/goddess/logo.png') ;
+    background-repeat: no-repeat;
+    background-size: rem(613px) rem(204px);
+  }
+  .info2{
+    width: rem(702px);
+    height:rem(103px);
+    margin:0 auto;
+    margin-top:rem(20px);
+    background-image: url('http://static.jesport.com/sly/images/activeImg/goddess/info2.png') ;
+    background-repeat: no-repeat;
+    background-size: rem(702px) rem(103px);
+  }
+  .votebox{
+    width: rem(750px);
+    margin-top: rem(20px);
+    padding: 0 rem(53px);
+    padding-bottom:rem(60px);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .item{
+      margin: rem(10px) 0;
+      width: rem(303px);
+      height:rem(485px);
+      border-radius: rem(10px);
+      background-image: url("http://static.jesport.com/sly/images/activeImg/goddess/kuang.png?v=123");
+      background-repeat: no-repeat;
+      background-size:rem(303px) rem(485px);
+      font-size: rem(22px);
+      position: relative;
+      color: #FFFFFF;
+      .itemid{
+        font-size: rem(18px);
+        position: absolute;
+        left: rem(20px);
+        top:rem(7px);
+      }
+      .itemnum{
+        width: rem(173px);
+        height:rem(45px);
+        line-height: rem(43px);
+        text-align: center;
+        padding-right: rem(10px);
+        font-size: rem(24px);
+        position: absolute;
+        left: 0;
+        right:0;
+        margin:auto;
+        top:rem(436px);
+      }
+      .schoolimg{
+        position: absolute;
+        left: 0;
+        right:0;
+        margin: auto;
+        top:rem(40px);
+        width: rem(270px);
+        height: rem(270px);
+        overflow: hidden;
+        img{
+          width: rem(270px);
+          height: auto;
+          margin:0 auto;
+          max-width: rem(270px);
+        }
+      }
+      .itemname{
+        width: rem(180px);
+        position: absolute;
+        left: rem(30px);
+        top:rem(315px);
+        overflow: hidden;
+      }
+      .constellation{
+        position: absolute;
+        left: rem(217px);
+        top:rem(313px);
+      }
+      .hobby{
+        color: #FFFFFF;
+        position: absolute;
+        left: rem(25px);
+        top:rem(363px);
+        span{font-size: rem(20px);color: #D4F1FF;}
+      }
+      .games{
+        color: #FFFFFF;
+        position: absolute;
+        left: rem(25px);
+        top:rem(396px);
+        span{font-size: rem(20px);color: #D4F1FF;}
+      }
+    }
+  }
+  .alert-votebox{
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left:0;
+    right:0;
+    margin:auto;
+    top:rem(400px);
+    width: rem(577px);
+    height:rem(428px);
+    background-image: url('http://static.jesport.com/sly/images/activeImg/goddess/vote.png?v=123');
+    background-repeat: no-repeat;
+    background-size: rem(577px) rem(428px);
+    padding:rem(10px) 0 0 rem(20px);
+    .top{
+      display: flex;
+      font-size: rem(24px);
+      color: #FFFFFF;
+      .img{
+        //margin-top: rem(15px);
+        width: rem(270px);
+        height: rem(270px);
+        overflow: hidden;
+        img{
+          width: rem(270px);
+          height: auto;
+          margin:0 auto;
+          max-width: rem(270px);
+        }
+      }
+      .info1{
+        flex:1;
+        .itemid{
+          line-height: rem(30px);
+          padding-left: rem(13px);
+        }
+        .itemname{
+          width: 100%;
+          height:rem(42px);
+          line-height: rem(42px);
+          padding-left:rem(35px);
+          .constellation{
+            color: #D4F1FF;
+            line-height: rem(42px);
+            font-size: rem(22px);
+            width: rem(80px);
+            float: right;
+          }
+        }
+        .hobby,.games{
+          color: #FFFFFF;
+          height:rem(40px);
+          line-height: rem(40px);
+          padding-left:rem(13px);
+          span{font-size: rem(20px);color: #D4F1FF;}
+        }
+        .memo{
+          color: #FFFFFF;
+          line-height: rem(40px);
+          padding-left:rem(13px);
+          span{font-size: rem(20px);color: #D4F1FF;}
+        }
+      }
+    }
+    .votenum{
+      width: rem(95px);
+      text-align: center;
+      font-size: rem(24px);
+      color: #FFFFFF;
+      position: absolute;
+      top:rem(333px);
+      left:rem(275px);
+    }
+    .btn-vote{
+      width: rem(175px);
+      height:rem(45px);
+      position: absolute;
+      top:rem(365px);
+      left:rem(225px);
+    }
+  }
+  .block{
+    display: block;
+    -webkit-animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-delay: 0s;
+  }
+  @-webkit-keyframes fadeIn {
+    0% {
+       transform: translate(rem(0px),rem(-900px));
+     }
+    100% {
+      transform: translate(rem(0px),rem(0px));
+      top:rem(400px);
+    }
+  }
+}

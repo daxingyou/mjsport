@@ -1,0 +1,213 @@
+.barheader{
+	height: rem(370px);
+	width: 100%;
+	position: relative;
+	z-index: 1;
+	top:0;
+	left: 0;
+	background: #000;
+	.bg{
+		display: block;
+		height: 100%;
+		width: 100%;
+	}
+	.back{
+		position: absolute;
+		top: rem(20px);
+		left: rem(20px);
+		width: rem(48px);
+		height: rem(48px);
+		padding:rem(8px);
+		background: rgba(0,0,0,0.5) url(http://static.jesport.com/sly/images/icon-left.png) no-repeat;
+		background-size: rem(40px) rem(40px);
+		background-position: rem(4px) rem(4px);
+		opacity: 0.8;
+		border-radius: 100%;
+	}
+	.bheader-bar{
+		padding: 0 rem(20px);
+		position: absolute;
+		bottom: 0px;
+		width: 100%;
+		height: rem(60px);
+		background-color:rgba(0,0,0,0.4);
+		@include wflex;
+		.bheader-bar-left{
+			color: #fff;
+			line-height: rem(50px);
+			font-size: rem(28px);
+			white-space: nowrap;
+			overflow: hidden;
+			margin-right: rem(10px);
+			.bar-left-box{
+				span{
+					width: rem(100px);
+					color: #fff;
+					font-size: rem(32px);
+
+				}
+				#baddress{
+					font-size: rem(26px);
+				}
+			}
+		}
+		.bheader-bar-right{
+			display: flex;
+			height:100%;
+			align-items: center;
+			.icon-xing{
+				display: inline-block;
+				width: rem(50px);
+				height: rem(50px);
+				background: url(http://static.jesport.com/sly/images/icon-sx2.png) no-repeat;
+				background-size:rem(50px) rem(50px);
+			}
+			.xing-text{
+				width: rem(70px);
+				display: inline-block;
+				color: #fff;
+				font-size: rem(28px);
+			}
+		}
+	}
+
+}
+.btab{
+		width: 100%;
+		background: #231815;
+		@include wflex;
+		height: rem(60px);
+		line-height: rem(60px);
+		li{
+			box-sizing:border-box;
+			flex: 1;
+			text-align: center;
+			color: #E4007F;
+			font-size: rem(28px);
+			border-right: 1px solid #E4007F;
+		}
+		.actvie{
+
+			border-bottom: 3px solid #E4007F;
+		}
+		.dh{
+			color: #CC9900;
+		}
+	}
+.bar-tips{
+		padding:0 rem(20px);
+		height: rem(60px);
+		line-height: rem(60px);
+		@include wflex;
+		border-bottom: 2px solid #E4E4E4;
+		.tips-name{
+			font-size: rem(32px);
+		}
+		.bar-guess-text{
+			@include im;
+			color: #E4007F;
+		}
+		.icon-right{
+			@include im;
+			width: rem(30px);
+			height: rem(30px);
+			background: url(http://static.jesport.com/sly/images/icon-right.png) no-repeat;
+			background-size: rem(30px) rem(30px);
+		}
+	}
+.item-foo{
+	margin-top: rem(20px);
+	border-top: 1px solid #E4E4E4;
+	height: rem(70px);
+	line-height: rem(70px);
+	padding:0 rem(30px);
+	@include wflex;
+	.item-foo-left{
+		color: #E4007F;
+		font-size: rem(28px);
+	}
+	.item-foo-right{
+
+		@include wflex;
+			.member-num{
+				@include im;
+				color: #E4007F;
+				font-size: rem(28px);
+			}
+			.icon-person{
+				margin-left: rem(20px);
+				@include im;
+				width: rem(30px);
+				height: rem(30px);
+				background: url(http://static.jesport.com/sly/images/icon-person.png) no-repeat;
+				background-size: rem(30px) rem(30px);
+			}
+	}
+}
+.bar_list{
+	padding-bottom:0!important;
+	margin-bottom: rem(4px);
+}
+.bardetail-match-list{
+	margin-top:rem(16px);
+	background: #fff;
+	.match-list-item{
+		padding: rem(20px) rem(16px);
+		border:1px solid #F2F2F2;
+		.item-top{
+			@include wflex;
+			margin-bottom: rem(20px);
+			.item-title{
+				color: #868686;
+			}
+			.item-time{
+				color: #868686;
+			}
+		}
+		.item-main{
+			@include wflex;
+			.item-img{
+				display: inline-block;
+				width: rem(80px);
+				height: rem(80px);
+				a{
+					display: block;
+					img{
+						display: block;
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+			.item-left{
+				text-align: center;
+				width: rem(200px);
+			}
+			.item-cen{
+				text-align: center;
+				width: rem(200px);
+				.score-list{
+					height: rem(80px);
+					line-height: rem(80px);
+					font-size: rem(36px);
+				}
+				.look-btn{
+					text-align: center;
+					a{
+						display: inline-block;
+						color: #CC9900;
+						border: 1px solid #CC9900;
+						border-radius: 10rem;
+						width: rem(140px);
+						height: rem(45px);
+						line-height: rem(45px);
+					}
+				}
+			}
+			.item-right{
+				text-align: center;
+				width: rem(200px);
+			}
+		}
+	}
+}

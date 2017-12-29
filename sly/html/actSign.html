@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201711031452">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/other.css">
+    <title>魔圣电竞大师</title>
+</head>
+<body style="background-color: #FFFFFF">
+    <div  id="wrapper" class="applywrapper" style="background: #FFFFFF;overflow: visible; position: static;">
+        <div id="scroller" style="min-height: 100%;position: static;">
+            <div id="app" class="activityapply">
+                <div class="bannerimg">
+                    <img id="bannerimg" :src="matchInfo.poster" alt="">
+                </div>
+                <!--比赛规则start-->
+                <div class="ruletitle">
+                    <div class="lefticon"></div>
+                    <div class="matchname">{{matchInfo.name}}</div>
+                    <a :href=" 'ruleInfo.html?matchid=' + matchid" style="display: block;" class="ruleinfo">规则详情<img src="http://static.jesport.com/sly/images/icon-right3.png"></a>
+                </div>
+                <div class="ruledetail">
+                    <div class="items">
+                        <div class="diamondicon"></div>
+                        <div class="ruleitem">比赛时间</div>
+                        <div class="rulevalue">{{matchInfo.startDate}} - {{matchInfo.endDate}}</div>
+                    </div>
+                    <div class="items">
+                        <div class="diamondicon"></div>
+                        <div class="ruleitem">举办地点</div>
+                        <div class="rulevalue">{{matchInfo.addr}}</div>
+                    </div>
+                    <div class="items">
+                        <div class="diamondicon"></div>
+                        <div class="ruleitem">参赛模式</div>
+                        <div class="rulevalue">{{matchInfo.enrollType == 'TEAM' ? '战队赛' : (matchInfo.enrollType == 'PERSON' ? '单人赛':'队长赛')}}</div>
+                    </div>
+                    <div class="items">
+                        <div class="diamondicon"></div>
+                        <div class="ruleitem" style="width: 2.5rem;">报名截止时间</div>
+                        <div class="rulevalue">{{matchInfo.enrollEndDate}}</div>
+                    </div>
+                </div>
+                <!--比赛规则end-->
+                <div class="cutline"></div>
+                <!--比赛报名start-->
+                <div class="applybox">
+                    <div class="applytitle">
+                        <div class="diamondicon"></div>
+                        <div>比赛报名</div>
+                        <div class="diamondicon"></div>
+                    </div>
+                    <div v-if=" teamInfo.enrollState == 999999 && findTeamInfo!= null " style="margin-top: 0.1rem;text-align: center;color: #E4007F;">
+                        {{captainInfo.memberName}}邀请您参加组队参赛，是否加入？
+                    </div>
+                    <div class="btn1" style="display: flex;justify-content: space-around;">
+                        <div  style="height: 1.8rem;" class="bind-box" v-if=" teamInfo.enrollState == '999999' && matchInfo.enrollType !='PERSON'" >
+                             <div class="diamond1"></div>
+                             <div style="width: 2rem;" @click="createCorps" class="apply-btn">创建战队</div>
+                             <div class="diamond2"></div>
+                    </div>
+                     <div  class="bind-box" v-if=" matchInfo.enrollType !='PERSON'   && loginMemberId != memberId && teamInfo.enrollState == 999999 && findTeamInfo!= null " >
+                       <div class="diamond1"></div>
+                       <div  style="width: 2rem;"   @click="joinCorps" class="apply-btn">加入战队</div>
+                       <div class="diamond2"></div>
+                   </div>
+               </div>
+               <div class="btn1"  v-if="matchInfo.enrollType =='PERSON'">
+                <div class="bind-box" v-if="teamInfo.enrollState == 999999" >
+                    <div class="diamond1"></div>
+                    <div class="apply-btn"  @click="createPerson" >立即报名</div>
+                    <div class="diamond2"></div>
+                </div>
+                <div class="memberbox" v-if="teamInfo.enrollState != 0 && teamInfo.enrollState != 999999" >
+                    <div class="memberitem" style="border: none;">
+                        <div class="memberimg"><img :src="teamInfo.logo" alt=""></div>
+                        <div class="membername">{{teamInfo.teamMemberList[0].memberName}}</div>
+                        <div  > {{teamInfo.enrollState == 1 ? '待审核' : teamInfo.enrollState == 2 ? '已通过' : teamInfo.enrollState == 3 ? '未通过' :  teamInfo.enrollState == 0 ? '组队中' : ''}} </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn2" v-if="teamInfo.enrollState != '999999' && matchInfo.enrollType !='PERSON' " v-cloak>
+                <div class="teamitem" style="border: none">
+                    <div v-if="teamInfo.enrollState != '999999'" class="teamimg"><img :src="teamInfo.logo" alt=""></div>
+                    <div v-if="teamInfo.enrollState != '999999'" class="teamname"  v-cloak>
+                        {{teamInfo.name}}
+                        <div class="memberimglist">
+                            <div v-if="item.state == 1" v-for="item in teamInfo.teamMemberList" class="memberimg"><img :src="item.memberAvatar" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="bind-box" v-if="loginMemberId == teamInfo.memberId && teamInfo.enrollState == 0   " @click="signUp">
+                        <div class="diamond1"></div>
+                        <div class="apply-btn" >立即报名</div>
+                        <div class="diamond2"></div>
+                    </div>
+                    <div class="status" v-if="loginMemberId != teamInfo.memberId && teamInfo.enrollState == 0">等待队长报名</div>
+                    <div class="status" v-if="teamInfo.enrollState != 0"> {{teamInfo.enrollState == 1 ? '待审核' : teamInfo.enrollState == 2 ? '已通过' : teamInfo.enrollState == 3 ? '未通过' :  teamInfo.enrollState == 0 ? '组队中' : ''}} </div>
+                </div>
+            </div>
+            <!--<div class=""></div>-->
+        </div>
+        <!--比赛报名end-->
+        <!--我的战队start-->
+        <div class="myteambox" v-if="matchInfo.enrollType == 'TEAM' && teamInfo.enrollState != '999999'  " >
+            <div class="cutline"></div>
+            <div class="myteamborder">
+                <div class="applytitle"><div class="diamondicon"></div><div>我的战队</div><div class="diamondicon"></div></div>
+                <div class="teaminfo">
+                    <a style="color: #E4007F" :href=" 'manageCorps.html?id='+matchid+'&teamid='+ teamInfo.id +'&teamNum='+matchInfo.teamNum  " v-if="loginMemberId == memberId" >战队管理</a>
+                    <div v-if="loginMemberId != memberId" ></div>
+                    <div class="teamimgname">
+                        <div class="teamimg">
+                            <img :src="teamInfo.logo" alt="">
+                        </div>
+                        <div class="teamname">{{teamInfo.name}}</div>
+                    </div>
+                    <div @click="quitCorps" >退出战队 </div>
+                </div>
+                <div class="teammember" >
+                    战队成员
+                    <span class="membernum">{{teamInfo.teamMemberList ? teamInfo.teamMemberList.length : 0}}</span>
+                    /{{matchInfo.teamNum}}
+                </div>
+                <div class="memberinfo">
+                    <div class="memberitem" v-for="item in teamInfo.teamMemberList">
+                        <div class="memberimg"><img  :src="item.memberAvatar" alt=""></div>
+                        <div class="membername">
+                            {{item.realName}}
+                            <div class="captainicon">
+                                <img src="http://static.jesport.com/sly/images/captainicon.png" alt="">
+                                <div v-if="loginMemberId == item.memberId">队长</div>
+                                <div v-if="loginMemberId != item.memberId">队员</div>
+                            </div>
+                        </div>
+                        <div class="status"> {{item.levelName}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--我的战队end-->
+        <!--邀请好友start-->
+        <div class="invitebtn" v-if="teamInfo.enrollState != '999999' && matchInfo.enrollType =='TEAM' && loginMemberId == teamInfo.memberId   " >
+            <div class="bind-box" >
+                <div class="diamond1"></div>
+                <div @click="invite" class="apply-btn">邀请好友</div>
+                <div class="diamond2"></div>
+            </div>
+        </div>
+        <!--邀请好友end-->
+        <div class="cutline"></div>
+        <!--参赛名单start-->
+        <div class="playerbox" v-if="teamInfo" >
+            <div class="applytitle"><div class="diamondicon"></div><div>已参赛名单</div><div class="diamondicon"></div></div>
+            <!--战队列表-->
+            <div id="teamlist" >
+                <div class="teamitem" v-for="item in corpsList" >
+                    <div class="teamimg" style="display: flex;" v-if="matchInfo.enrollType !='PERSON'" >
+                        <img :src="item.logo" alt="">
+                    </div>
+                    <div class="teamname" v-if="matchInfo.enrollType !='PERSON'">{{item.name}}</div>
+                    <div style="display: flex;flex: 1;justify-content: space-between"  v-for="item2 in item.teamMemberList" v-if="item.memberId == item2.memberId   ">
+                        <div class="captainimg">
+                            <img :src="item2.memberAvatar" alt="">
+                        </div>
+                        <div class="captainname">{{item2.realName}}</div>
+                        <div class="captainicon" v-if="matchInfo.enrollType !='PERSON'">
+                            <img src="http://static.jesport.com/sly/images/captainicon.png" alt="">
+                            <div>队长</div>
+                        </div>
+                        <div v-if="matchInfo.enrollType =='PERSON'">{{item2.levelName?item2.levelName:"暂无"}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--参赛名单end-->
+        <!--参赛数量start-->
+        <div class="playernum" v-if="teamInfo" >
+            <div class="diamondicon"></div>
+            <div>
+                <span id="playernum">{{corpsList.length ? corpsList.length : 0}}</span>个<span class="unit">战队</span>已参赛
+            </div>
+            <div class="diamondicon"></div>
+        </div>
+        <!--参赛数量end-->
+        <!--弹框start-->
+        <div class="msak"></div>
+        <!--创建战队start-->
+        <form id="CorpsModal" class="teamalert setteam" style="display: none;" >
+            <input type="hidden" name="matchid" :value="matchid">
+            <div class="title"><div class="diamond"></div><div>创建战队</div><div class="diamond"></div></div>
+            <div class="alertcontent">
+                <div class="cutline2"></div>
+                <div class="infobox">
+                    <div class="item">战队名称</div>
+                    <div class="value"><input name="name" type="text" ></div>
+                </div>
+                <div class="cutline2"></div>
+                <div class="infobox">
+                    <div class="item">战队LOGO</div>
+                    <!--<div  class="value"><input name="logo" style="width: 4rem;" type="file" ></div>-->
+                    <div class="value  imgShow">
+                        　　<div id="imgShow" ></div>
+                        　　<div class="button"></div>
+                    </div>
+                    <input type="file" name="logo" id="img" >
+                </div>
+                <div class="cutline2"></div>
+                <div class="infobox">
+                    <div class="item">队长姓名</div>
+                    <div class="value" ><input name="realname" type="text"  ></div>
+                </div>
+                <div class="cutline2"></div>
+                <div class="infobox">
+                    <div class="item">联系电话</div>
+                    <div class="value"><input name="mobile" type="number" ></div>
+                </div>
+                <div class="cutline2"></div>
+                <div class="infobox">
+                    <div class="item">段位</div>
+                    <div class="value"><input name="levelname" type="text" ></div>
+                </div>
+                <div class="cutline2"></div>
+            </div>
+            <div @click="ajaxSubmitCorps" class="bind-box">
+                <div class="diamond1"></div>
+                <div class="bind-btn">完成</div>
+                <div class="diamond2"></div>
+            </div>
+            <div class="close"><img src="http://static.jesport.com/sly/images/icon-close.png" alt=""></div>
+        </form>
+        <div class="modal-mask" id="modal-mask"></div>
+        <div class="share-modal" id="share-modal">
+            <div class="icon-jiantou"></div>
+            <div class="icon-kuang">
+                <div class="icon-text">
+                    <span>点击右上角</span>
+                    <span class="icon-dian"></span>
+                    <span>分享给微信好友或者朋友圈 </span>
+                    <span class="icon_pengyouquan"></span>
+                </div>
+            </div>
+            <div id="fork" class="icon-fork"></div>
+        </div>
+        <!--创建战队end-->
+        <!--加入战队start-->
+        <form id="joinModal" class="teamalert jointeam " style="display: none">
+            <div class="title"><div class="diamond"></div><div>加入战队</div><div class="diamond"></div></div>
+            <div class="alertcontent">
+             <div class="cutline2"></div>
+             <div class="infobox">
+                 <div class="item">姓名</div>
+                 <div class="value"><input id="realname" type="text" ></div>
+             </div>
+             <div class="cutline2"></div>
+             <div class="infobox">
+                 <div class="item">手机号</div>
+                 <div class="value"><input id="mobile" type="number" ></div>
+             </div>
+             <div class="cutline2"></div>
+             <div class="infobox">
+                 <div class="item">段位</div>
+                 <div class="value"><input id="levelname" type="text" ></div>
+             </div>
+             <div class="cutline2"></div>
+         </div>
+         <div @click="joinAjax" class="bind-box">
+             <div class="diamond1"></div>
+             <div  class="bind-btn">加入战队</div>
+             <div class="diamond2"></div>
+         </div>
+         <div class="close"><img src="http://static.jesport.com/sly/images/icon-close.png" alt=""></div>
+     </form>
+     <!--加入战队end-->
+
+     <!--个人报名创建并且报名start-->
+     <form id="nowBm" class="teamalert jointeam " style="display: none">
+       <input type="hidden" name="matchid" :value="matchid">
+       <div class="title"><div class="diamond"></div><div>立即报名</div><div class="diamond"></div></div>
+       <div class="alertcontent">
+         <div class="cutline2"></div>
+         <div class="infobox">
+             <div class="item">姓名</div>
+             <div class="value"><input name="realname" type="text" ></div>
+         </div>
+         <div class="cutline2"></div>
+         <div class="infobox">
+             <div class="item">手机号</div>
+             <div class="value"><input name="mobile" type="number"  ></div>
+         </div>
+         <div class="cutline2"></div>
+         <div class="infobox">
+             <div class="item">段位</div>
+             <div class="value"><input name="levelname" type="text" ></div>
+         </div>
+         <div class="cutline2"></div>
+     </div>
+     <div @click="createBm" class="bind-box">
+         <div class="diamond1"></div>
+         <div  class="bind-btn">立即报名</div>
+         <div class="diamond2"></div>
+     </div>
+     <div class="close"><img src="http://static.jesport.com/sly/images/icon-close.png" alt=""></div>
+ </form>
+ <!--个人报名创建并且报名end-->
+
+ <!--弹框end-->
+</div>
+</div>
+</div>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/jweixin-1.0.0.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.form.min.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?v=201711061525"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/actSign.js?v=201711031452"></script>
+</body>
+</html>

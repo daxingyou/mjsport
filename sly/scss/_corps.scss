@@ -1,0 +1,136 @@
+ #corp_header{
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom:1px solid #FFFFFF;
+  background-color: #231815;
+  color: #fff;
+  height: rem(88px);
+  line-height: rem(88px);
+  padding:0 rem(20px);
+  font-size: rem(32px);
+  text-align: center;
+}
+
+.corps_content {
+  position: absolute;
+  z-index: 1;
+  top: rem(5px);
+  width: 100%;
+  font-size: rem(28px);
+  .tabs-box {
+    width: 100%;
+    padding: 0 rem(20px);
+    background-color: #231815;
+    display: flex;
+    .tab {
+      flex: 1;
+      height: rem(60px);
+      line-height: rem(60px);
+      text-align: center;
+      font-size: rem(30px);
+      color: #CC9900;
+    }
+    .info_active {
+      color: #E4007F;
+      position: relative;
+    }
+    .info_active > div {
+      display: inline-block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: rem(6px);
+      background-color: #E4007F;
+      z-index: 100;
+    }
+
+  }
+  .corps_list{
+    margin-top: rem(16px);
+    height:rem(1075px);
+    width:100%;
+    overflow: auto;
+    overflow-x: hidden;
+    .corp_info{
+      background-color: #FFFFFF;
+      padding:rem(30px) rem(20px);
+      display: flex;
+      border-bottom:rem(10px) solid #f2f2f2;
+      .corp_img{
+        width:rem(220px);
+        height:rem(158px);
+        margin-right:rem(20px);
+        img{
+          width:100%;
+          height:100%;
+        }
+      }
+      .corp_name,.corp_grade,.corp_match{
+        @include syh;
+        width: rem(470px);
+        height:rem(48px);
+        line-height:rem(48px);
+        font-size: rem(28px);
+        color: #231815;
+        display: flex;
+        justify-content:space-between;
+        @include syh;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        .grade_icon{
+          i{
+            display: inline-block;
+            width: rem(30px);
+            height: rem(30px);
+            background-size:rem(30px) rem(30px);
+            margin-right:rem(10px);
+          }
+          .icon-bkx{
+            background-image: url("http://static.jesport.com/sly/images/icon-bkx.png");
+          }
+          .icon-sx{
+            background-image: url("http://static.jesport.com/sly/images/icon-sx.png");
+          }
+          .icon-kx{
+            background-image: url("http://static.jesport.com/sly/images/icon-kx.png");
+          }
+        }
+        .grade_value{
+          color: #E4007F;
+        }
+        .corp_match_icon{
+          float: left;
+          margin-top: rem(5px);
+          margin-right: rem(10px);
+          width: rem(38px);
+          height:rem(38px);
+          padding: rem(4px);
+          line-height:rem(30px);
+          text-align: center;
+          background-color: #FF4C4E;
+          color: #FFFFFF;
+          font-size: rem(28px);
+          border-radius: rem(6px);
+        }
+        .corp_match_list{
+          width:rem(440px);
+          font-size: rem(28px);
+          overflow: hidden;
+        }
+      }
+      .corp_price{
+        width: rem(470px);
+        height:rem(48px);
+        line-height:rem(48px);
+        font-size: rem(28px);
+        color: #868686;
+      }
+    }
+  }
+
+}

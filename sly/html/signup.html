@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201708251700">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+<div class="header">
+    <div class="signup-wheader">
+        <div class="back"><a href="javascript:history.go(-1);"></a></div>
+        <div class="wtitle" id="match_name">超级挑战赛-比赛报名</div>
+        <div class="header_right"><!-- <a href="" class="go">前往</a> --></div>
+    </div>
+</div>
+<div class="signtitle">比赛信息</div>
+<div class="signup-infolist">
+    <div class="infolist">
+        <div class="name">比赛游戏</div>
+        <div class="details" id="game"></div>
+    </div>
+    <div class="infolist">
+        <div class="name">比赛规则</div>
+        <div class="details" id="rule"></div>
+    </div>
+    <div class="infolist">
+        <div class="name">比赛地图</div>
+        <div class="details" id="map"></div>
+    </div>
+    <div class="infolist">
+        <div class="name">比赛名称</div>
+        <div class="details" id="name"></div>
+    </div>
+    <div class="infolist">
+        <div class="name">比赛地点</div>
+        <div class="details" id="address"></div>
+    </div>
+    <div class="infolist">
+        <div class="name">比赛时间</div>
+        <div class="details" id="startTime"></div>
+    </div>
+    <div class="infolist">
+        <div class="name">比赛说明</div>
+        <div class="details" id="remark"></div>
+    </div>
+</div>
+<div class="jqcode">
+    <div id="jqcode"></div>
+</div>
+<div class="codetitle">扫描二维码邀请好友报名</div>
+<div class="signup-btnbox">
+    <div class="isignup btn">我要报名</div>
+    <div class="share btn">分享</div>
+</div>
+<div class="mask opacity"></div>
+<div class="shareimg">
+    <img src="http://static.jesport.com/sly/images/fenxiang.png" alt="点击右上角分享">
+    <div class="iknow-btn"></div>
+</div>
+<div class="mysigninfo infoway">
+    <div class="title">比赛报名</div>
+    <div class="info">
+        <div class="infolist">
+            <div class="name">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</div>
+            <div class="details"><input type="text" id="signname" value=""/></div>
+        </div>
+        <div class="infolist">
+            <div class="name">联系方式</div>
+            <div class="details"><input id="signcontact" type="text" value=""/></div>
+        </div>
+        <div class="infolist">
+            <div class="name">区&nbsp;/&nbsp;段位</div>
+            <div class="details"><input id="signaccinfo" type="text" value=""/></div>
+        </div>
+        <div class="infolist">
+            <div class="name">自我介绍</div>
+            <div class="details"><input id="signuserinfo" type="text" value=""/></div>
+        </div>
+        <div class="infolist">
+            <div class="name">年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄</div>
+            <div class="details"><input id="signage" type="text" value=""/></div>
+        </div>
+    </div>
+    <div class="errortext">请填写完整信息</div>
+    <div class="btn-box">
+        <div class="confirm btn">确认</div>
+        <div class="cancel btn">取消</div>
+    </div>
+</div>
+<div class="mysigninfo callway">
+    <div class="title">比赛报名</div>
+    <div class="callinfo">
+        <div class="name">比赛游戏</div>
+        <div class="details">
+            <div>手机:<span id="phonenum"></span></div>
+            <!--<div>QQ:<span id="qqnum"></span></div>-->
+        </div>
+    </div>
+    <div class="signcode">
+        <div id="signcode"></div>
+    </div>
+    <div class="codetext">微信扫描二维码报名</div>
+    <div class="callbtn-box">
+        <div class="call-btn btn">确认</div>
+    </div>
+</div>
+  <script type="text/javascript" src="http://static.jesport.com/sly/js/zepto.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/qrcode.js"></script>
+  <script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201711091553"></script>
+  <script type="text/javascript" src="http://static.jesport.com/sly/templat/commonTpl.js?version=201708031714"></script>
+  <script type="text/javascript" src="http://static.jesport.com/sly/js/signup.js?version=201711091553"></script>
+</body>
+</html>

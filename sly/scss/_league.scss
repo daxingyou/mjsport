@@ -1,0 +1,1266 @@
+.logintitle{
+  height:rem(95px);
+  line-height:rem(95px);
+  text-align: center;
+  color: #ffffff;
+  font-size: rem(24px);
+}
+.login-form{
+  width: rem(735px);
+  height:rem(735px);
+  margin:0 auto;
+  background-color: #000000;
+  border-radius: rem(8px);
+  padding: 0;
+  border:1px solid #cccccc;
+  .logo{
+    width: rem(284px);
+    height:rem(198px);
+    margin:0 auto;
+    margin-top: rem(40px);
+    img{
+      width: rem(284px);
+      height:rem(198px);
+    }
+  }
+  .title{
+    height:rem(104px);
+    line-height: rem(100px);
+    width: rem(708px);
+    margin:0 auto;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: center;
+    font-size: rem(40px);
+    color: #E4007F;
+    span{
+      color: #999999;
+    }
+  }
+  .item{
+    width: rem(598px);
+    height:rem(60px);
+    line-height: rem(60px);
+    margin: rem(60px) auto;
+    border: rem(2px) solid #cccccc;
+    border-radius: rem(15px);
+    overflow: hidden;
+    position: relative;
+    //display: flex;
+    .option{
+      color: #ffffff;
+      display: inline-block;
+      width: rem(125px);
+      background-color: #414141;
+      text-align: center;
+    }
+    input{
+      float: right;
+      width: rem(450px);
+      height: 100%;
+      padding-left: rem(20px);
+      font-size: rem(30px);
+      color: #666666;
+    }
+    .getCode{
+      position: absolute;
+      right: rem(10px);
+      top: rem(6px);
+      width: rem(155px);
+      height: rem(47px);
+      color: #fff;
+      padding: 0;
+      border-radius: rem(10px);
+      background: #267373;
+      line-height: rem(47px);
+      text-align: center;
+      font-size: rem(24px);
+    }
+  }
+  .item-validatePhone{
+    margin-top: rem(60px);
+    padding-left: rem(100px);
+    padding-right: rem(100px);
+    background: none;
+    display: flex;
+    justify-content: space-around;
+    .validatePhone{
+      width:rem(262px);
+      color: #fff;
+      border-radius: rem(40px);
+      height: rem(60px);
+      background: #236946;
+      line-height: rem(60px);
+      text-align: center;
+      font-size: rem(32px);
+    }
+  }
+}
+.backpic{
+  width: 100%;
+  height:rem(1334px);
+  position: fixed;
+  top:0;
+  left:0;
+  z-index:0;
+  img{
+    width: 100%;
+    height:100%;
+  }
+}
+.league{
+  width: 100%;
+  padding-bottom: rem(200px);
+  text-align: center;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+  .header{
+    line-height: rem(80px);
+    height:rem(80px);
+    background-color: #FFFFFF;
+    color: #B6966C;
+    position: relative;
+    font-size: rem(32px);
+    .icon-left{
+      width:rem(40px);
+      height:rem(40px);
+      position: absolute;
+      top:rem(20px);
+      left:rem(20px);
+      background-image: url("http://static.jesport.com/sly/images/icon-left-01.png");
+      background-repeat: no-repeat;
+      background-size: rem(40px) rem(40px);
+    }
+  }
+  .banner{
+    width: 100%;
+    height:rem(386px);
+    margin-bottom: rem(20px);
+    img{
+      width: 100%;
+      height:100%;
+    }
+  }
+  .live{
+    width: rem(680px);
+    height:rem(90px);
+    line-height: rem(90px);
+    margin:rem(15px) auto;
+    background-color: rgba(182,150,108,0.3);
+    color: #ff6600;
+    text-align: center;
+    font-size: rem(32px);
+  }
+  .content{
+    z-index: 99;
+    width: rem(700px);
+    margin:0 auto;
+    padding-bottom:rem(30px);
+    text-align: center;
+    border-bottom: rem(2px) solid rgba(182,150,108,0.3);
+    .title1{
+      line-height: rem(83px);
+      font-size: rem(26px);
+      color: #B6966C;
+    }
+    .title2{
+      line-height: rem(74px);
+      font-size: rem(45px);
+      color: #ffffff;
+    }
+    .explain{
+      margin: rem(20px) 0;
+      line-height: rem(40px);
+      font-size: rem(22px);
+      color: #ffffff;
+    }
+    .md{
+      margin-top:rem(13px);
+      margin-bottom:rem(28px);
+      line-height: rem(28px);
+      font-size: rem(22px);
+      color: #B6966C;
+    }
+    .btn-vote{
+      background-image: url("http://static.jesport.com/sly/images/activeImg/vote.png");
+    }
+    .mdexplain{
+      line-height: rem(60px);
+      font-size: rem(18px);
+      //color: #B6966C;
+      font-weight: bold;
+    }
+    span{
+      color: #ff9900;
+    }
+    .signin{
+      margin-top: rem(20px);
+      .item{
+        text-align: left;
+        height:rem(60px);
+        line-height:rem(30px);
+        color: #B6966C;
+        font-size: rem(18px);
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        .name{
+          margin-right:rem(10px);
+        }
+        .sign{
+          color: #ffffff;
+          font-weight: bold;
+          display: inline-block;
+          width: rem(32px);
+          height:rem(32px);
+          border-radius: 50%;
+          margin: 0 rem(3px);
+          background-image: url("http://static.jesport.com/sly/images/activeImg/choose.png");
+          background-repeat: no-repeat;
+          background-size: rem(32px) rem(32px);
+        }
+        .sign.active{
+          background-image: url("http://static.jesport.com/sly/images/activeImg/choosed.png");
+          color: #ff9900;
+        }
+      }
+    }
+  }
+  .exchange{
+    margin:0 auto;
+    text-align: center;
+    padding-bottom:rem(20px);
+    color: #ffffff;
+    .title{
+      height:rem(154px);
+      line-height:rem(153px);
+      font-size: rem(60px);
+      //font-weight: bold;
+      span {
+        color: #FF6600;
+      }
+    }
+    .record{
+      position: relative;
+      .btn-record{
+        z-index: 10;
+        position: absolute;
+        right:rem(10px);
+        top:rem(20px);
+        color: #3399ff;
+        font-size: rem(22px);
+        width: rem(163px);
+        height:rem(30px);
+        line-height: rem(30px);
+      }
+      .mdnum{
+        width: rem(360px);
+        margin:0 auto;
+        height:rem(70px);
+        line-height: rem(70px);
+        //background-color: rgba(153,153,153,0.3);
+        font-size: rem(30px);
+        background-image: url("http://static.jesport.com/sly/images/activeImg/hadmoney.png");
+        background-repeat: no-repeat;
+        background-size: rem(360px) rem(70px);
+        position: relative;
+        div{
+          position: absolute;
+          width: rem(70px);
+          text-align: center;
+          top:0;
+          left:rem(175px);
+          color: #ff9900;
+          font-size: rem(30px);
+        }
+      }
+      .giftList{
+        display: flex;
+        justify-content: space-around;
+        padding-top: rem(20px);
+        .item{
+          width: rem(258px);
+          height:rem(304px);
+          img{
+            width: rem(258px);
+            height:rem(304px);
+          }
+        }
+      }
+    }
+    .explain{
+      margin: rem(10px) 0;
+      line-height: rem(60px);
+      font-size: rem(18px);
+      color: #ffffff;
+    }
+  }
+  .drawbox{
+    width: rem(700px);
+    margin:0 auto;
+    //height:rem(990px);
+    padding:rem(10px) 0;
+    text-align: center;
+    border-top: rem(2px) solid rgba(182,150,108,0.3);
+    border-bottom: rem(2px) solid rgba(182,150,108,0.3);
+    color: #ffffff;
+    .title{
+      margin-top: rem(20px);
+      //height:rem(150px);
+      line-height: rem(70px);
+      font-size: rem(45px);
+      span{
+        color: #ff9900;
+      }
+    }
+    .explain{
+      margin: rem(10px) 0;
+      line-height: rem(60px);
+      font-size: rem(22px);
+    }
+    .friends-btn{
+      background-image: url("http://static.jesport.com/sly/images/activeImg/friends.png");
+    }
+    .record{
+      width: 100%;
+      margin-top:rem(25px);
+      margin-bottom: rem(30px);
+      position: relative;
+      .btn-record{
+        position: absolute;
+        right:rem(10px);
+        top:rem(20px);
+        color: #3399ff;
+        font-size: rem(22px);
+        width: rem(163px);
+        height:rem(30px);
+        line-height: rem(30px);
+        z-index: 10;
+      }
+      .mdnum{
+        width: rem(360px);
+        margin:0 auto;
+        height:rem(70px);
+        line-height: rem(65px);
+        //background-color: rgba(153,153,153,0.3);
+        font-size: rem(24px);
+        background-image: url("http://static.jesport.com/sly/images/activeImg/chance.png");
+        background-repeat: no-repeat;
+        background-size: rem(360px) rem(70px);
+        position: relative;
+        div{
+          position: absolute;
+          width: rem(55px);
+          text-align: center;
+          top:0;
+          left:rem(130px);
+          color: #ff9900;
+          font-size: rem(30px);
+        }
+      }
+      .giftList{
+        padding-top: rem(20px);
+
+        .item{
+          width: rem(254px);
+          height:rem(300px);
+          border: rem(2px) solid #B6966C;
+          border-radius: rem(10px);
+          .top{
+            height:rem(240px);
+          }
+          .btn-change{
+            height:rem(60px);
+            line-height:rem(60px);
+            font-size: rem(38px);
+            color: #625740;
+            border-radius: rem(10px);
+            background-color: #FCC05A;
+          }
+        }
+      }
+    }
+    #luck{
+      width:rem(650px);
+      margin:0 auto;
+      table{
+        width: 100%;
+        height:rem(422px);
+        tr{
+          width: 100%;
+          height:rem(180px);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        .luck-unit{
+          background-color: #000000;
+          border: rem(3px) solid #B6966C;
+          width:rem(140px);
+          height:rem(140px);
+          position: relative;
+          img{
+            width:rem(132px);
+            height:rem(132px);
+            margin:rem(3px) auto;
+          }
+          .name{
+            position: absolute;
+            bottom: 0;
+            left:0;
+            width:rem(128px);
+            height:rem(40px);
+            font-size: rem(18px);
+            overflow: hidden;
+          }
+        }
+        .luck-unit.active{
+          border: rem(3px) solid #ffffff;
+        }
+        .cjBtn{
+          width: rem(300px);
+          font-size: rem(50px);
+          text-align: center;
+          line-height:rem(128px);
+          color: #82714D;
+          background-color: #FCC05A;
+        }
+        .cjBtn:active{
+          color: #ff0000;
+        }
+      }
+    }
+  }
+  .signinbox{
+    width: rem(700px);
+    padding-bottom:rem(20px);
+    margin:0 auto;
+    //height:rem(394px);
+    text-align: center;
+    border-bottom: rem(2px) solid rgba(182,150,108,0.3);
+    .title{
+      height:rem(162px);
+      line-height: rem(162px);
+      font-size: rem(60px);
+    }
+    span{
+      color: #ff6600;
+    }
+    .sign-btn{
+      background-image: url("http://static.jesport.com/sly/images/activeImg/sign.png");
+      margin-bottom: rem(40px);
+    }
+    .contact-btn{
+      background-image: url("http://static.jesport.com/sly/images/activeImg/addr.png");
+      margin-bottom: rem(40px);
+    }
+    .explain{
+      margin:rem(20px) 0 rem(30px) 0 ;
+      font-size: rem(22px);
+      .color{
+        color: #FFCC00;
+      }
+    }
+    .qrimg{
+      width: rem(256px);
+      height:rem(256px);
+      margin: 0 auto;
+      img{
+        width: rem(256px);
+        height:rem(256px);
+      }
+    }
+  }
+  .description{
+    width: rem(750px);
+    margin:0 auto;
+    text-align: center;
+    .title{
+      height:rem(140px);
+      line-height: rem(162px);
+      font-size: rem(60px);
+    }
+    .explain{
+      width: rem(656px);
+      height:rem(278px);
+      margin: 0 auto;
+      img{
+        width: rem(656px);
+        height:rem(278px);
+      }
+    }
+    .des{
+      line-height: rem(30px);
+      font-size: rem(16px);
+    }
+    .partner{
+      width: 100%;
+      height:rem(307px);
+      margin-top: rem(40px);
+      margin-bottom: rem(20px);
+      img{
+        width: 100%;
+        height:100%;
+      }
+      //background-image: url('http://static.jesport.com/sly/images/activeImg/partner.png');
+      //background-repeat: no-repeat;
+      //background-size: 100% 100%;
+    }
+  }
+  .btn{
+    width: rem(372px);
+    height:rem(72px);
+    line-height: rem(72px);
+    font-size: rem(32px);
+    color: #333333;
+    margin:0 auto;
+    //position: relative;
+    //background-image: url('http://static.jesport.com/sly/images/activeImg/button.png');
+    background-size: rem(372px) rem(72px);
+    background-repeat: no-repeat;
+  }
+  .mask{
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 200%;
+    background: #000;
+    opacity: 0.6;
+    z-index: 99;
+  }
+  .alert-content{
+    position: fixed;
+    z-index: 100;
+    width: rem(710px);
+    background-color: #000000;
+    top:rem(30px);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border:1px solid #999999;
+    padding-bottom: rem(20px);
+    .title{
+      line-height: rem(90px);
+      position: relative;
+      .close{
+        position: absolute;
+        right:0;
+        top:0;
+        width: rem(60px);
+        font-size: rem(32px);
+        color: #666666;
+      }
+    }
+    .gamebox{
+      display: flex;
+      justify-content: space-around;
+      //padding:0 rem(30px) rem(20px) rem(30px);
+      padding-bottom: rem(10px);
+      margin:0 rem(25px);
+      border-bottom: rem(2px) solid rgba(153,153,153,0.4);
+      .item{
+        width: rem(251px);
+        height:rem(215px);
+        padding:rem(2px);
+        img{
+          width: rem(251px);
+          height:rem(165px);
+          opacity: 0.6;
+        }
+        .name{
+          opacity: 0.6;
+          height:rem(60px);
+          line-height:rem(60px);
+        }
+      }
+      .active{
+        .name{
+          opacity: 1;
+        }
+        img{
+          opacity: 1;
+          //border:rem(2px) solid #ffffff;
+        }
+      }
+    }
+    .title2{
+      width: 100%;
+      padding:0 rem(25px);
+      line-height:rem(80px);
+      height:rem(80px);
+      position: relative;
+      text-align: left;
+      .name{
+        color: #FBA512;
+        font-size: rem(32px);
+      }
+      .ordertabs{
+        position: absolute;
+        z-index: 100;
+        top:0;
+        right:rem(20px);
+        //width: rem(250px);
+        line-height:rem(80px);
+        height:rem(80px);
+        color: #999999;
+        .order{
+          display:inline-block;
+        }
+        .active{
+          color: #ffffff;
+        }
+      }
+    }
+    .slide{
+      width: rem(660px);
+      padding:rem(20px);
+      overflow-y: auto;
+      .schoolList{
+        height: rem(700px);
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction:column;
+        .item{
+          margin: rem(10px) rem(25px);
+          width: rem(205px);
+          height:rem(319px);
+          border-radius: rem(10px);
+          background-image: url("http://static.jesport.com/sly/images/activeImg/box.png");
+          background-repeat: no-repeat;
+          background-size:rem(205px) rem(319px);
+          font-size: rem(20px);
+          position: relative;
+            .itemid{
+              font-size: rem(18px);
+              position: absolute;
+              right: rem(10px);
+              top:rem(10px);
+            }
+            .itemnum{
+              width: rem(205px);
+              text-align: center;
+              position: absolute;
+              left: 0;
+              color: #FF6600;
+              top:rem(235px);
+            }
+          .schoolimg{
+            position: absolute;
+            left: 0;
+            right:0;
+            top:rem(67px);
+            margin:auto;
+            width: rem(160px);
+            height:rem(160px);
+            border-radius: 50%;
+            img{
+              border-radius: 50%;
+              width: rem(160px);
+              height:rem(160px);
+            }
+          }
+            .itemname{
+              width: rem(205px);
+              text-align: center;
+              position: absolute;
+              left: 0;
+              top:rem(30px);
+            }
+          .btn-change{
+            height:rem(60px);
+            line-height:rem(60px);
+            font-size: rem(38px);
+            color: #625740;
+            border-radius: rem(10px);
+            background-color: #FCC05A;
+          }
+        }
+      }
+    }
+    .rank{
+      line-height: rem(80px);
+      color: #3399FF;
+      font-size: rem(22px);
+    }
+  }
+  .alert-pushvote{
+    z-index: 100;
+    width: rem(710px);
+    background-color: #000000;
+    position: fixed;
+    top:rem(300px);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #B6966C;
+    padding-bottom:rem(30px);
+    border:1px solid #999999;
+    .title{
+      color: #ffffff;
+      line-height: rem(90px);
+      margin-bottom: rem(30px);
+      position: relative;
+      .close{
+        position: absolute;
+        right:0;
+        top:0;
+        width: rem(60px);
+        font-size: rem(32px);
+        color: #666666;
+      }
+    }
+    .mdnum{
+      height:rem(80px);
+      line-height: rem(80px);
+      .sign{
+        color: #ffffff;
+        font-weight: bold;
+        display: inline-block;
+        width: rem(32px);
+        height:rem(32px);
+        border-radius: 50%;
+        margin: 0 rem(3px);
+        background-image: url("http://static.jesport.com/sly/images/activeImg/choose.png");
+        background-repeat: no-repeat;
+        background-size: rem(32px) rem(32px);
+      }
+      .sign.active{
+        background-image: url("http://static.jesport.com/sly/images/activeImg/choosed.png");
+        color: #ff9900;
+      }
+    }
+    .color{
+      color: #ff6600;
+    }
+    .push-btn{
+      background-image: url("http://static.jesport.com/sly/images/activeImg/button.png");
+    }
+  }
+  .exchangeList{
+    border:1px solid #999999;
+    z-index: 100;
+    width: rem(710px);
+    background-color: #000000;
+    position: fixed;
+    top:rem(60px);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #B6966C;
+    padding-bottom:rem(30px);
+    .title{
+      color: #ffffff;
+      line-height: rem(90px);
+      margin-bottom: rem(30px);
+      position: relative;
+      .close{
+        position: absolute;
+        right:0;
+        top:0;
+        width: rem(60px);
+        font-size: rem(32px);
+        color: #666666;
+      }
+    }
+    .items{
+      height:rem(400px);
+      overflow-y: auto;
+      .item{
+        width: rem(585px);
+        height:rem(53px);
+        line-height: rem(53px);
+        text-align: center;
+        margin:0 auto;
+        display: flex;
+        border-bottom: 1px solid #000000;
+        border-radius: rem(10px);
+        overflow: hidden;
+        background-color: #333333;
+        .state{
+          width:rem(125px);
+          background-color: #ffffff;
+        }
+        .state.active{
+          background-color: #ff9900;
+          color: #000000;
+        }
+        .name{
+          flex:1;
+        }
+      }
+    }
+    .giftbox{
+      width: rem(365px);
+      height:rem(535px);
+      margin: rem(20px) auto;
+      background-color: #ffffff;
+      border-radius: rem(15px);
+      .title{
+        line-height: rem(65px);
+        color: #000;
+        font-size: rem(20px);
+        margin-bottom: 0;
+      }
+      .imgcode{
+        width: rem(350px);;
+        height:rem(170px);
+        margin:0 auto;
+        //border:1px solid #000 ;
+        margin-bottom: rem(10px);
+        img{
+          width: 100%;
+          height:100%;
+        }
+      }
+      .codeimg{
+        width: rem(191px);
+        height:rem(191px);
+        margin:0 auto;
+        border:1px solid #000 ;
+        img{
+          width: 100%;
+          height:100%;
+        }
+      }
+      .desc{
+        //line-height: rem(60px);
+        font-size: rem(20px);
+      }
+    }
+  }
+  .wingift{
+    z-index: 100;
+    width: rem(708px);
+    background-color: #000000;
+    position: fixed;
+    top:rem(300px);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border:1px solid #999999;
+    //color: #B6966C;
+    padding-bottom:rem(30px);
+    .title{
+      height:rem(230px);
+      line-height: rem(230px);
+      position: relative;
+      span{
+        color: #B6966C;
+      }
+      .close{
+        position: absolute;
+        right:0;
+        top:0;
+        width: rem(60px);
+        height:rem(60px);
+        line-height: rem(60px);
+        font-size: rem(32px);
+        color: #666666;
+      }
+    }
+    .img{
+      width: rem(128px);
+      height:rem(128px);
+      border: 1px solid #B6966C;
+      border-radius: rem(10px);
+      overflow: hidden;
+      margin:0 auto;
+      img{
+        width: rem(128px);
+        height:rem(128px);
+      }
+    }
+    .watch{
+      padding:0 rem(80px);
+      display: flex;
+      justify-content: center;
+      line-height: rem(115px);
+      .btn-watch{
+        color: #3399ff;
+      }
+    }
+    .way{
+      padding:0 rem(80px);
+      text-align: left;
+      span{
+        color: #3399ff;
+        font-size: rem(22px);
+        line-height: rem(25px);
+      }
+    }
+  }
+  .sharebox{
+    position: fixed;
+    top:rem(92px);
+    left:rem(79px);
+    z-index: 100;
+    width: rem(592px);
+    height:rem(522px);
+    img{
+      width: 100%;
+      hieight :100%;
+    }
+    .iknow-btn{
+      position: absolute;
+      top:rem(420px);
+      left:rem(120px);
+      width: rem(400px);
+      height:rem(80px);
+    }
+  }
+  .alert-signinBox{
+    z-index: 100;
+    width: rem(710px);
+    background-color: #000000;
+    position: absolute;
+    top:rem(200px);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #B6966C;
+    padding-bottom:rem(30px);
+    border-radius: rem(10px);
+    border:1px solid #999999;
+    .title{
+      color: #ffffff;
+      line-height: rem(90px);
+      margin-bottom: rem(30px);
+      position: relative;
+      .close{
+        position: absolute;
+        right:0;
+        top:0;
+        width: rem(60px);
+        font-size: rem(32px);
+        color: #666666;
+      }
+    }
+    .sign{
+      margin-bottom: rem(30px);
+      .item{
+        width: rem(585px);
+        display: flex;
+        height:rem(80px);
+        justify-content: center;
+        margin:0 auto;
+        margin-bottom: rem(15px);
+        border-radius: rem(10px);
+        overflow: hidden;
+        .name{
+          background-color: #333333;
+          width: rem(180px);
+          line-height:rem(80px);
+        }
+        input{
+          width: rem(350px);
+          padding-left: rem(15px);
+          height:rem(80px);
+          font-size: rem(24px);
+          color: #ffffff;
+          background-color: #868686;
+        }
+        input::placeholder{
+          color: #666666;
+        }
+        select{
+          width: rem(350px);
+          padding-left: rem(15px);
+          height:rem(80px);
+          font-size: rem(24px);
+          color: #ffffff;
+          background-color: #868686;
+          option{
+            height:rem(80px);
+            font-size: rem(24px);
+          }
+        }
+      }
+    }
+  }
+  .alert-rankList{
+    z-index: 99;
+    width: rem(710px);
+    background-color: #000000;
+    position: fixed;
+    top:rem(80px);
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    color: #B6966C;
+    padding-bottom:rem(30px);
+    border-radius: rem(10px);
+    border:1px solid #999999;
+    .title{
+      color: #ffffff;
+      line-height: rem(90px);
+      margin-bottom: rem(30px);
+      position: relative;
+      span{
+        color: #FF9900;
+      }
+      .close{
+        position: absolute;
+        right:0;
+        top:0;
+        width: rem(60px);
+        font-size: rem(32px);
+        color: #666666;
+      }
+    }
+    .rankList{
+      width: rem(580px);
+      height:rem(700px);
+      margin: rem(20px) auto;
+      overflow: hidden;
+      overflow-y: auto;
+      .item{
+        display: flex;
+        line-height: rem(60px);
+        height:rem(60px);
+        font-size: rem(24px);
+        justify-content: center;
+        .rank{
+          width:rem(60px);
+        }
+        .name{
+          text-align: left;
+          width: rem(300px);
+          overflow: hidden;
+        }
+        div{
+          border-bottom: 1px solid #f2f2f2;
+        }
+      }
+    }
+  }
+  .signIn-content{
+    margin:0 auto;
+    text-align: center;
+    padding-bottom:rem(30px);
+    color: #ffffff;
+    .title{
+      height:rem(134px);
+      line-height:rem(153px);
+      font-size: rem(60px);
+      //font-weight: bold;
+      span {
+        color: #FF6600;
+      }
+    }
+    .record{
+      position: relative;
+      .mdnum{
+        width: rem(360px);
+        margin:0 auto;
+        height:rem(70px);
+        line-height: rem(70px);
+        //background-color: rgba(153,153,153,0.3);
+        font-size: rem(30px);
+        background-image: url("http://static.jesport.com/sly/images/activeImg/moneybg.png");
+        background-repeat: no-repeat;
+        background-size: rem(360px) rem(70px);
+        position: relative;
+        span{
+          //position: absolute;
+          //width: rem(70px);
+          //text-align: center;
+          //top:0;
+          //left:rem(175px);
+          color: #ff9900;
+          font-size: rem(30px);
+        }
+      }
+    }
+    .explain{
+      margin:0 0 rem(20px) 0;
+      font-size: rem(18px);
+      color: #ffffff;
+    }
+    .giftimg{
+      margin: 0 auto;
+      width: rem(173px);
+      height:rem(178px);
+      img{
+        width: rem(173px);
+        height:rem(178px);
+      }
+    }
+    .datemark{
+      margin: rem(20px) auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .img{
+        display: flex;
+        height:rem(32px);
+        img{
+          width: rem(32px);
+          height:rem(32px);
+        }
+      }
+      .img.active:after{
+        color: #FF6600;
+      }
+      .img:last-of-type:after{
+        content: "";
+      }
+      .img:after{
+        line-height: rem(32px);
+        content: "-";
+      }
+    }
+    .sign-btn{
+      width: rem(201px);
+      height:rem(48px);
+      margin:rem(30px) auto;
+      img{
+        width: rem(201px);
+        height:rem(48px);
+      }
+    }
+  }
+}
+.contact{
+  width: rem(750px);
+  .img{
+    position: relative;
+    width: rem(750px);
+    margin-bottom: 1px;
+    img{
+      width: rem(750px);
+    }
+    .btn-signin{
+      position: absolute;
+      width: rem(375px);
+      height:rem(75px);
+      //background-color: #f52020;
+      //opacity: .8;
+      top:rem(143px);
+      left:0;
+      right:0;
+      margin:auto;
+    }
+  }
+  .img1{
+    margin-bottom: rem(10px);
+  }
+}
+.leaguerecord{
+  padding-top: rem(20px);
+  text-align: center;
+  font-size: rem(28px);
+  .header{
+    height:rem(80px);
+    line-height: rem(80px);
+    border-bottom: 1px ;
+    font-size: rem(40px);
+  }
+  //@media (max-width:414px)  and (min-width: 400px) {
+  //  html {
+  //    font-size: 21.33333333px !important;
+  //  }
+  //}
+  //@media (max-width: 480px) and (min-width: 414px) {
+  //  html {
+  //    font-size: 22.08px !important;
+  //  }
+  //}
+  //@media (max-width:768px) and (min-width: 480px) {
+  //  html {
+  //    font-size: 25.6px !important;
+  //  }
+  //}
+  .tab-btn{
+    height:rem(60px);
+    line-height: rem(60px);
+    display: flex;
+    justify-content: space-around;
+    //font-size: rem(28px);
+    .btn{
+      width:rem(200px);
+      border: 1px solid #868686;
+      background: #fff;
+      border-radius: rem(10px);
+      text-align: center;
+      outline: none;
+    }
+    .active{background: #666;color:#fff;}
+  }
+  .info{
+    display: flex;
+    justify-content: space-between;
+    padding:0 rem(30px);
+    align-items: center;
+    height:rem(90px);
+    .allnum{
+      text-align: center;
+      line-height: rem(60px);
+      color: #333333;
+      padding-left: rem(10px);
+    }
+    select{
+      height:rem(60px);
+    }
+  }
+  table{
+    margin-top: rem(10px);
+    font-size: rem(18px);
+    border-collapse:collapse;
+    width: 100%;
+    tr{
+      border:1px solid #eee;
+      text-align: center;
+      line-height: rem(50px);
+      th{
+        background: #666;
+        color: #fff;
+        border:1px solid #eee;
+        font-weight: normal;
+        text-align: center;
+      }
+      td{
+        border:1px solid #eee;
+      }
+      .red{
+        color: #f52020;
+      }
+      .green{
+        color: #008800;
+      }
+      .date{
+        line-height: rem(30px);
+      }
+    }
+    tr:nth-child(odd) {
+      background-color: #f2f2f2;
+    }
+    tr:nth-child(even){
+      background-color: #cccccc;
+    }
+  }
+  .tab-btn2 {
+    margin-top: rem(20px);
+    height: rem(90px);
+    line-height: rem(90px);
+    display: flex;
+    justify-content: space-around;
+    .btn {
+      font-size: rem(24px);
+      width: rem(200px);
+      border: 1px solid #eee;
+      background: #f2f2f2;
+      border-radius: rem(10px);
+      text-align: center;
+      outline: none;
+    }
+  }
+
+}

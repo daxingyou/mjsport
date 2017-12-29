@@ -1,0 +1,96 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201708251700">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+    <div class="mheader" id="header">
+        <div class="wheader">
+            <div class="back"></div>
+            <div class="wtitle" id="match_name"></div>
+            <div class="header_right"></div>
+        </div>
+        <div class="match-list ">
+            <div class="match-list-item">
+                <div class="item-main">
+                    <div class="item-left">
+                        <div class="item-img">
+                            <a href="javascript:;">
+                                <img src="http://static.jesport.com/sly/images/item1.png" alt="" class="team1img">
+                            </a>
+                        </div>
+                        <p class="dname" id="lname"></p>
+                    </div>
+                    <div class="item-cen">
+                        <p class="score-list"><span class="time2" id="time"></span></p>
+                        <div class="look-btn">
+                            <a href="javascript:;">竞&nbsp;猜</a>
+                        </div>
+                    </div>
+                    <div class="item-right">
+                        <div class="item-img">
+                            <a href="javascript:;">
+                                <img src="http://static.jesport.com/sly/images/item2.png" alt="" class="team2img">
+                            </a>
+                        </div>
+                        <p class="dname" id="rname"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tabs-box">
+        <div class="tab info_active matchtab" >比赛详情<div></div></div>
+        <div class="tab guesstab" >有奖竞猜<div></div></div>
+        <div class="tab statab" >技术统计<div></div></div>
+    </div>
+    <div class="matchinfo info" id="matchinfo">
+        <div class="matchinfo-header">
+            <div class="teamimg left-team">
+                <div class="team-img"><img src="http://static.jesport.com/sly/images/item1.png" alt="" class="team1img" ></div>
+                <p class="winrate">胜率：<span id="win1"></span></p>
+            </div>
+            <div class="teamimg right-team">
+                <div class="team-img"><img src="http://static.jesport.com/sly/images/item2.png" alt="" class="team2img"></div>
+                <p class="winrate">胜率：<span id="win2"></span></p>
+            </div>
+        </div>
+        <div class="matchinfo-content">
+            <div class="title">队员信息</div>
+            <div class="team-info">
+                <div class="mem-list left-mem" id="left-mem"></div>
+                <div class="mem-list right-mem" id="right-mem"></div>
+            </div>
+        </div>
+    </div>
+    <div class="guessinfo info" id="guessinfo">
+        <div class="barlist" id="barlist"></div>
+    </div>
+    <div class="tecinfo info">
+        <div id="allmatch">
+        </div>
+    </div>
+    <div id="footer">
+        <div class="menu">
+            <a href="oldIndex.html"><span class="icon-home"></span><span class="menu-item" >首页</span></a>
+            <a href="guess.html"><span class="icon-match-hover"></span><span class="menu-item active" >比赛</span></a>
+            <a href="corps.html"><span class="icon-corps"></span><span class="menu-item" >网吧</span></a>
+            <a href="info.html"><span class="icon-video"></span><span class="menu-item" >资讯</span></a>
+            <a href="profile.html"><span class="icon-profile"></span><span  class="menu-item" >我的</span></a>
+        </div>
+    </div>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/zepto.min.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201711091553"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/templat/commonTpl.js?version=201708031714"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/matchfind.js?version=201711091553"></script>
+</body>
+</html>

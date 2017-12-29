@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=2017110915532">
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <title>魔圣电竞大师</title>
+</head>
+<body style="background: #f2f2f2;">
+<div id="app" class="index" style="background: #f2f2f2;padding-bottom: 100px;">
+    <!--<div class="banner">-->
+        <!--<img :src="netbarInfo.pic " alt="">-->
+    <!--</div>-->
+    <a  href="Javascript:history.go(-1)" class="chan-top">
+        <div class="icon-left"></div>
+        <div>店面详情</div>
+    </a>
+    <div class="netbarList">
+        <div class="item">
+            <div class="corp_img"><img :src="netbarInfo.logo?netbarInfo.logo:'http://static.jesport.com/sly/images/newIndex/logosjz.png'" alt="网吧图片"/></div>
+            <div class="corp_details">
+                <div class="corp_name">
+                    <div class="name">{{netbarInfo.name}}</div>
+                    <div class="addr">{{netbarInfo.address}}</div>
+                </div>
+                <div class="corp_grade">
+                    <div class="grade_icon">
+                        <i class="icon-sx"></i>
+                        <i class="icon-sx"></i>
+                        <i class="icon-sx"></i>
+                        <i class="icon-sx"></i>
+                        <i class="icon-sx"></i>
+                    </div>
+                </div>
+                <div class="corp_price">10元 / 小时</div>
+                <div class="corp_match">
+                    <div class="vipitem" style="background-image: url('http://static.jesport.com/sly/images/newIndex/List_icon_1.png')">VIP包房</div>
+                    <div class="vipitem" style="background-image: url('http://static.jesport.com/sly/images/newIndex/List_icon_2.png')">电影包房</div>
+                    <div class="vipitem" style="background-image: url('http://static.jesport.com/sly/images/newIndex/List_icon_3.png')">游戏特权</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navbox">
+        <div class="items">
+            <a href="newGuessList.html" class="item ">
+                <div class="nav-icon"><img src="http://static.jesport.com/sly/images/newIndex/icon_1.png" alt=""></div>
+                <div class="navdetail">
+                    <div class="name">赛事竞猜</div>
+                    <div class="detail">电竞竞猜、中大奖</div>
+                </div>
+            </a>
+            <a :href="'netbaractivity.html?id='+netbarId" class="item ">
+                <div class="nav-icon"><img src="http://static.jesport.com/sly/images/newIndex/icon_2.png" alt=""></div>
+                <div class="navdetail">
+                    <div class="name">网吧活动</div>
+                    <div class="detail">高校联赛进行中</div>
+                </div>
+            </a>
+        </div>
+        <div class="items itemsbottom" style="margin-top: -1px">
+            <a :href="'shop.html?id='+ netbarId" class="item ">
+                <div class="nav-icon"><img src="http://static.jesport.com/sly/images/newIndex/icon_3.png" alt=""></div>
+                <div class="navdetail">
+                    <div class="name">兑换商城</div>
+                    <div class="detail">百元兑换券上线</div>
+                </div>
+            </a>
+            <a href="turntable.html" class="item">
+                <div class="nav-icon"><img src="http://static.jesport.com/sly/images/newIndex/icon_4.png" alt=""></div>
+                <div class="navdetail">
+                    <div class="name">幸运抽奖</div>
+                    <div class="detail">iPhoneX 等你来领</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="adbox">
+        <div class="netbarimg" id="netbarimg">
+            <div class="topad" id="topad">
+                <div class="netbaritem" v-for="item in adv1" :style="{backgroundImage: 'url(' + item.img + ')'}" >
+                    <a :href="item.url">
+                        <div class="adname">{{item.title}}</div>
+                    </a>
+                </div>
+            </div>
+            <!--<div class="bigad" v-for="item in adv2" :style="{backgroundImage: 'url(' + item.img + ')'}">-->
+                <!--<a :href="item.url">-->
+                    <!--<div class="adname">{{item.title}}</div>-->
+                <!--</a>-->
+            <!--</div>-->
+        </div>
+    </div>
+    <div class="barActivity">
+        <div class="actnav">
+            <div class="title">网吧活动</div>
+            <a :href="'netbaractivity.html?id='+netbarId" class="more"></a>
+        </div>
+        <div class="actList">
+            <a class="activeitem_league" href="leagueIndex.html">
+                <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/card_5.png" alt=""></div>
+            </a>
+            <!--<a class="activityitem" v-for="item in actList" :href="'actSign.html?id='+item.id">-->
+                <!--<div class="img"><img :src="item.poster" alt=""></div>-->
+                <!--<div class="activityinfo">-->
+                    <!--<div class="info">-->
+                        <!--<div class="name">{{item.name}}</div>-->
+                        <!--<div class="date">{{item.enrollEndDate}}</div>-->
+                    <!--</div>-->
+                    <!--<div class="state">{{item.state==1?"进行中":"已结束"}}</div>-->
+                <!--</div>-->
+            <!--</a>-->
+            <!--<div class="nodata" v-if="actList.length==0">该网吧暂无活动</div>-->
+        </div>
+        <div class="guessnav">
+            <div class="title">网吧竞猜</div>
+            <a class="more" href="newGuessList.html">查看全部</a>
+        </div>
+        <div class="guessList">
+            <div class="guesses">
+                <div class="item" v-for="item in newestList" :style="{backgroundImage:'url(http://static.jesport.com/sly/images/newIndex/card_'+item.gameId+'.png)'}" >
+                    <a :href="'newGuessinfo.html?id='+item.optionsInfo.guessId">
+                        <div class="top">
+                            <div class="title">
+                                <div class="name">{{item.title}}</div>
+                                <div class="date">{{item.endDate}}</div>
+                            </div>
+                            <div class="teams">
+                                <div class="teaminfo">
+                                    <div class="img"><img :src="item.t1Info.logo" alt=""></div>
+                                    <div class="name name-left">{{item.t1Info.name}}</div>
+                                </div>
+                                <div class="scroe">{{item.t1Score}}<span>-</span>{{item.t2Score}}</div>
+                                <div class="teaminfo">
+                                    <div class="name name-right">{{item.t2Info.name}}</div>
+                                    <div class="img"><img :src="item.t2Info.logo" alt=""></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <div class="detail" v-if="item.state!=3" >
+                                <div class="bet left">{{item.optionsInfo.questionOddsMap.A}}</div>
+                                <div class="newquestion">
+                                    <div class="guessdetail">{{item.optionsInfo.questionTitle}}</div>
+                                    <div class="godetail"><div>竞猜中>></div></div>
+                                </div>
+                                <div class="bet right">{{item.optionsInfo.questionOddsMap.B}}</div>
+                            </div>
+                            <div class="guessover" v-if="item.state==3"><div>已结束</div></div>
+                        </div>
+                    </a>
+
+                </div>
+                <div class="nodata" style="background-color: #f2f2f2" v-if="newestList.length==0">该网吧暂无竞猜</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="newFooter">
+    <div class="menu">
+        <a href="index.html"><div class="icon-home"></div><div class="menu-item " >首页</div></a>
+        <a href="newCorps.html"><span class="icon-corps-hover"></span><span class="menu-item active" >网吧</span></a>
+        <a href="newGuessList.html" ><span class="icon-match"></span><span class="menu-item" >竞猜</span></a>
+        <a href="profile.html"><span class="icon-profile"></span><span  class="menu-item" >个人</span></a>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/zepto.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201711091553"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/newNetbarInfo.js?version=201709011607"></script>
+</body>
+</html>

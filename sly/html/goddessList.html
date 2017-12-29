@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/goddess.css?version=201712141036">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+<div class="backpic"><img src="http://static.jesport.com/sly/images/activeImg/goddess/back.jpg" alt=""></div>
+<div class="godnessSign" id="app">
+    <div class="tabsList">
+        <div class="tab">全部</div>
+        <div class="tab">未审核</div>
+        <div class="tab">已通过</div>
+    </div>
+    <!--遮罩-->
+    <div class="mask" v-if="maskShow" @touchmove.prevent @click="maskShowclick"></div>
+    <!--报名弹框-->
+    <div class="alert-signinBox">
+        <form id="signboxform">
+            <div class="title"><span class="color">女神争霸赛</span> <span style="color:#666666;">报名</span><div class="close" @click="maskShowclick">X</div></div>
+            <div  class="sign">
+                <div class="item">
+                    <div class="name">昵称</div>
+                    <input name="realname" type="text" id="realname" placeholder="请输入您的昵称"/>
+                </div>
+                <div class="item">
+                    <div class="name">电话</div>
+                    <input name="phone" type="text" placeholder="请输入可以联系到您的电话"/>
+                </div>
+                <div class="item">
+                    <div class="name">星座</div>
+                    <input name="constellation"type="text" placeholder="请输入您的星座"/>
+                </div>
+                <div class="item">
+                    <div class="name">出生日期</div>
+                    <input name="birthday" type="date" placeholder="请输入您的出生日期"/>
+                </div>
+                <div class="item">
+                    <div class="name">爱好</div>
+                    <input name="hobby" type="text" placeholder="请输入您的爱好"/>
+                </div>
+                <div class="item">
+                    <div class="name">擅长游戏</div>
+                    <input name="games" type="text" placeholder="请输入您的擅长游戏"/>
+                </div>
+                <div class="item">
+                    <div class="name">自我介绍</div>
+                    <input name="memo" type="text" placeholder="请填写(100字内)"/>
+                </div>
+                <div class="imgitem">
+                    <div class="value imgShow">
+                        　　<div id="imgShow" ></div>
+                    </div>
+                    <input type="file" name="avatar" id="img"  >
+                </div>
+            </div>
+        </form>
+        <div class="btn" @click="affirmSign"></div>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201712141036"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/goddessList.js?v=201712141036"></script>
+</body>
+</html>

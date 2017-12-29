@@ -1,0 +1,93 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201708231645">
+    <title>网吧</title>
+</head>
+<body style="background: #f2f2f2">
+<!--<div id="corp_header">网吧</div>-->
+    <div id="app" class="newBarList">
+        <div class="netbarNav">
+            <div class="title">热门网吧</div>
+            <div class="tabsnav" v-for="item in tabs">
+                <div class="item active " >
+                    <div class="name">{{item.name}}</div><div class="border"></div>
+                </div>
+            </div>
+        </div>
+        <div class="netbarList">
+            <a class="item" v-for="item in list" :href="'newNetbarInfo.html?id='+item.id">
+                <div class="corp_img"><img :src="item.logo?item.logo:''" alt="网吧图片" /></div>
+                <div class="corp_details">
+                    <div class="corp_name">
+                        <div class="name">{{item.name}}</div>
+                        <div class="addr">{{item.address}}</div>
+                    </div>
+                    <div class="corp_grade">
+                        <div class="grade_icon">
+                            <i class="icon-sx"></i>
+                            <i class="icon-sx"></i>
+                            <i class="icon-sx"></i>
+                            <i class="icon-sx"></i>
+                            <i class="icon-sx"></i>
+                        </div>
+                    </div>
+                    <div class="corp_price">10元 / 小时</div>
+                    <div class="corp_match">
+                        <div class="vipitem" style="background-image: url('http://static.jesport.com/sly/images/newIndex/List_icon_1.png')">VIP包房</div>
+                        <div class="vipitem" style="background-image: url('http://static.jesport.com/sly/images/newIndex/List_icon_2.png')">电影包房</div>
+                        <div class="vipitem" style="background-image: url('http://static.jesport.com/sly/images/newIndex/List_icon_3.png')">游戏特权</div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+<div id="newFooter">
+    <div class="menu">
+        <a href="index.html"><div class="icon-home"></div><div class="menu-item" >首页</div></a>
+        <a href="newCorps.html"><span class="icon-corps-hover"></span><span class="menu-item active" >网吧</span></a>
+        <a href="newGuessList.html" ><span class="icon-match"></span><span class="menu-item" >竞猜</span></a>
+        <a href="profile.html"><span class="icon-profile"></span><span  class="menu-item" >个人</span></a>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201709061357"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data(){
+            return {
+                tabs:[{id: 0, name: "全部网吧 ", logo: ""}],
+                list:[]
+            }
+        },
+        created(){
+            this.getNetbarlist();
+        },
+        methods:{
+            getNetbarlist(){
+                var _this=this;
+                $.getJSON(listUrl+"channel/netbarlist",function(json){
+                    console.log(json)
+                    _this.list=json.netbarList;
+                })
+            }
+        }
+    })
+
+
+</script>
+</body>
+</html>

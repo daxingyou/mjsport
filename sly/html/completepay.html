@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201708251700">
+    <title>支付结果</title>
+</head>
+<body style="background-color: #f2f2f2">
+<!--<div class="aheader">-->
+    <!--<a href="javascript:history.go(-1);" class="back"></a>-->
+    <!--<span class="about-title" id="bar_name">支付结果</span>-->
+    <!--<span></span>-->
+<!--</div>-->
+<div class="completepay">
+    <div class="img"><img src="http://static.jesport.com/sly/images/icon-success.png" alt=""></div>
+    <div class="paytitle"><span id="mdnum"></span> 魔豆&nbsp;&nbsp;&nbsp;&nbsp;支付成功</div>
+</div>
+<div id="goodsexchangebtn">完成</div>
+
+<script type="text/javascript" src="http://static.jesport.com/sly/js/zepto.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201711091553"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/templat/commonTpl.js?version=201708031714"></script>
+<script type="text/javascript" >
+    var mdnum=window.location.href.split(/[? & =]/)[2];
+    var orderid=window.location.href.split(/[? & =]/)[4];
+    $("#mdnum").html(mdnum);
+    $("#goodsexchangebtn").on("click",function(){
+        window.location.href="excdetail.html?orderid="+orderid;
+    })
+</script>
+</body>
+</html>

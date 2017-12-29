@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="yes" name="apple-touch-fullscreen">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+	<script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+	<link rel="apple-touch-icon" href="favicon.ico">
+	<link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="http://static.jesport.com/sly/css/actShark.css?version=201711231531">
+	<title>活动记录</title>
+</head>
+<body>
+<div id="app" class="leaguerecord">
+	<!--<div class="header" >-->
+		<!--<span>魔杰杯-活动记录</span>-->
+	<!--</div>-->
+	<div class="tab-btn">
+		<div @click="getBmList()" :class="{'active' : nowIndex == 1}"  class="btn" >报名记录</div>
+		<div @click="getLotteryList" :class="{'active' : nowIndex == 2}"  class="btn" >中奖记录</div>
+	</div>
+	<div class="info">
+		<div class="allnum">共{{ nowIndex == 1 ? total : total2 }}条记录</div>
+		<div v-if="nowIndex == 1" class="select">
+			<select name="type" v-model="types">
+				<option value="" disabled selected>选择排位类型</option>
+				<option value="单排" >单排</option>
+				<option value="双排">双排</option>
+			</select>
+		</div>
+
+	</div>
+	<div v-if="nowIndex == 1">
+		<table  >
+			<thead>
+				<tr>
+					<th>手机号</th>
+					<th>姓名</th>
+					<th>游戏昵称</th>
+					<th v-if="types=='双排'">战队名称</th>
+					<th>分数</th>
+					<th>学校名称</th>
+					<th>报名时间</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="item in bmList">
+					<td>{{item.phone}}</td>
+					<td>{{item.realname}}</td>
+					<td>{{item.nickname}}</td>
+					<td v-if="types=='双排'">{{item.teamname}}</td>
+					<td>{{item.score}}</td>
+					<td>{{item.school}}</td>
+					<td class="date">{{item.date}}<br/>{{item.time}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="tab-btn">
+			<button class="btn" v-if="hasNextPage1" @click="pn1++">下一页</button>
+			<button class="btn" v-if="hasPreviousPage1" @click="pn1--">上一页</button>
+		</div>
+	</div>
+	<div v-if="nowIndex == 2" >
+		<table  >
+			<thead>
+				<tr>
+					<th>手机号</th>
+					<th>奖品</th>
+					<th>中奖时间</th>
+					<th>兑换状态</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="item in lotteryList">
+					<td>{{item.mobile}}</td>
+					<td>{{item.goodsName}}</td>
+					<td>{{item.createdDate}}</td>
+					<td :class="{red:item.state == 1,green:item.state != 1}">{{item.state == 1 ? '已兑换' : '未兑换'}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="tab-btn2">
+			<div class="btn" v-if="hasPreviousPage2" @click="pn2--">上一页</div>
+			<div class="btn" v-if="hasNextPage2" @click="pn2++">下一页</div>
+		</div>
+	</div>
+</div>
+	<script src="http://static.jesport.com/backend2/js/jquery2.0.3.min.js"></script>
+	<script src="http://static.jesport.com/backend2/js/vue.js"></script>
+	<script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201711221758"></script>
+	<script types="text/javascript">
+	new Vue({
+		el:"#app",
+		data(){
+			return{
+				bmList:[],
+				date:"",
+				lotteryList:[],
+				nowIndex:1,
+				pn1:1,
+				hasNextPage1:false,
+				hasPreviousPage1:false,
+				hasNextPage2:false,
+				hasPreviousPage2:false,
+				pn2:1,
+				types:'单排',
+				total:0,
+				total2:0,
+			}
+		},
+		created(){
+			this.getnowIndex();
+		},
+		watch:{
+			pn1:function(val){
+				this.getBmList();
+			},
+			types:function(val){
+				this.getBmList(val);
+			},
+			pn2:function(val){
+				this.getLotteryList();
+			}
+		},
+		methods:{
+			getnowIndex(){
+				if(getCookie("nowIndex")==2){
+					this.getLotteryList();
+					console.log(this.nowIndex)
+				}else{
+					this.getBmList();
+				}
+			},
+			getBmList(val){
+				setCookie("nowIndex",1);
+				if(val){
+					this.types = val;
+					setCookie("types",val);
+				}else if(getCookie("types")!=undefined){
+					this.types = getCookie("types");
+				}
+				var _this  = this;
+				this.nowIndex = 1;
+				var data = {
+					pn : this.pn1,
+					type : this.types
+				}
+				$.getJSON(listUrl+'special/listenroll',data,function(json){
+					_this.bmList = json.enrollList.list;
+					_this.hasNextPage1 = json.enrollList.hasNextPage;
+					_this.hasPreviousPage1 = json.enrollList.hasPreviousPage;
+					_this.total  = json.enrollList.total;
+					json.enrollList.list.forEach(function(item,index){
+						var date,time;
+						date=item.createdDate.split(/[-  ]/)[1]+"月"+item.createdDate.split(/[- :]/)[2]+"日";
+						time=item.createdDate.split(/[- ]/)[3];
+						_this.bmList[index].date=date;
+						_this.bmList[index].time=time;
+					})
+				});
+			},
+			getLotteryList(){
+				var _this  = this;
+				this.nowIndex = 2;
+				setCookie("nowIndex",2);
+				var data = {
+					pn : this.pn2
+				}
+				$.getJSON(listUrl+'special/lottery/listalldraw',data,function(json){
+					_this.lotteryList = json.drawList.list;
+					_this.hasNextPage2= json.drawList.hasNextPage;
+					_this.hasPreviousPage2= json.drawList.hasPreviousPage;
+					_this.total2       = json.drawList.total;
+				});
+			}
+		}
+	})
+</script>
+</body>
+</html>

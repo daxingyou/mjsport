@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;background-color: #f2f2f2;" >
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta http-equiv="pragma"   content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+    <meta http-equiv="expires" content="Wed,26 Feb 1998 08:21:57 GMT" />
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/active-pb.css?v=201712151408">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+<div class="active-pb" id="app">
+    <div class="banner">
+        <div class="back"><a href="pubgList.html"></a></div>
+        <div class="title"></div>
+        <div class="type">{{matchinfo.type==1?"单排":matchinfo.type==1?"双排":"四排"}}</div>
+        <div class="time">{{matchinfo.startTime}} 开赛</div>
+        <div class="award" v-if="matchinfo.state==2 && matchinfo.winEnrollNickname">本次冠军: <span>{{matchinfo.winEnrollNickname}}</span></div>
+        <div class="award" v-if="matchinfo.state==2 && !matchinfo.winEnrollNickname">已关闭比赛</span></div>
+        <div class="award" v-if="matchinfo.state!=2">冠军奖励: {{matchinfo.winRmb}}元+{{matchinfo.winBeans}}魔豆</div>
+        <div class="state3" v-if="matchinfo.state==2">
+            <div class="img"><img src="http://static.jesport.com/sly/images/active-pb/closed.png" alt=""></div>
+            <div>比赛已结束</div>
+            <div class="info" v-if="matchinfo.memberEnrolled" @click="enrollinfo">报名信息</div>
+        </div>
+        <div class="state3" v-if="matchinfo.state==3">
+            <div class="img"><img src="http://static.jesport.com/sly/images/active-pb/ingame.png" alt=""></div>
+            <div>比赛进行中</div>
+            <div class="info" v-if="matchinfo.memberEnrolled" @click="enrollinfo">报名信息</div>
+        </div>
+        <div class="state1" v-if="matchinfo.state==1">
+            <div class="time">报名截止时间 {{matchinfo.enrollEndTime}}</div>
+            <div class="img"><img src="http://static.jesport.com/sly/images/active-pb/users.png" alt="">{{matchinfo.enrollNum}}/{{matchinfo.personLimit}}</div>
+            <div class="img1" v-if="!matchinfo.memberEnrolled" @click="signin"><img src="http://static.jesport.com/sly/images/active-pb/sign.png" alt=""></div>
+            <div class="img1" v-if="matchinfo.memberEnrolled" @click="enrollinfo"><img src="http://static.jesport.com/sly/images/active-pb/checkpw.png" alt=""></div>
+        </div>
+    </div>
+    <!--切换页卡-->
+    <div class="tabs">
+        <div class="tabitem" :class="{active:tabindex==0}" @click="tabclick(0)">赛事信息</div>
+        <div class="tabitem" :class="{active:tabindex==1}" @click="tabclick(1)">赛事竞猜</div>
+    </div>
+    <div class="cutline"></div>
+    <!--赛事信息-->
+    <div class="matchinfo" v-if="tabindex==0">
+        <table>
+            <tr>
+                <td class="name">比赛名称</td>
+                <td class="info">{{matchinfo.name}}</td>
+            </tr>
+            <tr>
+                <td class="name">比赛时间</td>
+                <td class="info">{{matchinfo.startTime}}开赛</td>
+            </tr>
+            <tr>
+                <td class="name">报名时间</td>
+                <td class="info">{{matchinfo.enrollEndTime}}截止</td>
+            </tr>
+            <tr>
+                <td class="name">参赛模式</td>
+                <td class="info">{{matchinfo.type==1?"单排":matchinfo.type==1?"双排":"四排"}}</td>
+            </tr>
+            <tr>
+                <td class="name">报名费用</td>
+                <td class="info">{{matchinfo.feeBeans}}魔豆</td>
+            </tr>
+            <tr>
+                <td class="name">活动奖励</td>
+                <td class="info">{{matchinfo.winRmb}}元+{{matchinfo.winBeans}}魔豆</td>
+            </tr>
+            <tr>
+                <td class="name">详细规则</td>
+                <td class="info">{{matchinfo.memo}}</td>
+            </tr>
+        </table>
+    </div>
+    <!--赛事竞猜-->
+    <div class="guessState" v-if="tabindex==1">
+        <div class="state" :class="{active:guessinfo.state==1}">{{guessinfo.state==1?"投注中":guessinfo.state==2?"已截投":guessinfo.state==3?"已开奖":"无竞猜"}}</div>
+        <div class="button">
+            <div class="betlist"><a href="newGuessRecords.html"><img src="http://static.jesport.com/sly/images/active-pb/betlist.png" alt=""></a></div>
+            <div class="exchange"><a href="shop.html"><img src="http://static.jesport.com/sly/images/active-pb/exchange.png" alt=""></a></div>
+        </div>
+    </div>
+    <div class="questionList" v-if="tabindex==1">
+        <div class="qitem" v-for="item in optionsList">
+            <div class="title">
+                <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/hummer.png" alt=""></div>
+                <div class="questionitem">{{item.questionTitle}}</div>
+            </div>
+            <div class="newanswers" :class="{newanswers2:item.answer.length>4}">
+                <div class="answer" :class="{answer2:item.answer.length>2}" v-for="x in item.answer" @click="bet(item,x)">
+                    <div class="isbet" v-if="x.isbet"><img src="http://static.jesport.com/sly/images/newIndex/beted.png" alt=""></div>
+                    <div class="name">{{x.items}}</div>
+                    <div class="odds">{{x.odds}}</div>
+                    <div class="win" v-if="x.win"><img src="http://static.jesport.com/sly/images/newIndex/win.png" alt=""></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="nodata" v-if="tabindex==1&&optionsList.length==0">暂无竞猜</div>
+    <!--遮罩-->
+    <div class="mask2" v-if="maskShow" @touchmove.prevent @click="maskShowclick"></div>
+    <!--竞猜弹框-->
+    <div class="betwindow" v-if="betShow">
+        <div class="title">
+            <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/hummer.png" alt=""></div>
+            <div class="questionitem">{{betQuestion}}</div>
+        </div>
+        <div class="balance">
+            <div>选项
+                <span style="color: #ff0000;margin-right: 0.5rem;">{{betAns.items}}</span>
+                赔率
+                <span style="color: #ff0000;">{{betAns.odds}}</span></div>
+            <div>魔豆余额 : <span style="color: #ff0000">{{memberBean.balanceBean}}</span></div>
+        </div>
+        <div class="betnum">
+            <div><input id="input" type="number" v-model="vote" v-on:input ="inputFunc()" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"></div>
+            <div class="sub-button" @click="subBet">提交</div>
+        </div>
+        <div class="reward">预计回报 : <span style="color: #ff0000">{{rewards}}</span></div>
+    </div>
+    <!--报名弹框-->
+    <div class="sign-alert" v-if="signShow" >
+        <div class="title">{{matchinfo.type==1?"单排":matchinfo.type==1?"双排":"四排"}}报名<div class="close" @click="maskShowclick"></div></div>
+        <div class="item" v-for="(item,index) in nickname">
+            <div class="name">游戏ID{{nickname.length==1?"":index+1}}</div>
+            <div class="value"><input type="text" :name="nickname[index]" v-model="nickname[index]" placeholder="请输入游戏ID"></div>
+        </div>
+        <div class="item" >
+            <div class="name">联系电话</div>
+            <div class="value"><input type="text" name="mobile" v-model="mobile" placeholder="请输入联系电话"></div>
+        </div>
+        <div class="cutline"></div>
+        <div class="info">
+            <div class="feebeans">报名支付: <span>{{matchinfo.feeBeans}}</span> 魔豆</div>
+            <div class="mybeans">我的余额: <span>{{memberBean.balanceBean}}</span> 魔豆</div>
+        </div>
+        <div class="submitsign" @click="submitSign"></div>
+    </div>
+    <!--报名列表-->
+    <div class="enroll-alert" v-if="enrollShow">
+        <div class="title">报名信息<div class="close" @click="maskShowclick"></div></div>
+        <div class="item">
+            <div class="name">开赛时间:</div>
+            <div class="value">{{matchinfo.startTime}}</div>
+        </div>
+        <div class="item">
+            <div class="name">服务器地区:</div>
+            <div class="value">亚洲</div>
+        </div>
+        <div class="item">
+            <div class="name">房间名称:</div>
+            <div class="value color">{{matchinfo.name}}</div>
+        </div>
+        <div class="item">
+            <div class="name">房间密码:</div>
+            <div class="value color">{{matchinfo.roomPwd}}</div>
+        </div>
+        <div class="enrollList">
+            <div class="item" v-for="(item,index) in enrollInfo">
+                <div class="name">游戏昵称_{{index+1}}</div>
+                <div class="value">{{item.nickname}}</div>
+            </div>
+        </div>
+        <div class="memo">
+            温馨提示：请于比赛开始前10分钟登录游戏,选择服务器进入房间
+        </div>
+        <div class="know" @click="maskShowclick"></div>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201712151408"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/active-pb.js?v=201712151416"></script>
+</body>
+</html>

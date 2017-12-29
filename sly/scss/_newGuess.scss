@@ -1,0 +1,80 @@
+@mixin betweencenter{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin aroundcenter{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.newGuess{
+  .guessBox{
+    margin-top: rem(20px);
+    width: 100%;
+    .guessitem{
+      width: rem(710px);
+      margin:rem(20px) auto;
+      background-color: #ffffff;
+      border:1px solid #868686;
+      border-radius: rem(20px);
+      padding:0 rem(20px);
+      .title{
+        height: rem(80px);
+        @include betweencenter;
+      }
+      .teams{
+        @include aroundcenter;
+        .teaminfo{
+          width: rem(200px);
+          .img{
+            width: rem(100px);
+            margin:rem(20px) auto;
+            img{
+              width: rem(100px);
+              height:rem(100px);
+            }
+          }
+          .name{
+            height:rem(80px);
+            line-height: rem(80px);
+            text-align: center;
+          }
+        }
+      }
+      .newquestion{
+        line-height: rem(40px);
+        text-align: center;
+      }
+      .newanswers{
+        margin: rem(20px) 0;
+        @include aroundcenter;
+        text-align: center;
+        .item{
+          border: 1px solid #868686;
+          border-radius: rem(5px);
+          width: rem(200px);
+          line-height: rem(50px);
+          font-size: rem(30px);
+          .odds{
+            height: rem(40px);
+            line-height: rem(30px);
+            font-size: rem(24px);
+          }
+        }
+      }
+    }
+    .recorditem{
+      width: rem(710px);
+      margin:0 auto;
+      background-color: #ffffff;
+      border:1px solid #868686;
+      border-radius: rem(20px);
+      padding:0 rem(20px);
+      .title{
+        height: rem(80px);
+        @include betweencenter;
+      }
+    }
+  }
+}

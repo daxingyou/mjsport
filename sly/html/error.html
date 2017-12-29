@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>出错啦</title>
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+    <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm-extend.min.css">
+    <style>
+    @media screen and (min-width: 640px) {
+        body {
+            width: 640px!important;
+            margin: 0 auto!important;
+            background: #666;
+        }
+    }
+    
+    .card {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="page-group">
+        <div class="page">
+            <div class="box" style="height:5rem;position:absolute;margin:auto;left:0;right:0;top:0;bottom:0;">
+				<#if errMsg??>
+					<p style="text-align:center;">${errMsg}</p>
+				<#else>
+					<p style="text-align:center;">参数错误</p>
+				</#if>
+                <div style="text-align:center;">
+                	 <a href="javascript:history.go(-1);" style="width:5rem; display:inline-block;" class="button button-success" external>返回</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
+    <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm-extend.min.js' charset='utf-8'></script>
+</body>
+</html>

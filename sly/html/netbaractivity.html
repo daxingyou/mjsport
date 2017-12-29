@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <script src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201711241350">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+<div id="wrapper" class="netactivity" style="background: #f2f2f2;">
+    <div id="scroller">
+        <div id="app">
+        <div class="netbartitle">
+            <div class="netbarchoose">
+                <div class="img"><img src="http://static.jesport.com/sly/images/icon-position.png" alt=""></div>
+                <div class="nerbarname" id="netbarName">{{netbarname}}</div>
+            </div>
+        </div>
+        <div class="netbaractivitylist" v-for="" id="netbaractivitylist">
+            <div class="activityitem_league" @click="goleague">
+                <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/card_5.png" alt=""></div>
+            </div>
+            <div class="activityitem" v-for="item in actList" @click="godetail(item.id)">
+                <div class="img"><div class="state" :style="{backgroundColor:item.state==1?'#EF6095':item.state==2?'#AABCD6':'#33CC99'}">{{item.state==1?"报名中":item.state==2?"已结束":item.state==3?"报名截止":"比赛中"}}</div><img :src="item.poster" alt=""></div>
+                <div class="activityinfo">
+                    <div class="name">{{item.gameName}} {{item.name}}</div>
+                    <div class="date">{{item.startDate}}</div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201712271520"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/netbaractivity.js?version=201712271520"></script>
+</body>
+</html>

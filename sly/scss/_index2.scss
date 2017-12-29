@@ -1,0 +1,426 @@
+@mixin betweencenter{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin aroundcenter{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.index{
+  .chan-top{
+    display: flex;
+    align-items: center;
+    height:rem(80px);
+    line-height: rem(80px);
+    border-bottom: 1px solid #999999;
+    margin-bottom: rem(10px);
+    background-color: #ffffff;
+    color: #999999;
+    font-size: rem(30px);
+    .icon-left{
+      width: rem(30px);
+      height:rem(30px);
+      background-image: url("http://static.jesport.com/sly/images/icon-left-01.png");
+      background-repeat: no-repeat;
+      background-size: rem(30px) rem(30px);
+      margin-right: rem(20px);
+    }
+  }
+  .netbarList{
+    .item{
+      color: #000;
+      //margin:0 0 rem(10px) 0;
+      background-color: #FFFFFF;
+      padding:rem(18px) rem(25px);
+      display: flex;
+      .corp_img{
+        width:rem(160px);
+        height:rem(160px);
+        margin-right:rem(20px);
+        img{
+          width:100%;
+          height:100%;
+        }
+      }
+      .corp_details{
+        flex:1;
+        .corp_name{
+          .name{
+            font-size: rem(30px);
+            font-weight:bold;
+          }
+          .addr{
+            line-height: rem(45px);
+            font-size: rem(22px);
+            color: #cccccc;
+          }
+        }
+        .corp_grade{
+          line-height:rem(40px);
+          font-size: rem(26px);
+          color: #231815;
+          display: flex;
+          .grade_icon{
+            flex: 1;
+            i{
+              display: inline-block;
+              width: rem(30px);
+              height: rem(30px);
+              background-size:rem(30px) rem(30px);
+            }
+            .icon-bkx{
+              background-image: url("http://static.jesport.com/sly/images/icon-bkx.png");
+            }
+            .icon-sx{
+              background-image: url("http://static.jesport.com/sly/images/icon-sx.png");
+            }
+            .icon-kx{
+              background-image: url("http://static.jesport.com/sly/images/icon-kx.png");
+            }
+          }
+        }
+        .corp_price{
+          height:rem(50px);
+          line-height:rem(50px);
+          font-size: rem(28px);
+          //border-bottom: 1px solid #868686;
+          color: #868686;
+        }
+        .corp_match{
+          display: flex;
+          color: #868686;
+          .vipitem{
+            width: rem(160px);
+            padding-left: rem(30px);
+            height:rem(40px);
+            line-height:rem(60px);
+            background-repeat: no-repeat;
+            background-position: left bottom;
+            background-size: rem(25px) rem(25px);
+          }
+        }
+      }
+
+    }
+  }
+  .navbox{
+    background-color: #ffffff;
+    margin-bottom: rem(15px);
+    .items{
+      display: flex;
+      border:1px solid #cccccc;
+      .item{
+        flex:1;
+        display: flex;
+        align-items: center;
+        height:rem(120px);
+        padding:0 rem(25px);
+        border-right: 1px solid #cccccc;
+        .nav-icon{
+          width: rem(64px);
+          height:rem(64px);
+          img{
+            width: rem(64px);
+            height:rem(64px);
+          }
+        }
+        .navdetail{
+          padding-left: rem(20px);
+          .name{
+            line-height: rem(40px);
+            font-size: rem(28px);
+            color: #6cf;
+          }
+          .detail{
+            font-size: rem(22px);
+            color: #666;
+          }
+        }
+      }
+    }
+    .itemsbottom{
+      border:none;
+    }
+  }
+  .adbox{
+    margin-bottom: rem(10px);
+    .topad{
+      padding:0 rem(5px);
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: rem(10px);
+      .netbaritem{
+        display: inline-block;
+        width: rem(350px);
+        height:rem(265px);
+        background-image: url("http://static.jesport.com/sly/images/indeximages/netbar-bg.png") ;
+        background-size: rem(350px) rem(265px) ;
+        background-repeat: no-repeat;
+        a{
+          display: inline-block;
+          padding-top:rem(217px);
+          width: 100%;
+          height: 100%;
+          .adname{
+            text-align: center;
+            height:rem(48px);
+            line-height: rem(48px);
+            font-size: rem(24px);
+            color: #DED3DC;
+            background: url("http://static.jesport.com/sly/images/indeximages/netbarname.png") 100% 100% repeat-x;
+          }
+        }
+
+      }
+      //.netbarbg{
+      //  background-image: url("http://static.jesport.com/sly/images/indeximages/netbar-bg.png") ;
+      //  background-size: rem(350px) rem(265px) ;
+      //  background-repeat: no-repeat;
+      //}
+      //.turntablebg{
+      //  background-image: url("http://static.jesport.com/sly/images/indeximages/turntable-bg.png") ;
+      //  background-size: rem(350px) rem(265px) ;
+      //  background-repeat: no-repeat;
+      //}
+    }
+    .bigad{
+      margin:0 auto;
+      width: rem(700px);
+      height:rem(265px);
+      background-image: url("http://static.jesport.com/sly/images/indeximages/turntable-bg.png") ;
+      background-size: rem(700px) rem(265px) ;
+      background-repeat: no-repeat;
+      a{
+        display: inline-block;
+        padding-top:rem(217px);
+        width: 100%;
+        height: 100%;
+        .adname{
+          text-align: center;
+          height:rem(48px);
+          line-height: rem(48px);
+          font-size: rem(24px);
+          color: #DED3DC;
+          background: url("http://static.jesport.com/sly/images/indeximages/netbarname.png") 100% 100% repeat-x;
+        }
+      }
+    }
+  }
+  .barActivity{
+    .actnav{
+      padding:0 rem(20px);
+      background-color: #ffffff;
+      height:rem(80px);
+      line-height: rem(80px);
+      display: flex;
+      justify-content: space-between;
+      .title{
+        border-bottom: rem(15px) solid #ff6600;
+        font-size: rem(30px);
+      }
+      .more{
+        font-size: rem(26px);
+        color: #B6966C;
+      }
+    }
+    .actList{
+      .activityitem{
+        display: block;
+        background-color: #ffffff;
+        width: rem(740px);
+        margin: rem(10px) auto;
+        border-radius: rem(20px);
+        overflow: hidden;
+        .img{
+          width: 100%;
+          height:rem(175px);
+          img{
+            width:100%;
+            height:rem(175px);
+          }
+        }
+        .activityinfo{
+          width: 100%;
+          background-color: #FFFFFF;
+          height:rem(80px);
+          padding:0 rem(20px);
+          display: flex;
+          justify-content: space-between;
+          .info{
+            .name{
+              color: #57607C;
+              line-height: rem(40px);
+              font-size: rem(28px);
+            }
+            .date{
+              color: #aabcd6;
+              font-size: rem(22px);
+            }
+          }
+          .state{
+            line-height: rem(80px);
+            color: #0066ff;
+          }
+        }
+      }
+      .activeitem_league{
+        display: block;
+        width: rem(740px);
+        margin: rem(10px) auto;
+        border-radius: rem(20px);
+        overflow: hidden;
+        .img{
+          width: rem(740px);
+          height:rem(264px);
+          img{
+            width: rem(740px);
+            height:rem(264px);
+          }
+        }
+      }
+    }
+    .guessnav{
+      margin:rem(10px) 0;
+      padding-right:rem(20px);
+      background-color: #ffffff;
+      height:rem(80px);
+      line-height: rem(80px);
+      display: flex;
+      justify-content: space-between;
+      .title{
+        padding-left: rem(15px);
+        border-left: rem(15px) solid #ff6600;
+        font-size: rem(30px);
+      }
+      .more{
+        font-size: rem(26px);
+        color: #B6966C;
+      }
+    }
+    .guesses{
+      padding-bottom: rem(20px);
+      margin: rem(10px) 0;
+      .item{
+        width: rem(740px);
+        height: rem(260px);
+        margin: rem(10px) rem(3px) rem(10px) rem(7px);
+        color: #ffffff;
+        background-repeat: no-repeat;
+        background-size: rem(740px) rem(260px);
+        a{
+          color: #ffffff;
+        }
+        .top{
+          .title{
+            color: #f6d163;
+            padding:0 rem(20px);
+            //margin-bottom: rem(10px);
+            height: rem(60px);
+            @include betweencenter;
+            font-size: rem(26px);
+            .date{
+              color: #ffffff;
+              font-size: rem(20px);
+
+            }
+          }
+          .teams{
+            height:rem(110px);
+            @include aroundcenter;
+            margin-bottom: rem(10px);
+            padding:0 rem(10px);
+            .teaminfo{
+              display: flex;
+              .img{
+                width: rem(80px);
+                border-radius: rem(40px);
+                overflow: hidden;
+                background-color: #ffffff;
+                img{
+                  width: rem(80px);
+                  height:rem(80px);
+                }
+              }
+              .name{
+                width: rem(200px);
+                height:rem(80px);
+                line-height: rem(80px);
+                font-size: rem(30px);
+              }
+              .name-left{
+                text-align: left;
+                padding-left:rem(10px);
+              }
+              .name-right{
+                text-align: right;
+                padding-right:rem(10px);
+              }
+            }
+            .scroe{
+              font-size: rem(42px);
+              span{
+                margin: 0 rem(20px);
+              }
+            }
+          }
+        }
+        .bottom{
+          height:rem(80px);
+          width: 100%;
+          .guessover{
+            width: rem(178px);
+            height:rem(50px);
+            margin:rem(20px) auto;
+            line-height: rem(50px);
+            text-align: center;
+            border-radius: rem(10px);
+            background-color: #666666;
+            color: #ffffff;
+          }
+          a{
+            display: block;
+          }
+          .detail{
+            width: 100%;
+            height:rem(80px);
+            padding: 0 rem(40px);
+            display: flex;
+            align-items: center;
+            .bet{
+              width: rem(124px);
+              height:rem(46px);
+              line-height: rem(46px);
+              padding-left:rem(48px);
+              background-repeat: no-repeat;
+              background-size: rem(124px) rem(46px);
+            }
+            .left{
+              background-image: url("http://static.jesport.com/sly/images/newIndex/blue_bet.png");
+              color: #0099FF;
+            }
+            .right{
+              background-image: url("http://static.jesport.com/sly/images/newIndex/orng_bet.png");
+              color: #f6894e;
+            }
+            .newquestion{
+              flex: 1;
+              text-align: center;
+              .guessdetail{
+                color: #000;
+                font-size: rem(26px);
+                line-height: rem(40px);
+              }
+              .godetail{
+                font-size: rem(20px);
+                color: #0066ff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
