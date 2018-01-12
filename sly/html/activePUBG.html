@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;background-color: #f2f2f2;" >
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta http-equiv="pragma"   content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+    <meta http-equiv="expires" content="Wed,26 Feb 1998 08:21:57 GMT" />
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/active-pb.css?v=201712151408">
+    <title>魔圣电竞大师</title>
+</head>
+<body>
+<div></div>
+<div class="active-pubg-background"><img src="http://static.jesport.com/sly/images/active-pb/pubg_background.jpg" alt=""></div>
+<div class="active-pubg" id="app">
+    <div class="pubgheader">
+        <a href="Javascript:history.go(-1)" class="return"><img src="http://static.jesport.com/sly/images/icon-left.png" alt=""><span>返回</span></a>
+        <div class="title">绝地求生网吧赛</div>
+        <a href="index.html" class="icon-home"></a>
+    </div>
+    <div class="logoimg">
+        <img src="http://static.jesport.com/sly/images/active-pb/LOGO.png" alt="">
+        <div class="award">￥ {{matchinfo.winRmb}}</div>
+    </div>
+    <div class="info">{{matchinfo.startTime}} 亚服、{{matchinfo.type==1?"单人":matchinfo.type==2?"双人":"四人"}}</div>
+    <div class="signin-btn" @click="signin"><img src="http://static.jesport.com/sly/images/active-pb/sign-btn.png" alt=""></div>
+    <div class="more" @click="moreMatch">查看所有可报名的比赛>></div>
+    <div class="info">关注“魔杰互娱”公众号随时报名、领取吃鸡奖励</div>
+    <div class="code">
+        <img src="http://static.jesport.com/sly/images/active-pb/code.png" alt="">
+    </div>
+</div>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="../js/common2.js?v=201712151408"></script>
+<!--<script type="text/javascript" src="../js/active-pb.js?v=201712151416"></script>-->
+<script type="text/javascript">
+    new Vue({
+        el:"#app",
+        data(){
+            return {
+                matchinfo:{},
+            }
+        },
+        created(){
+            this.getlist()
+        },
+        methods:{
+            getlist(){
+                var _this=this;
+                $.getJSON(listUrl+"pb/match/list?begin=1",function(json){
+                    console.log(json)
+                    if(json.errCode==0){
+                        if(json.matchList.length>0){
+                            _this.matchinfo=json.matchList[0];
+                        }
+                    }
+                })
+            },
+            signin(){
+                window.location.href="active-pb.html?id="+this.matchinfo.id
+            },
+            moreMatch(){
+                window.location.href="pubgList.html"
+            }
+        }
+    })
+</script>
+</body>
+</html>
