@@ -4,13 +4,19 @@ new Vue({
         return {
             loginMemberId:0,
             maskShow:false,
+            nextPage:false,
             tabindex:0,
+            memberFinance:0,
+            balance:0,
             matchList:[],
+            matchdata:{},
         }
     },
     created(){
         this.islogin();
-        this.getpbList();
+        //this.getpbList();
+        this.showPage();
+
     },
     methods:{
         islogin(){
@@ -19,7 +25,7 @@ new Vue({
                 var url=window.location.href;
                 setCookie('return',url);
                 _this.loginMemberId=json.loginMemberId;
-                if(_this.loginMemberId==0){
+                if(_this.loginMemberId==0 && url.indexOf('app=ios')<0){
                     window.location.href='activegologin.html'
                 }
             })
@@ -31,10 +37,35 @@ new Vue({
         tabclick(i){
             this.tabindex=i;
             if(i==0){
+                setCookie("showPage","allList");
                 this.getpbList();
             }else{
+                setCookie("showPage","mylist");
                 this.getmyList();
+                this.matchData();
             }
+        },
+        //
+        showPage(){
+            if(getCookie("showPage")=="mylist"){
+                this.tabindex=1;
+                this.getmyList();
+                this.matchData();
+            }else{
+                this.getpbList();
+            }
+        },
+        matchData(){
+            var _this=this;
+            $.getJSON(listUrl+"pb/member/matchdata",function(json){
+                _this.matchdata=json.matchRankTo;
+            })
+            $.getJSON(listUrl+"member/index",function(json){
+                _this.balance=json.memberBean;
+            })
+            $.getJSON(listUrl+"member/finance",function(json){
+                _this.memberFinance=json.memberFinance;
+            })
         },
         //获取全部比赛列表
         getpbList(){

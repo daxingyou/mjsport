@@ -6,7 +6,7 @@
     <meta content="yes" name="apple-touch-fullscreen">
     <meta content="telephone=no,email=no" name="format-detection">
     <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
-    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201710311341">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201801041043">
     <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
     <title>魔圣电竞大师</title>
 </head>
@@ -29,14 +29,19 @@
                 </div>
                 <div class="item bag" @click="showQrcode" v-cloak>
                     <span class="name">红包</span>
-                    <span class="val">{{financeInfo!=null?financeInfo.balanceMoney:0}}</span>
+                    <span class="val">{{memberFinance!=null?memberFinance.balanceMoney:0}}</span>
                 </div>
             </div>
             <div class="navbox">
-                <a href="leagueIndex.html" class="navitem">
-                    <div class="icon" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_5.png')"></div>
-                    <div class="name">高校联赛</div>
+                <a v-if="firstAdvShow" :href="firstAdv.url" class="navitem" >
+                    <!--<div class="icon"><img :src="firstAdv.img" alt=""></div>-->
+                    <div class="icon" :style="{backgroundImage: 'url('+firstAdv.img+')'}"></div>
+                    <div class="name">{{firstAdv.title}}</div>
                 </a>
+                <!--<a href="leagueIndex.html" class="navitem">-->
+                    <!--<div class="icon" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_5.png')"></div>-->
+                    <!--<div class="name">高校联赛</div>-->
+                <!--</a>-->
                 <a href="newGuessRecords.html" class="navitem">
                     <div class="icon" style="background-image: url('http://static.jesport.com/sly/images/newIndex/icon_7.png')"></div>
                     <div class="name">竞猜记录</div>
@@ -100,7 +105,7 @@
 <script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
-<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201710311341"></script>
-<script type="text/javascript" src="http://static.jesport.com/sly/js/newProfile.js?version=201710311541"></script>
+<script type="text/javascript" src="../js/common.js?version=201801081030"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/newProfile.js?version=201801081330"></script>
 </body>
 </html>

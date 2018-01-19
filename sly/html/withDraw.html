@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?v=201712151408">
+    <link rel="stylesheet" href="../css/shark.css?v=201801081425">
     <title>魔圣电竞大师</title>
 </head>
 <body>
@@ -47,9 +47,13 @@
             <div class="content">
                 <div class="withList">
                     <div class="item" v-for="item in withdraw">
-                        <span>{{item.createdDate}}</span>提现<span>{{item.money}}</span>
+                        <span>{{item.createdDate}}</span>
+                        提现
+                        <span>{{item.money}}</span>
                         <span class="state">{{item.status=="SUCCESS"?"提现成功":item.status=="INIT"?"未审核":item.status=="FAIL"?"提现失败":"提现中"}}</span>
+                        <span>{{item.reason}}</span>
                     </div>
+                    <div class="nodata" v-if="withdraw.length==0">暂无数据</div>
                 </div>
             </div>
             <div class="pagebtn">
@@ -97,10 +101,33 @@
             <div class="attention">*红包提现后，会在3-5个工作日后打到您的支付宝账号中去。</div>
             <div class="attention"> *提现金额为200-5000元</div>
         </div>
+        <!--申请成功-->
+        <div class="addaccount alert-show" v-if="successShow">
+            <div class="title" >红包提现申请成功<div class="close" @click="maskClick">&times;</div></div>
+            <div class="infobox">
+                <div class="item">
+                    <div class="name">支付宝:</div>
+                    <div class="">{{accountlist.accountInfo}}</div>
+                </div>
+                <div class="item">
+                    <div class="name">金额:</div>
+                    <div class="">{{money}}元</div>
+                </div>
+                <div class="msg">红包在3-5个工作日后打到您的支付宝账号中去。</div>
+            </div>
+            <div class="btnbox">
+                <div class="btn submit" @click="successBtn">确认</div>
+            </div>
+        </div>
+
+        <div class="alert-msg" v-if="msgShow">
+            <div class="alert-msg-content">{{msg}}</div>
+            <div class="alert-msg-btn" @click="msgClick">确认</div>
+        </div>
     </div>
     <script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
     <script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
-    <script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201712151408"></script>
-    <script type="text/javascript" src="http://static.jesport.com/sly/js/withdraw.js?v=201712151416"></script>
+    <script type="text/javascript" src="../js/common2.js?v=201801081425"></script>
+    <script type="text/javascript" src="../js/withdraw.js?v=201801081425"></script>
 </body>
 </html>

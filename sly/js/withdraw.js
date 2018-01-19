@@ -3,8 +3,11 @@ new Vue({
     data(){
         return {
             maskShow:false,
+            msgShow:false,
+            msg:"",
             addShow:false,
             widthdrawshow:false,
+            successShow:false,
             loginMemberId:0,
             memberInfo:{},
             financeInfo:{},
@@ -55,7 +58,8 @@ new Vue({
             if(_this.clickstate){
                 if(  !/^1[34578]\d{9}$/.test(_this.memberInfo.mobile) ){
                     _this.clickstate=false;
-                    alert("手机号码有误,请重填！");
+                    _this.msg="手机号码有误,请重填！";
+                    this.msgShow=true;
                     return false;
                 }else {
                     var data  = {
@@ -74,7 +78,8 @@ new Vue({
                             },1000)
                         }
                         else {
-                            alert(json.errMsg);
+                            _this.msg=json.errMsg;
+                            this.msgShow=true;
                         }
                     });
                 }
@@ -84,10 +89,13 @@ new Vue({
             var _this=this;
             $.getJSON(listUrl+"member/withdraw/account/add",_this.accountdata,function(json){
                 if(json.errCode==0){
-                    alert(json.errMsg);
-                    window.location.reload();
+                    _this.msg=json.errMsg;
+                    _this.addShow=false;
+                    _this.msgShow=true;
                 }else{
-                    alert(json.errMsg)
+                    _this.msg=json.errMsg;
+                    _this.addShow=false;
+                    _this.msgShow=true;
                 }
             })
         },
@@ -96,9 +104,9 @@ new Vue({
             var _this=this;
             $.getJSON(listUrl+"member/withdraw/account/list",function(json){
                 _this.financeInfo=json.financeInfo;
-                _this.accountlist=json.accountList[0];
-                _this.accountlist.accountInfo=json.accountList[0].accountInfo.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
-                _this.accountlist.realName=json.accountList[0].realName.replace(/([\u4e00-\u9fa5]{1})([\u4e00-\u9fa5]{1})([\u4e00-\u9fa5]{1})/, '*$2$3')
+                _this.accountlist=json.accountList[0]?json.accountList[0]:'';
+                _this.accountlist.accountInfo=json.accountList[0]?json.accountList[0].accountInfo.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2'):'',
+                _this.accountlist.realName=json.accountList[0]?json.accountList[0].realName.replace(/([\u4e00-\u9fa5]{1})([\u4e00-\u9fa5]{1})([\u4e00-\u9fa5]{1})/, '*$2$3'):'';
             })
         },
         //提现列表
@@ -150,31 +158,65 @@ new Vue({
         },
         //发起提现
         widthdrawadd(){
-            this.maskShow=true;
-            this.widthdrawshow=true;
+            if(!this.accountlist){
+                this.maskShow=true;
+                this.widthdrawshow=true;
+            }else{
+                this.msg="请先添加支付宝信息！";
+                this.msgShow=true;
+                this.maskShow=true;
+            }
         },
         withdrawSubmit(){
             var _this=this;
-            console.log(_this.accountlist.id)
             var data={
                 id:_this.accountlist.id,
                 money:_this.money
             }
-            if(data.money<0){
-                alert("请填入正确提现金额")
+            function isInteger(obj) {
+                return  parseInt(obj, 10) === obj
+            }
+            this.widthdrawshow=false;
+
+            if(data.money>_this.financeInfo.balanceMoney) {
+                _this.msg="余额不足！";
+                this.msgShow=true;
+            }else if(data.money*1 <200 ||data.money*1>5000){
+                _this.msg="请填入正确提现金额(200-5000)";
+                this.msgShow=true;
+            }else if(!isInteger(data.money/1)){
+                console.log(isInteger(data.money/1))
+                _this.msg="请填入整数提现金额";
+                this.msgShow=true;
+            }else{
+                this.widthdrawshow=false;
+                _this.successShow=true;
+                _this.maskShow=true;
+            }
+        },
+        successBtn(){
+            var _this=this;
+            var data={
+                id:_this.accountlist.id,
+                money:_this.money
             }
             $.getJSON(listUrl+"member/withdraw/add",data,function(json){
-                console.log(json.errCode);
                 if(json.errCode==0){
-                    alert(json.errMsg);
-                    window.location.reload()
-                }else{
-                    alert(json.errMsg);
+                    _this.msg=json.errMsg;
+                    this.msgShow=true;
+                }else if(json.errCode==10024){
+                    _this.msg=json.errMsg;
+                    this.msgShow=true;
                 }
             })
         },
+        msgClick(){
+            window.location.reload();
+        },
         maskClick(){
             this.maskShow=false;
+            this.msgShow=false;
+            this.successShow=false;
             this.addShow=false;
             this.widthdrawshow=false;
         },

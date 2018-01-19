@@ -6,6 +6,7 @@ new Vue({
             guessInfo:{},
             optionsList:[],
             maskShow:false,
+            questShow:false,
             betQuestion:"",
             betAns:{},
             optionid:null,
@@ -14,6 +15,8 @@ new Vue({
             memberBean:{},
             state:0,
             tabs:["全部"],
+            msgShow:false,
+            msg:"",
         }
     },
     created(){
@@ -74,6 +77,7 @@ new Vue({
         //下注
         bet(item,x){
             this.maskShow=true;
+            this.questShow=true;
             this.betQuestion=item.questionTitle;
             this.optionid=item.optionid;
             this.betAns=x;
@@ -97,23 +101,31 @@ new Vue({
             console.log(data);
             if(this.vote){
                 $.getJSON(listUrl+"officil/guess/bet",data,function(json){
-                    alert(json.errMsg);
+                    _this.msg=json.errMsg;
+                    _this.questShow=false;
+                    _this.msgShow=true;
                     if(json.errCode==0){
                         $.getJSON(listUrl+"member/index",function(json){
                             _this.memberBean=json.memberBean
                         })
                     }
-                    _this.maskShow=false;
-                    _this.vote=null;
                 })
             }else{
-                alert("请输入投注数量!")
+                _this.msg="请输入投注数量!";
+                _this.questShow=false;
+                _this.msgShow=true;
             }
 
         },
         maskIsShow(){
             this.maskShow=false
+            this.questShow=false
             this.vote=null;
+        },
+        msgClick(){
+            this.maskShow=false
+            this.vote=null;
+            this.msgShow=false;
         },
         //问题列表
         getOptionsList(){
@@ -168,8 +180,7 @@ new Vue({
             })
         }
     },
-    mounted(){
-    },
+
 })
 function sharefunc () {
     var url=window.location.href;

@@ -8,7 +8,7 @@ var slyUrl   = '';
 //var slyUrl = 'http://m.jesport.com/sly/';
 var listUrl1 = 'http://192.168.1.128:8080/sly/';
 var listUrl = 'http://192.168.1.128:8080/sly/';
-//var slyUrl   = 'http://192.168.1.128:8080/sly/';
+var slyUrl   = 'http://192.168.1.128:8080/sly/';
 
 
 //判断是否登录
@@ -24,12 +24,14 @@ var listUrl = 'http://192.168.1.128:8080/sly/';
 //	}
 //} else
 //{
-//	$.getJSON(listUrl+'islogin',function(json){
-//		localStorage.setItem("netbarId", json.netbarId);
-//		if((json.loginMemberId == 0 && url.indexOf('gologin.html') <0)&&(url.indexOf('index.html')<0)){
-//			window.location.href = 'gologin.html';
-//		}
-//	});
+	var url = window.location.href;
+	$.getJSON(listUrl+'islogin',function(json){
+		localStorage.setItem("netbarId", json.netbarId);
+		if((json.loginMemberId == 0 && url.indexOf('gologin.html') <0)&&(url.indexOf('index.html')<0)){
+			setCookie('return',url);
+			window.location.href = 'gologin.html';
+		}
+	});
 //}
 // 判断是否是微信
 function isWeiXin(){
@@ -541,4 +543,30 @@ function getCookie(name)
 	else
 		return null;
 }
+var Alert = function($,msg,type,fn){
+	$('body').append('<div class="alert-msg"><span></span><img src="http://static.jesport.com/backend2/images/'+type+'.png" alt=""></div>');
+	$(".msg span").text(msg);
+	var t=setTimeout(function(){
+		alert("1")
+		$(".msg").remove();
+		if(fn){
+			fn();
+		}
+	},10000);
+}
 
+//顶部标题
+var headerTitle =function(title,url,isShow){
+	if(isShow && !isWeiXin()){
+		return'<div class="headertitle" >' +
+			'<a href="'+url+'"  class="return"><img src="http://static.jesport.com/sly/images/icon-left.png" alt=""><span>返回</span></a>' +
+			'<div class="title">'+title+'</div>' +
+			'<a href="index.html" class="icon-home"></a>' +
+			'</div>'
+	}else{
+		return'<div class="headertitle" >' +
+			'<div class="title">'+title+'</div>' +
+			'</div>'
+	}
+
+}

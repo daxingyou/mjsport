@@ -1,3 +1,4 @@
+$("#app").prepend(headerTitle('竞猜','JavaScript:;',false));
 new Vue({
     el:"#app",
     data(){

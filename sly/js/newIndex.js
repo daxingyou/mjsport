@@ -1,3 +1,4 @@
+//$("#app").prepend(headerTitle('首页','JavaScript:;',true));
 new Vue({
     el:"#app",
     data(){
@@ -104,7 +105,7 @@ new Vue({
         this.getSwiper()
     }
 })
-if(isWeiXin()){
-    var url=window.location.href;
-    shareWx("魔圣电竞大师","热门赛事竞猜，更多幸运大奖",url, "http://static.jesport.com/sly/html/favicon.ico",url);
-}
+//if(isWeiXin()){
+//    var url=window.location.href;
+//    shareWx("魔圣电竞大师","热门赛事竞猜，更多幸运大奖",url, "http://static.jesport.com/sly/html/favicon.ico",url);
+//}

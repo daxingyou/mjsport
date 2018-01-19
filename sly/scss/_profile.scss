@@ -318,19 +318,20 @@
 		padding:0 rem(20px);
 		max-height: rem(700px);
 		.title{
-			height:rem(60px);
-			line-height: rem(50px);
+			height:rem(100px);
+			line-height: rem(60px);
 			color: #999999;
 			font-size: rem(28px);
 		}
 		.content{
-			padding-bottom: rem(30px);
+			padding-bottom: rem(20px);
+			font-size: rem(26px);
 			.hbbox{
-				width: rem(260px);
-				height:rem(50px);
-				line-height: rem(50px);
+				width: rem(300px);
+				height:rem(70px);
+				line-height: rem(70px);
 				padding-left:rem(72px);
-				font-size: rem(20px);
+				font-size: rem(24px);
 				color: #575F7B;
 				border: rem(1px) solid #D92209 ;
 				border-radius: rem(25px);
@@ -338,7 +339,7 @@
 				background-image: url('http://static.jesport.com/sly/images/newProfile/icon_6.png');
 				background-repeat: no-repeat;
 				background-size: rem(32px) rem(32px);
-				background-position: rem(30px) rem(9px);
+				background-position: rem(32px) rem(19px);
 				.num{
 					margin:0 rem(10px);
 					color: #FF0000;
@@ -347,10 +348,10 @@
 			}
 			.btn-withdraw{
 				background-color: #D92209;
-				width: rem(260px);
-				height:rem(50px);
+				width: rem(320px);
+				height:rem(70px);
 				color: #FFFFFF;
-				line-height: rem(50px);
+				line-height: rem(70px);
 				text-align: center;
 				border: rem(1px) solid #D92209 ;
 				border-radius: rem(25px);
@@ -377,13 +378,16 @@
 			}
 			.info-btn{
 				background-color: #6699FF;
-				width: rem(260px);
-				height:rem(50px);
+				width: rem(320px);
+				height:rem(70px);
 				color: #FFFFFF;
-				line-height: rem(50px);
+				line-height: rem(70px);
 				text-align: center;
 				border-radius: rem(25px);
 				margin:0 auto;
+			}
+			.withList{
+				font-size: rem(24px);
 			}
 		}
 		.pagebtn{
@@ -401,9 +405,9 @@
 		}
 	}
 	.addaccount,.alert-show{
-		position: fixed;
+		position: absolute;
 		z-index: 100;
-		top:rem(240px);
+		top:rem(150px);
 		left:0;
 		right:0;
 		margin:auto;
@@ -479,6 +483,7 @@
 			display: flex;
 			justify-content: center;
 			margin-bottom: rem(20px);
+			margin-top: rem(20px);
 			.btn{
 				width: rem(260px);
 				height:rem(68px);

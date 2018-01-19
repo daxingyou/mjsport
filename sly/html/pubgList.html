@@ -13,18 +13,64 @@
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201711091553">
-    <link rel="stylesheet" href="http://static.jesport.com/sly/css/active-pb.css?v=201712151408">
+    <link rel="stylesheet" href="../css/active-pb.css?v=201801181743">
     <title>魔圣电竞大师</title>
 </head>
 <body>
+<div class="active-pubg-background"><img src="http://static.jesport.com/sly/images/active-pb/pubg_background.jpg" alt=""></div>
 <div class="pubgList" id="app">
-    <div class="headertitle"><div class="return-left"><a href="javascript:history.go(-1);"></a></div><div>绝地求生比赛</div><div class="right"></div></div>
+    <div class="pubgheader">
+        <div class="back"><a href="Javascript:history.go(-1)"></a></div>
+        <div class="title">绝地求生网吧赛</div>
+        <a href="index.html" class="icon-home"></a>
+    </div>
     <div class="tabs">
         <div class="tabitem" :class="{active:tabindex==0}" @click="tabclick(0)" >全部比赛</div>
         <div class="line"></div>
         <div class="tabitem" :class="{active:tabindex==1}" @click="tabclick(1)">我的比赛</div>
     </div>
+    <div class="memberInfo" v-if="tabindex==1">
+        <div class="unit personal">
+            <div class="title">个人战绩</div>
+            <div class="items">
+                <div class="item">
+                    <div class="name">吃鸡次数</div>
+                    <div class="val">{{matchdata?matchdata.winCnt:"0"}}次</div>
+                    <div class="rank">排名{{matchdata?matchdata.winRank:"0"}}</div>
+                </div>
+                <div class="item">
+                    <div class="name">参赛次数</div>
+                    <div class="val">{{matchdata?matchdata.joinCnt:"0"}}次</div>
+                    <div class="rank">排名{{matchdata?matchdata.joinRank:"0"}}</div>
+                </div>
+                <div class="item">
+                    <div class="name">吃鸡率</div>
+                    <div class="val">{{matchdata?matchdata.winRate:"0"}}%</div>
+                    <div class="rank">排名{{matchdata?matchdata.winRateRank:"0"}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="unit personal">
+            <div class="title">我的奖励</div>
+            <div class="items">
+                <div class="item">
+                    <div class="name">红包</div>
+                    <div class="val">{{memberFinance.balanceMoney}}元</div>
+                    <a href="withDraw.html" class="rank color">立即提现</a>
+                </div>
+                <div class="item">
+                    <div class="name">魔豆</div>
+                    <div class="val">{{balance.balanceBean}}<img src="http://static.jesport.com/sly/images/common/icon-md.png" alt="" /></div>
+                    <a href="exchangeMd.html" class="rank color">充值魔豆</a>
+                </div>
+                <div class="item">
+                    <a href="shop.html" class="rank color2">魔豆兑换</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="pbList">
+        <div class="title1" v-if="tabindex==1">参赛纪录</div>
         <div class="item" v-for="item in matchList" @click="goActivedetail(item.id)" :style="{backgroundImage:'url(http://static.jesport.com/sly/images/active-pb/bk_' + item.picindex +'.png)'}">
             <div class="title">
                 <div class="name">{{item.name}}</div>
@@ -52,6 +98,8 @@
                 <div class="img"><img src="http://static.jesport.com/sly/images/active-pb/win.png" alt=""></div>
             </div>
         </div>
+        <div class="nomore" v-if="!nextPage && matchList.length>0 && tabindex==0">没有更多比赛了～</div>
+        <div class="nomore" v-if="!nextPage && matchList.length==0 && tabindex==1">你还没有参加过比赛哦～</div>
         <div class="nodata" v-if="matchList.length==0">没有记录</div>
     </div>
     <!--赛事竞猜-->
@@ -59,20 +107,15 @@
     <!--遮罩-->
     <div class="mask" v-if="maskShow" @touchmove.prevent @click="maskShowclick"></div>
 </div>
-<div id="newFooter">
-    <div class="menu">
-        <a href="index.html"><div class="icon-home-hover"></div><div class="menu-item active" >首页</div></a>
-        <a href="newCorps.html"><span class="icon-corps"></span><span class="menu-item" >网吧</span></a>
-        <a href="newGuessList.html" ><span class="icon-match"></span><span class="menu-item" >竞猜</span></a>
-        <a href="profile.html"><span class="icon-profile"></span><span  class="menu-item" >个人</span></a>
-    </div>
-</div>
+
+
 <script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.form.min.js"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
-<script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201712151408"></script>
+<script type="text/javascript" src="../js/common2.js?v=201712151408"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/pubgList.js?v=201712151416"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/addCode.js?v=201712151416"></script>
 </body>
 </html>

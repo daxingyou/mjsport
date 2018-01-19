@@ -5,9 +5,9 @@ var slyUrl   = '';
 //var slyUrl   = 'http://m.jesport.com/sly/';
 //var listUrl = 'http://m.jesport.com/sly/';
 //var slyUrl = 'http://m.jesport.com/sly/';
-var listUrl1 = 'http://192.168.1.128:8080/sly/';
-var listUrl = 'http://192.168.1.128:8080/sly/';
-var slyUrl   = 'http://192.168.1.128:8080/sly/';
+//var listUrl1 = 'http://192.168.1.128:8080/sly/';
+//var listUrl = 'http://192.168.1.128:8080/sly/';
+//var slyUrl   = 'http://192.168.1.128:8080/sly/';
 
 //判断是否登录
 //var url = window.location.href;
@@ -255,3 +255,13 @@ function getCookie(name)
 	else
 		return null;
 }
+
+var codeshow=function (){
+	return '<div class="codeBottom" id="showCodeClick">' +
+		'<img src="http://static.jesport.com/sly/images/common/icon-code.png" alt="">' +
+		'<span>点击关注公众号“魔杰互娱”随时报名、领取奖励</span></div>' +
+		'<div class="codeShow"><div class="title" id="closeCodeClick">&times;</div>' +
+		'<div class="content"><img src="http://static.jesport.com/sly/images/active-pb/code.png" alt="">' +
+		'<div>长按关注公众号“魔杰互娱”随时报名、领取奖励</div></div></div>'
+};
+

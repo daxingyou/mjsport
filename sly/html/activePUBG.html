@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../css/active-pb.css?v=201712151408">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/active-pb.css?v=201801181743">
     <title>魔圣电竞大师</title>
 </head>
 <body>
@@ -41,14 +41,14 @@
 <script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.form.min.js"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
-<script type="text/javascript" src="../js/common2.js?v=201712151408"></script>
-<!--<script type="text/javascript" src="../js/active-pb.js?v=201712151416"></script>-->
+<script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201712151408"></script>
 <script type="text/javascript">
     new Vue({
         el:"#app",
         data(){
             return {
                 matchinfo:{},
+                loginMemberId:0,
             }
         },
         created(){
@@ -63,14 +63,27 @@
                         if(json.matchList.length>0){
                             _this.matchinfo=json.matchList[0];
                         }
+                        _this.loginMemberId=json.loginMemberId;
                     }
                 })
             },
             signin(){
-                window.location.href="active-pb.html?id="+this.matchinfo.id
+                var _this=this;
+                if(_this.loginMemberId==0){
+                    setCookie("return","activePUBG.html");
+                    window.location.href="activegologin.html";
+                }else{
+                    window.location.href="active-pb.html?id="+this.matchinfo.id
+                }
             },
             moreMatch(){
-                window.location.href="pubgList.html"
+                var _this=this;
+                if(_this.loginMemberId==0){
+                    setCookie("return","activePUBG.html");
+                    window.location.href="activegologin.html";
+                }else {
+                    window.location.href = "pubgList.html"
+                }
             }
         }
     })

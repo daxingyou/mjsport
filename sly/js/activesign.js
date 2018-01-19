@@ -23,33 +23,36 @@ new Vue({
         getCode(){
             var _this = this;
             _this.clickstate=true;
-            if(_this.clickstate){
-                if(  !/^1[34578]\d{9}$/.test(this.mobile) ){
-                    alert("手机号码有误,请重填！");
-                    return false;
-                }else {
-                    var data  = {
-                        act : 'login',
-                        mobile: this.mobile
+            if(_this.validate=='获取验证码' || _this.validate=='重新获取'){
+                if(_this.clickstate){
+                    if(  !/^1[34578]\d{9}$/.test(this.mobile) ){
+                        alert("手机号码有误,请重填！");
+                        return false;
+                    }else {
+                        var data  = {
+                            act : 'login',
+                            mobile: this.mobile
+                        }
+                        $.getJSON(listUrl+'member/sms/getcode',data,function(json){
+                            if(!json.errCode){
+                                _this.validate = 60;
+                                _this.timer = setInterval(function(){
+                                    _this.validate--;
+                                    if(_this.validate == 0){
+                                        _this.validate = '重新获取';
+                                        _this.clickstate=false;
+                                        clearInterval(_this.timer);
+                                    }
+                                },1000)
+                            }
+                            else {
+                                alert(json.errMsg);
+                            }
+                        });
                     }
-                    $.getJSON(listUrl+'member/sms/getcode',data,function(json){
-                        if(!json.errCode){
-                            _this.validate = 60;
-                            _this.timer = setInterval(function(){
-                                _this.validate--;
-                                if(_this.validate == 0){
-                                    _this.validate = '重新获取';
-                                    _this.clickstate=false;
-                                    clearInterval(_this.timer);
-                                }
-                            },1000)
-                        }
-                        else {
-                            alert(json.errMsg);
-                        }
-                    });
                 }
             }
+
 
         },
         ajaxSubmit(){

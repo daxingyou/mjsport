@@ -1,0 +1,126 @@
+.platform-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width:100%;
+  max-width: 1500px;
+  height: rem(86px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:0 rem(20px);
+  background: url("http://static.jesport.com/sly/images/common/title.png?v=201801191810") repeat 0 0;
+  background-size: 100% 100%;
+  .back{
+    width: rem(48px);
+    height:rem(86px);
+    background: url("http://static.jesport.com/sly/images/common/back.png") no-repeat 0 0;
+    background-size: rem(22px) 100%;
+  }
+  .title{
+    flex: 1;
+    text-align: center;
+    font-size: rem(40px);
+    color: #FFFFFF;
+
+  }
+  .home{
+    width: rem(48px);
+    height:rem(86px);
+    background: url("http://static.jesport.com/sly/images/common/backhome.png") no-repeat 0 0;
+    background-size: 100% 100%;
+  }
+  a{
+    display: block;
+    width: 100%;
+    height:rem(86px);
+  }
+}
+.login,.login-dark{
+  height:100%;
+  padding-top: rem(86px);
+  .logo{
+    padding-top: rem(71px);
+    width: 100%;
+    height:rem(498px);
+    img{
+      width: rem(365px);
+      height:auto;
+      margin: 0 auto;
+    }
+  }
+  .item{
+    width: rem(540px);
+    height:rem(80px);
+    border: rem(2px) solid #B6C2D3;
+    margin: 0 auto rem(30px) auto;
+    .input{
+      padding-left:rem(100px);
+      width: 100%;
+      height:rem(80px);
+      line-height: rem(80px);
+      color: #666666;
+    }
+    .input::placeholder{
+      color: #D7DCE9;
+    }
+  }
+  .telnum{
+    background: url("http://static.jesport.com/sly/images/login/phone_dark.png") no-repeat 0 0 ;
+    background-size: rem(80px) rem(80px);
+  }
+  .code{
+    background: url("http://static.jesport.com/sly/images/login/password_dark.png") no-repeat 0 0 ;
+    background-size: rem(80px) rem(80px);
+    position: relative;
+    .getCode{
+      position: absolute;
+      right:0;
+      top:0;
+      width: rem(186px);
+      height: rem(76px);
+      line-height: rem(76px);
+      background-color: #5FBFC1;
+      text-align: center;
+      font-size: rem(24px);
+      color: #FFFFFF;
+    }
+    .getCode.active{
+      background:#999999;
+      color: #000;
+    }
+  }
+  .item-validatePhone{
+    padding-top:rem(90px);
+    .validatePhone{
+      width: rem(540px);
+      margin:0 auto;
+      height:rem(80px);
+      line-height: rem(80px);
+      text-align: center;
+      background-color: #5FBFC1;
+      color: #FFFFFF;
+      font-size: rem(40px);
+    }
+  }
+}
+.login-dark{
+  background: url("http://static.jesport.com/sly/images/login/backgroud_dark.jpg") no-repeat 0 0 ;
+  background-size: 100% 100%;
+  .item{
+    .input{
+      color: #FFFFFF;
+    }
+  }
+  .telnum{
+    background: url("http://static.jesport.com/sly/images/login/phone_light.png") no-repeat 0 0 ;
+    background-size: rem(80px) rem(80px);
+  }
+  .code{
+    background: url("http://static.jesport.com/sly/images/login/password_light.png") no-repeat 0 0 ;
+    background-size: rem(80px) rem(80px);
+    position: relative;
+  }
+}

@@ -12,14 +12,18 @@
     <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="http://static.jesport.com/sly/css/active-pb.css?v=201712151408">
+    <link rel="stylesheet" href="http://static.jesport.com/sly/css/active-pb.css?v=201801181743">
     <title>魔圣电竞大师</title>
 </head>
 <body>
+<div class="active-pubg-background"><img src="http://static.jesport.com/sly/images/active-pb/pubg_background.jpg" alt=""></div>
 <div class="active-pb" id="app">
-    <div class="banner">
+    <div class="pubgheader">
         <div class="back"><a href="pubgList.html"></a></div>
-        <div class="title"></div>
+        <div class="title">绝地求生网吧赛</div>
+        <a href="index.html" class="icon-home"></a>
+    </div>
+    <div class="banner">
         <div class="type">{{matchinfo.type==1?"单排":matchinfo.type==1?"双排":"四排"}}</div>
         <div class="time">{{matchinfo.startTime}} 开赛</div>
         <div class="award" v-if="matchinfo.state==2 && matchinfo.winEnrollNickname">本次冠军: <span>{{matchinfo.winEnrollNickname}}</span></div>
@@ -83,16 +87,17 @@
     </div>
     <!--赛事竞猜-->
     <div class="guessState" v-if="tabindex==1">
-        <div class="state" :class="{active:guessinfo.state==1}">{{guessinfo.state==1?"投注中":guessinfo.state==2?"已截投":guessinfo.state==3?"已开奖":"无竞猜"}}</div>
+        <div></div>
+        <!--<div class="state" :class="{active:guessinfo.state==1}">{{guessinfo.state==1?"投注中":guessinfo.state==2?"已截投":guessinfo.state==3?"已开奖":"无竞猜"}}</div>-->
         <div class="button">
-            <div class="betlist"><a href="newGuessRecords.html"><img src="http://static.jesport.com/sly/images/active-pb/betlist.png" alt=""></a></div>
-            <div class="exchange"><a href="shop.html"><img src="http://static.jesport.com/sly/images/active-pb/exchange.png" alt=""></a></div>
+            <a href="shop.html" class="exchange"><img class="img1" src="http://static.jesport.com/sly/images/common/icon-md.png" alt=""> <span class="mdnumber">{{memberBean.balanceBean}}</span></a>
+            <a href="newGuessRecords.html" class="betlist"><img class="img2" src="http://static.jesport.com/sly/images/common/icon-code.png" alt=""><span>投注记录</span></a>
         </div>
     </div>
     <div class="questionList" v-if="tabindex==1">
         <div class="qitem" v-for="item in optionsList">
             <div class="title">
-                <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/hummer.png" alt=""></div>
+                <div class="img"><img src="http://static.jesport.com/sly/images/common/question.png" alt=""></div>
                 <div class="questionitem">{{item.questionTitle}}</div>
             </div>
             <div class="newanswers" :class="{newanswers2:item.answer.length>4}">
@@ -105,7 +110,7 @@
             </div>
         </div>
     </div>
-    <div class="nodata" v-if="tabindex==1&&optionsList.length==0">暂无竞猜</div>
+    <div class="nodata" v-if="tabindex==1&&optionsList.length==0">本次比赛没有竞猜哦～</div>
     <!--遮罩-->
     <div class="mask2" v-if="maskShow" @touchmove.prevent @click="maskShowclick"></div>
     <!--竞猜弹框-->
@@ -183,5 +188,7 @@
 <script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/common2.js?v=201712151408"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/active-pb.js?v=201712151416"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/addCode.js?v=201712151416"></script>
+
 </body>
 </html>

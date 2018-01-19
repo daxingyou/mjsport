@@ -20,30 +20,33 @@ new Vue({
         },
         getCode(){
             var _this = this;
-            if(  !/^1[34578]\d{9}$/.test(this.mobile) ){
-                alert("手机号码有误,请重填！");
-                return false;
-            }else {
-                var data  = {
-                    act : 'login',
-                    mobile: this.mobile
-                }
-                $.getJSON(listUrl+'member/sms/getcode',data,function(json){
-                    if(!json.errCode){
-                      _this.validate = 60;
-                      _this.timer = setInterval(function(){
-                        _this.validate--;
-                        if(_this.validate == 0){
-                            _this.validate = '重新获取';
-                            clearInterval(_this.timer);
+            if(_this.validate=='获取验证码' || _this.validate=='重新获取'){
+                if(  !/^1[34578]\d{9}$/.test(this.mobile) ){
+                    alert("手机号码有误,请重填！");
+                    return false;
+                }else {
+                    var data  = {
+                        act : 'login',
+                        mobile: this.mobile
+                    }
+                    $.getJSON(listUrl+'member/sms/getcode',data,function(json){
+                        if(!json.errCode){
+                            _this.validate = 60;
+                            _this.timer = setInterval(function(){
+                                _this.validate--;
+                                if(_this.validate == 0){
+                                    _this.validate = '重新获取';
+                                    clearInterval(_this.timer);
+                                }
+                            },1000)
                         }
-                    },1000)
-                  }
-                  else {
-                    alert(json.errMsg);
+                        else {
+                            alert(json.errMsg);
+                        }
+                    });
                 }
-            });
             }
+
         },
         ajaxSubmit(){
             if(  !/^1[34578]\d{9}$/.test(this.mobile) ){

@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
     <link rel="apple-touch-icon" href="favicon.png">
     <link rel="Shortcut Icon" href="favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201710171738">
+    <link rel="stylesheet" href="../css/shark.css?version=201710171738">
     <link rel="stylesheet" href="http://static.jesport.com/sly/css/other.css?version=201710171738">
     <!--<style>-->
         <!--.alertcontent{height: 5rem!important;}-->
@@ -297,7 +297,7 @@
         </div>
         <div class="teamlist" style="height: 6rem;overflow-y: auto;">
             <div v-for="item in awardInfo ?  awardInfo.voteList : []" class="teamitem">
-                <div class="img"><img src="item.logo ? item.logo : ''" alt=""></div>
+                <div class="img"><img :src="item.logo ? item.logo : ''" alt=""></div>
                 <div class="name">{{item.teamName}}</div>
                 <div class="modou">{{item.beans}}</div>
             </div>
@@ -310,7 +310,7 @@
 
         <script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
         <script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
-        <script type="text/javascript" src="http://static.jesport.com/sly/js/common.js"></script>
+        <script type="text/javascript" src="../js/common.js"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/guessIndex.js??v=12312312"></script>
 </body>
 </html>

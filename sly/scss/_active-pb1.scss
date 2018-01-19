@@ -1,5 +1,7 @@
 .active-pb{
+  padding-top: rem(100px);
   .banner{
+    padding-top: rem(100px);
     width: rem(750px);
     height:rem(360px);
     background-image: url("http://static.jesport.com/sly/images/active-pb/background.png");
@@ -8,24 +10,6 @@
     text-align: center;
     color: #FDC000;
     position: relative;
-    .back{
-      position: absolute;
-      top:rem(10px);
-      left:rem(20px);
-      a{
-        display: block;
-        width: rem(32px);
-        height:rem(32px);
-        background-image: url('http://static.jesport.com/sly/images/active-pb/return.png');
-        background-size:rem(32px) rem(32px);
-        background-repeat: no-repeat;
-      }
-    }
-    .title{
-      font-size: rem(48px);
-      line-height: rem(130px);
-      height:rem(104px);
-    }
     .type{
       height:rem(33px);
       line-height:rem(33px);
@@ -91,48 +75,71 @@
           height:rem(32px);
         }
       }
+      .img1{
+        width: rem(220px);
+        height:rem(76px);
+        img{
+          width: rem(220px);
+          height:rem(76px);
+        }
+      }
     }
   }
   .tabs{
-    background-color: #FFFFFF;
+    background-color: #000;
     width: rem(750px);
-    height:(70px);
+    height:(100px);
+    line-height: rem(60px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 rem(150px);
     font-size: rem(28px);
+    color: #6C6C6C;
     .active{
-      color: #FF9B00;
-      border-bottom: rem(2px) solid #FF9B00;
+      color: #FFA000;
+      //border-bottom: rem(2px) solid #FF9B00;
+    }
+    .active:after{
+      content: "";
+      display: block;
+      width: rem(74px);
+      margin: 0 auto;
+      height:rem(6px);
+      background-color: #FFA200;
     }
   }
   .cutline{
     width: rem(750px);
-    height:rem(6px);
-    background-color: #f2f2f2;
+    height:rem(20px);
   }
   .matchinfo{
     width: rem(750px);
     padding:0 rem(20px);
     table{
-      background-color: #FFFFFF;
       width: 100%;
+      font-size: rem(26px);
+      color: #FFFFFF;
       border-collapse:collapse;
-      td{
-        height:rem(70px);
-        line-height: rem(70px);
-        font-size: rem(22px);
-        border:rem(1px) solid #bfbfbf;
-        text-align: center;
+      tr{
+        td{
+          height:rem(70px);
+          line-height: rem(70px);
+          font-size: rem(22px);
+          border:rem(2px) solid rgba(0,0,0,0.1);
+          background: rgba(256,256,256,0.3);
+          text-align: center;
+        }
+        .name{
+          font-size: rem(28px);
+          color: #FFA200;
+        }
       }
-      .name{
-        color: #9f9f9f;
-      }
+
     }
   }
   .guessState{
-    background-color: #FFFFFF;
+    //background-color: #FFFFFF;
     width:rem(750px);
     height:rem(70px);
     display: flex;
@@ -155,27 +162,41 @@
     .button{
       display: flex;
       justify-content: space-between;
-      width: rem(380px);
+      align-items: center;
+      //width: rem(380px);
       margin-right: rem(15px);
-      padding-top: rem(10px);
-      div{
-        height:rem(60px);
-        width: rem(180px);
-        img{
-          height:rem(60px);
-          width: rem(180px);
+      a{
+        display: flex;
+        align-items: center;
+        height:rem(69px);
+        width: rem(223px);
+        padding-left: rem(15px);
+        margin-right: rem(10px);
+        background-color: rgba(0,0,0,.6);
+        color: #FFFFFF;
+        .mdnumber{
+          color: #FF6600;
         }
-      }
+         .img1{
+           height:rem(29px);
+           width: rem(32px);
+           margin-right: rem(10px);
+         }
+        .img2{
+          margin-right: rem(10px);
+          height:rem(38px);
+          width: rem(32px);
+        }
+       }
     }
   }
   .questionList{
-    border-top: rem(10px) solid #FFFFFF;
+    padding-top: rem(10px);
     .title{
       display: flex;
       align-items: center;
       padding: 0 rem(10px);
       height:rem(100px);
-      background-color: #FFFFFF;
       .item{
         width: rem(93px);
         height:rem(40px);
@@ -193,7 +214,6 @@
     }
     .qitem{
       margin-bottom:rem(10px);
-      background-color: #ffffff;
       padding-bottom: rem(20px);
       .title{
         padding:0 rem(10px);
@@ -204,6 +224,7 @@
         .img{
           width: rem(30px);
           height:rem(30px);
+          border-radius: 50%;
           img{
             width: rem(30px);
             height:rem(30px);
@@ -212,18 +233,22 @@
         .questionitem{
           margin-left:rem(20px);
           font-weight: bold;
+          color: #FFFFFF;
+          font-size: rem(26px);
         }
       }
       .newanswers{
         display: flex;
+        flex-wrap: wrap;
         .answer{
           display: flex;
           flex-direction: column;
           justify-content:center;
           text-align: center;
-          width:rem(350px);
-          height:rem(188px);
-          border: 1px #d59f1d solid;
+          width:rem(229px);
+          height:rem(120px);
+          border: 1px rgba(256,256,256,.6) solid;
+          background-color: rgba(153,153,153,0.6);
           border-radius: rem(15px);
           font-size: rem(30px);
           margin: rem(10px);
@@ -251,13 +276,13 @@
             }
           }
           .name{
-            color: #d59f1d;
+            color: #FFFFCC;
             font-size: rem(32px);
             //line-height: rem(40px);
             line-height: rem(60px);
           }
           .odds{
-            color: #868686;
+            color: #FFFFFF;
           }
         }
         .answer2{
@@ -495,64 +520,112 @@
   }
 }
 .pubgList{
-  background-color: #f2f2f2;
+  //background-color: #f2f2f2;
+  padding-top: rem(100px);
   width: rem(750px);
   max-width: 1500px;
   margin:0 auto;
   max-width: 1500px;
   padding-bottom: rem(150px);
-  .headertitle{
-    display: flex;
-    justify-content: space-between;
-    padding:0 rem(20px);
-    height:rem(80px);
-    align-items: center;
-    align-items: center;
-    background-color: #FFFFFF;
-    font-size: rem(32px);
-    color: #FF6600;
-    .return-left{
-      width: rem(32px);
-      height:rem(32px);
-      background-image: url("http://static.jesport.com/sly/images/icon-left-01.png");
-      background-size: rem(32px) rem(32px);
-      background-repeat: no-repeat;
-      a{
-        display: block;
-        width: rem(32px);
-        height:rem(32px);
+  .memberInfo{
+    .unit{
+      .title{
+        height:rem(76px);
+        line-height: rem(76px);
+        font-size: rem(32px);
+        padding: 0 rem(20px);
+        color: #FFFFFF;
+        background: rgba(0,0,0,.6);
       }
-    }
-    .right{
-      width: rem(32px);
-      height:rem(32px);
+      .items{
+        height:rem(190px);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        .item{
+          width: rem(223px);
+          height:rem(170px);
+          background: rgba(0,0,0,.6);
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          flex-direction:column;
+          color: #FFFFFF;
+          .name{
+            height:rem(50px);
+            color: #FF6600;
+            font-size: rem(32px);
+          }
+          .val{
+            height:rem(60px);
+            font-size: rem(42px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+              margin:0 rem(8px);
+              width: rem(32px);
+              height:rem(29px);
+            }
+          }
+          .rank{
+            font-size: rem(24px);
+          }
+          .rank.color{
+            color: #66CCFF;
+          }
+          .rank.color2{
+            color: #66CCFF;
+            font-size: rem(32px);
+          }
+        }
+      }
     }
   }
   .tabs{
     margin-top:rem(10px);
-    background-color: #FFFFFF;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
     height:rem(80px);
     padding:0 rem(30px);
+    color: #FFFFFF;
     .line{
-      background-color: #6C6C6C;
+      background-color: #BFBFBF;
       width: rem(2px);
       height:rem(50px);
     }
     .tabitem{
+      flex: 1;
+      font-size: rem(28px);
       text-align: center;
-      height:rem(70px);
-      line-height: rem(70px);
+      height:rem(60px);
+      line-height: rem(60px);
     }
     .tabitem.active{
       color: #FF6600;
-      border-bottom: rem(2px) solid #FF6600;
+      //border-bottom: rem(2px) solid #FF6600;
+    }
+    .tabitem.active:after{
+      content:"";
+      display: block;
+      width: rem(74px);
+      margin:0 auto;
+      height:rem(6px);
+      background: #FF6600;
     }
   }
   .pbList{
+    .title1{
+      height:rem(76px);
+      line-height: rem(76px);
+      font-size: rem(32px);
+      padding: 0 rem(20px);
+      color: #FFFFFF;
+      background: rgba(0,0,0,.6);
+    }
+    padding-bottom: rem(60px);
     .item{
       width: rem(734px);
       height:rem(222px);
@@ -615,12 +688,197 @@
         }
       }
     }
+    .nomore{
+      height:rem(50px);
+      font-size: rem(24px);
+      text-align: center;
+      color: #FFFFFF;
+    }
   }
 }
 .nodata{
   height:rem(300px);
   line-height: rem(300px);
   text-align: center;
+  font-size: rem(28px);
+  color: #FFFFFF;
+  //background-color: #FFFFFF;
+}
+.active-pubg-background{
+  width: rem(750px);
+  max-width:1500px;
+  height:rem(1334px);
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  margin:auto;
+  z-index:-1;
+  img{
+    width: 100%;
+    height:100%;
+  }
+}
+.active-pubg{
+  position: relative;
+  padding-top:rem(100px);
+  z-index: 1;
+  width: rem(750px);
+  max-width:1500px;
+  margin:0 auto;
+  text-align: center;
+  .logoimg{
+    position: relative;
+    width: rem(688px);
+    margin:0 auto;
+    img{
+      width: 100%;
+    }
+    .award{
+      width: rem(170px);
+      height:rem(70px);
+      line-height:rem(70px);
+      position: absolute;
+      bottom: rem(-10px);
+      left:rem(370px);
+      font-size: rem(55px);
+      color: #ffff00;
+    }
+  }
+  .info{
+    height:rem(70px);
+    line-height: rem(70px);
+    text-align: center;
+    color: #FFFFFF;
+    font-size: rem(32px);
+  }
+  .signin-btn{
+    width: rem(750px);
+    height:rem(172px);
+    @include dja;
+    img{
+      width: rem(404px);
+      height:rem(140px);
+    }
+  }
+  .more{
+    height:rem(50px);
+    text-align: center;
+    color: #66CCFF;
+    font-size: rem(32px);
+  }
+  .code{
+    @include dja;
+    img{
+      width: rem(280px);
+      height:rem(280px);
+    }
+  }
+}
+.pubgheader{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  margin:0 auto;
+  z-index:100;
+  display: flex;
+  width: 100%;
+  max-width: 1500px;
+  height:rem(100px);
+  justify-content: space-between;
+  align-items: center;
+  padding:0 rem(20px);
   font-size: rem(32px);
-  background-color: #FFFFFF;
+  color: #FFFFFF;
+  background: url("http://static.jesport.com/sly/images/active-pb/title.png") repeat;
+  background-size:100% 100%;
+  text-align: center;
+  .return{
+    width: rem(90px);
+    font-size: rem(28px);
+    color: #FFFFFF;
+    display: flex;
+    line-height: rem(32px);
+    img{
+      width: rem(32px);
+      height:rem(32px);
+    }
+  }
+  .title{
+    flex: 1;
+  }
+  .back{
+
+    a{
+      display: block;
+      width: rem(48px);
+      height:rem(48px);
+      background-image: url('http://static.jesport.com/sly/images/active-pb/return.png');
+      background-size:rem(48px) rem(48px);
+      background-repeat: no-repeat;
+    }
+  }
+  .icon-home{
+    display: block;
+    z-index: 99;
+    width: rem(32px);
+    margin-left: rem(58px);
+    height:rem(32px);
+    //background-image: url("http://static.jesport.com/sly/images/common/icon-home.png");
+    //background-repeat: no-repeat;
+    //background-size: rem(32px) rem(32px);
+  }
+}
+.codeBottom{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right:0;
+  margin: auto;
+  height:rem(80px);
+  background-color: rgba(0,0,0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  img{
+    width: rem(50px);
+    height:rem(50px);
+  }
+  span{
+    color: #FFFFFF;
+    font-size: rem(28px);
+  }
+}
+.codeShow{
+  display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  margin: auto;
+  width: 100%;
+  height:100%;
+  z-index:999;
+  background-color: rgba(0,0,0,.8);
+  font-size: rem(28px);
+  color: #FFFFFF;
+  padding: rem(20px);
+  .title{
+    font-size: rem(50px);
+    display: flex;
+    flex-direction: row-reverse;
+  }
+  .content{
+    margin-top: rem(200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+      margin-bottom: rem(100px);
+      width: rem(280px);
+      height:rem(280px);
+    }
+  }
 }

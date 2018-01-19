@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;background-color: #7851C8" >
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta http-equiv="pragma"   content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+    <meta http-equiv="expires" content="Wed,26 Feb 1998 08:21:57 GMT" />
+    <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="Shortcut Icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/scratch.css?v=201801171648">
+    <title>魔杰刮刮乐</title>
+</head>
+<body>
+
+<div class="scratchCard" id="app">
+    <div class="content">
+        <div id="mask_img_bg">
+            <div class="award">恭喜您，获得了<span class="cont-span" id="awardname"></span></div>
+        </div>
+        <img id="redux" src="http://static.jesport.com/sly/images/scratch/start.png">
+    </div>
+    <div class="myaward">
+        <div class="noaward">请刮开查看您的奖品</div>
+        <div class="havaeward">
+            <div>恭喜您中奖，您的领奖号为:</div>
+            <div class="awardNum" id="quanNo"></div>
+            <div>请到店后在前台领取时出示</div>
+        </div>
+    </div>
+    <div class="mychance" style="display: none;">
+        您有 <span id="chanceNum"></span> 次刮奖机会
+    </div>
+    <div class="mask"></div>
+    <div class="code"><img src="http://static.jesport.com/sly/images/scratch/QR.png" alt=""></div>
+</div>
+
+
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.eraser.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
+<script type="text/javascript" src="../js/scratch.js?v=201801171648"></script>
+</body>
+</html>

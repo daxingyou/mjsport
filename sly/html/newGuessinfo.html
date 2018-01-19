@@ -8,7 +8,7 @@
     <script type="text/javascript" src="http://static.jesport.com/sly/js/flexible.min.js"></script>
     <link rel="stylesheet" type="text/css" href="http://static.jesport.com/sly/css/loaders.css">
     <!--<link rel="stylesheet" href="http://static.jesport.com/sly/css/swiper-3.4.2.min.css">-->
-    <link rel="stylesheet" href="http://static.jesport.com/sly/css/shark.css?version=201711011445">
+    <link rel="stylesheet" href="../css/shark.css?version=201711011445">
     <title>魔圣电竞大师</title>
 </head>
 <body style="background: #f2f2f2;">
@@ -60,7 +60,7 @@
                 </div>
             </div>
             <!--弹窗-->
-            <div class="betwindow" v-if="maskShow">
+            <div class="betwindow" v-if="questShow">
                 <div class="title">
                     <div class="img"><img src="http://static.jesport.com/sly/images/newIndex/hummer.png" alt=""></div>
                     <div class="questionitem">{{betQuestion}}</div>
@@ -79,6 +79,10 @@
                 <div class="reward">预计回报 : <span style="color: #ff0000">{{rewards}}</span></div>
             </div>
             <div class="mask2" v-if="maskShow" @click="maskIsShow()"></div>
+            <div class="alert-msg" v-if="msgShow">
+                <div class="alert-msg-content">{{msg}}</div>
+                <div class="alert-msg-btn" @click="msgClick">确认</div>
+            </div>
         </div>
     </div>
 </div>
@@ -86,7 +90,7 @@
 <script type="text/javascript" src="http://static.jesport.com/sly/js/jquery.min.js"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/vue.js"></script>
 <script type="text/javascript" src="http://static.jesport.com/sly/js/iscroll.js"></script>
-<script type="text/javascript" src="http://static.jesport.com/sly/js/common.js?version=201711031730"></script>
-<script type="text/javascript" src="http://static.jesport.com/sly/js/newGuessinfo.js?version=201711031756"></script>
+<script type="text/javascript" src="../js/common.js?version=201711031730"></script>
+<script type="text/javascript" src="../js/newGuessinfo.js?version=201711031756"></script>
 </body>
 </html>
